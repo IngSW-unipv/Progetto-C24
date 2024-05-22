@@ -1,13 +1,21 @@
+# **G.A.S. CORP CINEMA** - Progetto-C24 &nbsp; <img align="top" src="Resources/Logo G.A.S. CORP CINEMA .png" width="40" />
 
-# G.A.S. CORP CINEMA ![Logo](https://github.com/IngSW-unipv/Progetto-C24/blob/main/Resources/Logo%20G.A.S.%20CORP%20CINEMA%20%20-%20README.png?raw=true)
+  <img alt="Static Badge" src="https://img.shields.io/badge/Backend-Java-00FF00?style=for-the-badge&logo=Eclipse&labelColor=rgb(40%2C%2040%2C%2040)">
+  &nbsp;
+  <img alt="Static Badge" src="https://img.shields.io/badge/Frontend-JavaFX-FF0000?style=for-the-badge&labelColor=rgb(40%2C%2040%2C%2040)">
+  &nbsp;  
+  <img alt="Static Badge" src="https://img.shields.io/badge/Database-MySQL-0000FF?style=for-the-badge&logo=MySQL&labelColor=rgb(40%2C%2040%2C%2040)">
+  &nbsp;
+  <img alt="Static Badge" src="https://img.shields.io/badge/Test-JUnit%204-9F00FF?style=for-the-badge&logo=TestCafe&labelColor=rgb(40%2C%2040%2C%2040)">
 
-![](https://img.shields.io/badge/PROGETTO--C24-003399?style=for-the-badge)![](https://img.shields.io/badge/G.A.S_CORP-1E90FF?style=for-the-badge)
+## Descrizione generale:
 
-![](https://img.shields.io/badge/BACKEND-JAVA-00FF00?style=for-the-badge) ![](https://img.shields.io/badge/FRONTEND-JAVAFX-FF0000?style=for-the-badge) ![](https://img.shields.io/badge/DATABASE-MYSQL-0000FF?style=for-the-badge) ![](https://img.shields.io/badge/TEST-JUNIT%204-9F00FF?style=for-the-badge)
+Si vuole creare un software che implemeni parzialmente il 
+sistema di gestione del cinema della G.A.S. CORP, verranno 
+introdotte le seguenti funzionalità:
 
-Software che implementa parzialmente il sistema di gestione del cinema della G.A.S. CORP,
-prevede le seguenti funzionalità:
-- Acquisto online dei biglietti.
-- Acquisto sul posto dei biglietti.
-- Gestione delle sale presenti nel cinema.
-- Gestione del catalogo dei film che il cinema offre.
+- Registrazione utente e autenticazione utente, cassiere e admin 
+- Acquisto online dei biglietti
+- Acquisto sul posto dei biglietti e/o del cibo
+- Gestione delle proiezioni dei film nelle 6 sale presenti nel cinema
+- Gestione del catalogo dei film presenti al cinema
