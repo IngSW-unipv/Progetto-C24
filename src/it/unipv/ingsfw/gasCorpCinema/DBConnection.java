@@ -1,4 +1,4 @@
-package it.unipv.ingsfw.gasCorpCinema.util;
+package it.unipv.ingsfw.gasCorpCinema;
 
 import java.io.FileInputStream;
 import java.sql.Connection;

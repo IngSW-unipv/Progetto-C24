@@ -1,6 +1,6 @@
-package it.unipv.ingsfw.gasCorpCinema;
+package it.unipv.ingsfw.gasCorpCinema.model;
 
-public class Cinema {
+public class CinemaSingleton {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
