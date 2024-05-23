@@ -4,13 +4,18 @@ import java.util.List;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.IMovieDAO;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.MovieDAO;
+import it.unipv.ingsfw.gasCorpCinema.model.projection.IProjectionDAO;
+import it.unipv.ingsfw.gasCorpCinema.model.projection.Projection;
+import it.unipv.ingsfw.gasCorpCinema.model.projection.ProjectionDAO;
 
 public class Admin {
 	
 	private IMovieDAO movieDAO;
+	private IProjectionDAO projectionDAO;
 	
 	public Admin() {
 		movieDAO = new MovieDAO();
+		projectionDAO = new ProjectionDAO();
 	}
 	
 	public Movie getMovieByTitle(String title) {
@@ -34,5 +39,22 @@ public class Admin {
 		for(Movie movie : movies) {
 			System.out.println(movie);
 		}
+	}
+	
+	public Projection getProjectionByHall(int idHall) {
+		return projectionDAO.getProjectionByHall(idHall);
+	}
+	
+	public List<Projection> getAllProjections(){
+		List<Projection> projections = projectionDAO.getAllProjections();
+		return projections;
+	}
+	
+	public void createProjection(Projection projection) {
+		projectionDAO.createProjection(projection);
+	}
+	
+	public void deleteProjection(Projection projection) {
+		projectionDAO.deleteProjection(projection);
 	}
 }
