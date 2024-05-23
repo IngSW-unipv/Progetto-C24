@@ -1,15 +1,17 @@
 package it.unipv.ingsfw.gasCorpCinema.model.projection;
 
+import java.sql.Date;
+
 public class Projection {
 	
 	private int idHall;
 	private int seats;
 	private String movieTitle;
-	private String date;
+	private Date date;
 	private String time;
 	private double price;
 	
-	public Projection(int idHall,int seats,String movieTitle,String date,String time,double price) {
+	public Projection(int idHall,int seats,String movieTitle,Date date,String time,double price) {
 		this.idHall = idHall;
 		this.seats = seats;
 		this.movieTitle = movieTitle;
@@ -30,7 +32,7 @@ public class Projection {
 		return movieTitle;
 	}
 	
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 	

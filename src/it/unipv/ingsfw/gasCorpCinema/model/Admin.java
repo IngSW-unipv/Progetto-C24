@@ -1,6 +1,9 @@
 package it.unipv.ingsfw.gasCorpCinema.model;
 
 import java.util.List;
+import it.unipv.ingsfw.gasCorpCinema.model.cinemaHall.CinemaHall;
+import it.unipv.ingsfw.gasCorpCinema.model.cinemaHall.CinemaHallDAO;
+import it.unipv.ingsfw.gasCorpCinema.model.cinemaHall.ICinemaHallDAO;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.IMovieDAO;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.MovieDAO;
@@ -12,10 +15,12 @@ public class Admin {
 	
 	private IMovieDAO movieDAO;
 	private IProjectionDAO projectionDAO;
+	private ICinemaHallDAO cinemaHallDAO;
 	
 	public Admin() {
 		movieDAO = new MovieDAO();
 		projectionDAO = new ProjectionDAO();
+		cinemaHallDAO = new CinemaHallDAO();
 	}
 	
 	public Movie getMovieByTitle(String title) {
@@ -56,5 +61,22 @@ public class Admin {
 	
 	public void deleteProjection(Projection projection) {
 		projectionDAO.deleteProjection(projection);
+	}
+	
+	public CinemaHall getHallById(int idHall) {
+		return cinemaHallDAO.getHallById(idHall);
+	}
+	
+	public List<CinemaHall> getAllHalls(){
+		List<CinemaHall> cinemaHalls = cinemaHallDAO.getAllHalls();
+		return cinemaHalls;
+	}
+	
+	public void createHall(CinemaHall cinemaHall) {
+		cinemaHallDAO.createHall(cinemaHall);
+	}
+	
+	public void deleteHall(CinemaHall cinemaHall) {
+		cinemaHallDAO.deleteHall(cinemaHall);
 	}
 }
