@@ -37,7 +37,7 @@ public class MovieDAO implements IMovieDAO{
 	    	
 	        while(rs1.next()) {
 	        	
-	          movie = new Movie(rs1.getString(2),rs1.getString(3),rs1.getInt(4),rs1.getInt(5));
+	          movie = new Movie(rs1.getString(1),rs1.getString(2),rs1.getInt(3),rs1.getInt(4));
 	        }
 	    } catch (SQLException e) {
 	      e.printStackTrace();
@@ -63,7 +63,7 @@ public class MovieDAO implements IMovieDAO{
 	        
 	      	while (rs1.next()) {
 	      		
-	        Movie movie = new Movie(rs1.getString(2),rs1.getString(3),rs1.getInt(4),rs1.getInt(5));
+	        Movie movie = new Movie(rs1.getString(1),rs1.getString(2),rs1.getInt(3),rs1.getInt(4));
 	        movies.add(movie);
 	      	}
 	      	
