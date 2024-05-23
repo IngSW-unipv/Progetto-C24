@@ -4,6 +4,7 @@ import it.unipv.ingsfw.gasCorpCinema.view.AddMovieView;
 import it.unipv.ingsfw.gasCorpCinema.view.AddProjectionView;
 import it.unipv.ingsfw.gasCorpCinema.view.AllMoviesView;
 import it.unipv.ingsfw.gasCorpCinema.view.RemoveMovieView;
+import it.unipv.ingsfw.gasCorpCinema.view.RemoveProjectionView;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 
@@ -37,6 +38,13 @@ public class AdminViewController {
 		
 		stage = new Stage();
 		AddProjectionView v = new AddProjectionView();
+		v.start(stage);
+	}
+	
+	public void switchToRemoveProjectionView(ActionEvent event) throws Exception {
+		
+		stage = new Stage();
+		RemoveProjectionView v = new RemoveProjectionView();
 		v.start(stage);
 	}
 }
