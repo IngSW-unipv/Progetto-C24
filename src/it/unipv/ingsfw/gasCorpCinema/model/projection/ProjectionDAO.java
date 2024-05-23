@@ -111,13 +111,13 @@ public class ProjectionDAO implements IProjectionDAO {
 		
 	    try {
 	    	
-	    	String query = "DELETE FROM projections WHERE (idHall, movieTitle, date, time) VALUES (?, ?, ?, ?) ";
+	    	String query = "DELETE FROM projections WHERE idHall = ? AND movieTitle = ? AND date = ? AND time = ?";
 	    	st1 = conn.prepareStatement(query);
 	    	
 	    	st1.setInt(1, projection.getIdHall());
 	    	st1.setString(2, projection.getMovieTitle());
-	    	st1.setDate(2, projection.getDate());
-	    	st1.setString(2, projection.getTime());
+	    	st1.setDate(3, projection.getDate());
+	    	st1.setString(4, projection.getTime());
 	    	st1.executeUpdate();
 	    	
 	    } catch (SQLException e) {

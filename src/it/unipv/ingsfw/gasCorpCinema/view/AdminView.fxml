@@ -20,7 +20,7 @@
             <items>
               <MenuItem mnemonicParsing="false" text="Visualizza proiezioni" />
                   <MenuItem mnemonicParsing="false" onAction="#switchToAddProjectionView" text="Aggiungi proiezione" />
-                  <MenuItem mnemonicParsing="false" text="Rimuovi proiezione" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToRemoveProjectionView" text="Rimuovi proiezione" />
             </items>
           </Menu>
         </menus>
