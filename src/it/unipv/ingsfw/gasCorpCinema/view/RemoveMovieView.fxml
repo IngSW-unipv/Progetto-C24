@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.RemoveMovieViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@RemoveMovieView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.RemoveMovieViewController">
    <children>
-      <ChoiceBox fx:id="myChoiceBox" layoutX="225.0" layoutY="187.0" prefWidth="150.0" />
+      <ListView fx:id="myListView" layoutX="39.0" layoutY="58.0" prefHeight="284.0" prefWidth="536.0" styleClass="listView" />
+      <Label fx:id="myLabel" alignment="CENTER" layoutY="14.0" prefHeight="35.0" prefWidth="600.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="myButton" layoutX="273.0" layoutY="361.0" mnemonicParsing="false" onAction="#removeMovie" text="Elimina" />
    </children>
 </AnchorPane>
