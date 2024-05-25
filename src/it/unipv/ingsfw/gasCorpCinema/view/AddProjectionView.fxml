@@ -8,35 +8,35 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.AddProjectionViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@AddProjectionView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.AddProjectionViewController">
    <children>
-      <ChoiceBox fx:id="myChoiceBox1" layoutX="45.0" layoutY="77.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="myChoiceBox2" layoutX="45.0" layoutY="225.0" prefWidth="150.0" />
-      <Label fx:id="myLabel1" alignment="CENTER" layoutX="45.0" layoutY="28.0" prefHeight="35.0" prefWidth="150.0" text="Sala">
+      <ChoiceBox fx:id="myChoiceBox1" layoutX="31.0" layoutY="63.0" prefWidth="150.0" styleClass="choiceBox" />
+      <ChoiceBox fx:id="myChoiceBox2" layoutX="31.0" layoutY="181.0" prefWidth="150.0" styleClass="choiceBox" />
+      <Label fx:id="myLabel1" alignment="CENTER" layoutX="31.0" layoutY="28.0" prefHeight="35.0" prefWidth="150.0" text="Sala">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="myLabel2" alignment="CENTER" layoutX="45.0" layoutY="182.0" prefHeight="35.0" prefWidth="150.0" text="Film">
+      <Label fx:id="myLabel2" alignment="CENTER" layoutX="31.0" layoutY="146.0" prefHeight="35.0" prefWidth="150.0" text="Film">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <DatePicker fx:id="myDatePicker" layoutX="363.0" layoutY="77.0" onAction="#getDate" />
-      <Label fx:id="myLabel3" alignment="CENTER" layoutX="364.0" layoutY="28.0" prefHeight="35.0" prefWidth="175.0" text="Data">
+      <DatePicker fx:id="myDatePicker" layoutX="192.0" layoutY="242.0" onAction="#getDate" styleClass="datePicker" />
+      <Label fx:id="myLabel3" alignment="CENTER" layoutX="212.0" layoutY="207.0" prefHeight="35.0" prefWidth="175.0" text="Data">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="myLabel4" alignment="CENTER" layoutX="375.0" layoutY="182.0" prefHeight="35.0" prefWidth="150.0" text="Ora">
+      <Label fx:id="myLabel4" alignment="CENTER" layoutX="374.0" layoutY="28.0" prefHeight="35.0" prefWidth="150.0" text="Ora">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button fx:id="myButton" layoutX="182.0" layoutY="319.0" mnemonicParsing="false" onAction="#createProjection" text="Aggiungi" />
-      <TextField fx:id="myTextField1" layoutX="376.0" layoutY="225.0" />
-      <TextField fx:id="myTextField2" layoutX="289.0" layoutY="319.0" />
-      <Label fx:id="myLabel5" alignment="CENTER" layoutX="289.0" layoutY="274.0" prefHeight="35.0" prefWidth="150.0" text="Prezzo">
+      <Button fx:id="myButton" layoutX="260.0" layoutY="361.0" mnemonicParsing="false" onAction="#createProjection" text="Aggiungi" />
+      <TextField fx:id="myTextField1" layoutX="357.0" layoutY="62.0" styleClass="textField" />
+      <TextField fx:id="myTextField2" layoutX="357.0" layoutY="180.0" styleClass="textField" />
+      <Label fx:id="myLabel5" alignment="CENTER" layoutX="374.0" layoutY="146.0" prefHeight="35.0" prefWidth="150.0" text="Prezzo">
          <font>
             <Font size="24.0" />
          </font>

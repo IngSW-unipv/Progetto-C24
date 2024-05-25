@@ -3,6 +3,7 @@ package it.unipv.ingsfw.gasCorpCinema.controller;
 import it.unipv.ingsfw.gasCorpCinema.view.AddMovieView;
 import it.unipv.ingsfw.gasCorpCinema.view.AddProjectionView;
 import it.unipv.ingsfw.gasCorpCinema.view.AllMoviesView;
+import it.unipv.ingsfw.gasCorpCinema.view.AllProjectionsView;
 import it.unipv.ingsfw.gasCorpCinema.view.RemoveMovieView;
 import it.unipv.ingsfw.gasCorpCinema.view.RemoveProjectionView;
 import javafx.event.ActionEvent;
@@ -45,6 +46,13 @@ public class AdminViewController {
 		
 		stage = new Stage();
 		RemoveProjectionView v = new RemoveProjectionView();
+		v.start(stage);
+	}
+	
+	public void switchToAllProjectionsView(ActionEvent event) throws Exception {
+		
+		stage = new Stage();
+		AllProjectionsView v = new AllProjectionsView();
 		v.start(stage);
 	}
 }

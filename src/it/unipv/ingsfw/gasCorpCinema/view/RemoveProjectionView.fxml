@@ -6,14 +6,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.RemoveProjectionViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@RemoveProjectionView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.RemoveProjectionViewController">
    <children>
-      <ListView fx:id="myListView" layoutX="55.0" layoutY="76.0" prefHeight="247.0" prefWidth="490.0" />
-      <Label fx:id="myLabel" alignment="CENTER" layoutY="24.0" prefHeight="35.0" prefWidth="600.0" text="Label">
+      <ListView fx:id="myListView" layoutX="32.0" layoutY="58.0" prefHeight="284.0" prefWidth="536.0" styleClass="listView" />
+      <Label fx:id="myLabel" alignment="CENTER" layoutY="14.0" prefHeight="35.0" prefWidth="600.0">
          <font>
-            <Font size="24.0" />
+            <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="myButton" layoutX="273.0" layoutY="345.0" mnemonicParsing="false" onAction="#removeProjection" text="Elimina" />
+      <Button fx:id="myButton" layoutX="266.0" layoutY="361.0" mnemonicParsing="false" onAction="#removeProjection" text="Elimina" />
    </children>
 </AnchorPane>
