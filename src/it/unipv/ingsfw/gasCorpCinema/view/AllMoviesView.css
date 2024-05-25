@@ -1,0 +1,26 @@
+.root {
+	-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #95ecb0, #f3f98a);
+}
+
+.listView{
+	-fx-background-color: transparent;
+	-fx-border-color: white;
+	-fx-border-width: 2px;
+	-fx-text-fill: black;
+}
+
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-border-width: 0.5px;
+    -fx-text-fill: black;
+}
+
+.list-cell:hover{
+	-fx-background-color: rgba(255, 255, 255, 0.4); /* Bianco con un'opacità del 50% */
+}
+
+.list-cell:selected {
+    -fx-background-color: #A2A2A2; /* Cambia il colore di sfondo quando la cella è selezionata */
+    -fx-text-fill: white; /* Cambia il colore del testo quando la cella è selezionata */
+}

@@ -6,34 +6,34 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.AddMovieViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@AddMovieView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.AddMovieViewController">
    <children>
-      <Button fx:id="myButton" layoutX="272.0" layoutY="360.0" mnemonicParsing="false" onAction="#insertMovie" text="INSERT" />
-      <TextField fx:id="myTextField1" layoutX="150.0" layoutY="134.0" />
-      <TextField fx:id="myTextField2" layoutX="150.0" layoutY="187.0" />
-      <TextField fx:id="myTextField3" layoutX="150.0" layoutY="232.0" />
-      <TextField fx:id="myTextField4" layoutX="150.0" layoutY="278.0" />
-      <Label alignment="CENTER" layoutY="32.0" prefHeight="35.0" prefWidth="600.0" text="Aggiungi film">
+      <Button fx:id="myButton" layoutX="255.0" layoutY="361.0" mnemonicParsing="false" onAction="#insertMovie" text="AGGIUNGI" />
+      <TextField fx:id="myTextField1" layoutX="254.0" layoutY="124.0" styleClass="textField" />
+      <TextField fx:id="myTextField2" layoutX="254.0" layoutY="177.0" styleClass="textField" />
+      <TextField fx:id="myTextField3" layoutX="254.0" layoutY="222.0" styleClass="textField" />
+      <TextField fx:id="myTextField4" layoutX="254.0" layoutY="268.0" styleClass="textField" />
+      <Label alignment="CENTER" layoutY="30.0" prefHeight="35.0" prefWidth="600.0" styleClass="titleLabel" text="AGGIUNGI FILM">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="63.0" layoutY="133.0" text="Nome">
+      <Label layoutX="168.0" layoutY="129.0" text="NOME">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="59.0" layoutY="186.0" text="Genere">
+      <Label layoutX="159.0" layoutY="182.0" text="GENERE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="61.0" layoutY="231.0" text="Durata">
+      <Label layoutX="158.0" layoutY="227.0" text="DURATA">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="66.0" layoutY="277.0" text="Anno">
+      <Label layoutX="167.0" layoutY="273.0" text="ANNO">
          <font>
             <Font size="18.0" />
          </font>

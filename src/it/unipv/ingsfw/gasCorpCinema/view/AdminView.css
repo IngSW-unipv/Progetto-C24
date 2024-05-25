@@ -1,0 +1,35 @@
+.root {
+	-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #95ecb0, #f3f98a);
+}
+
+.menu-bar {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+}
+
+.menu-bar .label {
+    -fx-font-family: "Verdana";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold; /* Rende il testo in grassetto */
+}
+
+.menu {
+	-fx-background-color: transparent;
+}
+
+.menu-item {
+	-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #95ecb0, #f3f98a);
+    -fx-text-fill: white;
+    -fx-padding: 5px 10px; /* Aggiunge padding agli elementi del menu */
+}
+
+.menu-item .label {
+    -fx-font-family: "Verdana";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold; /* Rende il testo in grassetto */
+}
+
+.menu-item:hover {
+    -fx-background-color: #7ac394; /* Cambia il colore dello sfondo durante l'hover */
+}
