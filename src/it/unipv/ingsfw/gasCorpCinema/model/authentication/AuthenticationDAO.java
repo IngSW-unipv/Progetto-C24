@@ -40,7 +40,7 @@ public class AuthenticationDAO implements IAuthenticationDAO {
         }
 	}
 
-	@Override
+	
 	public boolean login(String email, String password) {
 		conn = DBConnection.startConnection(conn, schema);
 		PreparedStatement stmt;
@@ -70,6 +70,4 @@ public class AuthenticationDAO implements IAuthenticationDAO {
 	        DBConnection.closeConnection(conn);
 	    }
 	}
-		
-	
 }

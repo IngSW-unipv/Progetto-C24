@@ -37,15 +37,17 @@ public class FirstPageController {
         
     	String email = tf_username.getText();
         String password = field_password.getText();
-        
+  
         if (user.login(email, password)) {
-            System.out.println("Login avvenuto con successo.");
+            // Login riuscito, puoi fare qualcosa come cambiare la scena o mostrare un messaggio
+            System.out.println("Login riuscito. Benvenuto!");
             changeScene("../view/Login.fxml"); // Cambia la scena dopo il login riuscito
         } else {
-            System.out.println("Login fallito, ricontrolla le credenziali o registrati.");
-        }
+            // Mostra un messaggio di errore
+            System.out.println("Login fallito. Controlla le tue credenziali.");
+        }     
     }
-
+    
     @FXML
     public void handleRegisterButtonAction() {
         try {
