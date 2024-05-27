@@ -37,7 +37,7 @@ public class RegisterController {
 //            System.out.println("Registrazione avvenuta con successo.");
 //            // Puoi anche mostrare un messaggio all'utente o cambiare scena
 //        } else {
-//            System.out.println("Registrazione fallita.");
+///            System.out.println("Registrazione fallita.");
 //        }
 //    }
 

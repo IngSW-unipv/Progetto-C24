@@ -52,9 +52,9 @@ public class FirstPageController {
         }
     }
 
-    public boolean authenticate(String email, String password) {
-       
-    }
+ //   public boolean authenticate(String email, String password) {
+ //      
+ //   }
 
     public void changeScene(String fxml) throws IOException {
         Parent pane = FXMLLoader.load(getClass().getResource(fxml));
