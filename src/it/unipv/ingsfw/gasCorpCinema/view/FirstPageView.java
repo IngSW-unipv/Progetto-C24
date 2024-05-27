@@ -9,7 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-public class FiestPageView extends Application {
+public class FirstPageView extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
