@@ -35,7 +35,7 @@
          <children>
             <ImageView fitHeight="168.0" fitWidth="345.0" layoutX="44.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Resources/logo2.png" />
+                  <Image url="@../Resources/logo2.png" />
                </image>
             </ImageView>
             <Label layoutX="28.0" layoutY="215.0" text="Email">

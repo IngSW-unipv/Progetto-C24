@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+
+import it.unipv.ingsfw.gasCorpCinema.model.Admin;
+import it.unipv.ingsfw.gasCorpCinema.model.authentication.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -26,25 +29,26 @@ public class RegisterController {
 	@FXML
 	private PasswordField pf_password;
 	
+	private User user = new User();
 
-//	@FXML
-//    private void handleRegisterButtonAction() {
-//		String username = tf_username.getText();
-//        String email = tf_email.getText();
-//        String password = pf_password.getText();
-//
-//        if (user.registration(username, email, password)) {
-//            System.out.println("Registrazione avvenuta con successo.");
-//            // Puoi anche mostrare un messaggio all'utente o cambiare scena
-//        } else {
-///            System.out.println("Registrazione fallita.");
-//        }
-//    }
+	@FXML
+    private void handleRegisterButtonAction() {
+		String username = tf_username.getText();
+        String email = tf_email.getText();
+        String password = pf_password.getText();
+
+        if (user.registration(username, email, password)) {
+            System.out.println("Registrazione avvenuta con successo.");
+            // Puoi anche mostrare un messaggio all'utente o cambiare scena
+        } else {
+            System.out.println("Registrazione fallita.");
+        }
+    }
 
     @FXML
     public void handleLoginButtonAction() {  
         try {
-            changeScene("/View/FirstPage.fxml");
+            changeScene("../view/FirstPage.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }

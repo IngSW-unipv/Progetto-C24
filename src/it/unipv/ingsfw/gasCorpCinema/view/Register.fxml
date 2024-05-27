@@ -16,7 +16,7 @@
             <Image url="@.../Resources/Logo G.A.S. CORP CINEMA .png" />
          </image>
       </ImageView>
-      <Button fx:id="button_register" layoutX="449.0" layoutY="272.0" mnemonicParsing="false" text="Registrati" />
+      <Button fx:id="button_register" layoutX="449.0" layoutY="272.0" mnemonicParsing="false" onAction="#handleRegisterButtonAction" text="Registrati" />
       <Button fx:id="button_log_in" layoutX="194.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleLoginButtonAction" style="-fx-background-color: transparent;" text="Log In!" textFill="#2619b9" underline="true" />
       <Label layoutX="14.0" layoutY="317.0" text="Sei già registrato? Effettua il  &#10;&#10;" />
       <TextField fx:id="tf_username" layoutX="345.0" layoutY="131.0" />

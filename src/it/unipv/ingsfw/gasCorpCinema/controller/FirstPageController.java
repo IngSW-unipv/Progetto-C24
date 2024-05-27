@@ -2,6 +2,8 @@ package it.unipv.ingsfw.gasCorpCinema.controller;
 
 import java.io.IOException;
 
+import it.unipv.ingsfw.gasCorpCinema.model.authentication.Authentication;
+import it.unipv.ingsfw.gasCorpCinema.model.authentication.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,39 +29,41 @@ public class FirstPageController {
     private Stage stage;
 	private Scene scene;
 	private Parent root;
+	private User user = new User();
+	private Authentication authentication;
 
     @FXML
     public void handleLoginButtonAction() throws IOException {
         
     	String email = tf_username.getText();
         String password = field_password.getText();
-
-        if (authenticate(email, password)) {
-            // Login riuscito, puoi fare qualcosa come cambiare la scena o mostrare un messaggio
-            System.out.println("Login riuscito. Benvenuto!");
+        
+        if (user.login(email, password)) {
+            System.out.println("Login avvenuto con successo.");
+            changeScene("../view/Login.fxml"); // Cambia la scena dopo il login riuscito
         } else {
-            // Mostra un messaggio di errore
-            System.out.println("Login fallito. Controlla le tue credenziali.");
+            System.out.println("Login fallito, ricontrolla le credenziali o registrati.");
         }
     }
 
     @FXML
     public void handleRegisterButtonAction() {
         try {
-            changeScene("/View/Register.fxml");
+            changeScene("../view/Register.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
- //   public boolean authenticate(String email, String password) {
- //      
- //   }
+    public boolean authenticate(String email, String password) {
+        return user.login(email, password);
+    }
 
     public void changeScene(String fxml) throws IOException {
         Parent pane = FXMLLoader.load(getClass().getResource(fxml));
         Stage stage = (Stage) button_login.getScene().getWindow();
         stage.setScene(new Scene(pane));
     }
+        
 }
 
