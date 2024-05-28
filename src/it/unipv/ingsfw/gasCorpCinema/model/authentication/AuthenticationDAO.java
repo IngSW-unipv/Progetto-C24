@@ -24,7 +24,7 @@ public class AuthenticationDAO implements IAuthenticationDAO {
 		PreparedStatement st1;
         
         try{
-        	String query = "INSERT INTO autenticazione (email, password, ruolo) VALUES (?, ?, 'utente')";
+        	String query = "INSERT INTO authentications (email, password, role) VALUES (?, ?, 'user')";
         	st1 = conn.prepareStatement(query);
         	
         	st1.setString(1, email);
@@ -48,7 +48,7 @@ public class AuthenticationDAO implements IAuthenticationDAO {
 
 	    try {
 	        // Preparazione della query
-	        String query = "SELECT ruolo FROM autenticazione WHERE email = ? AND password = ?";
+	        String query = "SELECT ruolo FROM authentications WHERE email = ? AND password = ?";
 	        stmt = conn.prepareStatement(query);
 	        
 	        // Impostazione dei parametri
@@ -60,7 +60,7 @@ public class AuthenticationDAO implements IAuthenticationDAO {
 	        
 	        // Verifica se c'è una corrispondenza e ottieni il ruolo
 	        if (rs.next()) {
-	            role = rs.getString("ruolo");
+	            role = rs.getString("role");
 	        }
 	    } catch (SQLException e) {
 	        e.printStackTrace();

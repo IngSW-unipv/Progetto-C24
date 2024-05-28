@@ -50,15 +50,7 @@ public class FirstPageController {
         } else {
             // Mostra un messaggio di errore se il login fallisce
             System.out.println("Login fallito. Controlla le tue credenziali oppure registrati!");
-        }
-//        if (user.login(email, password)) {
-//            // Login riuscito, puoi fare qualcosa come cambiare la scena o mostrare un messaggio
-//            System.out.println("Login riuscito. Benvenuto!");
-//            changeScene("../view/Login.fxml"); // Cambia la scena dopo il login riuscito
-//        } else {
-//            // Mostra un messaggio di errore
-//            System.out.println("Login fallito. Controlla le tue credenziali.");
-//        }     
+        }    
     }
     
     @FXML
