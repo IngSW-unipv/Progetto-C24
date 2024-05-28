@@ -1,4 +1,4 @@
 DBDRIVER = com.mysql.cj.jdbc.Driver
-DBURL = jdbc:mysql://localhost:3306/Cinema
+DBURL = jdbc:mysql://127.0.0.1:3306/%s
 db_usn= root
 db_psw= ziocane54321.
