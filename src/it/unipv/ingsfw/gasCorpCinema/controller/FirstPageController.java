@@ -37,10 +37,10 @@ public class FirstPageController {
         
     	String email = tf_username.getText();
         String password = field_password.getText();
-        String ruolo = user.login(email, password);
+        String role = user.login(email, password);
 
-        if (ruolo != null) {
-            if (ruolo.equals("admin")) {
+        if (role != null) {
+            if (role.equals("admin")) {
                 // Se l'utente è un admin, cambia la scena alla pagina dell'admin
                 changeScene("../view/AdminView.fxml");
             } else {
