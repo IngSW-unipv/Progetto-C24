@@ -40,7 +40,7 @@ public class FirstPageController {
         String ruolo = user.login(email, password);
 
         if (ruolo != null) {
-            if (ruolo.equals("Amministratore")) {
+            if (ruolo.equals("admin")) {
                 // Se l'utente è un admin, cambia la scena alla pagina dell'admin
                 changeScene("../view/AdminView.fxml");
             } else {
