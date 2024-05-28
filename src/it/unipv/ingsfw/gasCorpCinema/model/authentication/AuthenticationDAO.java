@@ -44,7 +44,7 @@ public class AuthenticationDAO implements IAuthenticationDAO {
 	    conn = DBConnection.startConnection(conn, schema);
 	    PreparedStatement stmt;
 	    ResultSet rs;
-	    String ruolo = null;
+	    String role = null;
 
 	    try {
 	        // Preparazione della query
@@ -60,7 +60,7 @@ public class AuthenticationDAO implements IAuthenticationDAO {
 	        
 	        // Verifica se c'è una corrispondenza e ottieni il ruolo
 	        if (rs.next()) {
-	            ruolo = rs.getString("ruolo");
+	            role = rs.getString("ruolo");
 	        }
 	    } catch (SQLException e) {
 	        e.printStackTrace();
@@ -68,7 +68,7 @@ public class AuthenticationDAO implements IAuthenticationDAO {
 	        // Chiusura della connessione al database indipendentemente dall'esito dell'autenticazione
 	        DBConnection.closeConnection(conn);
 	    }
-	    return ruolo;
+	    return role;
 	}
 //	public boolean login(String email, String password) {
 //		conn = DBConnection.startConnection(conn, schema);
