@@ -33,3 +33,9 @@
 .menu-item:hover {
     -fx-background-color: #7ac394; /* Cambia il colore dello sfondo durante l'hover */
 }
+
+.label {
+    -fx-font-family: "Verdana";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold; /* Rende il testo in grassetto */
+}
