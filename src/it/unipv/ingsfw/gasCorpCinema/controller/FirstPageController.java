@@ -42,10 +42,10 @@ public class FirstPageController {
         if (role != null) {
             if (role.equals("admin")) {
                 // Se l'utente è un admin, cambia la scena alla pagina dell'admin
-                changeScene("../view/AdminView.fxml");
+                changeScene("../view/AdminView.fxml",email);
             } else {
                 // Altrimenti, cambia la scena alla pagina dell'utente normale
-                changeScene("../view/Login.fxml");
+                changeScene("../view/Login.fxml",email);
             }
         } else {
             // Mostra un messaggio di errore se il login fallisce
@@ -56,16 +56,30 @@ public class FirstPageController {
     @FXML
     public void handleRegisterButtonAction() {
         try {
-            changeScene("../view/Register.fxml");
+            changeScene("../view/Register.fxml","");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void changeScene(String fxml) throws IOException {
-        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
+    public void changeScene(String fxml,String email) throws IOException {
+//        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
+    	 
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+    	Parent pane = loader.load();
+    	
+     // Ottieni il controller associato
+        if (fxml.contains("AdminView")) {
+            AdminViewController controller = loader.getController();
+            // Passa la mail dell'admin al controller
+            controller.setAdminEmail(email);
+        }
+        
         Stage stage = (Stage) button_login.getScene().getWindow();
         stage.setScene(new Scene(pane));
+        
+//        Scene scene = button_login.getScene(); // Riutilizza la scena esistente
+//        scene.setRoot(pane);
     }
         
 }

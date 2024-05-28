@@ -7,12 +7,24 @@ import it.unipv.ingsfw.gasCorpCinema.view.AllProjectionsView;
 import it.unipv.ingsfw.gasCorpCinema.view.RemoveMovieView;
 import it.unipv.ingsfw.gasCorpCinema.view.RemoveProjectionView;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 
 public class AdminViewController {	
 	
+	@FXML
+    private Label emailLabel;
+	
 	private Stage stage;
+
+    private String adminEmail;
+
+    public void setAdminEmail(String email) {
+        this.adminEmail = email;
+        emailLabel.setText(email);
+    }
 	
 	public void swtichToAddFilmView(ActionEvent event) throws Exception {
 		
