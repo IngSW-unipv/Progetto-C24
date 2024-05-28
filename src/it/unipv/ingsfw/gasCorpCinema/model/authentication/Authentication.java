@@ -6,7 +6,7 @@ public class Authentication {
 	private String password;
 	private String role;
 	
-	public Authentication(String email, String password, String ruolo) {
+	public Authentication(String email, String password, String role) {
 		this.email = email;
 		this.password = password;
 		this.role = role;

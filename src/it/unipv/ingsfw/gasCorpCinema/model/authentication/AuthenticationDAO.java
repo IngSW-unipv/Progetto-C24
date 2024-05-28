@@ -48,7 +48,7 @@ public class AuthenticationDAO implements IAuthenticationDAO {
 
 	    try {
 	        // Preparazione della query
-	        String query = "SELECT ruolo FROM authentications WHERE email = ? AND password = ?";
+	        String query = "SELECT role FROM authentications WHERE email = ? AND password = ?";
 	        stmt = conn.prepareStatement(query);
 	        
 	        // Impostazione dei parametri

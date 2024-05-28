@@ -62,10 +62,6 @@ public class FirstPageController {
         }
     }
 
-//    public boolean authenticate(String email, String password) {
-//        return user.login(email, password);
-//    }
-
     public void changeScene(String fxml) throws IOException {
         Parent pane = FXMLLoader.load(getClass().getResource(fxml));
         Stage stage = (Stage) button_login.getScene().getWindow();
