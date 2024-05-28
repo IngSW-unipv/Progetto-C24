@@ -40,16 +40,15 @@ public class AuthenticationDAO implements IAuthenticationDAO {
         }
 	}
 
-	
-	public boolean login(String email, String password) {
-		conn = DBConnection.startConnection(conn, schema);
-		PreparedStatement stmt;
-		ResultSet rs;
+	public String login(String email, String password) {
+	    conn = DBConnection.startConnection(conn, schema);
+	    PreparedStatement stmt;
+	    ResultSet rs;
+	    String ruolo = null;
 
-		
-		try {
+	    try {
 	        // Preparazione della query
-	        String query = "SELECT * FROM autenticazione WHERE email = ? AND password = ?";
+	        String query = "SELECT ruolo FROM autenticazione WHERE email = ? AND password = ?";
 	        stmt = conn.prepareStatement(query);
 	        
 	        // Impostazione dei parametri
@@ -59,15 +58,45 @@ public class AuthenticationDAO implements IAuthenticationDAO {
 	        // Esecuzione della query
 	        rs = stmt.executeQuery();
 	        
-	        // Verifica se c'è una corrispondenza
-	        return rs.next();
-	        
+	        // Verifica se c'è una corrispondenza e ottieni il ruolo
+	        if (rs.next()) {
+	            ruolo = rs.getString("ruolo");
+	        }
 	    } catch (SQLException e) {
 	        e.printStackTrace();
-	        return false;
 	    } finally {
 	        // Chiusura della connessione al database indipendentemente dall'esito dell'autenticazione
 	        DBConnection.closeConnection(conn);
 	    }
+	    return ruolo;
 	}
+//	public boolean login(String email, String password) {
+//		conn = DBConnection.startConnection(conn, schema);
+//		PreparedStatement stmt;
+//		ResultSet rs;
+//
+//		
+//		try {
+//	        // Preparazione della query
+//	        String query = "SELECT * FROM autenticazione WHERE email = ? AND password = ?";
+//	        stmt = conn.prepareStatement(query);
+//	        
+//	        // Impostazione dei parametri
+//	        stmt.setString(1, email);
+//	        stmt.setString(2, password);
+//	        
+//	        // Esecuzione della query
+//	        rs = stmt.executeQuery();
+//	        
+//	        // Verifica se c'è una corrispondenza
+//	        return rs.next();
+//	        
+//	    } catch (SQLException e) {
+//	        e.printStackTrace();
+//	        return false;
+//	    } finally {
+//	        // Chiusura della connessione al database indipendentemente dall'esito dell'autenticazione
+//	        DBConnection.closeConnection(conn);
+//	    }
+//	}
 }

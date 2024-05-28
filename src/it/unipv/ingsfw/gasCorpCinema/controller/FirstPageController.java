@@ -37,15 +37,28 @@ public class FirstPageController {
         
     	String email = tf_username.getText();
         String password = field_password.getText();
-  
-        if (user.login(email, password)) {
-            // Login riuscito, puoi fare qualcosa come cambiare la scena o mostrare un messaggio
-            System.out.println("Login riuscito. Benvenuto!");
-            changeScene("../view/Login.fxml"); // Cambia la scena dopo il login riuscito
+        String ruolo = user.login(email, password);
+
+        if (ruolo != null) {
+            if (ruolo.equals("Amministratore")) {
+                // Se l'utente è un admin, cambia la scena alla pagina dell'admin
+                changeScene("../view/AdminView.fxml");
+            } else {
+                // Altrimenti, cambia la scena alla pagina dell'utente normale
+                changeScene("../view/Login.fxml");
+            }
         } else {
-            // Mostra un messaggio di errore
-            System.out.println("Login fallito. Controlla le tue credenziali.");
-        }     
+            // Mostra un messaggio di errore se il login fallisce
+            System.out.println("Login fallito. Controlla le tue credenziali oppure registrati!");
+        }
+//        if (user.login(email, password)) {
+//            // Login riuscito, puoi fare qualcosa come cambiare la scena o mostrare un messaggio
+//            System.out.println("Login riuscito. Benvenuto!");
+//            changeScene("../view/Login.fxml"); // Cambia la scena dopo il login riuscito
+//        } else {
+//            // Mostra un messaggio di errore
+//            System.out.println("Login fallito. Controlla le tue credenziali.");
+//        }     
     }
     
     @FXML
@@ -57,9 +70,9 @@ public class FirstPageController {
         }
     }
 
-    public boolean authenticate(String email, String password) {
-        return user.login(email, password);
-    }
+//    public boolean authenticate(String email, String password) {
+//        return user.login(email, password);
+//    }
 
     public void changeScene(String fxml) throws IOException {
         Parent pane = FXMLLoader.load(getClass().getResource(fxml));

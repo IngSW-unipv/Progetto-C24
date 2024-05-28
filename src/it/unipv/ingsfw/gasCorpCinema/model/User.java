@@ -15,7 +15,7 @@ public class User {
 		return authenticationDAO.registration(username, email, password);
 	}
 	
-	public boolean login(String email, String password) {
+	public String login(String email, String password) {
 		return authenticationDAO.login(email, password);
 	}
 }
