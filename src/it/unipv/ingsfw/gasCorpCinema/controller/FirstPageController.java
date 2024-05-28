@@ -56,12 +56,20 @@ public class FirstPageController {
     @FXML
     public void handleRegisterButtonAction() {
         try {
-            changeScene("../view/Register.fxml","");
+            changeScene("../view/Register.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
+    
+    // Metodo per cambiare scena senza email
+    public void changeScene(String fxml) throws IOException {
+        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
+        Scene scene = button_login.getScene(); // Riutilizza la scena esistente
+        scene.setRoot(pane);
+    }
+    
+    // Metodo per cambiare scena con email
     public void changeScene(String fxml,String email) throws IOException {
 //        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
     	 
