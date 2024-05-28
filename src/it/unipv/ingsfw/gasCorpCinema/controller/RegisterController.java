@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
 import it.unipv.ingsfw.gasCorpCinema.model.Admin;
-import it.unipv.ingsfw.gasCorpCinema.model.authentication.User;
+import it.unipv.ingsfw.gasCorpCinema.model.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

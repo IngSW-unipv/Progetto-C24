@@ -2,8 +2,8 @@ package it.unipv.ingsfw.gasCorpCinema.controller;
 
 import java.io.IOException;
 
+import it.unipv.ingsfw.gasCorpCinema.model.User;
 import it.unipv.ingsfw.gasCorpCinema.model.authentication.Authentication;
-import it.unipv.ingsfw.gasCorpCinema.model.authentication.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

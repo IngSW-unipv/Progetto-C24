@@ -1,4 +1,7 @@
-package it.unipv.ingsfw.gasCorpCinema.model.authentication;
+package it.unipv.ingsfw.gasCorpCinema.model;
+
+import it.unipv.ingsfw.gasCorpCinema.model.authentication.AuthenticationDAO;
+import it.unipv.ingsfw.gasCorpCinema.model.authentication.IAuthenticationDAO;
 
 public class User {
 	
