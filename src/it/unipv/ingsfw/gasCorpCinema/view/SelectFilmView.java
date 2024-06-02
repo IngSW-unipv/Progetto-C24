@@ -26,6 +26,6 @@ public class SelectFilmView extends Application{
 		stage.setTitle("G.A.S. CORP CINEMA");
 		stage.getIcons().add(icon);
 		stage.show();
-		
+	
 	}
 }

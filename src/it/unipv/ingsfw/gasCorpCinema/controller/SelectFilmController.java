@@ -58,6 +58,7 @@ public class SelectFilmController implements Initializable {
 		
 		
 		
+		
 		//2 aggiorniamo il totale in tempo reale
 		//per fare ciò è necessario moltiplicare il numero di ticket selezionati per il costo del film
 		

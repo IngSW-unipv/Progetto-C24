@@ -19,7 +19,6 @@
       <TextArea layoutY="158.0" prefHeight="62.0" prefWidth="600.0" />
       <TextArea layoutY="220.0" prefHeight="62.0" prefWidth="600.0" />
       <TextArea layoutY="282.0" prefHeight="62.0" prefWidth="600.0" />
-      <Spinner layoutX="517.0" layoutY="114.0" prefHeight="26.0" prefWidth="63.0" />
       <Spinner layoutX="517.0" layoutY="176.0" prefHeight="26.0" prefWidth="63.0" />
       <Spinner layoutX="517.0" layoutY="238.0" prefHeight="26.0" prefWidth="63.0" />
       <Spinner layoutX="517.0" layoutY="293.0" prefHeight="26.0" prefWidth="63.0" />
@@ -29,7 +28,8 @@
       <TextField fx:id="title4" alignment="TOP_LEFT" layoutY="293.0" prefHeight="26.0" prefWidth="425.0" promptText="TITOLO" />
       <TextArea layoutY="326.0" prefHeight="62.0" prefWidth="600.0" />
       <TextField layoutY="344.0" prefHeight="26.0" prefWidth="116.0" promptText="TOTALE" />
-      <TextField layoutX="116.0" layoutY="344.0" promptText="&quot;TOTALE EFFETTIVO&quot;" />
+      <TextField fx:id="totalToPay" layoutX="116.0" layoutY="344.0" promptText="&quot;TOTALE EFFETTIVO&quot;" />
       <Button layoutX="517.0" layoutY="345.0" mnemonicParsing="false" text="PAY" />
+      <Spinner layoutX="517.0" layoutY="114.0" prefHeight="26.0" prefWidth="63.0" />
    </children>
 </AnchorPane>
