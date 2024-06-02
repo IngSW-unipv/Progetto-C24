@@ -79,4 +79,10 @@ public class Admin {
 	public void deleteHall(CinemaHall cinemaHall) {
 		cinemaHallDAO.deleteHall(cinemaHall);
 	}
+	//da implementare
+	public int getPriceByTitle(String titoloFilm) {
+		int d=10;
+		return d;
+	}
+	
 }
