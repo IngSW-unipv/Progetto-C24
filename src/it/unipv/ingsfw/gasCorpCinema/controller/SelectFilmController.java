@@ -12,54 +12,76 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.stage.Stage;
 
 
 public class SelectFilmController implements Initializable {
-
-	//controller che gestisce le seguenti situazioni:
-		//1 setta il titolo dei vari eventi
-		//2 click sul bottone pay
-		//3 salva titolo e numero ticket così che possano essere decremetnati i posti disponibili nella sala
-		
-		//un primo problema da risolvere è: a chi chiedere i film salvati nel DB? ci sono 2 soluzioni:
-		//chiedere ad admin che per information expert conosce i film salvati (ha già il metodo pronto)
-		//accedere direttamente nel DB ed estrarli
-		//forse chiedere ad admin covniene dato che cmq admin non fa tante cose e non andiamo a creare tanto accoppiamento 
+		//un primo problema da risolvere è: a chi chiedere i film salvati nel DB? 
+		//chiedere ad admin che per information expert conosce i film salvati (ha già il metodo pronto) 
+		//con un'accoppiamento ancora esiguo
 	
 	@FXML
 	private ListView<Movie> myListView;
+	@FXML
+	private Button buttonConfirm;
+	@FXML
+	private Label myLabel;
+	@FXML
+	private Spinner<Integer> mySpinner;
 	private Movie movie;
 	private Admin admin = new Admin();
 	private Stage stage;
-	
+	private int numberOfTickets;
+	 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		myListView.getItems().addAll(admin.getAllMovies());
 		
-		myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener <Movie> () {
-
-			@Override
-			public void changed(ObservableValue<? extends Movie> observable, Movie oldValue, Movie newValue) {
-				movie = myListView.getSelectionModel().getSelectedItem();
-				//movie = film scelto (NB è di tipo movie)
-				stage = new Stage();
-				SelectProjectionView v = new SelectProjectionView();
-				try {
-					v.start(stage);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		});
+		SpinnerValueFactory <Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,10);
+		valueFactory.setValue(1);
+		mySpinner.setValueFactory(valueFactory);
 	}
+	//ListView=lista di film disponibili al cinema 
 
+	
+	
+	
 	public Movie getMovie() {
 		return movie;
 	}
-	//serve per far si che nella view SelectDateTime view si sappia di che fil si tratta
+	//serve per far si che nel SelectProjectionController si sappia di che film si tratta
+	
+	
+	public int getNumberOfTickets() {
+		return numberOfTickets;
+	}
+	//serve per far si che nel SelectProjectionController si sappia di quanti ticket si tratta
+	
+	
+	public void pressButton() throws Exception {
+		movie = myListView.getSelectionModel().getSelectedItem();
+		//movie = fil selezionato
+		stage = new Stage();
+		SelectProjectionView v = new SelectProjectionView();
+		
+		if(movie!=null) {
+			v.start(stage);
+		}else {
+			myLabel.setText("SELECT A FILM!");
+		}
+		//alla pressione del bottone se è stato selezionato un film cambia la vista per scegliere la proiezione
+		//altrimenit visutlaizza il messaggio SELECT A FILM		
+		
+	}
+
+
+
+
 	
 	
 	
