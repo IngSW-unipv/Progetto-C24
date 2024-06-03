@@ -14,7 +14,7 @@ public class FirstPageView extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		// TODO Auto-generated method stub
-		Parent root = FXMLLoader.load(getClass().getResource("AddProjectionView.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("FirstPage.fxml"));
 		Scene scene = new Scene(root);
 		String imagePath = Paths.get("Resources/Logo G.A.S. CORP CINEMA .png").toUri().toString();
 	    Image icon = new Image(imagePath);

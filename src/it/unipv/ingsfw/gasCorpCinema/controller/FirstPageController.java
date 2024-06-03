@@ -45,7 +45,7 @@ public class FirstPageController {
                 changeScene("../view/AdminView.fxml",email);
             } else {
                 // Altrimenti, cambia la scena alla pagina dell'utente normale
-                changeScene("../view/Login.fxml",email);
+                changeScene("../view/SelectFilm.fxml");
             }
         } else {
             // Mostra un messaggio di errore se il login fallisce
