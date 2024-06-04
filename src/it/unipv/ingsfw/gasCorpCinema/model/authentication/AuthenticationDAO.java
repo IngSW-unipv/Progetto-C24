@@ -17,6 +17,26 @@ public class AuthenticationDAO implements IAuthenticationDAO {
 		this.schema = "cinema";
 	}
 	
+	 public boolean emailExists(String email) {
+	        conn = DBConnection.startConnection(conn, schema);
+	        PreparedStatement stmt;
+	        ResultSet rs;
+
+	        try {
+	            String query = "SELECT 1 FROM authenticazione WHERE email = ?";
+	            stmt = conn.prepareStatement(query);
+	            stmt.setString(1, email);
+
+	            rs = stmt.executeQuery();
+
+	            return rs.next();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	            return false;
+	        } finally {
+	            DBConnection.closeConnection(conn);
+	        }
+	    }
 	@Override
 	public boolean registration(String username, String email, String password) {
 		// TODO Auto-generated method stub

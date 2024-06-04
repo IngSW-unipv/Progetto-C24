@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 
 import it.unipv.ingsfw.gasCorpCinema.model.Admin;
 import it.unipv.ingsfw.gasCorpCinema.model.User;
+import it.unipv.ingsfw.gasCorpCinema.model.authentication.AuthenticationDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -30,12 +31,24 @@ public class RegisterController {
 	private PasswordField pf_password;
 	
 	private User user = new User();
+	private AuthenticationDAO authenticationDAO = new AuthenticationDAO();
 
 	@FXML
     private void handleRegisterButtonAction() {
 		String username = tf_username.getText();
         String email = tf_email.getText();
         String password = pf_password.getText();
+        
+        if (email.isEmpty() || password.isEmpty() || username.isEmpty()) {
+            System.out.println("Tutti i campi sono obbligatori.");
+            return;
+        }
+
+        // Controllo se l'email esiste già nel database
+        if (authenticationDAO.emailExists(email)) {
+            System.out.println("Email già esistente. Usa un'altra email.");
+            return;
+        }
 
         if (user.registration(username, email, password)) {
             System.out.println("Registrazione avvenuta con successo.");
@@ -58,7 +71,7 @@ public class RegisterController {
         String url = "jdbc:mysql://localhost:3306/cinema";
         String user = "root";
         String pass = "password";
-        String query = "INSERT INTO autenticazione (email, password, ruolo) VALUES (?, ?, 'utente')";
+        String query = "INSERT INTO authentications (email, password, ruolo) VALUES (?, ?, 'utente')";
         
         try (Connection conn = DriverManager.getConnection(url, user, pass);
              PreparedStatement stmt = conn.prepareStatement(query)) {
