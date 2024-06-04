@@ -23,7 +23,7 @@ public class AuthenticationDAO implements IAuthenticationDAO {
 	        ResultSet rs;
 
 	        try {
-	            String query = "SELECT 1 FROM authenticazione WHERE email = ?";
+	            String query = "SELECT 1 FROM authentications WHERE email = ?";
 	            stmt = conn.prepareStatement(query);
 	            stmt.setString(1, email);
 
