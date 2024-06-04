@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="CENTER" layoutY="6.0" prefHeight="64.0" prefWidth="600.0" text="GAS Corp. CINEMA">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutY="70.0" prefHeight="36.0" prefWidth="600.0" text="SELECT YOUR PROJECTION" />
+      <TextField layoutX="14.0" layoutY="132.0" prefHeight="26.0" prefWidth="103.0" promptText="NAME" />
+      <Label layoutX="17.0" layoutY="106.0" prefHeight="26.0" prefWidth="224.0" text="INSERT HERE YOUR PERSONAL DATA:" />
+      <TextField layoutX="129.0" layoutY="132.0" prefHeight="26.0" prefWidth="103.0" promptText="SURNAME" />
+      <TextField layoutX="242.0" layoutY="132.0" prefHeight="26.0" prefWidth="103.0" promptText="SURNAME" />
+      <Label layoutX="16.0" layoutY="174.0" prefHeight="26.0" prefWidth="202.0" text="INSERT HERE YOUR CREDIT CARD:" />
+      <TextField layoutX="14.0" layoutY="200.0" prefHeight="26.0" prefWidth="179.0" promptText="NUMER" />
+      <TextField layoutX="375.0" layoutY="200.0" prefHeight="26.0" prefWidth="44.0" promptText="CVV" />
+      <CheckBox layoutX="17.0" layoutY="304.0" mnemonicParsing="false" text="i don't want to reciver promotionals emails" />
+      <Button fx:id="myButton" layoutX="511.0" layoutY="300.0" mnemonicParsing="false" onAction="#pressButton" text="PAY " />
+      <DatePicker layoutX="211.0" layoutY="200.0" prefHeight="26.0" prefWidth="149.0" promptText="EXPIRATION DATE" />
+      <CheckBox layoutX="17.0" layoutY="243.0" mnemonicParsing="false" text="save data for next purchase" />
+      <Label fx:id="myLabel" layoutX="334.0" layoutY="303.0" prefHeight="18.0" prefWidth="157.0" textFill="#60e81c">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

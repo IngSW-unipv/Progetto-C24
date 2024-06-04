@@ -31,20 +31,14 @@ public class SelectFilmController implements Initializable {
 	private Button buttonConfirm;
 	@FXML
 	private Label myLabel;
-	@FXML
-	private Spinner<Integer> mySpinner;
 	private Movie movie;
 	private Admin admin = new Admin();
 	private Stage stage;
-	private int numberOfTickets;
+	
 	 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		myListView.getItems().addAll(admin.getAllMovies());
-		
-		SpinnerValueFactory <Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,10);
-		valueFactory.setValue(1);
-		mySpinner.setValueFactory(valueFactory);
 	}
 	//ListView=lista di film disponibili al cinema 
 
@@ -54,14 +48,7 @@ public class SelectFilmController implements Initializable {
 	public Movie getMovie() {
 		return movie;
 	}
-	//serve per far si che nel SelectProjectionController si sappia di che film si tratta
-	
-	
-	public int getNumberOfTickets() {
-		return numberOfTickets;
-	}
-	//serve per far si che nel SelectProjectionController si sappia di quanti ticket si tratta
-	
+	//serve per far si che nel SelectProjectionController si sappia di che film si tratta	
 	
 	public void pressButton() throws Exception {
 		movie = myListView.getSelectionModel().getSelectedItem();
