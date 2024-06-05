@@ -46,13 +46,13 @@ public class SelectFilmController implements Initializable {
 	
 	
 	public Movie getMovie() {
-		return movie;
+		return myListView.getSelectionModel().getSelectedItem();
 	}
 	//serve per far si che nel SelectProjectionController si sappia di che film si tratta	
 	
 	public void pressButton() throws Exception {
 		movie = myListView.getSelectionModel().getSelectedItem();
-		//movie = fil selezionato
+		//movie = film selezionato
 		stage = new Stage();
 		SelectProjectionView v = new SelectProjectionView();
 		

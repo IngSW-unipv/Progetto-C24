@@ -32,7 +32,7 @@ public class SelectProjectionController implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		//myListView.getItems().addAll(admin.getProjectionbyMovie(s.getMovie());
+		myListView.getItems().addAll(admin.getprojectionsByMovie(s.getMovie()));
 		projection=myListView.getSelectionModel().getSelectedItem();
 		SpinnerValueFactory <Integer> valueFactory = 
 				new SpinnerValueFactory.IntegerSpinnerValueFactory(1,admin.getNumberOfAvailableSeats(projection));
