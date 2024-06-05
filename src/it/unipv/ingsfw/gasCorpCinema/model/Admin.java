@@ -88,5 +88,9 @@ public class Admin {
 	public void getprojectionByMovie() {
 		
 	}
-	
+	//da implementare per poter far si che il cliente scelga sol il numeor corretto di ticket
+	public int getNumberOfAvailableSeats(Projection p) {
+		int d=10;
+		return d;
+	}
 }

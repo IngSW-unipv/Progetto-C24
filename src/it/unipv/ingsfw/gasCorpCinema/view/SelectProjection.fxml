@@ -9,15 +9,20 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.SelectProjectionController">
    <children>
-      <ListView fx:id="myListView" layoutY="100.0" prefHeight="235.0" prefWidth="600.0" />
-      <Button fx:id="myButton" layoutX="521.0" layoutY="347.0" mnemonicParsing="false" onAction="#pressButton" text="PAY" />
+      <ListView fx:id="myListView" layoutY="100.0" prefHeight="212.0" prefWidth="600.0" />
+      <Button fx:id="myButton" layoutX="521.0" layoutY="322.0" mnemonicParsing="false" onAction="#pressButton" text="PAY" />
       <Label alignment="CENTER" layoutX="1.0" prefHeight="64.0" prefWidth="600.0" text="GAS Corp. CINEMA">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Label fx:id="myLabel" alignment="CENTER" layoutX="1.0" layoutY="64.0" prefHeight="36.0" prefWidth="600.0" text="SELECT YOUR PROJECTION" />
-      <Spinner fx:id="mySpinner" layoutX="221.0" layoutY="347.0" prefHeight="26.0" prefWidth="62.0" />
-      <Label layoutX="14.0" layoutY="351.0" text="SELECT THE NUMBER OF TICKETS:" />
+      <Label alignment="CENTER" layoutX="1.0" layoutY="64.0" prefHeight="36.0" prefWidth="600.0" text="SELECT YOUR PROJECTION" />
+      <Spinner fx:id="mySpinner" layoutX="221.0" layoutY="322.0" prefHeight="26.0" prefWidth="62.0" />
+      <Label layoutX="14.0" layoutY="326.0" text="SELECT THE NUMBER OF TICKETS:" />
+      <Label fx:id="myLabel" alignment="CENTER" layoutX="-1.0" layoutY="352.0" prefHeight="36.0" prefWidth="600.0" textFill="#d71c1c">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

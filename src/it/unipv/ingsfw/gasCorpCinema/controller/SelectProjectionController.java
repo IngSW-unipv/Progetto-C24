@@ -33,7 +33,10 @@ public class SelectProjectionController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		//myListView.getItems().addAll(admin.getProjectionbyMovie(s.getMovie());
-		SpinnerValueFactory <Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,10);
+		projection=myListView.getSelectionModel().getSelectedItem();
+		SpinnerValueFactory <Integer> valueFactory = 
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(1,admin.getNumberOfAvailableSeats(projection));
+		//così facendo lo spinner fa scelgiere solo il nuemro corretto di posti 
 		valueFactory.setValue(1);
 		mySpinner.setValueFactory(valueFactory);
 		
@@ -42,10 +45,11 @@ public class SelectProjectionController implements Initializable {
 	public void pressButton() throws Exception {
 		stage = new Stage();
 		PaymentView v = new PaymentView();
-		if(projection!=null) {
+		
+		if(projection!=null) { 
 			v.start(stage);
 		}else {
-			myLabel.setText("SELECT A PROJECTION!");
+			myLabel.setText("YOU MUST SELECT A PROJECTION!");
 		}
 	}
 
