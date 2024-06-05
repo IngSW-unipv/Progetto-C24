@@ -56,7 +56,7 @@ public class FirstPageController {
     @FXML
     public void handleRegisterButtonAction() {
         try {
-            changeScene("../view/Register.fxml");
+            changeScene("../view/UserRegistration.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }
