@@ -100,7 +100,7 @@ public class Admin {
 	}
 	//da implementare per poter far si che il cliente scelga solo il numero corretto di ticket
 	public int getNumberOfAvailableSeats(Projection p) {
-		int d=10;
-		return d;
+		int avaiableSeats = projectionDAO.getNumberOfAvaiableSeats(p);
+		return avaiableSeats;
 	}
 }

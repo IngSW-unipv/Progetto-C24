@@ -11,4 +11,5 @@ public interface IProjectionDAO {
 	public List<Projection> getAllProjections();
 	public void createProjection(Projection projection);
 	public void deleteProjection(Projection projection);
+	public int getNumberOfAvaiableSeats(Projection projection);
 }
