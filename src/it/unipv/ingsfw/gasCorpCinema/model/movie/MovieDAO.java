@@ -33,7 +33,7 @@ public class MovieDAO implements IMovieDAO{
 	    	st1 = conn.prepareStatement(query);
 	    	st1.setString(1, title);
 	    	
-	    	rs1=st1.executeQuery(query);
+	    	rs1=st1.executeQuery();
 	    	
 	        while(rs1.next()) {
 	        	

@@ -33,7 +33,12 @@ public class Admin {
 	}
 	
 	public void insertMovie(Movie movie) {
-		movieDAO.insertMovie(movie);
+		Movie existingMovie = movieDAO.getMovieByTitle(movie.getTitle());
+		if(existingMovie != null) {
+			System.out.println("Il film " + movie.getTitle() + " esiste già");
+		}else {
+			movieDAO.insertMovie(movie);
+		}
 	}
 	
 	public void deleteMovie(Movie movie) {
@@ -88,7 +93,7 @@ public class Admin {
 	public void getprojectionByMovie() {
 		
 	}
-	//da implementare per poter far si che il cliente scelga sol il numeor corretto di ticket
+	//da implementare per poter far si che il cliente scelga solo il numero corretto di ticket
 	public int getNumberOfAvailableSeats(Projection p) {
 		int d=10;
 		return d;
