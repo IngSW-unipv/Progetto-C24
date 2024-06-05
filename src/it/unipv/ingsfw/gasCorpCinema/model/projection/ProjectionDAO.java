@@ -1,6 +1,7 @@
 package it.unipv.ingsfw.gasCorpCinema.model.projection;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -125,6 +126,40 @@ public class ProjectionDAO implements IProjectionDAO {
 	    }
 	    
 	    DBConnection.closeConnection(conn);
+	}
+
+	@Override
+	public Projection getProjectionByHallTimeDate(int idHall, Date date, String time) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Projection> getAllProjectionsByMovie(String movieTitle) {
+		
+		List<Projection> projections = new ArrayList<>();
+		
+		conn=DBConnection.startConnection(conn,schema);
+		Statement st1;
+		ResultSet rs1;
+		
+	    try {
+	    	st1 = conn.createStatement();
+	    	String query = "SELECT * FROM projections WHERE movieTitle = ?";
+	        rs1 = st1.executeQuery(query);
+	        
+	      	while (rs1.next()) {
+	      		
+	        Projection projection = new Projection(rs1.getInt(2),rs1.getInt(3),rs1.getString(4),rs1.getDate(5),rs1.getString(6),rs1.getDouble(7));
+	        projections.add(projection);
+	      	}
+	      	
+	    } catch (SQLException e) {
+	      e.printStackTrace();
+	    }
+	    
+	    DBConnection.closeConnection(conn);
+	    return projections;
 	}
 
 }
