@@ -61,8 +61,12 @@ public class Admin {
 	}
 	
 	public void createProjection(Projection projection) {
-		Projection existingProjection;
-		projectionDAO.createProjection(projection);
+		Projection existingProjection = projectionDAO.getProjectionByHallDateTime(projection.getIdHall(),projection.getDate(),projection.getTime());
+		if(existingProjection != null) {
+			System.out.println("Sala " + projection.getIdHall() + " già occupata il " + projection.getDate() + " Alle " + projection.getTime());
+		}else {
+			projectionDAO.createProjection(projection);
+		}
 	}
 	
 	public void deleteProjection(Projection projection) {

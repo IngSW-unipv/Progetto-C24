@@ -129,9 +129,34 @@ public class ProjectionDAO implements IProjectionDAO {
 	}
 
 	@Override
-	public Projection getProjectionByHallTimeDate(int idHall, Date date, String time) {
-		// TODO Auto-generated method stub
-		return null;
+	public Projection getProjectionByHallDateTime(int idHall, Date date, String time) {
+		
+		Projection projection = null;
+	    
+		conn=DBConnection.startConnection(conn,schema);
+		PreparedStatement st1;
+		ResultSet rs1;
+		
+	    try {
+	    	String query = "SELECT * FROM projections WHERE idHall = ? AND date = ? AND time = ?";
+	    	
+	    	st1 = conn.prepareStatement(query);
+	    	st1.setInt(1, idHall);
+	    	st1.setDate(2, date);
+	    	st1.setString(3, time);
+	    	
+	    	rs1=st1.executeQuery();
+	    	
+	    	while(rs1.next()) {
+	    		
+	    		projection = new Projection(rs1.getInt(2),rs1.getInt(3),rs1.getString(4),rs1.getDate(5),rs1.getString(6),rs1.getDouble(7));
+	    		
+	        }
+	    	
+	    } catch (SQLException e) {
+	      e.printStackTrace();
+	    }
+	    return projection;
 	}
 
 	@Override
