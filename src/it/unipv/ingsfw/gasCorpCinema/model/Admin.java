@@ -89,16 +89,16 @@ public class Admin {
 	public void deleteHall(CinemaHall cinemaHall) {
 		cinemaHallDAO.deleteHall(cinemaHall);
 	}
-	//da implementare
-	public int getPriceByProjection(Movie movie) {
-		int d=10;
-		return d;
+	
+	public double getPriceOfProjection(Projection projection) {
+		double price = projectionDAO.getPriceOfProjection(projection);
+		return price;
 	}
 	public List<Projection> getprojectionsByMovie(Movie movie) {
 		List<Projection> movieProjections = projectionDAO.getAllProjectionsByMovie(movie.getTitle());
 		return movieProjections;
 	}
-	//da implementare per poter far si che il cliente scelga solo il numero corretto di ticket
+	
 	public int getNumberOfAvailableSeats(Projection p) {
 		int avaiableSeats = projectionDAO.getNumberOfAvaiableSeats(p);
 		return avaiableSeats;

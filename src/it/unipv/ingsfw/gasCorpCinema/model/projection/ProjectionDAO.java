@@ -220,4 +220,37 @@ public class ProjectionDAO implements IProjectionDAO {
 	    return avaiableSeats;
 	}
 
+	@Override
+	public double getPriceOfProjection(Projection projection) {
+		
+		double price;
+	    
+		conn=DBConnection.startConnection(conn,schema);
+		PreparedStatement st1;
+		ResultSet rs1;
+		
+	    try {
+	    	String query = "SELECT price FROM projections WHERE idHall = ? AND movieTitle = ? AND date = ? AND time = ?";
+	    	
+	    	st1 = conn.prepareStatement(query);
+	    	st1.setInt(1, projection.getIdHall());
+	    	st1.setString(2, projection.getMovieTitle());
+	    	st1.setDate(3, projection.getDate());
+	    	st1.setString(4, projection.getTime());
+	    	
+	    	rs1=st1.executeQuery();
+	    	
+	    	while(rs1.next()) {
+	    		
+	    		projection = new Projection(rs1.getInt(2),rs1.getInt(3),rs1.getString(4),rs1.getDate(5),rs1.getString(6),rs1.getDouble(7));
+	    		
+	        }
+	    	
+	    } catch (SQLException e) {
+	      e.printStackTrace();
+	    }
+	    price = projection.getPrice();
+	    return price;
+	}
+
 }

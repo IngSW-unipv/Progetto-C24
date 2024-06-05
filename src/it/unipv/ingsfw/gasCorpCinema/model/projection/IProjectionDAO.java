@@ -12,4 +12,5 @@ public interface IProjectionDAO {
 	public void createProjection(Projection projection);
 	public void deleteProjection(Projection projection);
 	public int getNumberOfAvaiableSeats(Projection projection);
+	public double getPriceOfProjection(Projection projection);
 }
