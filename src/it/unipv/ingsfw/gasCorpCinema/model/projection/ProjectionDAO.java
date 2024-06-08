@@ -165,14 +165,17 @@ public class ProjectionDAO implements IProjectionDAO {
 		List<Projection> projections = new ArrayList<>();
 		
 		conn=DBConnection.startConnection(conn,schema);
-		Statement st1;
+		PreparedStatement st1;
 		ResultSet rs1;
 		
 	    try {
-	    	st1 = conn.createStatement();
 	    	String query = "SELECT * FROM projections WHERE movieTitle = ?";
-	        rs1 = st1.executeQuery(query);
+	    	
+	    	st1 = conn.prepareStatement(query);
+	    	st1.setString(1, movieTitle);
 	        
+	    	rs1=st1.executeQuery();
+
 	      	while (rs1.next()) {
 	      		
 	        Projection projection = new Projection(rs1.getInt(2),rs1.getInt(3),rs1.getString(4),rs1.getDate(5),rs1.getString(6),rs1.getDouble(7));
