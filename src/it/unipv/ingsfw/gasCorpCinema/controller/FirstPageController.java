@@ -30,7 +30,7 @@ public class FirstPageController {
 	private Scene scene;
 	private Parent root;
 	private User user = new User();
-	private Authentication authentication;
+//	private Authentication authentication;
 
     @FXML
     public void handleLoginButtonAction() throws IOException {

@@ -31,7 +31,7 @@ public class UserRegistrationController {
 	private PasswordField pf_password;
 	
 	private User user = new User();
-	private AuthenticationDAO authenticationDAO = new AuthenticationDAO();
+//	private AuthenticationDAO authenticationDAO = new AuthenticationDAO();
 
 	@FXML
     private void handleRegisterButtonAction() {
