@@ -45,7 +45,7 @@ public class UserRegistrationController {
         }
 
         // Controllo se l'email esiste già nel database
-        if (authenticationDAO.emailExists(email)) {
+        if (user.emailExists(email)) {
             System.out.println("Email già esistente. Usa un'altra email.");
             return;
         }

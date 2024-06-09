@@ -18,4 +18,8 @@ public class User {
 	public String login(String email, String password) {
 		return authenticationDAO.login(email, password);
 	}
+	
+	public boolean emailExists(String email) {
+		return authenticationDAO.emailExists(email);
+	}
 }
