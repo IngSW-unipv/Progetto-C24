@@ -12,7 +12,7 @@ public class User {
 	}
 	
 	public boolean registration(String username, String email, String password) {
-		return authenticationDAO.registration(username, email, password);
+		return authenticationDAO.registration(email, password);
 	}
 	
 	public String login(String email, String password) {
