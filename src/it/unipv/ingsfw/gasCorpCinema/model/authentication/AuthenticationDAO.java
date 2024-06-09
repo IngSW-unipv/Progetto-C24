@@ -16,7 +16,7 @@ public class AuthenticationDAO implements IAuthenticationDAO {
 	public AuthenticationDAO() {
 		this.schema = "cinema";
 	}
-	
+	@Override
 	 public boolean emailExists(String email) {
 	        conn = DBConnection.startConnection(conn, schema);
 	        PreparedStatement stmt;
@@ -38,7 +38,7 @@ public class AuthenticationDAO implements IAuthenticationDAO {
 	        }
 	    }
 	@Override
-	public boolean registration(String username, String email, String password) {
+	public boolean registration(String email, String password) {
 		// TODO Auto-generated method stub
 		conn=DBConnection.startConnection(conn,schema);
 		PreparedStatement st1;
@@ -59,7 +59,7 @@ public class AuthenticationDAO implements IAuthenticationDAO {
         	DBConnection.closeConnection(conn);
         }
 	}
-
+	@Override
 	public String login(String email, String password) {
 	    conn = DBConnection.startConnection(conn, schema);
 	    PreparedStatement stmt;
@@ -90,33 +90,4 @@ public class AuthenticationDAO implements IAuthenticationDAO {
 	    }
 	    return role;
 	}
-//	public boolean login(String email, String password) {
-//		conn = DBConnection.startConnection(conn, schema);
-//		PreparedStatement stmt;
-//		ResultSet rs;
-//
-//		
-//		try {
-//	        // Preparazione della query
-//	        String query = "SELECT * FROM autenticazione WHERE email = ? AND password = ?";
-//	        stmt = conn.prepareStatement(query);
-//	        
-//	        // Impostazione dei parametri
-//	        stmt.setString(1, email);
-//	        stmt.setString(2, password);
-//	        
-//	        // Esecuzione della query
-//	        rs = stmt.executeQuery();
-//	        
-//	        // Verifica se c'è una corrispondenza
-//	        return rs.next();
-//	        
-//	    } catch (SQLException e) {
-//	        e.printStackTrace();
-//	        return false;
-//	    } finally {
-//	        // Chiusura della connessione al database indipendentemente dall'esito dell'autenticazione
-//	        DBConnection.closeConnection(conn);
-//	    }
-//	}
 }
