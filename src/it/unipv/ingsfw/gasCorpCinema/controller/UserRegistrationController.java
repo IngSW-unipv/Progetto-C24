@@ -65,6 +65,8 @@ public class UserRegistrationController {
             e.printStackTrace();
         }
     }
+    
+    
 // DA TOGLIERE 
 //    
 //    public boolean registerUser(String username, String email, String password) {
