@@ -13,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 
@@ -20,6 +21,8 @@ public class AdminViewController {
 	
 	@FXML
     private Label emailLabel;
+	@FXML
+	private Button myButton;
 	
 	private Stage stage;
 
@@ -38,9 +41,14 @@ public class AdminViewController {
 		alert.setContentText("Dopo aver fatto il logout verrai riportato alla homepage.");
 		
 		if(alert.showAndWait().get()== ButtonType.OK) {
+			
+			Stage currentStage = (Stage) myButton.getScene().getWindow();
+			
 			stage = new Stage();
 			FirstPageView v = new FirstPageView();
-			v.start(stage);		
+			v.start(stage);	
+			
+			currentStage.close();
 		}
     }
     
