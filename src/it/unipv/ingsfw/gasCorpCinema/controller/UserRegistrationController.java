@@ -12,7 +12,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -30,30 +33,41 @@ public class UserRegistrationController {
 	@FXML
 	private PasswordField pf_password;
 	
+	@FXML
+	private Label errorLabel;
+	
 	private User user = new User();
-//	private AuthenticationDAO authenticationDAO = new AuthenticationDAO();
+
+//Voglio fare che quando la registrazione avviene con successo faccio comparire un alert
+//a schermo, mentre nei casi in cui sia andato male qualcosa usare il displayError
 
 	@FXML
     private void handleRegisterButtonAction() {
+		
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("Error with the credentials");
+		alert.setHeaderText("You are trying to insert...");
+		alert.setContentText("Boh?");
+		
         String email = tf_email.getText();
         String password = pf_password.getText();
         
         if (email.isEmpty() || password.isEmpty()) {
-            System.out.println("Tutti i campi sono obbligatori.");
+            displayError("Tutti i campi sono obbligatori.");
             return;
         }
 
         // Controllo se l'email esiste già nel database
         if (user.emailExists(email)) {
-            System.out.println("Email già esistente. Usa un'altra email.");
+            displayError("Email già esistente. Usa un'altra email.");
             return;
         }
 
         if (user.registration(email, password)) {
-            System.out.println("Registrazione avvenuta con successo.");
+            displayError("Registrazione avvenuta con successo.");
             // Puoi anche mostrare un messaggio all'utente o cambiare scena
         } else {
-            System.out.println("Registrazione fallita.");
+            displayError("Registrazione fallita.");
         }
     }
 
@@ -93,5 +107,9 @@ public class UserRegistrationController {
         Parent pane = FXMLLoader.load(getClass().getResource(fxml));
         Stage stage = (Stage) button_register.getScene().getWindow();
         stage.setScene(new Scene(pane));
+    }
+    
+    public void displayError(String errormessage) {
+    	errorLabel.setText(errormessage);
     }
 }
