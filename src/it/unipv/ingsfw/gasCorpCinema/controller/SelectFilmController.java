@@ -12,7 +12,10 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
@@ -31,6 +34,9 @@ public class SelectFilmController implements Initializable {
 	private Button buttonConfirm;
 	@FXML
 	private Label myLabel;
+	@FXML
+	private Button logoutButton;
+	
 	private Movie movie;
 	private Admin admin = new Admin();
 	private Stage stage;
@@ -65,12 +71,17 @@ public class SelectFilmController implements Initializable {
 		//altrimenit visutlaizza il messaggio SELECT A FILM		
 		
 	}
-
-
-
-
 	
-	
+	public void logout() {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Logout");
+		alert.setHeaderText("Stai per effettuare il logout");
+		alert.setContentText("Dopo aver fatto il logout verrai riportato alla homepage.");
+		
+		if(alert.showAndWait().get()== ButtonType.OK) {
+			//ccambia pagina
+		}
+	}
 	
 }
 

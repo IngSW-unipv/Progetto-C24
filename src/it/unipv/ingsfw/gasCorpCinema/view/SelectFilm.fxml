@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="388.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.SelectFilmController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="388.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.SelectFilmController">
    <children>
       <ListView fx:id="myListView" layoutY="98.0" prefHeight="214.0" prefWidth="600.0" />
       <Button fx:id="buttonConfirm" layoutX="495.0" layoutY="334.0" mnemonicParsing="false" onAction="#pressButton" text="CONFIRM" />
@@ -17,5 +17,6 @@
          </font>
       </Label>
       <Label alignment="CENTER" layoutY="64.0" prefHeight="36.0" prefWidth="600.0" text="SELECT YOUR PROJECTION" />
+      <Button fx:id="logoutButton" layoutX="14.0" layoutY="333.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
    </children>
 </AnchorPane>

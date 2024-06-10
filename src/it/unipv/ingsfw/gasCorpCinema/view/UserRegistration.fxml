@@ -16,22 +16,20 @@
             <Image url="@.../Resources/Logo G.A.S. CORP CINEMA .png" />
          </image>
       </ImageView>
-      <Button fx:id="button_register" layoutX="458.0" layoutY="239.0" mnemonicParsing="false" onAction="#handleRegisterButtonAction" text="Registrati" />
+      <Button fx:id="button_register" layoutX="457.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleRegisterButtonAction" text="Registrati" />
       <Button fx:id="button_log_in" layoutX="194.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleLoginButtonAction" style="-fx-background-color: transparent;" text="Log In!" textFill="#2619b9" underline="true" />
       <Label layoutX="14.0" layoutY="317.0" text="Sei già registrato? Effettua il  &#10;&#10;" />
-      <TextField fx:id="tf_username" layoutX="345.0" layoutY="105.0" />
-      <TextField fx:id="tf_email" layoutX="345.0" layoutY="152.0" />
-      <Label layoutX="267.0" layoutY="110.0" text="Username" />
-      <Label layoutX="282.0" layoutY="157.0" text="Email" />
-      <Label layoutX="269.0" layoutY="200.0" text="Password" />
-      <PasswordField fx:id="pf_password" layoutX="345.0" layoutY="195.0" />
+      <TextField fx:id="tf_email" layoutX="345.0" layoutY="126.0" />
+      <Label layoutX="282.0" layoutY="131.0" text="Email" />
+      <Label layoutX="269.0" layoutY="185.0" text="Password" />
+      <PasswordField fx:id="pf_password" layoutX="345.0" layoutY="180.0" />
       <Label layoutX="167.0" prefHeight="91.0" prefWidth="438.0" text="Pronto a vivere la magia del cinema come mai prima d'ora? &#10;Iscriviti a G.A.S. CORP CINEMA in pochi secondi e &#10;accedi subito ai film più spettacolari, sia passati &#10;che le novità!!!">
          <font>
             <Font name="Bodoni MT Italic" size="18.0" />
          </font>
       </Label>
       <Label layoutX="252.0" layoutY="328.0" text="e corri a visualizzare il nostro catalogo" />
-      <Label fx:id="errorLabel" layoutX="158.0" layoutY="278.0" prefHeight="31.0" prefWidth="424.0" textFill="#eb0505">
+      <Label fx:id="errorLabel" layoutX="140.0" layoutY="268.0" prefHeight="31.0" prefWidth="424.0" textFill="#eb0505">
          <font>
             <Font name="Arial Black" size="14.0" />
          </font></Label>

@@ -79,29 +79,6 @@ public class UserRegistrationController {
             e.printStackTrace();
         }
     }
-    
-    
-// DA TOGLIERE 
-//    
-//    public boolean registerUser(String username, String email, String password) {
-//        String url = "jdbc:mysql://localhost:3306/cinema";
-//        String user = "root";
-//        String pass = "password";
-//        String query = "INSERT INTO authentications (email, password, ruolo) VALUES (?, ?, 'utente')";
-//        
-//        try (Connection conn = DriverManager.getConnection(url, user, pass);
-//             PreparedStatement stmt = conn.prepareStatement(query)) {
-//            
-//            stmt.setString(1, email);
-//            stmt.setString(2, password);
-//            int rowsInserted = stmt.executeUpdate();
-//            
-//            return rowsInserted > 0;
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return false;
-//        }
-//    }
 
     private void changeScene(String fxml) throws IOException {
         Parent pane = FXMLLoader.load(getClass().getResource(fxml));
