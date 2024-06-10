@@ -1,5 +1,6 @@
 package it.unipv.ingsfw.gasCorpCinema.model;
 
+import java.sql.Date;
 import java.util.List;
 import it.unipv.ingsfw.gasCorpCinema.model.cinemaHall.CinemaHall;
 import it.unipv.ingsfw.gasCorpCinema.model.cinemaHall.CinemaHallDAO;
@@ -51,9 +52,9 @@ public class Admin {
 		}
 	}
 	
-	public Projection getProjectionByHall(int idHall) {
-		return projectionDAO.getProjectionByHall(idHall);
-	}
+//	public Projection getProjectionByHall(int idHall) {
+//		return projectionDAO.getProjectionByHall(idHall);
+//	}
 	
 	public List<Projection> getAllProjections(){
 		List<Projection> projections = projectionDAO.getAllProjections();
@@ -82,6 +83,11 @@ public class Admin {
 		return cinemaHalls;
 	}
 	
+	public List<Date> getAllDatesWithAProjection(){
+		List<Date> dates = projectionDAO.getAllDatesWithAProjection();
+		return dates;
+	}
+	
 	public void createHall(CinemaHall cinemaHall) {
 		cinemaHallDAO.createHall(cinemaHall);
 	}
@@ -94,8 +100,18 @@ public class Admin {
 		double price = projectionDAO.getPriceOfProjection(projection);
 		return price;
 	}
-	public List<Projection> getprojectionsByMovie(Movie movie) {
-		List<Projection> movieProjections = projectionDAO.getAllProjectionsByMovie(movie.getTitle());
+	public List<Projection> getprojectionsByMovie(String title) {
+		List<Projection> movieProjections = projectionDAO.getAllProjectionsByMovie(title);
+		return movieProjections;
+	}
+	
+	public List<Projection> getprojectionsByHall(int idHall) {
+		List<Projection> movieProjections = projectionDAO.getAllProjectionsByHall(idHall);
+		return movieProjections;
+	}
+	
+	public List<Projection> getprojectionsByDate(Date date) {
+		List<Projection> movieProjections = projectionDAO.getAllProjectionsByDate(date);
 		return movieProjections;
 	}
 	

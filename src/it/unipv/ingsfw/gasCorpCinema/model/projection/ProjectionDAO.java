@@ -19,34 +19,34 @@ public class ProjectionDAO implements IProjectionDAO {
 		this.schema = "cinema";
 	}
 	
-	@Override
-	public Projection getProjectionByHall(int idHall) {
-		
-		Projection projection = null;
-	    
-		conn=DBConnection.startConnection(conn,schema);
-		PreparedStatement st1;
-		ResultSet rs1;
-		
-	    try {
-	    	String query = "SELECT * FROM projections WHERE idHall = ?";
-	    	
-	    	st1 = conn.prepareStatement(query);
-	    	st1.setInt(1, idHall);
-	    	
-	    	rs1=st1.executeQuery(query);
-	    	
-	    	while(rs1.next()) {
-	    		
-	    		projection = new Projection(rs1.getInt(2),rs1.getInt(3),rs1.getString(4),rs1.getDate(5),rs1.getString(6),rs1.getDouble(7));
-	    		
-	        }
-	    	
-	    } catch (SQLException e) {
-	      e.printStackTrace();
-	    }
-	    return projection;
-	}
+//	@Override
+//	public Projection getProjectionByHall(int idHall) {
+//		
+//		Projection projection = null;
+//	    
+//		conn=DBConnection.startConnection(conn,schema);
+//		PreparedStatement st1;
+//		ResultSet rs1;
+//		
+//	    try {
+//	    	String query = "SELECT * FROM projections WHERE idHall = ?";
+//	    	
+//	    	st1 = conn.prepareStatement(query);
+//	    	st1.setInt(1, idHall);
+//	    	
+//	    	rs1=st1.executeQuery(query);
+//	    	
+//	    	while(rs1.next()) {
+//	    		
+//	    		projection = new Projection(rs1.getInt(2),rs1.getInt(3),rs1.getString(4),rs1.getDate(5),rs1.getString(6),rs1.getDouble(7));
+//	    		
+//	        }
+//	    	
+//	    } catch (SQLException e) {
+//	      e.printStackTrace();
+//	    }
+//	    return projection;
+//	}
 
 	@Override
 	public List<Projection> getAllProjections() {
@@ -254,6 +254,96 @@ public class ProjectionDAO implements IProjectionDAO {
 	    }
 	    price = projection.getPrice();
 	    return price;
+	}
+
+	@Override
+	public List<Projection> getAllProjectionsByHall(int idHall) {
+		
+		List<Projection> projections = new ArrayList<>();
+		
+		conn=DBConnection.startConnection(conn,schema);
+		PreparedStatement st1;
+		ResultSet rs1;
+		
+	    try {
+	    	String query = "SELECT * FROM projections WHERE idHall = ?";
+	    	
+	    	st1 = conn.prepareStatement(query);
+	    	st1.setInt(1, idHall);
+	        
+	    	rs1=st1.executeQuery();
+
+	      	while (rs1.next()) {
+	      		
+	        Projection projection = new Projection(rs1.getInt(2),rs1.getInt(3),rs1.getString(4),rs1.getDate(5),rs1.getString(6),rs1.getDouble(7));
+	        projections.add(projection);
+	      	}
+	      	
+	    } catch (SQLException e) {
+	      e.printStackTrace();
+	    }
+	    
+	    DBConnection.closeConnection(conn);
+	    return projections;
+	}
+
+	@Override
+	public List<Projection> getAllProjectionsByDate(Date date) {
+		
+		List<Projection> projections = new ArrayList<>();
+		
+		conn=DBConnection.startConnection(conn,schema);
+		PreparedStatement st1;
+		ResultSet rs1;
+		
+	    try {
+	    	String query = "SELECT * FROM projections WHERE date = ?";
+	    	
+	    	st1 = conn.prepareStatement(query);
+	    	st1.setDate(1, date);
+	        
+	    	rs1=st1.executeQuery();
+
+	      	while (rs1.next()) {
+	      		
+	        Projection projection = new Projection(rs1.getInt(2),rs1.getInt(3),rs1.getString(4),rs1.getDate(5),rs1.getString(6),rs1.getDouble(7));
+	        projections.add(projection);
+	      	}
+	      	
+	    } catch (SQLException e) {
+	      e.printStackTrace();
+	    }
+	    
+	    DBConnection.closeConnection(conn);
+	    return projections;
+	}
+
+	@Override
+	public List<Date> getAllDatesWithAProjection() {
+		
+		List<Date> dates = new ArrayList<>();
+		
+		conn=DBConnection.startConnection(conn,schema);
+		Statement st1;
+		ResultSet rs1;
+		
+	    try {
+	    	st1 = conn.createStatement();
+	    	String query = "SELECT date FROM projections";
+	        rs1 = st1.executeQuery(query);
+	        
+	      	while (rs1.next()) {
+	      	
+	      	Date date = rs1.getDate(1);
+	        dates.add(date);
+	      	}
+	      	
+	    } catch (SQLException e) {
+	      e.printStackTrace();
+	    }
+	    
+	    DBConnection.closeConnection(conn);
+	    return dates;
 	}
 
 }
