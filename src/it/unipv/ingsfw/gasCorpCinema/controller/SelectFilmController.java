@@ -6,6 +6,8 @@ import java.util.ResourceBundle;
 import it.unipv.ingsfw.gasCorpCinema.model.Admin;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
 import it.unipv.ingsfw.gasCorpCinema.view.AddMovieView;
+import it.unipv.ingsfw.gasCorpCinema.view.FirstPageView;
+import it.unipv.ingsfw.gasCorpCinema.view.SelectFilmView;
 import it.unipv.ingsfw.gasCorpCinema.view.SelectProjectionView;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -20,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 
@@ -72,17 +75,22 @@ public class SelectFilmController implements Initializable {
 		
 	}
 	
-	public void logout() {
+	public void logout() throws Exception {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Logout");
 		alert.setHeaderText("Stai per effettuare il logout");
 		alert.setContentText("Dopo aver fatto il logout verrai riportato alla homepage.");
 		
 		if(alert.showAndWait().get()== ButtonType.OK) {
-			//ccambia pagina
+			Stage currentStage = (Stage) logoutButton.getScene().getWindow();
+			
+			stage = new Stage();
+			FirstPageView v = new FirstPageView();
+			v.start(stage);	
+			
+			currentStage.close();
 		}
 	}
-	
 }
 
 	
