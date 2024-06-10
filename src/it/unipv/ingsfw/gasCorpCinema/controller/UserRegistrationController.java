@@ -44,10 +44,10 @@ public class UserRegistrationController {
 	@FXML
     private void handleRegisterButtonAction() {
 		
-		Alert alert = new Alert(AlertType.ERROR);
-		alert.setTitle("Error with the credentials");
-		alert.setHeaderText("You are trying to insert...");
-		alert.setContentText("Boh?");
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Messaggio di informazione");
+		alert.setHeaderText("Registrazione avvenuta con successo");
+		alert.setContentText("Clicca il pulsante 'login' qui sotto per poter tornare alla homepage!");
 		
         String email = tf_email.getText();
         String password = pf_password.getText();
@@ -64,7 +64,7 @@ public class UserRegistrationController {
         }
 
         if (user.registration(email, password)) {
-            displayError("Registrazione avvenuta con successo.");
+            alert.show();
             // Puoi anche mostrare un messaggio all'utente o cambiare scena
         } else {
             displayError("Registrazione fallita.");
