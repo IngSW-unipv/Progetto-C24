@@ -100,8 +100,15 @@ public class Admin {
 		double price = projectionDAO.getPriceOfProjection(projection);
 		return price;
 	}
+	
 	public List<Projection> getprojectionsByMovie(String title) {
 		List<Projection> movieProjections = projectionDAO.getAllProjectionsByMovie(title);
+		return movieProjections;
+	}
+	
+	//Override temporaneo forse 
+	public List<Projection> getprojectionsByMovie(Movie movie) {
+		List<Projection> movieProjections = projectionDAO.getAllProjectionsByMovie(movie.getTitle());
 		return movieProjections;
 	}
 	
