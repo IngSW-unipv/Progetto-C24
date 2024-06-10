@@ -35,11 +35,10 @@ public class UserRegistrationController {
 
 	@FXML
     private void handleRegisterButtonAction() {
-		String username = tf_username.getText();
         String email = tf_email.getText();
         String password = pf_password.getText();
         
-        if (email.isEmpty() || password.isEmpty() || username.isEmpty()) {
+        if (email.isEmpty() || password.isEmpty()) {
             System.out.println("Tutti i campi sono obbligatori.");
             return;
         }
@@ -50,7 +49,7 @@ public class UserRegistrationController {
             return;
         }
 
-        if (user.registration(username, email, password)) {
+        if (user.registration(email, password)) {
             System.out.println("Registrazione avvenuta con successo.");
             // Puoi anche mostrare un messaggio all'utente o cambiare scena
         } else {
