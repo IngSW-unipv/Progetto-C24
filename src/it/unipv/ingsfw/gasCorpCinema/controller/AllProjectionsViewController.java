@@ -42,17 +42,44 @@ public class AllProjectionsViewController implements Initializable {
 	}
 	
 	public void getIdHall(ActionEvent event) {
-		myListView.getItems().clear();
-		myListView.getItems().addAll(admin.getprojectionsByHall(myChoiceBoxHall.getValue().getIdHall()));
+//		myListView.getItems().clear();
+//		myListView.getItems().addAll(admin.getprojectionsByHall(myChoiceBoxHall.getValue().getIdHall()));
+		if (myChoiceBoxHall.getValue() != null) {
+            myListView.getItems().clear();
+            myListView.getItems().addAll(admin.getprojectionsByHall(myChoiceBoxHall.getValue().getIdHall()));
+            if (myChoiceBoxMovie.getValue() != null) {
+                myChoiceBoxMovie.setValue(null);
+            } else if (myChoiceBoxDate.getValue() != null) {
+                myChoiceBoxDate.setValue(null);
+            }
+        }
 	}
 
 	private void getMovie(ActionEvent actionevent1) {
-		myListView.getItems().clear();
-		myListView.getItems().addAll(admin.getprojectionsByMovie(myChoiceBoxMovie.getValue().getTitle()));
+//		myListView.getItems().clear();
+//		myListView.getItems().addAll(admin.getprojectionsByMovie(myChoiceBoxMovie.getValue().getTitle()));
+		if (myChoiceBoxMovie.getValue() != null) {
+            myListView.getItems().clear();
+            myListView.getItems().addAll(admin.getprojectionsByMovie(myChoiceBoxMovie.getValue().getTitle()));
+            if (myChoiceBoxHall.getValue() != null) {
+                myChoiceBoxHall.setValue(null);
+            } else if (myChoiceBoxDate.getValue() != null) {
+                myChoiceBoxDate.setValue(null);
+            }
+        }
 	}
 	
 	private void getDate(ActionEvent actionevent1) {
-		myListView.getItems().clear();
-		myListView.getItems().addAll(admin.getprojectionsByDate(myChoiceBoxDate.getValue()));
-	}
+//		myListView.getItems().clear();
+//		myListView.getItems().addAll(admin.getprojectionsByDate(myChoiceBoxDate.getValue()));
+		if (myChoiceBoxDate.getValue() != null) {
+            myListView.getItems().clear();
+            myListView.getItems().addAll(admin.getprojectionsByDate(myChoiceBoxDate.getValue()));
+            if (myChoiceBoxHall.getValue() != null) {
+                myChoiceBoxHall.setValue(null);
+            } else if (myChoiceBoxMovie.getValue() != null) {
+                myChoiceBoxMovie.setValue(null);
+            }
+        }
+    }
 }
