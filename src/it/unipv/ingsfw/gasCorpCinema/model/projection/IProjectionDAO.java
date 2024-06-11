@@ -11,6 +11,7 @@ public interface IProjectionDAO {
 	public List<Projection> getAllProjectionsByMovie(String movieTitle);
 	public List<Projection> getAllProjectionsByHall(int idHall);
 	public List<Projection> getAllProjectionsByDate(Date date);
+	public List<Projection> getProjectionsByHallAndDate(int idHall,Date date);
 	public List<Date> getAllDatesWithAProjection();
 	public void createProjection(Projection projection);
 	public void deleteProjection(Projection projection);

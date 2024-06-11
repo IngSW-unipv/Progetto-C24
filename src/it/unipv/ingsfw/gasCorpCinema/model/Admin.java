@@ -1,6 +1,7 @@
 package it.unipv.ingsfw.gasCorpCinema.model;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import it.unipv.ingsfw.gasCorpCinema.model.cinemaHall.CinemaHall;
@@ -64,12 +65,36 @@ public class Admin {
 	
 	public void createProjection(Projection projection) {
 		Projection existingProjection = projectionDAO.getProjectionByHallDateTime(projection.getIdHall(),projection.getDate(),projection.getTime());
+		
 		if(existingProjection != null) {
 			System.out.println("Sala " + projection.getIdHall() + " già occupata il " + projection.getDate() + " Alle " + projection.getTime());
+		}else if(canAddProjection(projection) == false) {
+			System.out.println("Cannot add projection: Time conflict with an existing projection.");
 		}else {
 			projectionDAO.createProjection(projection);
-		}
+        }
 	}
+	
+	private boolean isOverlapping(Projection p1, Projection p2) {
+        Time start1 = p1.getStartTime();
+        Time end1 = p1.getEndTime(movieDAO.getMovieByTitle(p1.getMovieTitle()));
+        Time start2 = p2.getStartTime();
+        Time end2 = p2.getEndTime(movieDAO.getMovieByTitle(p2.getMovieTitle()));
+
+        return (start1.before(end2) && start2.before(end1));
+    }
+	
+	public boolean canAddProjection(Projection projection) {
+        List<Projection> existingProjections = projectionDAO.getProjectionsByHallAndDate(projection.getIdHall(),projection.getDate());
+        
+        for (Projection existingProjection : existingProjections) {
+            if (isOverlapping(existingProjection, projection)) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
 	
 	public void deleteProjection(Projection projection) {
 		projectionDAO.deleteProjection(projection);

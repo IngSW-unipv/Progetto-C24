@@ -1,6 +1,12 @@
 package it.unipv.ingsfw.gasCorpCinema.model.projection;
 
 import java.sql.Date;
+import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
 
 public class Projection {
 	
@@ -42,6 +48,28 @@ public class Projection {
 
 	public double getPrice() {
 		return price;
+	}
+	
+	public Time getStartTime(){
+		try {
+            SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
+            java.util.Date utilDate = formatter.parse(time);
+            return new Time(utilDate.getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+	}
+	
+	public Time getEndTime(Movie movie){
+		int duration = movie.getDuration();
+        
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(getStartTime());
+        calendar.add(Calendar.MINUTE, duration);
+        
+        // Ottieni l'orario di fine come un oggetto Time
+        return new Time(calendar.getTimeInMillis());
 	}
 
 	@Override
