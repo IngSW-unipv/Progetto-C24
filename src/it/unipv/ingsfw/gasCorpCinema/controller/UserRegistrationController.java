@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import it.unipv.ingsfw.gasCorpCinema.model.Admin;
 import it.unipv.ingsfw.gasCorpCinema.model.User;
 import it.unipv.ingsfw.gasCorpCinema.model.authentication.AuthenticationDAO;
+import it.unipv.ingsfw.gasCorpCinema.view.FirstPageView;
+import it.unipv.ingsfw.gasCorpCinema.view.UserRegistrationView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -36,13 +38,14 @@ public class UserRegistrationController {
 	@FXML
 	private Label errorLabel;
 	
+	private Stage stage;
 	private User user = new User();
 
 //Voglio fare che quando la registrazione avviene con successo faccio comparire un alert
 //a schermo, mentre nei casi in cui sia andato male qualcosa usare il displayError
 
 	@FXML
-    public void handleRegisterButtonAction() {
+    public void registerButtonAction() {
 		
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Messaggio di informazione");
@@ -72,18 +75,19 @@ public class UserRegistrationController {
     }
 
     @FXML
-    public void handleLoginButtonAction() {  
-        try {
-            changeScene("../view/FirstPage.fxml");
+    public void loginButtonAction() throws Exception {  
+    	try {
+        	Stage currentStage = (Stage) button_log_in.getScene().getWindow();
+        	
+        	stage = new Stage();
+			FirstPageView f = new FirstPageView();
+			f.start(stage);	
+			
+			currentStage.close();
+			
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void changeScene(String fxml) throws IOException {
-        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
-        Stage stage = (Stage) button_register.getScene().getWindow();
-        stage.setScene(new Scene(pane));
     }
     
     public void displayError(String errormessage) {
