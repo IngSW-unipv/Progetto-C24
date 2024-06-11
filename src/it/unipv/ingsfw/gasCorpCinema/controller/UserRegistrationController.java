@@ -42,7 +42,7 @@ public class UserRegistrationController {
 //a schermo, mentre nei casi in cui sia andato male qualcosa usare il displayError
 
 	@FXML
-    private void handleRegisterButtonAction() {
+    public void handleRegisterButtonAction() {
 		
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Messaggio di informazione");
@@ -80,7 +80,7 @@ public class UserRegistrationController {
         }
     }
 
-    private void changeScene(String fxml) throws IOException {
+    public void changeScene(String fxml) throws IOException {
         Parent pane = FXMLLoader.load(getClass().getResource(fxml));
         Stage stage = (Stage) button_register.getScene().getWindow();
         stage.setScene(new Scene(pane));

@@ -37,12 +37,14 @@ public class SelectFilmController implements Initializable {
 	private Button buttonConfirm;
 	@FXML
 	private Label myLabel;
+	private Label userLabel;
 	@FXML
 	private Button logoutButton;
 	
 	private Movie movie;
 	private Admin admin = new Admin();
 	private Stage stage;
+	private String userEmail;
 	
 	 
 	@Override
@@ -50,9 +52,11 @@ public class SelectFilmController implements Initializable {
 		myListView.getItems().addAll(admin.getAllMovies());
 	}
 	//ListView=lista di film disponibili al cinema 
-
 	
-	
+	public void setUserEmail(String email) {
+        this.userEmail = email;
+        userLabel.setText(email);
+    }
 	
 	public Movie getMovie() {
 		return myListView.getSelectionModel().getSelectedItem();

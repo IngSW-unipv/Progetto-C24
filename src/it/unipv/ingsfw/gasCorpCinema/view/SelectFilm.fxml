@@ -11,12 +11,13 @@
       <ListView fx:id="myListView" layoutY="98.0" prefHeight="214.0" prefWidth="600.0" />
       <Button fx:id="buttonConfirm" layoutX="495.0" layoutY="334.0" mnemonicParsing="false" onAction="#pressButton" text="CONFIRM" />
       <Label fx:id="myLabel" layoutX="212.0" layoutY="338.0" prefHeight="17.0" prefWidth="177.0" />
-      <Label alignment="CENTER" layoutX="1.0" prefHeight="64.0" prefWidth="600.0" text="GAS Corp. CINEMA">
+      <Label alignment="CENTER" layoutX="1.0" layoutY="14.0" prefHeight="64.0" prefWidth="600.0" text="GAS Corp. CINEMA">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
       <Label alignment="CENTER" layoutY="64.0" prefHeight="36.0" prefWidth="600.0" text="SELECT YOUR PROJECTION" />
       <Button fx:id="logoutButton" layoutX="14.0" layoutY="333.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
+      <Label fx:id="userLabel" layoutX="14.0" layoutY="4.0" prefHeight="21.0" prefWidth="236.0" />
    </children>
 </AnchorPane>
