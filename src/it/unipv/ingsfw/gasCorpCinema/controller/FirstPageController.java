@@ -57,9 +57,14 @@ public class FirstPageController {
     @FXML
     public void handleRegisterButtonAction() throws Exception {
         try {
+        	Stage currentStage = (Stage) button_registrati.getScene().getWindow();
+        	
         	stage = new Stage();
 			UserRegistrationView u = new UserRegistrationView();
 			u.start(stage);	
+			
+			currentStage.close();
+			
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -69,7 +74,7 @@ public class FirstPageController {
     public void changeSceneUser(String fxml,String email) throws IOException {
   	
     	FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-  	Parent pane = loader.load();
+    	Parent pane = loader.load();
   	
    // Ottieni il controller associato
       if (fxml.contains("SelectFilmView")) {
