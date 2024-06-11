@@ -1,6 +1,7 @@
 package it.unipv.ingsfw.gasCorpCinema.model;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import it.unipv.ingsfw.gasCorpCinema.model.cinemaHall.CinemaHall;
 import it.unipv.ingsfw.gasCorpCinema.model.cinemaHall.CinemaHallDAO;
@@ -85,6 +86,13 @@ public class Admin {
 	
 	public List<Date> getAllDatesWithAProjection(){
 		List<Date> dates = projectionDAO.getAllDatesWithAProjection();
+		for(int i=0;i<dates.size();i++) {
+			for(int j=i+1;j<dates.size();j++){
+				if(dates.get(i).equals(dates.get(j))){
+					dates.remove(j);
+				}
+			}
+		}
 		return dates;
 	}
 	
