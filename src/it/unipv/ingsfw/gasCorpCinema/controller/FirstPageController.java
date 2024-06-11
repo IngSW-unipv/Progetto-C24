@@ -34,7 +34,7 @@ public class FirstPageController {
 	private User user = new User();
 
     @FXML
-    public void handleLoginButtonAction() throws IOException {
+    public void loginButtonAction() throws IOException {
         
     	String email = tf_username.getText();
         String password = field_password.getText();
@@ -43,7 +43,7 @@ public class FirstPageController {
         if (role != null) {
             if (role.equals("admin")) {
                 // Se l'utente è un admin, cambia la scena alla pagina dell'admin
-                changeScene("../view/AdminView.fxml",email);
+                changeSceneAdmin("../view/AdminView.fxml",email);
             } else {
                 // Altrimenti, cambia la scena alla pagina dell'utente normale
                 changeSceneUser("../view/SelectFilm.fxml", email);
@@ -55,7 +55,7 @@ public class FirstPageController {
     }
     
     @FXML
-    public void handleRegisterButtonAction() throws Exception {
+    public void registerButtonAction() throws Exception {
         try {
         	Stage currentStage = (Stage) button_registrati.getScene().getWindow();
         	
@@ -88,7 +88,7 @@ public class FirstPageController {
   }
     
     // Metodo per cambiare scena con email per l'admin
-    public void changeScene(String fxml,String email) throws IOException {
+    public void changeSceneAdmin(String fxml,String email) throws IOException {
 //        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
     	 
     	FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
