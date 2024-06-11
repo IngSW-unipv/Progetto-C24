@@ -30,19 +30,28 @@ public class RemoveProjectionViewController implements Initializable {
 		// TODO Auto-generated method stub
 		myListView.getItems().addAll(admin.getAllProjections());
 		
+		if (myListView.getItems().isEmpty()) {
+            myLabel.setText("Nessuna proiezione disponibile");
+		}
+		
 		myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Projection>(){
 
 			@Override
 			public void changed(ObservableValue<? extends Projection> arg0, Projection arg1, Projection arg2) {
 				// TODO Auto-generated method stub
 				
-				selectedProjection = myListView.getSelectionModel().getSelectedItem();
-				myLabel.setText(String.valueOf(selectedProjection));
+				if (myListView.getItems().isEmpty()) {
+	                myLabel.setText("Nessuna proiezione disponibile");
+	            } else {
+	            	selectedProjection = myListView.getSelectionModel().getSelectedItem();
+					myLabel.setText(String.valueOf(selectedProjection));
+	            }
 			}
 		});
 	}
 	
 	public void removeProjection() {
 		admin.deleteProjection(selectedProjection);
+		myListView.getItems().remove(selectedProjection);
 	}
 }

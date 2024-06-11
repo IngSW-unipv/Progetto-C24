@@ -33,20 +33,29 @@ public class RemoveMovieViewController implements Initializable {
 		// TODO Auto-generated method stub
 		myListView.getItems().addAll(admin.getAllMovies());
 		
+		if (myListView.getItems().isEmpty()) {
+            myLabel.setText("Nessun film disponibile");
+		}
+		
 		myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Movie>(){
 
 			@Override
 			public void changed(ObservableValue<? extends Movie> arg0, Movie arg1, Movie arg2) {
 				// TODO Auto-generated method stub
 				
-				selectedMovie = myListView.getSelectionModel().getSelectedItem();
-				myLabel.setText(String.valueOf(selectedMovie));
+				if (myListView.getItems().isEmpty()) {
+	                myLabel.setText("Nessun film disponibile");
+	            } else {
+	            	selectedMovie = myListView.getSelectionModel().getSelectedItem();
+					myLabel.setText(String.valueOf(selectedMovie));
+	            }
 			}
 		});
 	}
 	
 	public void removeMovie() {
 		admin.deleteMovie(selectedMovie);
+		myListView.getItems().remove(selectedMovie);
 	}
 	
 }
