@@ -49,7 +49,7 @@
                </font>
             </Label>
             <TextField fx:id="tf_username" layoutX="103.0" layoutY="210.0" promptText="Email" />
-            <Button fx:id="button_login" layoutX="103.0" layoutY="294.0" mnemonicParsing="false" onAction="#handleLoginButtonAction" prefHeight="35.0" prefWidth="187.0" style="-fx-background-color: #FFFFFF; -fx-cursor: hand; -fx-border-color: #000000;" text="Login">
+            <Button fx:id="button_login" layoutX="103.0" layoutY="294.0" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="35.0" prefWidth="187.0" style="-fx-background-color: #FFFFFF; -fx-cursor: hand; -fx-border-color: #000000;" text="Login">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
@@ -59,7 +59,7 @@
                   <Font name="Arial" size="15.0" />
                </font>
             </Label>
-            <Button fx:id="button_registrati" layoutX="184.0" layoutY="344.0" mnemonicParsing="false" onAction="#handleRegisterButtonAction" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Registrati ora!!" textFill="#2108fc" underline="true" />
+            <Button fx:id="button_registrati" layoutX="184.0" layoutY="344.0" mnemonicParsing="false" onAction="#registerButtonAction" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Registrati ora!!" textFill="#2108fc" underline="true" />
             <PasswordField fx:id="field_password" layoutX="103.0" layoutY="249.0" promptText="Password" />
          </children>
       </AnchorPane>
