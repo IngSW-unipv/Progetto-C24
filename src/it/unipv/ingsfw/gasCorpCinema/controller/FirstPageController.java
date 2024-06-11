@@ -78,9 +78,9 @@ public class FirstPageController {
   	
    // Ottieni il controller associato
       if (fxml.contains("SelectFilmView")) {
-          AdminViewController controller = loader.getController();
+          SelectFilmController controller = loader.getController();
           // Passa la mail dell'admin al controller
-          controller.setAdminEmail(email);
+          controller.setUserEmail(email);
       }
       
       Stage stage = (Stage) button_login.getScene().getWindow();
