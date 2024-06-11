@@ -2,6 +2,12 @@
 	-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #95ecb0, #f3f98a);
 }
 
+.label{
+	-fx-font-family: "Verdana";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
 .listView{
 	-fx-background-color: transparent;
 	-fx-border-color: white;
@@ -23,4 +29,17 @@
 .list-cell:selected {
     -fx-background-color: #A2A2A2; /* Cambia il colore di sfondo quando la cella è selezionata */
     -fx-text-fill: white; /* Cambia il colore del testo quando la cella è selezionata */
+}
+
+.choiceBox {
+    -fx-background-color: transparent; /* Colore di sfondo trasparente */
+    -fx-border-color: white; /* Colore del bordo bianco */
+    -fx-border-width: 1px; /* Spessore del bordo */
+    -fx-text-fill: black; /* Colore del testo */
+    -fx-font-family: "Verdana";
+    -fx-font-size: 14px;
+}
+
+.choiceBox:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.4); /* Bianco con un'opacità del 40% durante l'hover */
 }

@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
 public class AllProjectionsViewController implements Initializable {
@@ -23,6 +24,8 @@ public class AllProjectionsViewController implements Initializable {
 	private ChoiceBox<Movie> myChoiceBoxMovie;
 	@FXML
 	private ChoiceBox<Date> myChoiceBoxDate;
+	@FXML
+	private Label myLabel;
 	
 	private Admin admin = new Admin();
 	
@@ -30,6 +33,10 @@ public class AllProjectionsViewController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		myListView.getItems().addAll(admin.getAllProjections());
+		
+		if (myListView.getItems().isEmpty()) {
+            myLabel.setText("Nessuna proiezione disponibile");
+		}
 		
 		myChoiceBoxHall.getItems().addAll(admin.getAllHalls());
 		myChoiceBoxMovie.getItems().addAll(admin.getAllMovies());
