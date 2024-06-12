@@ -193,7 +193,7 @@ public class ProjectionDAO implements IProjectionDAO {
 	@Override
 	public int getNumberOfAvaiableSeats(Projection projection) {
 		
-		int avaiableSeats;
+		int availableSeats = 0;
 	    
 		conn=DBConnection.startConnection(conn,schema);
 		PreparedStatement st1;
@@ -212,15 +212,15 @@ public class ProjectionDAO implements IProjectionDAO {
 	    	
 	    	while(rs1.next()) {
 	    		
-	    		projection = new Projection(rs1.getInt(2),rs1.getInt(3),rs1.getString(4),rs1.getDate(5),rs1.getString(6),rs1.getDouble(7));
-	    		
+//	    		projection = new Projection(rs1.getInt(2),rs1.getInt(3),rs1.getString(4),rs1.getDate(5),rs1.getString(6),rs1.getDouble(7));
+	    		availableSeats = rs1.getInt("seats");
 	        }
 	    	
 	    } catch (SQLException e) {
 	      e.printStackTrace();
 	    }
-	    avaiableSeats = projection.getSeats();
-	    return avaiableSeats;
+//	    avaiableSeats = projection.getSeats();
+	    return availableSeats;
 	}
 
 	@Override

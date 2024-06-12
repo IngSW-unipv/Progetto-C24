@@ -1,5 +1,6 @@
 package it.unipv.ingsfw.gasCorpCinema.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -13,7 +14,10 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -41,7 +45,7 @@ public class SelectFilmController implements Initializable {
 	@FXML
 	private Button logoutButton;
 	
-	private Movie movie;
+	private Movie selectedMovie;
 	private Admin admin = new Admin();
 	private Stage stage;
 	private String userEmail;
@@ -50,6 +54,25 @@ public class SelectFilmController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		myListView.getItems().addAll(admin.getAllMovies());
+		
+		if (myListView.getItems().isEmpty()) {
+            myLabel.setText("Nessun film disponibile");
+		}
+		
+		myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Movie>(){
+
+			@Override
+			public void changed(ObservableValue<? extends Movie> arg0, Movie arg1, Movie arg2) {
+				// TODO Auto-generated method stub
+				
+				if (myListView.getItems().isEmpty()) {
+	                myLabel.setText("Nessun film disponibile");
+	            } else {
+	            	selectedMovie = myListView.getSelectionModel().getSelectedItem();
+					myLabel.setText(String.valueOf(selectedMovie));
+	            }
+			}
+		});
 	}
 	//ListView=lista di film disponibili al cinema 
 	
@@ -58,25 +81,57 @@ public class SelectFilmController implements Initializable {
         userLabel.setText(email);
     }
 	
-	public Movie getMovie() {
-		return myListView.getSelectionModel().getSelectedItem();
-	}
+//	public Movie getMovie() {
+//		return selectedMovie;
+//	}
 	//serve per far si che nel SelectProjectionController si sappia di che film si tratta	
 	
 	public void pressButton() throws Exception {
-		movie = myListView.getSelectionModel().getSelectedItem();
 		//movie = film selezionato
-		stage = new Stage();
-		SelectProjectionView v = new SelectProjectionView();
-		
-		if(movie!=null) {
-			v.start(stage);
-		}else {
-			myLabel.setText("SELECT A FILM!");
-		}
+//		stage = new Stage();
+//		SelectProjectionView v = new SelectProjectionView();
+//		
+//		if(movie!=null) {
+//			v.start(stage);
+//		}else {
+//			myLabel.setText("SELECT A FILM!");
+//		}
 		//alla pressione del bottone se è stato selezionato un film cambia la vista per scegliere la proiezione
-		//altrimenit visutlaizza il messaggio SELECT A FILM		
+		//altrimenit visutlaizza il messaggio SELECT A FILM	
+		changeSceneAdmin("../view/SelectProjection.fxml",selectedMovie);
 		
+	}
+	
+	public void changeSceneAdmin(String fxml,Movie movie) throws IOException {
+//      Parent pane = FXMLLoader.load(getClass().getResource(fxml));
+  	 
+//		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+//		Parent root = loader.load();
+//		SelectProjectionController controller = loader.getController();
+//		controller.setSelectedMovie(movie);
+		
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+		//SelectProjectionController controller = new SelectProjectionController(movie);
+		//loader.setController(controller);
+		Parent root = loader.load();
+		SelectProjectionController controller = loader.getController();
+		controller.setParameters(movie);
+	    
+		Scene scene = new Scene(root);
+		stage = new Stage();
+		
+		stage.setScene(scene);
+		stage.show();
+		
+	    // Imposta la nuova scena
+//	    stage = new Stage();
+//		SelectProjectionView v = new SelectProjectionView();
+//		try {
+//			v.start(stage);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 	
 	public void logout() throws Exception {
