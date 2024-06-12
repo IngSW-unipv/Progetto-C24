@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 public class PaymentController implements Initializable {
 	@FXML
 	private Button myButton;
+	private Button backButton;
 	@FXML
 	private Label myLabel;
 	@FXML
@@ -49,6 +50,17 @@ public class PaymentController implements Initializable {
 		SelectFilmView v = new SelectFilmView();
 		v.start(stage);
 	}
+	
+	public void backView() throws Exception {
+		
+		Stage currentStage = (Stage) backButton.getScene().getWindow();
+		
+		stage = new Stage();
+		SelectProjectionView s = new SelectProjectionView();
+		s.start(stage);	
+		
+		currentStage.close();
+}
 	
 	
 	

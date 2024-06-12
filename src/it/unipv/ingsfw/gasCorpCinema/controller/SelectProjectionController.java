@@ -7,7 +7,9 @@ import java.util.ResourceBundle;
 import it.unipv.ingsfw.gasCorpCinema.model.Admin;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
 import it.unipv.ingsfw.gasCorpCinema.model.projection.Projection;
+import it.unipv.ingsfw.gasCorpCinema.view.FirstPageView;
 import it.unipv.ingsfw.gasCorpCinema.view.PaymentView;
+import it.unipv.ingsfw.gasCorpCinema.view.SelectFilmView;
 import it.unipv.ingsfw.gasCorpCinema.view.SelectProjectionView;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -16,11 +18,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class SelectProjectionController implements Initializable {
@@ -28,7 +33,8 @@ public class SelectProjectionController implements Initializable {
 	@FXML
 	ListView<Projection> myListView;
 	@FXML
-	Button myButton;
+	private Button myButton;
+	private Button backButton;
 	@FXML
 	Label myLabelTotal;
 	private double total;
@@ -179,6 +185,15 @@ public class SelectProjectionController implements Initializable {
 //			e.printStackTrace();
 //		}
 	}
-	
+	public void backView() throws Exception {
+		
+			Stage currentStage = (Stage) backButton.getScene().getWindow();
+			
+			stage = new Stage();
+			SelectFilmView s = new SelectFilmView();
+			s.start(stage);	
+			
+			currentStage.close();
+	}
 		
 }

@@ -26,5 +26,6 @@
       </Label>
       <Label fx:id="myLabelTotal" layoutX="458.0" layoutY="327.0" prefHeight="21.0" prefWidth="47.0" />
       <Label layoutX="408.0" layoutY="327.0" prefHeight="21.0" prefWidth="62.0" text="TOTAL:" />
+      <Button fx:id="backButton" layoutX="516.0" layoutY="357.0" mnemonicParsing="false" onAction="#backView" text="BACK" />
    </children>
 </AnchorPane>

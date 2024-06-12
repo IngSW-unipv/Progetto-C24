@@ -40,5 +40,6 @@
          </font>
       </Label>
       <Label layoutX="149.0" layoutY="276.0" prefHeight="17.0" prefWidth="70.0" text="euro" />
+      <Button fx:id="backButton" layoutX="479.0" layoutY="344.0" mnemonicParsing="false" onAction="#backView" text="BACK" />
    </children>
 </AnchorPane>
