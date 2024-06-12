@@ -10,6 +10,7 @@ import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
 
 public class Projection {
 	
+	
 	private int idHall;
 	private int seats;
 	private String movieTitle;

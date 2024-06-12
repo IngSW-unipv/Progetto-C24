@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import it.unipv.ingsfw.gasCorpCinema.model.Admin;
+import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
 import it.unipv.ingsfw.gasCorpCinema.model.projection.Projection;
 import it.unipv.ingsfw.gasCorpCinema.view.SelectFilmView;
 import it.unipv.ingsfw.gasCorpCinema.view.SelectProjectionView;
@@ -24,15 +25,18 @@ public class PaymentController implements Initializable {
 	private Label myLabelTotal;
 	private Stage stage;
 	private SelectProjectionController projectionController;
+	private double total;
 	
 	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		//c'è da capire come recuperare il prezzo del ticket del film
-		int total=projectionController.getNumberOfTickets();
-		String totalString= String.valueOf(total);  
-		myLabelTotal.setText(totalString);
+		myLabelTotal.setText(Double.toString(total));
+		
+	}
+	
+	public void setParameters(double total) {
+		this.total=total;
 		
 	}
 	
@@ -40,10 +44,14 @@ public class PaymentController implements Initializable {
 		myLabel.setText("SUCCESSFUL PAYMENT ✅");
 		Thread.sleep(1500);
 		//si legge il messaggio "SUCCESSFUL PAYMENT" e dopo 1.5 sec cambia view
-		//stage = new Stage();
-		//SelectFilmView v = new SelectFilmView();
-		//v.start(stage);
+		//Thread.sleep(1500);
+		stage = new Stage();
+		SelectFilmView v = new SelectFilmView();
+		v.start(stage);
 	}
+	
+	
+	
 
 	
 	

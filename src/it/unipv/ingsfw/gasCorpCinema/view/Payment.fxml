@@ -7,14 +7,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.PaymentController">
    <children>
       <Label alignment="CENTER" layoutY="6.0" prefHeight="64.0" prefWidth="600.0" text="GAS Corp. CINEMA">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutY="70.0" prefHeight="36.0" prefWidth="600.0" text="SELECT YOUR PROJECTION" />
+      <Label alignment="CENTER" layoutY="70.0" prefHeight="36.0" prefWidth="600.0" text="INSERT YOUR CARD DATA" />
       <TextField layoutX="14.0" layoutY="132.0" prefHeight="26.0" prefWidth="103.0" promptText="NAME" />
       <Label layoutX="17.0" layoutY="106.0" prefHeight="26.0" prefWidth="224.0" text="INSERT HERE YOUR PERSONAL DATA:" />
       <TextField layoutX="129.0" layoutY="132.0" prefHeight="26.0" prefWidth="103.0" promptText="SURNAME" />
@@ -24,9 +24,9 @@
       <TextField layoutX="375.0" layoutY="200.0" prefHeight="26.0" prefWidth="44.0" promptText="CVV" />
       <Button fx:id="myButton" layoutX="482.0" layoutY="306.0" mnemonicParsing="false" onAction="#pressButton" text="PAY " />
       <DatePicker layoutX="211.0" layoutY="200.0" prefHeight="26.0" prefWidth="149.0" promptText="EXPIRATION DATE" />
-      <Label fx:id="myLabel" layoutX="207.0" layoutY="318.0" prefHeight="18.0" prefWidth="157.0" textFill="#60e81c">
+      <Label fx:id="myLabel" layoutX="185.0" layoutY="318.0" prefHeight="27.0" prefWidth="179.0" textFill="#60e81c">
          <font>
-            <Font size="24.0" />
+            <Font size="18.0" />
          </font>
       </Label>
       <Label layoutX="19.0" layoutY="274.0" prefHeight="18.0" prefWidth="109.0" text="TOTAL AMOUNT:">

@@ -1,5 +1,6 @@
 package it.unipv.ingsfw.gasCorpCinema.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -11,7 +12,10 @@ import it.unipv.ingsfw.gasCorpCinema.view.SelectProjectionView;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -25,6 +29,9 @@ public class SelectProjectionController implements Initializable {
 	ListView<Projection> myListView;
 	@FXML
 	Button myButton;
+	@FXML
+	Label myLabelTotal;
+	private double total;
 	private Admin admin = new Admin();
 	private Stage stage;
 	private Projection projection;
@@ -90,6 +97,7 @@ public class SelectProjectionController implements Initializable {
 	                new SpinnerValueFactory.IntegerSpinnerValueFactory(1, admin.getNumberOfAvailableSeats(projection));
 	            valueFactory.setValue(1);
 	            mySpinner.setValueFactory(valueFactory);
+	            
 	        }
 	    }
 	 
@@ -97,17 +105,6 @@ public class SelectProjectionController implements Initializable {
         selectedMovie = movie;
     }
 	
-	public void pressButton() throws Exception {
-		stage = new Stage();
-		PaymentView v = new PaymentView();
-		
-		if(projection!=null) { 
-			v.start(stage);
-		}else {
-			myLabel.setText("YOU MUST SELECT A PROJECTION!");
-		}
-	}
-
 	public Projection getProjection() {
 		return projection;
 	}
@@ -119,6 +116,66 @@ public class SelectProjectionController implements Initializable {
 	
 	
 	
+	
+	
+	
+	public void pressButton() throws Exception {
+		
+		if(projection==null) { 
+			myLabel.setText("YOU MUST SELECT A PROJECTION!");
+		}
+		
+		if(mySpinner==null) { 
+			myLabel.setText("YOU MUST SELECT THE NUMBER OF TICKET YOU WANT!");
+		}
+		//total= admin.getPriceOfProjection(projection);
+		//myLabelTotal.setText(Double.toString(total));
+		//movie = film selezionato
+//		stage = new Stage();
+//		SelectProjectionView v = new SelectProjectionView();
+//		
+//		if(movie!=null) {
+//			v.start(stage);
+//		}else {
+//			myLabel.setText("SELECT A FILM!");
+//		}
+		//alla pressione del bottone se è stato selezionato un film cambia la vista per scegliere la proiezione
+		//altrimenit visutlaizza il messaggio SELECT A FILM	
+		changeSceneAdmin("../view/Payment.fxml",total);
+		
+	}
+	
+	public void changeSceneAdmin(String fxml,double total) throws IOException {
+//      Parent pane = FXMLLoader.load(getClass().getResource(fxml));
+  	 
+//		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+//		Parent root = loader.load();
+//		SelectProjectionController controller = loader.getController();
+//		controller.setSelectedMovie(movie);
+		
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+		//SelectProjectionController controller = new SelectProjectionController(movie);
+		//loader.setController(controller);
+		Parent root = loader.load();
+		PaymentController controller = loader.getController();
+		controller.setParameters(total);
+	    
+		Scene scene = new Scene(root);
+		stage = new Stage();
+		
+		stage.setScene(scene);
+		stage.show();
+		
+	    // Imposta la nuova scena
+//	    stage = new Stage();
+//		SelectProjectionView v = new SelectProjectionView();
+//		try {
+//			v.start(stage);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+	}
 	
 		
 }
