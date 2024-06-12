@@ -68,10 +68,11 @@ public class Admin {
 		
 		if(existingProjection != null) {
 			System.out.println("Sala " + projection.getIdHall() + " già occupata il " + projection.getDate() + " Alle " + projection.getTime());
-		}else if(canAddProjection(projection) == false) {
-			System.out.println("Cannot add projection: Time conflict with an existing projection.");
-		}else {
+		}else if(canAddProjection(projection) == null) {
 			projectionDAO.createProjection(projection);
+		}else {
+			System.out.println("Non è possibile aggiungere questa proiezione: Conflitto con proiezione " + canAddProjection(projection).toString());
+
         }
 	}
 	
@@ -84,16 +85,16 @@ public class Admin {
         return (start1.before(end2) && start2.before(end1));
     }
 	
-	public boolean canAddProjection(Projection projection) {
+	public Projection canAddProjection(Projection projection) {
         List<Projection> existingProjections = projectionDAO.getProjectionsByHallAndDate(projection.getIdHall(),projection.getDate());
         
         for (Projection existingProjection : existingProjections) {
             if (isOverlapping(existingProjection, projection)) {
-                return false;
+                return existingProjection;
             }
         }
         
-        return true;
+        return null;
     }
 	
 	public void deleteProjection(Projection projection) {
