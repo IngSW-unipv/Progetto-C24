@@ -96,8 +96,8 @@ public class SelectFilmController implements Initializable {
 //		}else {
 //			myLabel.setText("SELECT A FILM!");
 //		}
-		//alla pressione del bottone se è stato selezionato un film cambia la vista per scegliere la proiezione
-		//altrimenit visutlaizza il messaggio SELECT A FILM	
+		//alla pressione del bottone se è stato selezionato un film cambia la vista per
+		//scegliere la proiezione, altrimenit visutlaizza il messaggio SELECT A FILM	
 		changeSceneAdmin("../view/SelectProjection.fxml",selectedMovie);
 		
 	}
