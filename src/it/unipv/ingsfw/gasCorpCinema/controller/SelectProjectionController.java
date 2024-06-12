@@ -143,6 +143,9 @@ public class SelectProjectionController implements Initializable {
 		//altrimenit visutlaizza il messaggio SELECT A FILM	
 		changeSceneAdmin("../view/Payment.fxml",total);
 		
+		Stage currentStage = (Stage) myButton.getScene().getWindow();
+		currentStage.close();
+		
 	}
 	
 	public void changeSceneAdmin(String fxml,double total) throws IOException {

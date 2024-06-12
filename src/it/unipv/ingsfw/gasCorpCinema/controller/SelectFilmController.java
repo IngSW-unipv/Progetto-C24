@@ -100,6 +100,9 @@ public class SelectFilmController implements Initializable {
 		//scegliere la proiezione, altrimenit visutlaizza il messaggio SELECT A FILM	
 		changeSceneAdmin("../view/SelectProjection.fxml",selectedMovie);
 		
+		Stage currentStage = (Stage) buttonConfirm.getScene().getWindow();
+		currentStage.close();
+		
 	}
 	
 	public void changeSceneAdmin(String fxml,Movie movie) throws IOException {
