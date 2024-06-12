@@ -24,7 +24,7 @@
       <TextField layoutX="375.0" layoutY="200.0" prefHeight="26.0" prefWidth="44.0" promptText="CVV" />
       <Button fx:id="myButton" layoutX="482.0" layoutY="306.0" mnemonicParsing="false" onAction="#pressButton" text="PAY " />
       <DatePicker layoutX="211.0" layoutY="200.0" prefHeight="26.0" prefWidth="149.0" promptText="EXPIRATION DATE" />
-      <Label fx:id="myLabel" layoutX="185.0" layoutY="318.0" prefHeight="27.0" prefWidth="179.0" textFill="#60e81c">
+      <Label fx:id="myLabel" layoutX="28.0" layoutY="308.0" prefHeight="27.0" prefWidth="434.0" textFill="#60e81c">
          <font>
             <Font size="18.0" />
          </font>

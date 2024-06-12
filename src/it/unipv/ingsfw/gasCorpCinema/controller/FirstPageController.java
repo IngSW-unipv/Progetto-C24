@@ -4,7 +4,9 @@ import java.io.IOException;
 
 import it.unipv.ingsfw.gasCorpCinema.model.User;
 import it.unipv.ingsfw.gasCorpCinema.model.authentication.Authentication;
+import it.unipv.ingsfw.gasCorpCinema.view.AdminView;
 import it.unipv.ingsfw.gasCorpCinema.view.FirstPageView;
+import it.unipv.ingsfw.gasCorpCinema.view.SelectFilmView;
 import it.unipv.ingsfw.gasCorpCinema.view.UserRegistrationView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,7 +36,7 @@ public class FirstPageController {
 	private User user = new User();
 
     @FXML
-    public void loginButtonAction() throws IOException {
+    public void loginButtonAction() throws Exception {
         
     	String email = tf_username.getText();
         String password = field_password.getText();
@@ -71,7 +73,7 @@ public class FirstPageController {
     }
     
     // Metodo per cambiare scena con email per l'utente
-    public void changeSceneUser(String fxml,String email) throws IOException {
+    public void changeSceneUser(String fxml,String email) throws Exception {
   	
     	FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
     	Parent pane = loader.load();
@@ -83,12 +85,19 @@ public class FirstPageController {
           controller.setUserEmail(email);
       }
       
-      Stage stage = (Stage) button_login.getScene().getWindow();
-      stage.setScene(new Scene(pane));
+//      Stage stage = (Stage) button_login.getScene().getWindow();
+//      stage.setScene(new Scene(pane));
+      	Stage currentStage = (Stage) button_login.getScene().getWindow();
+      	
+      	stage = new Stage();
+		SelectFilmView s = new SelectFilmView();
+		s.start(stage);
+		
+		currentStage.close();
   }
     
     // Metodo per cambiare scena con email per l'admin
-    public void changeSceneAdmin(String fxml,String email) throws IOException {
+    public void changeSceneAdmin(String fxml,String email) throws Exception {
 //        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
     	 
     	FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
@@ -103,6 +112,13 @@ public class FirstPageController {
         
         Stage stage = (Stage) button_login.getScene().getWindow();
         stage.setScene(new Scene(pane));
+//        Stage currentStage = (Stage) button_login.getScene().getWindow();
+//      	
+//      	stage = new Stage();
+//		AdminView a = new AdminView();
+//		a.start(stage);
+//		
+//		currentStage.close();
     }
         
 }
