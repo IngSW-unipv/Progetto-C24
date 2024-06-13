@@ -5,7 +5,6 @@ import java.util.List;
 
 public interface IProjectionDAO {
 	
-//	public Projection getProjectionByHall(int idHall);
 	public Projection getProjectionByHallDateTime(int idHall,Date date,String time);
 	public List<Projection> getAllProjections();
 	public List<Projection> getAllProjectionsByMovie(String movieTitle);

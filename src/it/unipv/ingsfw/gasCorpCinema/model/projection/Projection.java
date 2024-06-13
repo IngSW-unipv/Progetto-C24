@@ -76,6 +76,6 @@ public class Projection {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "ID CinemaHall: " + idHall + " | " + "Seats: " + seats + " | " + "Movie title: " + movieTitle + " | " + "Date: " + date + " | " + "Time: " + time + " | " + "Price: " + price;
+		return "SALA: " + idHall + " | " + "POSTI: " + seats + " | " + "FILM: " + movieTitle + " | " + "DATA: " + date + " | " + "ORARIO: " + time + " | " + "PREZZO: " + price;
 	}
 }
