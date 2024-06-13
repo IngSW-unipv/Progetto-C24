@@ -81,21 +81,21 @@ public class FirstPageController {
     	Parent pane = loader.load();
   	
    // Ottieni il controller associato
-      if (fxml.contains("SelectFilmView")) {
+      if (fxml.contains("SelectFilm")) {
           SelectFilmController controller = loader.getController();
           // Passa la mail dell'admin al controller
           controller.setUserEmail(email);
       }
       
-//      Stage stage = (Stage) button_login.getScene().getWindow();
-//      stage.setScene(new Scene(pane));
-      	Stage currentStage = (Stage) button_login.getScene().getWindow();
-      	
-      	stage = new Stage();
-		SelectFilmView s = new SelectFilmView();
-		s.start(stage);
-		
-		currentStage.close();
+      Stage stage = (Stage) button_login.getScene().getWindow();
+      stage.setScene(new Scene(pane));
+//      	Stage currentStage = (Stage) button_login.getScene().getWindow();
+//      	
+//      	stage = new Stage();
+//		SelectFilmView s = new SelectFilmView();
+//		s.start(stage);
+//		
+//		currentStage.close();
   }
     
     // Metodo per cambiare scena con email per l'admin

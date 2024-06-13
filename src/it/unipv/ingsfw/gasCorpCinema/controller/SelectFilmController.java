@@ -40,8 +40,7 @@ public class SelectFilmController implements Initializable {
 	@FXML
 	private Button buttonConfirm;
 	@FXML
-	private Label myLabel;
-	private Label userLabel;
+	private Label myLabel, userLabel;
 	@FXML
 	private Button logoutButton;
 	

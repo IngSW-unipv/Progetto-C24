@@ -1,0 +1,13 @@
+.root {
+	-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #95ecb0, #f3f98a);
+}
+
+.button{
+	-fx-background-color: transparent; /* Colore di sfondo bianco */
+    -fx-border-color: white; /* Colore del bordo nero */
+    -fx-border-width: 0.5px; /* Spessore del bordo */
+}
+
+.button:hover{
+	-fx-background-color: rgba(255, 255, 255, 0.4); /* Bianco con un'opacità del 50% */
+}
