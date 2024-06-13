@@ -1,4 +1,4 @@
-# **G.A.S. CORP CINEMA** - Progetto-C24 &nbsp; <img align="top" src="Resources/Logo G.A.S. CORP CINEMA .png" width="50" />
+# **G.A.S. CORP CINEMA** - Progetto-C24 &nbsp; <img align="top" src="Resources/Logo G.A.S. CORP CINEMA.png" width="50" />
 
 <p float="left">
   <img alt="Static Badge" src="https://img.shields.io/badge/Backend-Java-00FF00?style=for-the-badge&logo=Eclipse&labelColor=rgb(40%2C%2040%2C%2040)">
