@@ -6,12 +6,14 @@ public class Movie {
 	private String genre;
 	private int duration;
 	private int year;
+	private int rating;
 	
-	public Movie(String title,String genre,int duration,int year) {
+	public Movie(String title,String genre,int duration,int year,int rating) {
 		this.title = title;
 		this.genre = genre;
 		this.duration = duration;
 		this.year = year;
+		this.rating = rating;
 	}
 
 	public String getTitle() {
@@ -29,11 +31,15 @@ public class Movie {
 	public int getYear() {
 		return year;
 	}
+	
+	public int getRating() {
+		return rating;
+	}
 
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "Titolo film: " + title + " | " + "Genere: " + genre + " | " + "Durata: " + duration + " minuti" + " | " + "Anno uscita: " + year;
+		return "TITOLO: " + title + " | " + "GENERE: " + genre + " | " + "DURATA: " + duration + " minuti" + " | " + "ANNO USCITA: " + year + " | " + " RATING: " + rating;
 	}
 	
 	
