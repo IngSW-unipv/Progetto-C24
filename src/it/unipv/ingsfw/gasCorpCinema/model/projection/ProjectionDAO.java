@@ -212,7 +212,7 @@ public class ProjectionDAO implements IProjectionDAO {
 	    	
 	    	while(rs1.next()) {
 	    		
-	    		availableSeats = rs1.getInt(3);
+	    		availableSeats = rs1.getInt("seats");
 	        }
 	    	
 	    } catch (SQLException e) {
@@ -243,7 +243,7 @@ public class ProjectionDAO implements IProjectionDAO {
 	    	
 	    	while(rs1.next()) {
 	    		
-	    		price = rs1.getDouble(7);
+	    		price = rs1.getDouble("price");
 	        }
 	    	
 	    } catch (SQLException e) {

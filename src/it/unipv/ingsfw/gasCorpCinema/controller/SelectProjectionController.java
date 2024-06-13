@@ -100,10 +100,24 @@ public class SelectProjectionController implements Initializable {
 	 private void updateSpinnerValueFactory() {
 	        if (projection != null) {
 	            SpinnerValueFactory<Integer> valueFactory = 
-	                new SpinnerValueFactory.IntegerSpinnerValueFactory(1, admin.getNumberOfAvailableSeats(projection));
+	            new SpinnerValueFactory.IntegerSpinnerValueFactory(1, admin.getNumberOfAvailableSeats(projection));
+	            
 	            valueFactory.setValue(1);
 	            mySpinner.setValueFactory(valueFactory);
 	            
+	            total = mySpinner.getValue() * projection.getPrice();
+	            myLabelTotal.setText(String.valueOf(total));
+	            
+	            mySpinner.valueProperty().addListener(new ChangeListener<Integer>(){
+
+	    			@Override
+	    			public void changed(ObservableValue<? extends Integer> arg0, Integer arg1, Integer arg2) {
+	    				// TODO Auto-generated method stub
+	    				
+	    				total = mySpinner.getValue() * projection.getPrice();
+	    	            myLabelTotal.setText(String.valueOf(total));
+	    			}
+	    		});
 	        }
 	    }
 	 
