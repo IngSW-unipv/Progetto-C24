@@ -35,6 +35,8 @@ public class FirstPageController {
 	private Parent root;
 	private User user = new User();
 
+	
+	//Fare al posto degli if il controllo con il file di properties.
     @FXML
     public void loginButtonAction() throws Exception {
         
