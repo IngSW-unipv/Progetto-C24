@@ -12,7 +12,7 @@ public class AddMovieViewController {
 	@FXML
 	private Button myButton;
 	@FXML
-	private TextField myTextField1,myTextField2,myTextField3,myTextField4;
+	private TextField myTextField1,myTextField2,myTextField3,myTextField4,myTextField5;
 	
 	private Admin admin = new Admin();
 	private Movie movie;
@@ -20,7 +20,7 @@ public class AddMovieViewController {
 	public void insertMovie() {
 		try {
 			
-			movie = new Movie(myTextField1.getText(),myTextField2.getText(),Integer.parseInt(myTextField3.getText()),Integer.parseInt(myTextField4.getText()));
+			movie = new Movie(myTextField1.getText(),myTextField2.getText(),Integer.parseInt(myTextField3.getText()),Integer.parseInt(myTextField4.getText()),Integer.parseInt(myTextField5.getText()));
 			admin.insertMovie(movie);
 			
 			

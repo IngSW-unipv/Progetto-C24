@@ -38,5 +38,11 @@
             <Font size="18.0" />
          </font>
       </Label>
+      <Label layoutX="159.0" layoutY="315.0" text="RATING">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="myTextField5" layoutX="254.0" layoutY="310.0" styleClass="textField" />
    </children>
 </AnchorPane>
