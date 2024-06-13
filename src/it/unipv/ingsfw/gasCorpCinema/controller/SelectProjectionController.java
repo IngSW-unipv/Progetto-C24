@@ -33,8 +33,7 @@ public class SelectProjectionController implements Initializable {
 	@FXML
 	ListView<Projection> myListView;
 	@FXML
-	private Button myButton;
-	private Button backButton;
+	private Button myButton, backButton;
 	@FXML
 	Label myLabelTotal;
 	private double total;
