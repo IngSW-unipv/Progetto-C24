@@ -18,15 +18,13 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class FirstPageController {
+	
 	@FXML
     private TextField tf_username;
-
     @FXML
     private PasswordField field_password;
-
     @FXML
     private Button button_login;
-
     @FXML
     private Button button_registrati;
     

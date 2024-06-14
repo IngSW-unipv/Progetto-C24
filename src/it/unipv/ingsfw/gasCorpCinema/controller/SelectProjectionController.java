@@ -139,11 +139,6 @@ public class SelectProjectionController implements Initializable {
 	}
 	//serve per aggiornare il nuemro di posti disponibili per  una data proiezione e per il pagamento 
 	
-	
-	
-	
-	
-	
 	public void pressButton() throws Exception {
 		
 		if(projection==null) { 
@@ -151,7 +146,7 @@ public class SelectProjectionController implements Initializable {
 		}else if(mySpinner==null) { 
 			myLabel.setText("YOU MUST SELECT THE NUMBER OF TICKET YOU WANT!");
 		}else {
-			changeSceneAdmin("../view/Payment.fxml");
+			changeScene("../view/Payment.fxml");
 			Stage currentStage = (Stage) myButton.getScene().getWindow();
 			currentStage.close();
 		}
@@ -160,21 +155,11 @@ public class SelectProjectionController implements Initializable {
 		//altrimenit visutlaizza il messaggio SELECT A FILM, discorso analogo per lo spinner		
 	}
 	
-	public void changeSceneAdmin(String fxml) throws IOException {
-//      Parent pane = FXMLLoader.load(getClass().getResource(fxml));
-  	 
-//		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-//		Parent root = loader.load();
-//		SelectProjectionController controller = loader.getController();
-//		controller.setSelectedMovie(movie);
+	public void changeScene(String fxml) throws IOException {
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-		//SelectProjectionController controller = new SelectProjectionController(movie);
-		//loader.setController(controller);
 		Parent root = loader.load();
 		
-		//PaymentController controller = loader.getController();
-		//controller.setParameters(total, numberOfTickets);
 	    saleProcess.setNumberOfTickets(numberOfTickets);
 	    saleProcess.setTotal(total);
 	    saleProcess.setProjection(projection);
