@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import it.unipv.ingsfw.gasCorpCinema.model.Admin;
+import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
 import it.unipv.ingsfw.gasCorpCinema.view.AddMovieView;
 import it.unipv.ingsfw.gasCorpCinema.view.FirstPageView;
@@ -48,32 +49,20 @@ public class SelectFilmController implements Initializable {
 	private Admin admin = new Admin();
 	private Stage stage;
 	private String userEmail;
+	private SaleProcess saleProcess;
 	
 	 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		saleProcess=SaleProcess.getInstance();
 		myListView.getItems().addAll(admin.getAllMovies());
 		
 		if (myListView.getItems().isEmpty()) {
             myLabel.setText("Nessun film disponibile");
 		}
-		
-		myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Movie>(){
-
-			@Override
-			public void changed(ObservableValue<? extends Movie> arg0, Movie arg1, Movie arg2) {
-				// TODO Auto-generated method stub
-				
-				if (myListView.getItems().isEmpty()) {
-	                myLabel.setText("Nessun film disponibile");
-	            } else {
-	            	selectedMovie = myListView.getSelectionModel().getSelectedItem();
-					myLabel.setText(String.valueOf(selectedMovie));
-	            }
-			}
-		});
 	}
-	//ListView=lista di film disponibili al cinema 
+	
+	
 	
 	public void setUserEmail(String email) {
         this.userEmail = email;
@@ -86,42 +75,37 @@ public class SelectFilmController implements Initializable {
 	//serve per far si che nel SelectProjectionController si sappia di che film si tratta	
 	
 	public void pressButton() throws Exception {
-		//movie = film selezionato
-//		stage = new Stage();
-//		SelectProjectionView v = new SelectProjectionView();
-//		
-//		if(movie!=null) {
-//			v.start(stage);
-//		}else {
-//			myLabel.setText("SELECT A FILM!");
-//		}
+		selectedMovie = myListView.getSelectionModel().getSelectedItem();
+		if(selectedMovie!=null) {
+			changeSceneAdmin("../view/SelectProjection.fxml");
+		}else {
+			myLabel.setText("SELECT A FILM!");
+		}
 		//alla pressione del bottone se è stato selezionato un film cambia la vista per
 		//scegliere la proiezione, altrimenit visutlaizza il messaggio SELECT A FILM	
-		changeSceneAdmin("../view/SelectProjection.fxml",selectedMovie);
-		
 		Stage currentStage = (Stage) buttonConfirm.getScene().getWindow();
 		currentStage.close();
 		
 	}
 	
-	public void changeSceneAdmin(String fxml,Movie movie) throws IOException {
+	public void changeSceneAdmin(String fxml) throws IOException {
 //      Parent pane = FXMLLoader.load(getClass().getResource(fxml));
   	 
 //		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
 //		Parent root = loader.load();
 //		SelectProjectionController controller = loader.getController();
 //		controller.setSelectedMovie(movie);
+		saleProcess.setMovie(selectedMovie);
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
 		//SelectProjectionController controller = new SelectProjectionController(movie);
 		//loader.setController(controller);
 		Parent root = loader.load();
-		SelectProjectionController controller = loader.getController();
-		controller.setParameters(movie);
-	    
-		Scene scene = new Scene(root);
-		stage = new Stage();
+		//SelectProjectionController controller = loader.getController();
+		//controller.setParameters(movie);
 		
+	    Scene scene = new Scene(root);
+		stage = new Stage();
 		stage.setScene(scene);
 		stage.show();
 		

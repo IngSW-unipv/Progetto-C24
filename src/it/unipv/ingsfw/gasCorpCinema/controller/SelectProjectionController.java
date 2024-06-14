@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import it.unipv.ingsfw.gasCorpCinema.model.Admin;
+import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
 import it.unipv.ingsfw.gasCorpCinema.model.projection.Projection;
 import it.unipv.ingsfw.gasCorpCinema.view.FirstPageView;
@@ -36,24 +37,29 @@ public class SelectProjectionController implements Initializable {
 	private Button myButton, backButton;
 	@FXML
 	Label myLabelTotal;
-	private double total;
-	private Admin admin = new Admin();
-	private Stage stage;
-	private Projection projection;
 	@FXML
 	private Spinner<Integer> mySpinner;
 	@FXML
 	private Label myLabel;
 	
+	private double total;
+	private Admin admin = new Admin();
+	private Stage stage;
 	private Movie selectedMovie;
+	private Projection projection;
+	private int numberOfTickets;
+	private SaleProcess saleProcess;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
+		saleProcess=SaleProcess.getInstance();
+		selectedMovie=saleProcess.getMovie();
 		if(selectedMovie != null) {
 			myListView.getItems().addAll(admin.getprojectionsByMovie(selectedMovie));
 			setListViewListener();
 		}
+		
 		
 //		myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Projection>() {
 //            @Override
@@ -82,7 +88,7 @@ public class SelectProjectionController implements Initializable {
 			myListView.getItems().addAll(admin.getprojectionsByMovie(selectedMovie));
 			setListViewListener();
 		}
-	}
+	}//con sale process questo non serve
 	
 	 private void setListViewListener() {
 	        myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Projection>() {
@@ -100,13 +106,12 @@ public class SelectProjectionController implements Initializable {
 	        if (projection != null) {
 	            SpinnerValueFactory<Integer> valueFactory = 
 	            new SpinnerValueFactory.IntegerSpinnerValueFactory(1, admin.getNumberOfAvailableSeats(projection));
-	            
 	            valueFactory.setValue(1);
 	            mySpinner.setValueFactory(valueFactory);
 	            
-	            total = mySpinner.getValue() * projection.getPrice();
+	            numberOfTickets= mySpinner.getValue();
+	            total = numberOfTickets * projection.getPrice();
 	            myLabelTotal.setText(String.valueOf(total));
-	            
 	            mySpinner.valueProperty().addListener(new ChangeListener<Integer>(){
 
 	    			@Override
@@ -123,6 +128,7 @@ public class SelectProjectionController implements Initializable {
 	public void setSelectedMovie(Movie movie) {
         selectedMovie = movie;
     }
+	//con sale process qeusto non serve
 	
 	public Projection getProjection() {
 		return projection;
@@ -142,32 +148,19 @@ public class SelectProjectionController implements Initializable {
 		
 		if(projection==null) { 
 			myLabel.setText("YOU MUST SELECT A PROJECTION!");
-		}
-		
-		if(mySpinner==null) { 
+		}else if(mySpinner==null) { 
 			myLabel.setText("YOU MUST SELECT THE NUMBER OF TICKET YOU WANT!");
+		}else {
+			changeSceneAdmin("../view/Payment.fxml");
+			Stage currentStage = (Stage) myButton.getScene().getWindow();
+			currentStage.close();
 		}
-		//total= admin.getPriceOfProjection(projection);
-		//myLabelTotal.setText(Double.toString(total));
-		//movie = film selezionato
-//		stage = new Stage();
-//		SelectProjectionView v = new SelectProjectionView();
-//		
-//		if(movie!=null) {
-//			v.start(stage);
-//		}else {
-//			myLabel.setText("SELECT A FILM!");
-//		}
+		
 		//alla pressione del bottone se è stato selezionato un film cambia la vista per scegliere la proiezione
-		//altrimenit visutlaizza il messaggio SELECT A FILM	
-		changeSceneAdmin("../view/Payment.fxml",total);
-		
-		Stage currentStage = (Stage) myButton.getScene().getWindow();
-		currentStage.close();
-		
+		//altrimenit visutlaizza il messaggio SELECT A FILM, discorso analogo per lo spinner		
 	}
 	
-	public void changeSceneAdmin(String fxml,double total) throws IOException {
+	public void changeSceneAdmin(String fxml) throws IOException {
 //      Parent pane = FXMLLoader.load(getClass().getResource(fxml));
   	 
 //		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
@@ -179,24 +172,20 @@ public class SelectProjectionController implements Initializable {
 		//SelectProjectionController controller = new SelectProjectionController(movie);
 		//loader.setController(controller);
 		Parent root = loader.load();
-		PaymentController controller = loader.getController();
-		controller.setParameters(total);
-	    
+		
+		//PaymentController controller = loader.getController();
+		//controller.setParameters(total, numberOfTickets);
+	    saleProcess.setNumberOfTickets(numberOfTickets);
+	    saleProcess.setTotal(total);
+	    saleProcess.setProjection(projection);
+		
 		Scene scene = new Scene(root);
 		stage = new Stage();
 		
 		stage.setScene(scene);
 		stage.show();
 		
-	    // Imposta la nuova scena
-//	    stage = new Stage();
-//		SelectProjectionView v = new SelectProjectionView();
-//		try {
-//			v.start(stage);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+
 	}
 	public void backView() throws Exception {
 		

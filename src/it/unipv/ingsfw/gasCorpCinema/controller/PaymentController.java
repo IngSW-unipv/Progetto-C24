@@ -5,9 +5,7 @@ package it.unipv.ingsfw.gasCorpCinema.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import it.unipv.ingsfw.gasCorpCinema.model.Admin;
-import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
-import it.unipv.ingsfw.gasCorpCinema.model.projection.Projection;
+import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
 import it.unipv.ingsfw.gasCorpCinema.view.SelectFilmView;
 import it.unipv.ingsfw.gasCorpCinema.view.SelectProjectionView;
 import javafx.fxml.FXML;
@@ -24,41 +22,46 @@ public class PaymentController implements Initializable {
 	@FXML
 	private Label myLabelTotal;
 	private Stage stage;
-	private SelectProjectionController projectionController;
 	private double total;
+	private int numberOfTikcets;
+	private SaleProcess saleProcess;
 	
 	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		saleProcess=SaleProcess.getInstance();
+		numberOfTikcets=saleProcess.getNumberOfTickets();
+		total=saleProcess.getTotal();
 		myLabelTotal.setText(Double.toString(total));
-		
 	}
 	
-	public void setParameters(double total) {
+	public void setParameters(double total, int numberOfTickets) {
 		this.total=total;
-		
+		this.numberOfTikcets=numberOfTickets;
+		//con il sale process non serve questo metodo 
 	}
+	
 	
 	public void pressButton() throws Exception {
+		Thread.sleep(1500);
 		myLabel.setText("SUCCESSFUL PAYMENT ✅");
 		Thread.sleep(1500);
-		//si legge il messaggio "SUCCESSFUL PAYMENT" e dopo 1.5 sec cambia view
-		//Thread.sleep(1500);
+		//premo il bottone e dopo 1.5 sec si visualizza "SUCCESSFUL PAYMENT" e dopo altri 1.5 sec cambia view
+		
+		saleProcess.saleRegistration();
+		//l'ideale sarebbe che il metodo saleRegistration restituisca un booleano a secodna che la registrazione
+		//della vendiota vada a buon fine
 		stage = new Stage();
 		SelectFilmView v = new SelectFilmView();
 		v.start(stage);
 	}
 	
-	public void backView() throws Exception {
-		
-		
+	public void backView() throws Exception {		
 		Stage currentStage = (Stage) backButton.getScene().getWindow();
-		
 		stage = new Stage();
 		SelectProjectionView s = new SelectProjectionView();
 		s.start(stage);	
-		
 		currentStage.close();
 }
 	
