@@ -12,9 +12,9 @@ public class Register {
 		return instance;
 	}
 	
-	
 	public void saleRegistration() {
 		//codice di interazione con register dao
+		System.out.println("Success");
 	} 
 	
 }

@@ -1,7 +1,5 @@
 package it.unipv.ingsfw.gasCorpCinema.controller;
 
-
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -26,8 +24,6 @@ public class PaymentController implements Initializable {
 	private int numberOfTikcets;
 	private SaleProcess saleProcess;
 	
-	
-	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		saleProcess=SaleProcess.getInstance();
@@ -35,13 +31,6 @@ public class PaymentController implements Initializable {
 		total=saleProcess.getTotal();
 		myLabelTotal.setText(Double.toString(total));
 	}
-	
-	public void setParameters(double total, int numberOfTickets) {
-		this.total=total;
-		this.numberOfTikcets=numberOfTickets;
-		//con il sale process non serve questo metodo 
-	}
-	
 	
 	public void pressButton() throws Exception {
 		Thread.sleep(1500);
@@ -63,11 +52,5 @@ public class PaymentController implements Initializable {
 		SelectProjectionView s = new SelectProjectionView();
 		s.start(stage);	
 		currentStage.close();
-}
-	
-	
-	
-
-	
-	
+	}	
 }
