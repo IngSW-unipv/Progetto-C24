@@ -48,7 +48,7 @@ public class SaleProcess {
 	}
 
 	public void setProjection(Projection projection) {
-		projection = projection;
+		this.projection = projection;
 	}
 
 	public int getNumberOfTickets() {
