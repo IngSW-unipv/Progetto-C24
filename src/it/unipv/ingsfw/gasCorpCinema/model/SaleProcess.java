@@ -1,7 +1,9 @@
 package it.unipv.ingsfw.gasCorpCinema.model;
 
+import it.unipv.ingsfw.gasCorpCinema.model.movie.IMovieDAO;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
 import it.unipv.ingsfw.gasCorpCinema.model.projection.Projection;
+import it.unipv.ingsfw.gasCorpCinema.model.register.Register;
 
 public class SaleProcess {
 	//la funzione di questa classe è quella di salvare tutte le info necessarie man mano 
@@ -23,9 +25,10 @@ public class SaleProcess {
 	//arriva da select fil projection
 	private int numberOfTickets;
 	private double total;
-	private Projection Projection;
+	private Projection projection;
 	//questi ultimi 3 arrivano da select projection controller
 	private Register register;
+	private IMovieDAO movieDAO;
 	
 	
 	private SaleProcess() {
@@ -45,7 +48,7 @@ public class SaleProcess {
 	}
 
 	public void setProjection(Projection projection) {
-		Projection = projection;
+		projection = projection;
 	}
 
 	public int getNumberOfTickets() {
@@ -53,7 +56,7 @@ public class SaleProcess {
 	}
 
 	public Projection getProjection() {
-		return Projection;
+		return projection;
 	}
 
 	public double getTotal() {
@@ -77,7 +80,7 @@ public class SaleProcess {
 
 
 	public void saleRegistration() {
-		register.saleRegistration();
+		register.saleRegistration(projection, numberOfTickets,total);
 	}
 	
 	
