@@ -35,12 +35,13 @@ public class Admin {
 		return movies;
 	}
 	
-	public void insertMovie(Movie movie) {
+	public boolean insertMovie(Movie movie) {
 		Movie existingMovie = movieDAO.getMovieByTitle(movie.getTitle());
 		if(existingMovie != null) {
-			System.out.println("Il film " + movie.getTitle() + " esiste già");
+			return false;
 		}else {
 			movieDAO.insertMovie(movie);
+			return true;
 		}
 	}
 	
@@ -63,16 +64,17 @@ public class Admin {
 		return projections;
 	}
 	
-	public void createProjection(Projection projection) {
+	public boolean createProjection(Projection projection) {
 		Projection existingProjection = projectionDAO.getProjectionByHallDateTime(projection.getIdHall(),projection.getDate(),projection.getTime());
 		
 		if(existingProjection != null) {
-			System.out.println("Sala " + projection.getIdHall() + " già occupata il " + projection.getDate() + " Alle " + projection.getTime());
+			return false;
 		}else if(canAddProjection(projection) == null) {
 			projectionDAO.createProjection(projection);
+			return true;
 		}else {
 			System.out.println("Non è possibile aggiungere questa proiezione: Conflitto con proiezione " + canAddProjection(projection).toString());
-
+			return false;
         }
 	}
 	

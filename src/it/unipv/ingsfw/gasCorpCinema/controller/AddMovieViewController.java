@@ -25,7 +25,13 @@ public class AddMovieViewController {
                 		Time.valueOf(myTextField3.getText() + ":00"),
                 		Integer.parseInt(myTextField4.getText()),
                 		Integer.parseInt(myTextField5.getText()));
-                admin.insertMovie(movie);
+                boolean result = admin.insertMovie(movie);
+                
+                if (result) {
+                    showAlertSuccess("Successo", "Film Inserito", movie.toString());
+                } else {
+                	showAlert("Errore di Inserimento", "Il film " + movie.getTitle() + " Esiste già", "Prova ad inserire un altro film");
+                }
             }
         } catch (NumberFormatException e) {
             showAlert("Errore di Formato", "Formato Numero Non Valido", "Verifica che i campi numerici contengano numeri validi.");
@@ -48,7 +54,7 @@ public class AddMovieViewController {
             return false;
         }
         if (!isValidTimeFormat(myTextField3.getText())) {
-            showAlert("Errore di Formato", "Formato Orario Non Valido", "Verifica che il campo Durata sia nel formato HH:MM o H:MM.");
+            showAlert("Errore di Formato", "Formato Durata Non Valido", "Verifica che il campo Durata sia nel formato HH:MM o H:MM.");
             return false;
         }
         if (isFieldEmpty(myTextField4)) {
@@ -84,6 +90,14 @@ public class AddMovieViewController {
     
     private void showAlert(String title, String header, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.show();
+    }
+    
+    private void showAlertSuccess(String title, String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(header);
         alert.setContentText(content);
