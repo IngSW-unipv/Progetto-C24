@@ -2,6 +2,7 @@ package it.unipv.ingsfw.gasCorpCinema.controller;
 
 import java.net.URL;
 import java.sql.Date;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
@@ -62,7 +63,7 @@ public class AddProjectionViewController implements Initializable {
 	
 	public void createProjection() {
 		Projection myProjection = new Projection(myChoiceBox1.getValue().getIdHall(),myChoiceBox1.getValue().getCapacity(),
-		myChoiceBox2.getValue().getTitle(),Date.valueOf(myDatePicker.getValue()),myTextField1.getText(),Double.parseDouble(myTextField2.getText()));
+		myChoiceBox2.getValue().getTitle(),Date.valueOf(myDatePicker.getValue()),Time.valueOf(myTextField1.getText() + ":00"),Double.parseDouble(myTextField2.getText()));
 		admin.createProjection(myProjection);
 	}
 }

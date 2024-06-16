@@ -1,5 +1,7 @@
 package it.unipv.ingsfw.gasCorpCinema.controller;
 
+import java.sql.Time;
+
 import it.unipv.ingsfw.gasCorpCinema.model.Admin;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
 import javafx.fxml.FXML;
@@ -20,7 +22,7 @@ public class AddMovieViewController {
 	public void insertMovie() {
 		try {
 			
-			movie = new Movie(myTextField1.getText(),myTextField2.getText(),Integer.parseInt(myTextField3.getText()),Integer.parseInt(myTextField4.getText()),Integer.parseInt(myTextField5.getText()));
+			movie = new Movie(myTextField1.getText(),myTextField2.getText(),Time.valueOf(myTextField3.getText() + ":00"),Integer.parseInt(myTextField4.getText()),Integer.parseInt(myTextField5.getText()));
 			admin.insertMovie(movie);
 			
 			
