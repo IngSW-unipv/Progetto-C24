@@ -41,7 +41,7 @@ public class Movie {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "TITOLO: " + title + " | " + "GENERE: " + genre + " | " + "DURATA: " + duration + " minuti" + " | " + "ANNO USCITA: " + year + " | " + " RATING: " + rating;
+		return "TITOLO: " + title + " | " + "GENERE: " + genre + " | " + "DURATA: " + duration + " | " + "ANNO USCITA: " + year + " | " + " RATING: " + rating;
 	}
 	
 	
