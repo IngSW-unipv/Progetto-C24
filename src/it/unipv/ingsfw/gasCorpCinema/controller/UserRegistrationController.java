@@ -31,9 +31,6 @@ public class UserRegistrationController {
 	private Stage stage;
 	private User user = new User();
 
-//Voglio fare che quando la registrazione avviene con successo faccio comparire un alert
-//a schermo, mentre nei casi in cui sia andato male qualcosa usare il displayError
-
 	@FXML
     public void registerButtonAction() {
 		

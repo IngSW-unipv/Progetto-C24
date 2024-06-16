@@ -10,6 +10,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -29,17 +31,21 @@ public class FirstPageController {
     private Stage stage;
 	private User user = new User();
 	
-	//Fare al posto degli if il controllo con il file di properties.
     @FXML
     public void loginButtonAction() throws Exception {
         
+    	Alert alert = new Alert(AlertType.ERROR);
+    	alert.setTitle("Errore");
+		alert.setHeaderText("C'è stato un errore durante il login");
+		alert.setContentText("Credenziali errate, prova ad inserirle nuovamente o se non l'hai già fatto registrati!");
+    	
     	String email = tf_username.getText();
         String password = field_password.getText();
         String role = user.login(email, password);
         
         Properties p = new Properties(System.getProperties());
         
-        p.load(new FileInputStream("Properties/Properties"));
+        p.load(new FileInputStream("Properties/Properties1"));
         
         if (role != null) {
         	
@@ -48,10 +54,10 @@ public class FirstPageController {
             
             if (viewPath != null) {
                 changeScene(viewPath, email);
-            }else {
+            }
+        } else {
             // Mostra un messaggio di errore se il login fallisce
-            System.out.println("Login fallito. Controlla le tue credenziali oppure registrati!");
-            }    
+            alert.show();
         }
     }
     
