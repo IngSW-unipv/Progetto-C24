@@ -30,7 +30,7 @@ public class FirstPageController {
     
     private Stage stage;
 	private User user = new User();
-	//
+	
     @FXML
     public void loginButtonAction() throws Exception {
         
