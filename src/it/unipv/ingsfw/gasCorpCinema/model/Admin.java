@@ -64,17 +64,13 @@ public class Admin {
 		return projections;
 	}
 	
-	public boolean createProjection(Projection projection) {
-		Projection existingProjection = projectionDAO.getProjectionByHallDateTime(projection.getIdHall(),projection.getDate(),projection.getTime());
+	public String createProjection(Projection projection) {
 		
-		if(existingProjection != null) {
-			return false;
-		}else if(canAddProjection(projection) == null) {
+		if(canAddProjection(projection) == null) {
 			projectionDAO.createProjection(projection);
-			return true;
+			return null;
 		}else {
-			System.out.println("Non è possibile aggiungere questa proiezione: Conflitto con proiezione " + canAddProjection(projection).toString());
-			return false;
+			return canAddProjection(projection).toString();		
         }
 	}
 	

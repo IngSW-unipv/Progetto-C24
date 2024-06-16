@@ -69,7 +69,15 @@ public class AddProjectionViewController implements Initializable {
                     Date.valueOf(myDatePicker.getValue()),
                     Time.valueOf(myTextField1.getText() + ":00"),
                     Double.parseDouble(myTextField2.getText()));
-                admin.createProjection(myProjection);
+                
+                String result = admin.createProjection(myProjection);
+                
+                if(result == null) {
+                	showAlertSuccess("Successo","Proiezione aggiunta",myProjection.toString());
+                }else {
+                	showAlert("Non è possibile aggiungere questa proiezione" , 
+              			  "Conflitto con proiezione già presente in quella fascia oraria", result);
+                }
             } catch (NumberFormatException e) {
                 showAlert("Errore di Formato", "Formato Numero Non Valido", "Verifica che i campi numerici contengano numeri validi.");
             } catch (IllegalArgumentException e) {
@@ -124,6 +132,14 @@ public class AddProjectionViewController implements Initializable {
 
     private void showAlert(String title, String header, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.show();
+    }
+    
+    private void showAlertSuccess(String title, String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(header);
         alert.setContentText(content);
