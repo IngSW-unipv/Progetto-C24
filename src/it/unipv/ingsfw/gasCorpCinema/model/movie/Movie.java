@@ -1,14 +1,16 @@
 package it.unipv.ingsfw.gasCorpCinema.model.movie;
 
+import java.sql.Time;
+
 public class Movie {
 	
 	private String title;
 	private String genre;
-	private int duration;
+	private Time duration;
 	private int year;
 	private int rating;
 	
-	public Movie(String title,String genre,int duration,int year,int rating) {
+	public Movie(String title,String genre,Time duration,int year,int rating) {
 		this.title = title;
 		this.genre = genre;
 		this.duration = duration;
@@ -24,7 +26,7 @@ public class Movie {
 		return genre;
 	}
 
-	public int getDuration() {
+	public Time getDuration() {
 		return duration;
 	}
 

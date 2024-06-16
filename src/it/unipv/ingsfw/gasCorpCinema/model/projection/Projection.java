@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.Calendar;
 
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
@@ -15,10 +16,10 @@ public class Projection {
 	private int seats;
 	private String movieTitle;
 	private Date date;
-	private String time;
+	private Time time;
 	private double price;
 	
-	public Projection(int idHall,int seats,String movieTitle,Date date,String time,double price) {
+	public Projection(int idHall,int seats,String movieTitle,Date date,Time time,double price) {
 		this.idHall = idHall;
 		this.seats = seats;
 		this.movieTitle = movieTitle;
@@ -43,7 +44,7 @@ public class Projection {
 		return date;
 	}
 	
-	public String getTime() {
+	public Time getTime() {
 		return time;
 	}
 
@@ -51,26 +52,32 @@ public class Projection {
 		return price;
 	}
 	
-	public Time getStartTime(){
-		try {
-            SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
-            java.util.Date utilDate = formatter.parse(time);
-            return new Time(utilDate.getTime());
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return null;
-        }
+	public Time getStartTime() {
+		LocalTime localTime1 = time.toLocalTime();
+		
+		LocalTime addAdsTime = localTime1.plusMinutes(25);
+		Time startTime = Time.valueOf(addAdsTime);
+	
+		return startTime;
 	}
 	
 	public Time getEndTime(Movie movie){
-		int duration = movie.getDuration();
+		Time duration = movie.getDuration();
+        Time time = getStartTime();
         
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(getStartTime());
-        calendar.add(Calendar.MINUTE, duration);
+		// Converti java.sql.Time in java.time.LocalTime
+        LocalTime localTime1 = time.toLocalTime();
+        LocalTime localTime2 = duration.toLocalTime();
         
-        // Ottieni l'orario di fine come un oggetto Time
-        return new Time(calendar.getTimeInMillis());
+        LocalTime endMovieTime = localTime1.plusHours(localTime2.getHour())
+                			.plusMinutes(localTime2.getMinute())
+                			.plusSeconds(localTime2.getSecond());
+        
+        LocalTime addTimeToFreeTheHall = endMovieTime.plusMinutes(15);
+        
+        Time endTime = Time.valueOf(addTimeToFreeTheHall);
+        
+        return endTime;
 	}
 
 	@Override
