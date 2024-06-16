@@ -1,6 +1,8 @@
 package it.unipv.ingsfw.gasCorpCinema.controller;
 
 import java.io.IOException;
+import java.io.FileInputStream;
+import java.util.Properties;
 
 import it.unipv.ingsfw.gasCorpCinema.model.User;
 import it.unipv.ingsfw.gasCorpCinema.model.authentication.Authentication;
@@ -29,10 +31,7 @@ public class FirstPageController {
     private Button button_registrati;
     
     private Stage stage;
-	private Scene scene;
-	private Parent root;
 	private User user = new User();
-
 	
 	//Fare al posto degli if il controllo con il file di properties.
     @FXML
@@ -41,19 +40,23 @@ public class FirstPageController {
     	String email = tf_username.getText();
         String password = field_password.getText();
         String role = user.login(email, password);
-
+        
+        Properties p = new Properties(System.getProperties());
+        
+        p.load(new FileInputStream("Properties/Properties"));
+        
         if (role != null) {
-            if (role.equals("admin")) {
-                // Se l'utente è un admin, cambia la scena alla pagina dell'admin
-                changeSceneAdmin("../view/AdminView.fxml",email);
-            } else {
-                // Altrimenti, cambia la scena alla pagina dell'utente normale
-                changeSceneUser("../view/SelectFilm.fxml", email);
-            }
-        } else {
+        	
+        	// Ottieni il percorso della vista associata al ruolo
+            String viewPath = p.getProperty(role);
+            
+            if (viewPath != null) {
+                changeScene(viewPath, email);
+            }else {
             // Mostra un messaggio di errore se il login fallisce
             System.out.println("Login fallito. Controlla le tue credenziali oppure registrati!");
-        }    
+            }    
+        }
     }
     
     @FXML
@@ -72,54 +75,28 @@ public class FirstPageController {
         }
     }
     
-    // Metodo per cambiare scena con email per l'utente
-    public void changeSceneUser(String fxml,String email) throws Exception {
-  	
+    public void changeScene(String fxml,String email) throws Exception {
+      	
     	FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
     	Parent pane = loader.load();
-  	
-   // Ottieni il controller associato
-      if (fxml.contains("SelectFilm")) {
-          SelectFilmController controller = loader.getController();
-          // Passa la mail dell'admin al controller
-          controller.setUserEmail(email);
-      }
-      
-      Stage stage = (Stage) button_login.getScene().getWindow();
-      stage.setScene(new Scene(pane));
-//      	Stage currentStage = (Stage) button_login.getScene().getWindow();
-//      	
-//      	stage = new Stage();
-//		SelectFilmView s = new SelectFilmView();
-//		s.start(stage);
-//		
-//		currentStage.close();
-  }
-    
-    // Metodo per cambiare scena con email per l'admin
-    public void changeSceneAdmin(String fxml,String email) throws Exception {
-//        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
-    	 
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-    	Parent pane = loader.load();
-    	
-     // Ottieni il controller associato
-        if (fxml.contains("AdminView")) {
-            AdminViewController controller = loader.getController();
-            // Passa la mail dell'admin al controller
-            controller.setAdminEmail(email);
-        }
-        
-        Stage stage = (Stage) button_login.getScene().getWindow();
-        stage.setScene(new Scene(pane));
-//        Stage currentStage = (Stage) button_login.getScene().getWindow();
-//      	
-//      	stage = new Stage();
-//		AdminView a = new AdminView();
-//		a.start(stage);
-//		
-//		currentStage.close();
-    }
-        
-}
 
+    	try {
+    		
+    		Object controller = loader.getController();
+    		((AdminViewController)controller).setAdminEmail(email);
+    		
+    	}catch(ClassCastException e){
+    	}
+    	
+    	try {
+    		
+    		Object controller = loader.getController();
+        	((SelectFilmController)controller).setUserEmail(email);
+        	
+    	}catch(ClassCastException e){
+    	}
+    	
+    	Stage stage = (Stage) button_login.getScene().getWindow();
+    	stage.setScene(new Scene(pane));
+    }
+}
