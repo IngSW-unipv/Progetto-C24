@@ -16,7 +16,7 @@ public class AllProjectionsView extends Application {
 		// TODO Auto-generated method stub
 		Parent root = FXMLLoader.load(getClass().getResource("AllProjectionsView.fxml"));
 		Scene scene = new Scene(root);
-		String imagePath = Paths.get("Resources/Logo G.A.S. CORP CINEMA .png").toUri().toString();
+		String imagePath = Paths.get("Resources/Logo G.A.S. CORP CINEMA.png").toUri().toString();
         Image icon = new Image(imagePath);
         
 		String css = this.getClass().getResource("AllProjectionsView.css").toExternalForm();

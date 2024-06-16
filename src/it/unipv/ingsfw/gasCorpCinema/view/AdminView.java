@@ -18,7 +18,7 @@ public class AdminView extends Application {
 		Parent root = FXMLLoader.load(getClass().getResource("AdminView.fxml"));
 		Scene scene = new Scene(root);
 		//Image icon = new Image("Logo G.A.S. CORP CINEMA .png");
-		String imagePath = Paths.get("Resources/Logo G.A.S. CORP CINEMA .png").toUri().toString();
+		String imagePath = Paths.get("Resources/Logo G.A.S. CORP CINEMA.png").toUri().toString();
         Image icon = new Image(imagePath);
 		
 		String css = this.getClass().getResource("AdminView.css").toExternalForm();

@@ -16,7 +16,7 @@ public class SelectProjectionView extends Application {
 		// TODO Auto-generated method stub
 		Parent root = FXMLLoader.load(getClass().getResource("SelectProjection.fxml"));
 		Scene scene = new Scene(root);
-		String imagePath = Paths.get("Resources/Logo G.A.S. CORP CINEMA .png").toUri().toString();
+		String imagePath = Paths.get("Resources/Logo G.A.S. CORP CINEMA.png").toUri().toString();
         Image icon = new Image(imagePath);
         
 		String css = this.getClass().getResource("AdminView.css").toExternalForm();
