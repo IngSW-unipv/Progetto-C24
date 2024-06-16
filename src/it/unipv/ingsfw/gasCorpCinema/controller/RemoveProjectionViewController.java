@@ -9,9 +9,11 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Alert.AlertType;
 
 public class RemoveProjectionViewController implements Initializable {
 	
@@ -51,7 +53,17 @@ public class RemoveProjectionViewController implements Initializable {
 	}
 	
 	public void removeProjection() {
-		admin.deleteProjection(selectedProjection);
-		myListView.getItems().remove(selectedProjection);
+		
+		Alert alert = new Alert(AlertType.ERROR);
+    	alert.setTitle("Errore");
+		alert.setHeaderText("C'è stato un errore durante la rimozione della proiezione");
+		alert.setContentText("Seleziona una proiezione da eliminare prima di confermare!");
+		
+		if(selectedProjection != null) {
+			admin.deleteProjection(selectedProjection);
+			myListView.getItems().remove(selectedProjection);
+		}else {
+			alert.show();
+		}
 	}
 }

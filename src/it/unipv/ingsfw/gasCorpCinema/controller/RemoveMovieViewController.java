@@ -10,10 +10,12 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Alert.AlertType;
 
 
 public class RemoveMovieViewController implements Initializable {
@@ -54,8 +56,16 @@ public class RemoveMovieViewController implements Initializable {
 	}
 	
 	public void removeMovie() {
-		admin.deleteMovie(selectedMovie);
-		myListView.getItems().remove(selectedMovie);
+		Alert alert = new Alert(AlertType.ERROR);
+    	alert.setTitle("Errore");
+		alert.setHeaderText("C'è stato un errore durante la rimozione del film");
+		alert.setContentText("Seleziona un film da eliminare prima di confermare!");
+		
+		if(selectedMovie != null) {
+			admin.deleteMovie(selectedMovie);
+			myListView.getItems().remove(selectedMovie);
+		}else {
+			alert.show();
+		}
 	}
-	
 }
