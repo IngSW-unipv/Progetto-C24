@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import it.unipv.ingsfw.gasCorpCinema.DBConnection;
@@ -35,7 +36,7 @@ public class ProjectionDAO implements IProjectionDAO {
 	        
 	      	while (rs1.next()) {
 	      		
-	        Projection projection = new Projection(rs1.getInt(1),rs1.getInt(2),rs1.getString(3),rs1.getDate(4),rs1.getString(5),rs1.getDouble(6));
+	        Projection projection = new Projection(rs1.getInt(1),rs1.getInt(2),rs1.getString(3),rs1.getDate(4),rs1.getTime(5),rs1.getDouble(6));
 	        projections.add(projection);
 	      	}
 	      	
@@ -63,7 +64,7 @@ public class ProjectionDAO implements IProjectionDAO {
 	    	st1.setInt(2, projection.getSeats());
 	    	st1.setString(3, projection.getMovieTitle());
 	    	st1.setDate(4, projection.getDate());
-	    	st1.setString(5, projection.getTime());
+	    	st1.setTime(5, projection.getTime());
 	    	st1.setDouble(6, projection.getPrice());
 	    	
 	    	st1.executeUpdate();
@@ -89,7 +90,7 @@ public class ProjectionDAO implements IProjectionDAO {
 	    	st1.setInt(1, projection.getIdHall());
 	    	st1.setString(2, projection.getMovieTitle());
 	    	st1.setDate(3, projection.getDate());
-	    	st1.setString(4, projection.getTime());
+	    	st1.setTime(4, projection.getTime());
 	    	st1.executeUpdate();
 	    	
 	    } catch (SQLException e) {
@@ -100,7 +101,7 @@ public class ProjectionDAO implements IProjectionDAO {
 	}
 
 	@Override
-	public Projection getProjectionByHallDateTime(int idHall, Date date, String time) {
+	public Projection getProjectionByHallDateTime(int idHall, Date date, Time time) {
 		
 		Projection projection = null;
 	    
@@ -114,13 +115,13 @@ public class ProjectionDAO implements IProjectionDAO {
 	    	st1 = conn.prepareStatement(query);
 	    	st1.setInt(1, idHall);
 	    	st1.setDate(2, date);
-	    	st1.setString(3, time);
+	    	st1.setTime(3, time);
 	    	
 	    	rs1=st1.executeQuery();
 	    	
 	    	while(rs1.next()) {
 	    		
-	    		projection = new Projection(rs1.getInt(1),rs1.getInt(2),rs1.getString(3),rs1.getDate(4),rs1.getString(5),rs1.getDouble(6));
+	    		projection = new Projection(rs1.getInt(1),rs1.getInt(2),rs1.getString(3),rs1.getDate(4),rs1.getTime(5),rs1.getDouble(6));
 	    		
 	        }
 	    	
@@ -149,7 +150,7 @@ public class ProjectionDAO implements IProjectionDAO {
 
 	      	while (rs1.next()) {
 	      		
-	        Projection projection = new Projection(rs1.getInt(1),rs1.getInt(2),rs1.getString(3),rs1.getDate(4),rs1.getString(5),rs1.getDouble(6));
+	        Projection projection = new Projection(rs1.getInt(1),rs1.getInt(2),rs1.getString(3),rs1.getDate(4),rs1.getTime(5),rs1.getDouble(6));
 	        projections.add(projection);
 	      	}
 	      	
@@ -177,7 +178,7 @@ public class ProjectionDAO implements IProjectionDAO {
 	    	st1.setInt(1, projection.getIdHall());
 	    	st1.setString(2, projection.getMovieTitle());
 	    	st1.setDate(3, projection.getDate());
-	    	st1.setString(4, projection.getTime());
+	    	st1.setTime(4, projection.getTime());
 	    	
 	    	rs1=st1.executeQuery();
 	    	
@@ -208,7 +209,7 @@ public class ProjectionDAO implements IProjectionDAO {
 	    	st1.setInt(1, projection.getIdHall());
 	    	st1.setString(2, projection.getMovieTitle());
 	    	st1.setDate(3, projection.getDate());
-	    	st1.setString(4, projection.getTime());
+	    	st1.setTime(4, projection.getTime());
 	    	
 	    	rs1=st1.executeQuery();
 	    	
@@ -242,7 +243,7 @@ public class ProjectionDAO implements IProjectionDAO {
 
 	      	while (rs1.next()) {
 	      		
-	        Projection projection = new Projection(rs1.getInt(1),rs1.getInt(2),rs1.getString(3),rs1.getDate(4),rs1.getString(5),rs1.getDouble(6));
+	        Projection projection = new Projection(rs1.getInt(1),rs1.getInt(2),rs1.getString(3),rs1.getDate(4),rs1.getTime(5),rs1.getDouble(6));
 	        projections.add(projection);
 	      	}
 	      	
@@ -273,7 +274,7 @@ public class ProjectionDAO implements IProjectionDAO {
 
 	      	while (rs1.next()) {
 	      		
-	        Projection projection = new Projection(rs1.getInt(1),rs1.getInt(2),rs1.getString(3),rs1.getDate(4),rs1.getString(5),rs1.getDouble(6));
+	        Projection projection = new Projection(rs1.getInt(1),rs1.getInt(2),rs1.getString(3),rs1.getDate(4),rs1.getTime(5),rs1.getDouble(6));
 	        projections.add(projection);
 	      	}
 	      	
@@ -333,7 +334,7 @@ public class ProjectionDAO implements IProjectionDAO {
 	    	
 	    	while(rs1.next()) {
 	    		
-	    		Projection projection = new Projection(rs1.getInt(1),rs1.getInt(2),rs1.getString(3),rs1.getDate(4),rs1.getString(5),rs1.getDouble(6));
+	    		Projection projection = new Projection(rs1.getInt(1),rs1.getInt(2),rs1.getString(3),rs1.getDate(4),rs1.getTime(5),rs1.getDouble(6));
 	    		projections.add(projection);
 	        }
 	    	

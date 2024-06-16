@@ -32,11 +32,11 @@ public class RegisterDAO implements IRegisterDAO{
 	    	//da sistemare formato data
 	    	String dateString = String.valueOf(System.currentTimeMillis());
 	    	
+	    	//da controllare formati date e time
 	    	st1.setString(1, dateString );	
 	    	st1.setString(2, projection.getMovieTitle());
 	    	st1.setString(3, String.valueOf(projection.getDate()));
-	    	//da controllare formati date
-	    	st1.setString(4, projection.getTime());
+	    	st1.setString(4, String.valueOf(projection.getTime()));
 	    	st1.setInt(5, numberOfTickets);
 	    	st1.setDouble(6, projection.getPrice());
 	    	st1.setDouble(7, total);
