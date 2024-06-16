@@ -1,19 +1,9 @@
 package it.unipv.ingsfw.gasCorpCinema.controller;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-
-import it.unipv.ingsfw.gasCorpCinema.model.Admin;
 import it.unipv.ingsfw.gasCorpCinema.model.User;
-import it.unipv.ingsfw.gasCorpCinema.model.authentication.AuthenticationDAO;
 import it.unipv.ingsfw.gasCorpCinema.view.FirstPageView;
-import it.unipv.ingsfw.gasCorpCinema.view.UserRegistrationView;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;

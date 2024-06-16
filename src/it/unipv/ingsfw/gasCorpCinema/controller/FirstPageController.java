@@ -5,10 +5,6 @@ import java.io.FileInputStream;
 import java.util.Properties;
 
 import it.unipv.ingsfw.gasCorpCinema.model.User;
-import it.unipv.ingsfw.gasCorpCinema.model.authentication.Authentication;
-import it.unipv.ingsfw.gasCorpCinema.view.AdminView;
-import it.unipv.ingsfw.gasCorpCinema.view.FirstPageView;
-import it.unipv.ingsfw.gasCorpCinema.view.SelectFilmView;
 import it.unipv.ingsfw.gasCorpCinema.view.UserRegistrationView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
