@@ -18,8 +18,6 @@ public class FirstPageView extends Application {
 		Scene scene = new Scene(root);
 		String imagePath = Paths.get("Resources/Logo G.A.S. CORP CINEMA.png").toUri().toString();
 	    Image icon = new Image(imagePath);
-	    String imagePath1 = Paths.get("Resources/Logo G.A.S. CORP.png").toUri().toString();
-	    Image icon1 = new Image(imagePath1);
 			
 		stage.setScene(scene);
 		stage.setTitle("HomePage G.A.S. CORP CINEMA");
