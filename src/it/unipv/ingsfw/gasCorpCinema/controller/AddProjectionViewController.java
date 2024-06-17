@@ -130,7 +130,7 @@ public class AddProjectionViewController implements Initializable {
         }
         
         if(!isWithinValidTimeRange(myTextField1.getText())) {
-        	showAlert("Errore di Validazione", "Campo Orario Non Valido", "Verifica che l'orario sia compreso tra le 15:00 e le 18:00");
+        	showAlert("Errore di Validazione", "Campo Orario Non Valido", "Verifica che l'orario d'inizio sia compreso tra le 15:00 e le 23:00");
         	return false;
         }
         return true;
