@@ -6,6 +6,7 @@ import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 
 public class AddMovieViewController {
@@ -13,7 +14,9 @@ public class AddMovieViewController {
     @FXML
     private Button myButton;
     @FXML
-    private TextField myTextField1, myTextField2, myTextField3, myTextField4, myTextField5;
+    private TextField myTextField1, myTextField2, myTextField3, myTextField4;
+    @FXML
+    private CheckBox myCheckBox;
     
     private Admin admin = new Admin();
     private Movie movie;
@@ -24,7 +27,7 @@ public class AddMovieViewController {
                 movie = new Movie(myTextField1.getText(),myTextField2.getText(),
                 		Time.valueOf(myTextField3.getText() + ":00"),
                 		Integer.parseInt(myTextField4.getText()),
-                		Integer.parseInt(myTextField5.getText()));
+                		isTop());
                 boolean result = admin.insertMovie(movie);
                 
                 if (result) {
@@ -38,6 +41,14 @@ public class AddMovieViewController {
         } catch (IllegalArgumentException e) {
             showAlert("Errore di Formato", "Formato Orario Non Valido", "Verifica che il campo orario sia nel formato HH:MM o H:MM.");
         }
+    }
+    
+    public String isTop() {
+    	if(myCheckBox.isSelected()) {
+    		return "Top";
+    	}else {
+    		return "Nor";
+    	}
     }
     
     private boolean validateFields() {
@@ -63,14 +74,6 @@ public class AddMovieViewController {
         }
         if (!isNumeric(myTextField4.getText())) {
             showAlert("Errore di Formato", "Formato Anno Non Valido", "Il campo Anno deve essere un numero.");
-            return false;
-        }
-        if (isFieldEmpty(myTextField5)) {
-            showAlert("Errore di Validazione", "Campo Rating Vuoto", "Il campo Rating non può essere vuoto.");
-            return false;
-        }
-        if (!isNumeric(myTextField5.getText())) {
-            showAlert("Errore di Formato", "Formato Rating Non Valido", "Il campo Rating deve essere un numero.");
             return false;
         }
         return true;
