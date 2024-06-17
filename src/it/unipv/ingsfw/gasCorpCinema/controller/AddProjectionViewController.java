@@ -4,7 +4,9 @@ import java.net.URL;
 import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ResourceBundle;
 import it.unipv.ingsfw.gasCorpCinema.model.Admin;
 import it.unipv.ingsfw.gasCorpCinema.model.cinemaHall.CinemaHall;
@@ -121,6 +123,11 @@ public class AddProjectionViewController implements Initializable {
             showAlert("Errore di Formato", "Formato Prezzo Non Valido", "Il campo Prezzo deve essere un numero.");
             return false;
         }
+        
+        if(!isWithinValidTimeRange(myTextField1.getText())) {
+        	showAlert("Errore di Validazione", "Campo Orario Non Valido", "Verifica che l'orario sia compreso tra le 15:00 e le 18:00");
+        	return false;
+        }
         return true;
     }
 
@@ -135,7 +142,20 @@ public class AddProjectionViewController implements Initializable {
     private boolean isValidTimeFormat(String str) {
         return str.matches("\\d{1,2}:\\d{2}");
     }
+    
+    private boolean isWithinValidTimeRange(String timeStr) {
 
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        try {
+            LocalTime time = LocalTime.parse(timeStr, formatter);
+            LocalTime startTime = LocalTime.of(15, 0); // 15:00
+            LocalTime endTime = LocalTime.of(23, 0);   // 23:00
+            return !time.isBefore(startTime) && !time.isAfter(endTime);
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+    }
+    
     private void showAlert(String title, String header, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
