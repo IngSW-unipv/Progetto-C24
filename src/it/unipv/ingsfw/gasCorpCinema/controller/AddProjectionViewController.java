@@ -74,8 +74,9 @@ public class AddProjectionViewController implements Initializable {
                 
                 String result = admin.createProjection(myProjection);
                 String result2 = admin.cinemaHallIsAdeguate(myProjection);
+                String result3 = admin.PriceIsAdeguate(myProjection);
                 
-                if(result == null && result2 == null) {
+                if(result == null && result2 == null && result3 == null) {
                 	showAlertSuccess("Successo","Proiezione aggiunta",myProjection.toString());
                 }else if(result != null) {
                 	showAlert("Non è possibile aggiungere questa proiezione" , 
@@ -83,7 +84,11 @@ public class AddProjectionViewController implements Initializable {
                 }else if(result2 != null){
                 	showAlert("Non è possibile aggiungere questa proiezione" , 
               			  "Il rating del film non è compatibile con la sala selezionata",
-              			  "Film Top -> Capacità > 300 | Film Nor -> capacità < 300" + "\n" + result2);
+              			  "Film Top -> Capacità >= 300 | Film Nor -> capacità < 300" + "\n" + result2);
+                }else if(result3 != null){
+                	showAlert("Non è possibile aggiungere questa proiezione" , 
+                			  "Il rating del film non è compatibile con il prezzo inserito",
+                			  "Film Top -> Prezzo > 4.90 | Film Nor -> Prezzo <= 4.90" + "\n" + result3);
                 }
                 
             } catch (NumberFormatException e) {

@@ -98,13 +98,25 @@ public class Admin {
 		Movie movie = movieDAO.getMovieByTitle(projection.getMovieTitle());
 		CinemaHall cinemaHall = cinemaHallDAO.getHallById(projection.getIdHall());
 		
-		if(movie.getRating().equals("Top") && cinemaHall.getCapacity() > 300) {
+		if(movie.getRating().equals("Top") && cinemaHall.getCapacity() >= 300) {
 			return null;
 		}else if(movie.getRating().equals("Nor") && cinemaHall.getCapacity() < 300){
 			return null;
 		}
 		
 		return "Rating film selezionato: " + movie.getRating() + "\n" + "Capacità sala selezionata: " + cinemaHall.getCapacity();
+	}
+	
+	public String PriceIsAdeguate(Projection projection) {
+		Movie movie = movieDAO.getMovieByTitle(projection.getMovieTitle());
+		
+		if(movie.getRating().equals("Top") && projection.getPrice() > 4.90) {
+			return null;
+		}else if(movie.getRating().equals("Nor") && projection.getPrice() <= 4.90){
+			return null;
+		}
+		
+		return "Rating film selezionato: " + movie.getRating() + "\n" + "Prezzo proiezione: " + projection.getPrice();
 	}
 	
 	public void deleteProjection(Projection projection) {
