@@ -39,27 +39,27 @@
       <Label layoutX="220.0" layoutY="218.0" text="Conferma Password" />
       <ImageView fx:id="userImage" fitHeight="31.0" fitWidth="33.0" layoutX="20.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Resources/user.png" />
+            <Image url="@../../../../../../Resources/userImage.png" />
          </image>
       </ImageView>
       <ImageView fx:id="lockImage" fitHeight="15.0" fitWidth="33.0" layoutX="20.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Resources/lookicon.png" />
+            <Image url="@../../../../../../Resources/lockIconImage.png" />
          </image>
       </ImageView>
       <ImageView fx:id="closeEyeImage" fitHeight="18.0" fitWidth="24.0" layoutX="554.0" layoutY="184.0" onMouseClicked="#closeEyeClicked" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Resources/closeeye.png" />
+            <Image url="@../../../../../../Resources/closeEyeImage.png" />
          </image>
       </ImageView>
       <ImageView fx:id="lockImage" fitHeight="15.0" fitWidth="33.0" layoutX="20.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Resources/lookicon.png" />
+            <Image url="@../../../../../../Resources/lockIconImage.png" />
          </image>
       </ImageView>
       <ImageView fx:id="openEyeImage" fitHeight="18.0" fitWidth="24.0" layoutX="554.0" layoutY="183.0" onMouseClicked="#openEyeClicked" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Resources/open_eye.png" />
+            <Image url="@../../../../../../Resources/openEyeImage.png" />
          </image>
       </ImageView>
       <TextField fx:id="tfPassword" layoutX="60.0" layoutY="178.0" onKeyReleased="#showPasswordOnAction" prefHeight="31.0" prefWidth="487.0" promptText="Inserisci la tua Password" />
