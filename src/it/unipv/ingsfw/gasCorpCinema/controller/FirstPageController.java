@@ -15,7 +15,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -24,13 +23,13 @@ public class FirstPageController {
 	@FXML
 	private ImageView imageCinema;
 	@FXML
-    private TextField tf_username;
+    private TextField tfUsername;
     @FXML
-    private PasswordField field_password;
+    private PasswordField fieldPassword;
     @FXML
-    private Button button_login;
+    private Button buttonLogin;
     @FXML
-    private Button button_registrati;
+    private Button buttonRegistrati;
     
     private Stage stage;
 	private User user = new User();
@@ -43,8 +42,8 @@ public class FirstPageController {
 		alert.setHeaderText("C'è stato un errore durante il login");
 		alert.setContentText("Credenziali errate, prova ad inserirle nuovamente o se non l'hai già fatto registrati!");
     	
-    	String email = tf_username.getText();
-        String password = field_password.getText();
+    	String email = tfUsername.getText();
+        String password = fieldPassword.getText();
         String role = user.login(email, password);
         
         Properties p = new Properties(System.getProperties());
@@ -68,7 +67,7 @@ public class FirstPageController {
     @FXML
     public void registerButtonAction() throws Exception {
         try {
-        	Stage currentStage = (Stage) button_registrati.getScene().getWindow();
+        	Stage currentStage = (Stage) buttonRegistrati.getScene().getWindow();
         	
         	stage = new Stage();
 			UserRegistrationView u = new UserRegistrationView();
@@ -102,7 +101,7 @@ public class FirstPageController {
     	}catch(ClassCastException e){
     	}
     	
-    	Stage stage = (Stage) button_login.getScene().getWindow();
+    	Stage stage = (Stage) buttonLogin.getScene().getWindow();
     	stage.setScene(new Scene(pane));
     }
 }

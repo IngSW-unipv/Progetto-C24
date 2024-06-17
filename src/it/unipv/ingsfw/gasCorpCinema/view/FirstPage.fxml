@@ -24,8 +24,8 @@
                   <Font name="Arial" size="17.0" />
                </font>
             </Label>
-            <TextField fx:id="tf_username" layoutX="401.0" layoutY="139.0" promptText="Email" />
-            <Button fx:id="button_login" layoutX="494.0" layoutY="226.0" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="17.0" prefWidth="89.0" style="-fx-background-color: #FFFFFF; -fx-cursor: hand; -fx-border-color: #000000;" text="Login">
+            <TextField fx:id="tfUsername" layoutX="401.0" layoutY="139.0" promptText="Email" />
+            <Button fx:id="buttonLogin" layoutX="495.0" layoutY="227.0" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="17.0" prefWidth="89.0" style="-fx-background-radius: 30; -fx-background-color: #FFFFFF; -fx-cursor: hand; -fx-border-color: #000000;" text="Login">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
@@ -35,8 +35,8 @@
                   <Font name="Arial" size="15.0" />
                </font>
             </Label>
-            <Button fx:id="button_registrati" layoutX="385.0" layoutY="312.0" mnemonicParsing="false" onAction="#registerButtonAction" prefHeight="43.0" prefWidth="119.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Registrati ora!" textFill="#2108fc" underline="true" />
-            <PasswordField fx:id="field_password" layoutX="401.0" layoutY="185.0" promptText="Password" />
+            <Button fx:id="buttonRegistrati" layoutX="385.0" layoutY="312.0" mnemonicParsing="false" onAction="#registerButtonAction" prefHeight="43.0" prefWidth="119.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Registrati ora!" textFill="#2108fc" underline="true" />
+            <PasswordField fx:id="fieldPassword" layoutX="401.0" layoutY="185.0" promptText="Password" />
             <Label layoutX="18.0" layoutY="14.0" prefHeight="75.0" prefWidth="579.0" text="          Benvenuti nel cuore del divertimento cinematografico: &#10;                           Gas Corp Cinema vi dà il benvenuto!&#10;">
                <font>
                   <Font name="Verdana" size="15.0" />

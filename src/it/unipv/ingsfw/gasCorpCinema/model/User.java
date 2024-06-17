@@ -22,4 +22,8 @@ public class User {
 	public boolean emailExists(String email) {
 		return authenticationDAO.emailExists(email);
 	}
+	
+//	public boolean emailValidate(String email) {
+//		
+//	}
 }

@@ -10,27 +10,64 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class UserRegistrationController {
 	@FXML
-	private Button button_register;
+	private Button buttonRegistrati;
 	
 	@FXML 
-	private Button button_log_in;
+	private Button buttonLogin;
 	
 	@FXML
-	private TextField tf_username, tf_email;
+	private ImageView openEyeImage, closeEyeImage;
 	
 	@FXML
-	private PasswordField pf_password;
+	private TextField tfEmail, tfPassword;
+	
+	@FXML
+	private PasswordField pfPassword;
 	
 	@FXML
 	private Label errorLabel;
 	
+	private String password;
 	private Stage stage;
 	private User user = new User();
 
+	public  void initialize(){
+	    tfPassword.setVisible(false);
+	    openEyeImage.setVisible(false);
+	}
+
+	public void hidePasswordOnAction(KeyEvent keyEvent) {
+	    password=pfPassword.getText();
+	    tfPassword.setText(password);
+
+	}
+
+	public void showPasswordOnAction(KeyEvent keyEvent) {
+	    password=tfPassword.getText();
+	    pfPassword.setText(password);
+	}
+
+	public void openEyeClicked(MouseEvent mouseEvent) {
+	    tfPassword.setVisible(false);
+	    openEyeImage.setVisible(false);
+	    closeEyeImage.setVisible(true);
+	    pfPassword.setVisible(true);
+
+	}
+
+	public void closeEyeClicked(MouseEvent mouseEvent) {
+	    tfPassword.setVisible(true);
+	    openEyeImage.setVisible(true);
+	    closeEyeImage.setVisible(false);
+	    pfPassword.setVisible(false);
+	}
 	@FXML
     public void registerButtonAction() {
 		
@@ -39,8 +76,8 @@ public class UserRegistrationController {
 		alert.setHeaderText("Registrazione avvenuta con successo");
 		alert.setContentText("Clicca il pulsante 'login' qui sotto per poter tornare alla homepage!");
 		
-        String email = tf_email.getText();
-        String password = pf_password.getText();
+        String email = tfEmail.getText();
+        String password = pfPassword.getText();
         
         if (email.isEmpty() || password.isEmpty()) {
             displayError("Tutti i campi sono obbligatori.");
@@ -64,7 +101,7 @@ public class UserRegistrationController {
     @FXML
     public void loginButtonAction() throws Exception {  
     	try {
-        	Stage currentStage = (Stage) button_log_in.getScene().getWindow();
+        	Stage currentStage = (Stage) buttonLogin.getScene().getWindow();
         	
         	stage = new Stage();
 			FirstPageView f = new FirstPageView();
@@ -81,3 +118,4 @@ public class UserRegistrationController {
     	errorLabel.setText(errormessage);
     }
 }
+
