@@ -19,7 +19,7 @@ public class RemoveMovieView extends Application {
 		String imagePath = Paths.get("Resources/Logo G.A.S. CORP CINEMA.png").toUri().toString();
         Image icon = new Image(imagePath);
         
-		String css = this.getClass().getResource("AdminView.css").toExternalForm();
+		String css = this.getClass().getResource("RemoveMovieView.css").toExternalForm();
 		scene.getStylesheets().add(css);
 		
 		stage.setScene(scene);
