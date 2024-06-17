@@ -8,9 +8,9 @@ public class Movie {
 	private String genre;
 	private Time duration;
 	private int year;
-	private int rating;
+	private String rating;
 	
-	public Movie(String title,String genre,Time duration,int year,int rating) {
+	public Movie(String title,String genre,Time duration,int year,String rating) {
 		this.title = title;
 		this.genre = genre;
 		this.duration = duration;
@@ -34,7 +34,7 @@ public class Movie {
 		return year;
 	}
 	
-	public int getRating() {
+	public String getRating() {
 		return rating;
 	}
 
