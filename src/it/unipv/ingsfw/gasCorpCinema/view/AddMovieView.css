@@ -42,11 +42,19 @@
 	-fx-background-color: rgba(255, 255, 255, 0.4); /* Bianco con un'opacità del 50% */
 }
 
-.checkBox{
-	-fx-background-color: transparent; /* Colore di sfondo bianco */
-    -fx-border-color: white; /* Colore del bordo nero */
-    -fx-border-width: 0.5px; /* Spessore del bordo */
+.checkBox {
     -fx-font-family: "Verdana";
     -fx-font-size: 12px;
     -fx-font-weight: bold;
+    -fx-text-fill: black; /* Colore del testo */
+    -fx-padding: 5px; /* Spazio interno del checkbox */
+    -fx-background-color: transparent; /* Colore di sfondo trasparente */
+}
+
+.checkBox:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.4); /* Bianco con un'opacità del 40% al passaggio del mouse */
+}
+
+.checkBox:selected {
+    -fx-background-color: rgba(255, 255, 255, 0.2); /* Bianco con un'opacità del 20% quando selezionato */
 }
