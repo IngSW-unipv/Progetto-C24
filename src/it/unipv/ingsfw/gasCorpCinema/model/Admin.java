@@ -2,7 +2,6 @@ package it.unipv.ingsfw.gasCorpCinema.model;
 
 import java.sql.Date;
 import java.sql.Time;
-import java.util.ArrayList;
 import java.util.List;
 import it.unipv.ingsfw.gasCorpCinema.model.cinemaHall.CinemaHall;
 import it.unipv.ingsfw.gasCorpCinema.model.cinemaHall.CinemaHallDAO;
@@ -94,6 +93,19 @@ public class Admin {
         
         return null;
     }
+	
+	public String cinemaHallIsAdeguate(Projection projection) {
+		Movie movie = movieDAO.getMovieByTitle(projection.getMovieTitle());
+		CinemaHall cinemaHall = cinemaHallDAO.getHallById(projection.getIdHall());
+		
+		if(movie.getRating().equals("Top") && cinemaHall.getCapacity() > 300) {
+			return null;
+		}else if(movie.getRating().equals("Nor") && cinemaHall.getCapacity() < 300){
+			return null;
+		}
+		
+		return "Rating film selezionato: " + movie.getRating() + "\n" + "Capacità sala selezionata: " + cinemaHall.getCapacity();
+	}
 	
 	public void deleteProjection(Projection projection) {
 		projectionDAO.deleteProjection(projection);

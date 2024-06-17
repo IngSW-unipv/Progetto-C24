@@ -33,7 +33,7 @@ public class CinemaHallDAO implements ICinemaHallDAO  {
 	    	st1 = conn.prepareStatement(query);
 	    	st1.setInt(1, idHall);
 	    	
-	    	rs1=st1.executeQuery(query);
+	    	rs1=st1.executeQuery();
 	    	
 	        while(rs1.next()) {
 	        	

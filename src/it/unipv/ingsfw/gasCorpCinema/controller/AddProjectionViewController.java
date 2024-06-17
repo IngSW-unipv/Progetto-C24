@@ -71,13 +71,19 @@ public class AddProjectionViewController implements Initializable {
                     Double.parseDouble(myTextField2.getText()));
                 
                 String result = admin.createProjection(myProjection);
+                String result2 = admin.cinemaHallIsAdeguate(myProjection);
                 
-                if(result == null) {
+                if(result == null && result2 == null) {
                 	showAlertSuccess("Successo","Proiezione aggiunta",myProjection.toString());
-                }else {
+                }else if(result != null) {
                 	showAlert("Non è possibile aggiungere questa proiezione" , 
               			  "Conflitto con proiezione già presente in quella fascia oraria", result);
+                }else if(result2 != null){
+                	showAlert("Non è possibile aggiungere questa proiezione" , 
+              			  "Il rating del film non è compatibile con la sala selezionata",
+              			  "Film Top -> Capacità > 300 | Film Nor -> capacità < 300" + "\n" + result2);
                 }
+                
             } catch (NumberFormatException e) {
                 showAlert("Errore di Formato", "Formato Numero Non Valido", "Verifica che i campi numerici contengano numeri validi.");
             } catch (IllegalArgumentException e) {
