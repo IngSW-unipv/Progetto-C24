@@ -23,51 +23,84 @@ public class UserRegistrationController {
 	private Button buttonLogin;
 	
 	@FXML
-	private ImageView openEyeImage, closeEyeImage;
+	private ImageView openEyeImage1, openEyeImage2, closeEyeImage1, closeEyeImage2;
 	
 	@FXML
-	private TextField tfEmail, tfPassword;
+	private TextField tfEmail, tfPassword1, tfPassword2;
 	
 	@FXML
-	private PasswordField pfPassword;
+	private PasswordField pfPassword1, pfPassword2;
 	
 	@FXML
 	private Label errorLabel;
 	
-	private String password;
+	private String password1, password2;
 	private Stage stage;
 	private User user = new User();
 
 	public  void initialize(){
-	    tfPassword.setVisible(false);
-	    openEyeImage.setVisible(false);
+	    tfPassword1.setVisible(false);
+	    openEyeImage1.setVisible(false);
+	    
+	    tfPassword2.setVisible(false);
+	    openEyeImage2.setVisible(false);
 	}
 
 	public void hidePasswordOnAction(KeyEvent keyEvent) {
-	    password=pfPassword.getText();
-	    tfPassword.setText(password);
-
+	    password1=pfPassword1.getText();
+	    tfPassword1.setText(password1);
+	    
+	    password2=pfPassword2.getText();
+	    tfPassword2.setText(password2);
+	}
+	
+	public void hidePasswordOnActionSecond(KeyEvent keyEvent) {
+	    password1=pfPassword1.getText();
+	    tfPassword1.setText(password1);
+	    
+	    password2=pfPassword2.getText();
+	    tfPassword2.setText(password2);
 	}
 
 	public void showPasswordOnAction(KeyEvent keyEvent) {
-	    password=tfPassword.getText();
-	    pfPassword.setText(password);
+	    password2=tfPassword2.getText();
+	    pfPassword2.setText(password2);
+	}
+	
+	public void showPasswordOnActionSecond(KeyEvent keyEvent) {  
+	    password2=tfPassword2.getText();
+	    pfPassword2.setText(password2);
 	}
 
-	public void openEyeClicked(MouseEvent mouseEvent) {
-	    tfPassword.setVisible(false);
-	    openEyeImage.setVisible(false);
-	    closeEyeImage.setVisible(true);
-	    pfPassword.setVisible(true);
+	public void firstOpenEyeClicked(MouseEvent mouseEvent) {
+	    tfPassword1.setVisible(false);
+	    openEyeImage1.setVisible(false);
+	    closeEyeImage1.setVisible(true);
+	    pfPassword1.setVisible(true);
+	}
+	
+	public void secondOpenEyeClicked(MouseEvent mouseEvent) {	    
+	    tfPassword2.setVisible(false);
+	    openEyeImage2.setVisible(false);
+	    closeEyeImage2.setVisible(true);
+	    pfPassword2.setVisible(true);
 
 	}
 
-	public void closeEyeClicked(MouseEvent mouseEvent) {
-	    tfPassword.setVisible(true);
-	    openEyeImage.setVisible(true);
-	    closeEyeImage.setVisible(false);
-	    pfPassword.setVisible(false);
+	public void firstCloseEyeClicked(MouseEvent mouseEvent) {
+	    tfPassword1.setVisible(true);
+	    openEyeImage1.setVisible(true);
+	    closeEyeImage1.setVisible(false);
+	    pfPassword1.setVisible(false);
 	}
+	
+	public void secondCloseEyeClicked(MouseEvent mouseEvent) {
+	    tfPassword2.setVisible(true);
+	    openEyeImage2.setVisible(true);
+	    closeEyeImage2.setVisible(false);
+	    pfPassword2.setVisible(false);
+	}
+	
 	@FXML
     public void registerButtonAction() {
 		
@@ -77,7 +110,7 @@ public class UserRegistrationController {
 		alert.setContentText("Clicca il pulsante 'login' qui sotto per poter tornare alla homepage!");
 		
         String email = tfEmail.getText();
-        String password = pfPassword.getText();
+        String password = pfPassword1.getText();
         
         if (email.isEmpty() || password.isEmpty()) {
             displayError("Tutti i campi sono obbligatori.");

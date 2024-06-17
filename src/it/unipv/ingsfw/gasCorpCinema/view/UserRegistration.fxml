@@ -24,7 +24,7 @@
       <TextField fx:id="tfEmail" layoutX="60.0" layoutY="108.0" prefHeight="31.0" prefWidth="487.0" promptText="Inserisci la tua Email" />
       <Label layoutX="277.0" layoutY="82.0" text="Email" />
       <Label layoutX="257.0" layoutY="150.0" text="Password" />
-      <PasswordField fx:id="pfPassword" layoutX="60.0" layoutY="177.0" onKeyReleased="#hidePasswordOnAction" prefHeight="31.0" prefWidth="487.0" promptText="Inserisci la tua Password" />
+      <PasswordField fx:id="pfPassword1" layoutX="60.0" layoutY="178.0" onKeyReleased="#hidePasswordOnAction" prefHeight="31.0" prefWidth="487.0" promptText="Inserisci la tua Password" />
       <Label layoutX="36.0" prefHeight="91.0" prefWidth="518.0" text="Pronto a vivere la magia del cinema come mai prima d'ora? &#10;Iscriviti a G.A.S. CORP CINEMA in pochi secondi e accedi &#10;subito ai film più spettacolari, sia le vecchie che le nuove uscite!">
          <font>
             <Font name="Bodoni MT Italic" size="18.0" />
@@ -35,7 +35,7 @@
          <font>
             <Font name="Arial Black" size="14.0" />
          </font></Label>
-      <PasswordField fx:id="pfPassword1" layoutX="60.0" layoutY="249.0" prefHeight="31.0" prefWidth="487.0" promptText="Conferma Password" />
+      <PasswordField fx:id="pfPassword2" layoutX="60.0" layoutY="249.0" onKeyReleased="#hidePasswordOnActionSecond" prefHeight="31.0" prefWidth="487.0" promptText="Conferma Password" />
       <Label layoutX="220.0" layoutY="218.0" text="Conferma Password" />
       <ImageView fx:id="userImage" fitHeight="31.0" fitWidth="33.0" layoutX="20.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -47,7 +47,7 @@
             <Image url="@../../../../../../Resources/lockIconImage.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="closeEyeImage" fitHeight="18.0" fitWidth="24.0" layoutX="554.0" layoutY="184.0" onMouseClicked="#closeEyeClicked" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="closeEyeImage1" fitHeight="18.0" fitWidth="24.0" layoutX="554.0" layoutY="184.0" onMouseClicked="#firstCloseEyeClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../Resources/closeEyeImage.png" />
          </image>
@@ -57,11 +57,22 @@
             <Image url="@../../../../../../Resources/lockIconImage.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="openEyeImage" fitHeight="18.0" fitWidth="24.0" layoutX="554.0" layoutY="183.0" onMouseClicked="#openEyeClicked" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="openEyeImage1" fitHeight="18.0" fitWidth="24.0" layoutX="554.0" layoutY="183.0" onMouseClicked="#firstOpenEyeClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../Resources/openEyeImage.png" />
          </image>
       </ImageView>
-      <TextField fx:id="tfPassword" layoutX="60.0" layoutY="178.0" onKeyReleased="#showPasswordOnAction" prefHeight="31.0" prefWidth="487.0" promptText="Inserisci la tua Password" />
+      <TextField fx:id="tfPassword1" layoutX="60.0" layoutY="178.0" onKeyReleased="#showPasswordOnAction" prefHeight="31.0" prefWidth="487.0" promptText="Inserisci la tua Password" />
+      <ImageView fx:id="openEyeImage2" fitHeight="18.0" fitWidth="24.0" layoutX="554.0" layoutY="255.0" onMouseClicked="#secondOpenEyeClicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Resources/openEyeImage.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="closeEyeImage2" fitHeight="18.0" fitWidth="18.0" layoutX="554.0" layoutY="256.0" onMouseClicked="#secondCloseEyeClicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Resources/closeEyeImage.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="tfPassword2" layoutX="60.0" layoutY="249.0" onKeyReleased="#showPasswordOnActionSecond" prefHeight="31.0" prefWidth="487.0" promptText="Conferma Password" />
    </children>
 </AnchorPane>
