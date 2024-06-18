@@ -16,6 +16,7 @@ public class AuthenticationDAO implements IAuthenticationDAO {
 	public AuthenticationDAO() {
 		this.schema = "cinema";
 	}
+	
 	@Override
 	 public boolean emailExists(String email) {
 	        conn = DBConnection.startConnection(conn, schema);

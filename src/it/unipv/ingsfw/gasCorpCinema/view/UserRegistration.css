@@ -4,6 +4,6 @@
 
 .label {
     -fx-font-family: "Verdana";
-    -fx-font-size: 14px;
+    -fx-font-size: 12px;
     -fx-font-weight: bold; /* Rende il testo in grassetto */
 }
