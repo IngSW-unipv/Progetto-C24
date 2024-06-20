@@ -1,5 +1,6 @@
 package it.unipv.ingsfw.gasCorpCinema.utils;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -41,11 +42,21 @@ public class StageUtils {
 		}
 	}
 	
-	public static Scene setScene(URL fxmlResource, String cssResource) {
+	public static Scene setScene(String fxmlPathKey, String cssPathKey ) {
 		
-		Parent root;
 		try {
-			root = FXMLLoader.load(fxmlResource);
+			Properties p = new Properties(System.getProperties());
+			p.load(new FileInputStream("Properties/Strings"));
+			
+			String fxmlPath = p.getProperty(fxmlPathKey);
+			String cssPath = p.getProperty(cssPathKey);
+            File fxmlFile = new File(fxmlPath);
+            File cssFile = new File(cssPath);
+            
+            URL fxmlResource = fxmlFile.toURI().toURL();
+            String cssResource = cssFile.toURI().toURL().toExternalForm();
+			
+			Parent root = FXMLLoader.load(fxmlResource);
 			Scene scene = new Scene(root);
 		    
 		    String css = cssResource;

@@ -66,18 +66,13 @@ public class HomePageViewController {
     
     @FXML
     public void registerButtonAction() throws Exception {
-        try {
-        	Stage currentStage = (Stage) buttonRegistrati.getScene().getWindow();
-        	
-        	stage = new Stage();
-			UserRegistrationView u = new UserRegistrationView();
-			u.start(stage);	
-			
-			currentStage.close();
-			
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Stage currentStage = (Stage) buttonRegistrati.getScene().getWindow();
+		
+		stage = new Stage();
+		UserRegistrationView u = new UserRegistrationView();
+		u.start(stage);	
+		
+		currentStage.close();
     }
     
     public void changeScene(String fxml,String email) throws Exception {
