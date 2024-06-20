@@ -2,68 +2,63 @@ package it.unipv.ingsfw.gasCorpCinema.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import it.unipv.ingsfw.gasCorpCinema.model.Admin;
 import it.unipv.ingsfw.gasCorpCinema.model.projection.Projection;
+import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Alert.AlertType;
 
 public class RemoveProjectionViewController implements Initializable {
-	
+
 	@FXML
 	private ListView<Projection> myListView;
 	@FXML
 	private Label myLabel;
 	@FXML
 	private Button myButton;
-	
+
 	Projection selectedProjection;
 	Admin admin = new Admin();
-	
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		myListView.getItems().addAll(admin.getAllProjections());
-		
+
 		if (myListView.getItems().isEmpty()) {
-            myLabel.setText("Nessuna proiezione disponibile");
+			myLabel.setText("Nessuna proiezione disponibile");
 		}
-		
+
 		myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Projection>(){
 
 			@Override
 			public void changed(ObservableValue<? extends Projection> arg0, Projection arg1, Projection arg2) {
 				// TODO Auto-generated method stub
-				
+
 				if (myListView.getItems().isEmpty()) {
-	                myLabel.setText("Nessuna proiezione disponibile");
-	            } else {
-	            	selectedProjection = myListView.getSelectionModel().getSelectedItem();
+					myLabel.setText("Nessuna proiezione disponibile");
+				} else {
+					selectedProjection = myListView.getSelectionModel().getSelectedItem();
 					myLabel.setText(String.valueOf(selectedProjection));
-	            }
+				}
 			}
 		});
 	}
-	
+
 	public void removeProjection() {
-		
-		Alert alert = new Alert(AlertType.ERROR);
-    	alert.setTitle("Errore");
-		alert.setHeaderText("C'è stato un errore durante la rimozione della proiezione");
-		alert.setContentText("Seleziona una proiezione da eliminare prima di confermare!");
-		
+
 		if(selectedProjection != null) {
 			admin.deleteProjection(selectedProjection);
 			myListView.getItems().remove(selectedProjection);
 		}else {
-			alert.show();
+			AlertUtils.showAlert(AlertType.ERROR, "Errore", "C'è stato un errore durante la rimozione della proiezione", 
+					"Seleziona una proiezione da eliminare prima di confermare!");
 		}
 	}
 }
