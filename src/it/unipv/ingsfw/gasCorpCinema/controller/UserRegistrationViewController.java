@@ -17,7 +17,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class UserRegistrationController {
+public class UserRegistrationViewController {
 	@FXML
 	private Button buttonRegistrati;
 	

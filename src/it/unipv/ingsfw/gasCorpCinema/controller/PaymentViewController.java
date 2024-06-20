@@ -12,7 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-public class PaymentController implements Initializable {
+public class PaymentViewController implements Initializable {
 	@FXML
 	private Button myButton, backButton;
 	@FXML

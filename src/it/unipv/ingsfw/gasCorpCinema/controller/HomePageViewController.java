@@ -18,7 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-public class FirstPageController {
+public class HomePageViewController {
 	
 	@FXML
 	private ImageView imageCinema;
@@ -96,7 +96,7 @@ public class FirstPageController {
     	try {
     		
     		Object controller = loader.getController();
-        	((SelectFilmController)controller).setUserEmail(email);
+        	((SelectFilmViewController)controller).setUserEmail(email);
         	
     	}catch(ClassCastException e){
     	}

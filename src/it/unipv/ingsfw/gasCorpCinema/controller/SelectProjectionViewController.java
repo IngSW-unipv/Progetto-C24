@@ -29,7 +29,7 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
-public class SelectProjectionController implements Initializable {
+public class SelectProjectionViewController implements Initializable {
 	
 	@FXML
 	ListView<Projection> myListView;

@@ -21,7 +21,7 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 
-public class SelectFilmController implements Initializable {
+public class SelectFilmViewController implements Initializable {
 	
 	@FXML
 	private ListView<Movie> myListView;
