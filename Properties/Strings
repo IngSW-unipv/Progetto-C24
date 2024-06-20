@@ -1,7 +1,40 @@
-HOME_PAGE_TITLE = G.A.S. CORP CINEMA
-ADMIN_TITLE = ADMIN
-USER_TITLE = USER
 LOGO = Resources/Logo G.A.S. CORP CINEMA.png
 
-admin = ../view/adminView/AdminView.fxml
-user = ../view/selectFilmView/SelectFilm.fxml
+HOME_PAGE_TITLE = G.A.S. CORP CINEMA - HOME
+HOME_PAGE_FXML = ../view/homePage/HomePageView.fxml
+HOME_PAGE_CSS = ../view/homePage/HomePageView.css
+
+USER_REGISTRATION_FXML = ../view/userRegistration/UserRegistrationView.fxml
+USER_REGISTRATION_CSS = ../view/userRegistration/UserRegistrationView.css
+
+ADMIN_TITLE = G.A.S. CORP CINEMA - ADMIN
+ADMIN = ../view/adminView/AdminView.fxml
+ADMIN_CSS = ../view/adminView/AdminView.css
+
+ADD_MOVIE_FXML = ../view/addMovie/AddMovieView.fxml
+ADD_MOVIE_CSS = ../view/addMovie/AddMovieView.css
+
+ADD_PROJECTION_FXML = ../view/addMovie/AddProjectionView.fxml
+ADD_PROJECTION_CSS = ../view/addMovie/AddProjectionView.css
+
+ALL_MOVIES_FXML = ../view/addMovie/AllMoviesView.fxml
+ALL_MOVIES_CSS = ../view/addMovie/AllMoviesView.css
+
+ALL_PROJECTIONS_FXML = ../view/addMovie/AllProjectionsView.fxml
+ALL_PROJECTIONS_CSS = ../view/addMovie/AllProjectionsView.css
+
+REMOVE_MOVIE_FXML = ../view/addMovie/RemoveMovieView.fxml
+REMOVE_MOVIE_CSS = ../view/addMovie/RemoveMovieView.css
+
+REMOVE_PROJECTION_FXML = ../view/addMovie/RemoveProjectionView.fxml
+REMOVE_PROJECTION_CSS = ../view/addMovie/RemoveProjectionView.css
+
+USER_TITLE = G.A.S. CORP CINEMA - USER
+USER = ../view/selectFilmView/SelectFilm.fxml
+USER_CSS = ../view/selectFilmView/SelectFilm.css
+
+SELECT_PROJECTION_FXML = ../view/payment/SelectProjectionView.fxml
+SELECT_PROJECTION_CSS = ../view/payment/SelectProjectionView.css
+
+PAYMENT_FXML = ../view/payment/PaymentView.fxml
+PAYMENT_CSS = ../view/payment/PaymentView.css

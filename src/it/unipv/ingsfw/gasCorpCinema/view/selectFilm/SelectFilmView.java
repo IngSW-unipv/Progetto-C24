@@ -1,32 +1,44 @@
 package it.unipv.ingsfw.gasCorpCinema.view.selectFilm;
 
-import java.nio.file.Paths;
-
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Properties;
+import it.unipv.ingsfw.gasCorpCinema.utils.StageUtils;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class SelectFilmView extends Application{
 	
-	@Override
-	public void start(Stage stage) throws Exception {
-		// TODO Auto-generated method stub
-		Parent root = FXMLLoader.load(getClass().getResource("SelectFilm.fxml"));
-		Scene scene = new Scene(root);
-		String imagePath = Paths.get("Resources/Logo G.A.S. CORP CINEMA.png").toUri().toString();
-        Image icon = new Image(imagePath);
-        
-		String css = this.getClass().getResource("SelectFilm.css").toExternalForm();
-		scene.getStylesheets().add(css);
-		
-		stage.setScene(scene);
-		stage.setTitle("G.A.S. CORP CINEMA");
-		stage.getIcons().add(icon);
-		stage.show();
-	
-	}
-}
+	private static final String PAGE_TITLE_KEY = "USER_TITLE";
+	private static final String FXML_KEY = "USER";
+	private static final String CSS_KEY = "USER_CSS";
 
+	@Override
+	public void start(Stage stage){
+		
+		try {
+			Properties p = new Properties(System.getProperties());
+			p.load(new FileInputStream("Properties/Strings"));
+			
+			URL fxmlResource = new URL(p.getProperty(FXML_KEY));
+			String cssResource = this.getClass().getResource(CSS_KEY).toExternalForm();
+			
+			Scene scene = StageUtils.setScene(fxmlResource, cssResource);
+			
+			if (scene != null) {
+				StageUtils.setAndShowStage(stage, scene, PAGE_TITLE_KEY);
+			} else {
+				// TODO: Show alert in case of error!!!
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+}

@@ -53,7 +53,7 @@ public class HomePageViewController {
         if (role != null) {
         	
         	// Ottieni il percorso della vista associata al ruolo
-            String viewPath = p.getProperty(role);
+            String viewPath = p.getProperty(role.toUpperCase());
             
             if (viewPath != null) {
                 changeScene(viewPath, email);

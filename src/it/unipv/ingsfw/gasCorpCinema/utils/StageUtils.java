@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.Properties;
-
-import it.unipv.ingsfw.gasCorpCinema.view.allMovies.AllMoviesView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,7 +22,8 @@ public class StageUtils {
 		Properties p = new Properties(System.getProperties());
 		
 		try {
-			p.load(new FileInputStream("Properties/strings"));
+			p.load(new FileInputStream("Properties/Strings"));
+			
 			
 			String title = p.getProperty(resourcesKey);
 			String logo = p.getProperty(LOGO_KEY);
