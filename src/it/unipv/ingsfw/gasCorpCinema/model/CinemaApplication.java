@@ -1,6 +1,6 @@
 package it.unipv.ingsfw.gasCorpCinema.model;
 
-import it.unipv.ingsfw.gasCorpCinema.view.FirstPageView;
+import it.unipv.ingsfw.gasCorpCinema.view.firstPageView.FirstPageView;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

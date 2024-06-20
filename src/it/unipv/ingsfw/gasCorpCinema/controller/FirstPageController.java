@@ -5,7 +5,7 @@ import java.io.FileInputStream;
 import java.util.Properties;
 
 import it.unipv.ingsfw.gasCorpCinema.model.User;
-import it.unipv.ingsfw.gasCorpCinema.view.UserRegistrationView;
+import it.unipv.ingsfw.gasCorpCinema.view.userRegistrationView.UserRegistrationView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

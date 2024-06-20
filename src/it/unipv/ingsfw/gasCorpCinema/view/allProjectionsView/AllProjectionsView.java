@@ -1,4 +1,4 @@
-package it.unipv.ingsfw.gasCorpCinema.view;
+package it.unipv.ingsfw.gasCorpCinema.view.allProjectionsView;
 
 import java.nio.file.Paths;
 

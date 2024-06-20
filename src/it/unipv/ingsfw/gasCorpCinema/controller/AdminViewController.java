@@ -1,12 +1,12 @@
 package it.unipv.ingsfw.gasCorpCinema.controller;
 
-import it.unipv.ingsfw.gasCorpCinema.view.AddMovieView;
-import it.unipv.ingsfw.gasCorpCinema.view.AddProjectionView;
-import it.unipv.ingsfw.gasCorpCinema.view.AllMoviesView;
-import it.unipv.ingsfw.gasCorpCinema.view.AllProjectionsView;
-import it.unipv.ingsfw.gasCorpCinema.view.FirstPageView;
-import it.unipv.ingsfw.gasCorpCinema.view.RemoveMovieView;
-import it.unipv.ingsfw.gasCorpCinema.view.RemoveProjectionView;
+import it.unipv.ingsfw.gasCorpCinema.view.addMovieView.AddMovieView;
+import it.unipv.ingsfw.gasCorpCinema.view.addProjectionView.AddProjectionView;
+import it.unipv.ingsfw.gasCorpCinema.view.allMoviesView.AllMoviesView;
+import it.unipv.ingsfw.gasCorpCinema.view.allProjectionsView.AllProjectionsView;
+import it.unipv.ingsfw.gasCorpCinema.view.firstPageView.FirstPageView;
+import it.unipv.ingsfw.gasCorpCinema.view.removeMovieView.RemoveMovieView;
+import it.unipv.ingsfw.gasCorpCinema.view.removeProjectionView.RemoveProjectionView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
