@@ -5,7 +5,7 @@ import it.unipv.ingsfw.gasCorpCinema.view.addMovie.AddMovieView;
 import it.unipv.ingsfw.gasCorpCinema.view.addProjection.AddProjectionView;
 import it.unipv.ingsfw.gasCorpCinema.view.allMovies.AllMoviesView;
 import it.unipv.ingsfw.gasCorpCinema.view.allProjections.AllProjectionsView;
-import it.unipv.ingsfw.gasCorpCinema.view.firstPage.HomePageView;
+import it.unipv.ingsfw.gasCorpCinema.view.homePage.HomePageView;
 import it.unipv.ingsfw.gasCorpCinema.view.removeMovie.RemoveMovieView;
 import it.unipv.ingsfw.gasCorpCinema.view.removeProjection.RemoveProjectionView;
 import javafx.application.Application;

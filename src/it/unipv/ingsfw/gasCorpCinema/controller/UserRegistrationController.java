@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import it.unipv.ingsfw.gasCorpCinema.model.User;
-import it.unipv.ingsfw.gasCorpCinema.view.firstPage.HomePageView;
+import it.unipv.ingsfw.gasCorpCinema.view.homePage.HomePageView;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;

@@ -1,4 +1,4 @@
-package it.unipv.ingsfw.gasCorpCinema.view.firstPage;
+package it.unipv.ingsfw.gasCorpCinema.view.homePage;
 
 import java.net.URL;
 import it.unipv.ingsfw.gasCorpCinema.utils.StageUtils;

@@ -8,7 +8,7 @@ import it.unipv.ingsfw.gasCorpCinema.model.Admin;
 import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
 import it.unipv.ingsfw.gasCorpCinema.model.projection.Projection;
-import it.unipv.ingsfw.gasCorpCinema.view.firstPage.HomePageView;
+import it.unipv.ingsfw.gasCorpCinema.view.homePage.HomePageView;
 import it.unipv.ingsfw.gasCorpCinema.view.payment.PaymentView;
 import it.unipv.ingsfw.gasCorpCinema.view.selectFilm.SelectFilmView;
 import it.unipv.ingsfw.gasCorpCinema.view.selectProjection.SelectProjectionView;
