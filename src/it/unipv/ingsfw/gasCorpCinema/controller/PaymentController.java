@@ -4,8 +4,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
-import it.unipv.ingsfw.gasCorpCinema.view.selectFilmView.SelectFilmView;
-import it.unipv.ingsfw.gasCorpCinema.view.selectProjectionView.SelectProjectionView;
+import it.unipv.ingsfw.gasCorpCinema.view.selectFilm.SelectFilmView;
+import it.unipv.ingsfw.gasCorpCinema.view.selectProjection.SelectProjectionView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;

@@ -1,12 +1,14 @@
 package it.unipv.ingsfw.gasCorpCinema.controller;
 
-import it.unipv.ingsfw.gasCorpCinema.view.addMovieView.AddMovieView;
-import it.unipv.ingsfw.gasCorpCinema.view.addProjectionView.AddProjectionView;
-import it.unipv.ingsfw.gasCorpCinema.view.allMoviesView.AllMoviesView;
-import it.unipv.ingsfw.gasCorpCinema.view.allProjectionsView.AllProjectionsView;
-import it.unipv.ingsfw.gasCorpCinema.view.firstPageView.FirstPageView;
-import it.unipv.ingsfw.gasCorpCinema.view.removeMovieView.RemoveMovieView;
-import it.unipv.ingsfw.gasCorpCinema.view.removeProjectionView.RemoveProjectionView;
+import it.unipv.ingsfw.gasCorpCinema.utils.StageUtils;
+import it.unipv.ingsfw.gasCorpCinema.view.addMovie.AddMovieView;
+import it.unipv.ingsfw.gasCorpCinema.view.addProjection.AddProjectionView;
+import it.unipv.ingsfw.gasCorpCinema.view.allMovies.AllMoviesView;
+import it.unipv.ingsfw.gasCorpCinema.view.allProjections.AllProjectionsView;
+import it.unipv.ingsfw.gasCorpCinema.view.firstPage.HomePageView;
+import it.unipv.ingsfw.gasCorpCinema.view.removeMovie.RemoveMovieView;
+import it.unipv.ingsfw.gasCorpCinema.view.removeProjection.RemoveProjectionView;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -24,8 +26,6 @@ public class AdminViewController {
 	@FXML
 	private Button myButton;
 	
-	private Stage stage;
-
     private String adminEmail;
 
     public void setAdminEmail(String email) {
@@ -44,9 +44,8 @@ public class AdminViewController {
 			
 			Stage currentStage = (Stage) myButton.getScene().getWindow();
 			
-			stage = new Stage();
-			FirstPageView v = new FirstPageView();
-			v.start(stage);	
+			HomePageView view = new HomePageView();
+			StageUtils.addToStageAndStart((Application)view);	
 			
 			currentStage.close();
 		}
@@ -54,43 +53,37 @@ public class AdminViewController {
     
 	public void swtichToAddFilmView(ActionEvent event) throws Exception {
 		
-		stage = new Stage();
-		AddMovieView v = new AddMovieView();
-		v.start(stage);
+		AddMovieView view = new AddMovieView();
+		StageUtils.addToStageAndStart((Application)view);		
+		
 	}
-	
+
 	public void swtichToRemoveFilmView(ActionEvent event) throws Exception {
 		
-		stage = new Stage();
-		RemoveMovieView v = new RemoveMovieView();
-		v.start(stage);
+		RemoveMovieView view = new RemoveMovieView();
+		StageUtils.addToStageAndStart((Application)view);	
 	}
 	
 	public void switchToAllFilmView(ActionEvent event) throws Exception {
-		
-		stage = new Stage();
-		AllMoviesView v = new AllMoviesView();
-		v.start(stage);
+		AllMoviesView view = new AllMoviesView();
+		StageUtils.addToStageAndStart((Application)view);
 	}
 	
 	public void switchToAddProjectionView(ActionEvent event) throws Exception {
 		
-		stage = new Stage();
-		AddProjectionView v = new AddProjectionView();
-		v.start(stage);
+		AddProjectionView view = new AddProjectionView();
+		StageUtils.addToStageAndStart((Application)view);
 	}
 	
 	public void switchToRemoveProjectionView(ActionEvent event) throws Exception {
 		
-		stage = new Stage();
-		RemoveProjectionView v = new RemoveProjectionView();
-		v.start(stage);
+		RemoveProjectionView view = new RemoveProjectionView();
+		StageUtils.addToStageAndStart((Application)view);
 	}
 	
 	public void switchToAllProjectionsView(ActionEvent event) throws Exception {
 		
-		stage = new Stage();
-		AllProjectionsView v = new AllProjectionsView();
-		v.start(stage);
+		AllProjectionsView view = new AllProjectionsView();
+		StageUtils.addToStageAndStart((Application)view);
 	}
 }

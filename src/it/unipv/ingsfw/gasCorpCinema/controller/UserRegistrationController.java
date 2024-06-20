@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import it.unipv.ingsfw.gasCorpCinema.model.User;
-import it.unipv.ingsfw.gasCorpCinema.view.firstPageView.FirstPageView;
+import it.unipv.ingsfw.gasCorpCinema.view.firstPage.HomePageView;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -152,18 +152,13 @@ public class UserRegistrationController {
 	
     @FXML
     public void loginButtonAction() throws Exception {  
-    	try {
-        	Stage currentStage = (Stage) buttonLogin.getScene().getWindow();
-        	
-        	stage = new Stage();
-			FirstPageView f = new FirstPageView();
-			f.start(stage);	
-			
-			currentStage.close();
-			
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    	Stage currentStage = (Stage) buttonLogin.getScene().getWindow();
+		
+		stage = new Stage();
+		HomePageView f = new HomePageView();
+		f.start(stage);	
+		
+		currentStage.close();
     }
     
     public void displayError(String errormessage) {

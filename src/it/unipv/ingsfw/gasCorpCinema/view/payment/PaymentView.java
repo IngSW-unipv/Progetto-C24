@@ -1,4 +1,4 @@
-package it.unipv.ingsfw.gasCorpCinema.view.removeProjectionView;
+package it.unipv.ingsfw.gasCorpCinema.view.payment;
 
 import java.nio.file.Paths;
 
@@ -9,22 +9,23 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-public class RemoveProjectionView extends Application{
+public class PaymentView extends Application{
 	
 	@Override
 	public void start(Stage stage) throws Exception {
 		// TODO Auto-generated method stub
-		Parent root = FXMLLoader.load(getClass().getResource("RemoveProjectionView.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("Payment.fxml"));
 		Scene scene = new Scene(root);
 		String imagePath = Paths.get("Resources/Logo G.A.S. CORP CINEMA.png").toUri().toString();
         Image icon = new Image(imagePath);
         
-		String css = this.getClass().getResource("RemoveProjectionView.css").toExternalForm();
+		String css = this.getClass().getResource("AdminView.css").toExternalForm();
 		scene.getStylesheets().add(css);
 		
 		stage.setScene(scene);
 		stage.setTitle("G.A.S. CORP CINEMA");
 		stage.getIcons().add(icon);
 		stage.show();
+	
 	}
 }

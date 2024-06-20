@@ -5,7 +5,7 @@ import java.io.FileInputStream;
 import java.util.Properties;
 
 import it.unipv.ingsfw.gasCorpCinema.model.User;
-import it.unipv.ingsfw.gasCorpCinema.view.userRegistrationView.UserRegistrationView;
+import it.unipv.ingsfw.gasCorpCinema.view.userRegistration.UserRegistrationView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -48,7 +48,7 @@ public class FirstPageController {
         
         Properties p = new Properties(System.getProperties());
         
-        p.load(new FileInputStream("Properties/Properties1"));
+        p.load(new FileInputStream("Properties/Strings"));
         
         if (role != null) {
         	

@@ -8,10 +8,10 @@ import it.unipv.ingsfw.gasCorpCinema.model.Admin;
 import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
 import it.unipv.ingsfw.gasCorpCinema.model.projection.Projection;
-import it.unipv.ingsfw.gasCorpCinema.view.firstPageView.FirstPageView;
-import it.unipv.ingsfw.gasCorpCinema.view.paymentView.PaymentView;
-import it.unipv.ingsfw.gasCorpCinema.view.selectFilmView.SelectFilmView;
-import it.unipv.ingsfw.gasCorpCinema.view.selectProjectionView.SelectProjectionView;
+import it.unipv.ingsfw.gasCorpCinema.view.firstPage.HomePageView;
+import it.unipv.ingsfw.gasCorpCinema.view.payment.PaymentView;
+import it.unipv.ingsfw.gasCorpCinema.view.selectFilm.SelectFilmView;
+import it.unipv.ingsfw.gasCorpCinema.view.selectProjection.SelectProjectionView;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -146,7 +146,7 @@ public class SelectProjectionController implements Initializable {
 		}else if(mySpinner==null) { 
 			myLabel.setText("YOU MUST SELECT THE NUMBER OF TICKET YOU WANT!");
 		}else {
-			changeScene("../view/Payment.fxml");
+			changeScene("../view/paymentView/Payment.fxml");
 			Stage currentStage = (Stage) myButton.getScene().getWindow();
 			currentStage.close();
 		}

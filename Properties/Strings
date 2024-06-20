@@ -1,0 +1,7 @@
+HOME_PAGE_TITLE = G.A.S. CORP CINEMA
+ADMIN_TITLE = ADMIN
+USER_TITLE = USER
+LOGO = Resources/Logo G.A.S. CORP CINEMA.png
+
+admin = ../view/adminView/AdminView.fxml
+user = ../view/selectFilmView/SelectFilm.fxml

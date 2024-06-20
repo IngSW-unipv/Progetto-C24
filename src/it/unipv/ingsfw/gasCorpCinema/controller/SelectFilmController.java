@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 import it.unipv.ingsfw.gasCorpCinema.model.Admin;
 import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
-import it.unipv.ingsfw.gasCorpCinema.view.firstPageView.FirstPageView;
+import it.unipv.ingsfw.gasCorpCinema.view.firstPage.HomePageView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -57,7 +57,7 @@ public class SelectFilmController implements Initializable {
 	public void pressButton() throws Exception {
 		selectedMovie = myListView.getSelectionModel().getSelectedItem();
 		if(selectedMovie!=null) {
-			changeSceneAdmin("../view/SelectProjection.fxml");
+			changeSceneAdmin("../view/selectProjectionView/SelectProjection.fxml");
 		}else {
 			myLabel.setText("SELECT A FILM!");
 		}
@@ -92,7 +92,7 @@ public class SelectFilmController implements Initializable {
 			Stage currentStage = (Stage) logoutButton.getScene().getWindow();
 			
 			stage = new Stage();
-			FirstPageView v = new FirstPageView();
+			HomePageView v = new HomePageView();
 			v.start(stage);	
 			
 			currentStage.close();

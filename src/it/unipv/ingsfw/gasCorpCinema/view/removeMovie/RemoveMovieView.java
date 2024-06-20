@@ -1,4 +1,4 @@
-package it.unipv.ingsfw.gasCorpCinema.view.allMoviesView;
+package it.unipv.ingsfw.gasCorpCinema.view.removeMovie;
 
 import java.nio.file.Paths;
 
@@ -9,17 +9,17 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-public class AllMoviesView extends Application {
+public class RemoveMovieView extends Application {
 	
 	@Override
 	public void start(Stage stage) throws Exception {
 		// TODO Auto-generated method stub
-		Parent root = FXMLLoader.load(getClass().getResource("AllMoviesView.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("RemoveMovieView.fxml"));
 		Scene scene = new Scene(root);
 		String imagePath = Paths.get("Resources/Logo G.A.S. CORP CINEMA.png").toUri().toString();
         Image icon = new Image(imagePath);
         
-		String css = this.getClass().getResource("AllMoviesView.css").toExternalForm();
+		String css = this.getClass().getResource("RemoveMovieView.css").toExternalForm();
 		scene.getStylesheets().add(css);
 		
 		stage.setScene(scene);

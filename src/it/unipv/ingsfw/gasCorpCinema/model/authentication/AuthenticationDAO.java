@@ -40,7 +40,6 @@ public class AuthenticationDAO implements IAuthenticationDAO {
 	    }
 	@Override
 	public boolean registration(String email, String password) {
-		// TODO Auto-generated method stub
 		conn=DBConnection.startConnection(conn,schema);
 		PreparedStatement st1;
         
