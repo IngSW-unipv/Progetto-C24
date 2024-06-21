@@ -44,4 +44,22 @@ public class User {
             return false;
 		}
 	}
+	
+	public boolean passwordValidate(String password) {
+	    Pattern p = Pattern.compile("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,18}$");
+	    Matcher m = p.matcher(password);
+	    
+	    if (m.matches()) {
+	        return true;
+	        
+	    } else {
+	        Alert alert = new Alert(AlertType.WARNING);
+	        alert.setTitle("La password deve contenere almeno:");
+	        alert.setHeaderText(null);
+	        alert.setContentText("Un numero, una lettera minuscola e una maiuscola,"
+	        		+ " un carattere speciale (@#$%) e deve essere lunga tra 6 e 18 caratteri.");
+	        alert.showAndWait();
+	        return false;
+	    }
+	}
 }

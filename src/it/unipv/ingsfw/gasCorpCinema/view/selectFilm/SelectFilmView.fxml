@@ -3,10 +3,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="388.0" prefWidth="601.0" styleClass="root" stylesheets="@SelectFilmView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.SelectFilmViewController">
+<AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="388.0" prefWidth="601.0" styleClass="root" stylesheets="@SelectFilmView.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.SelectFilmViewController">
    <children>
       <ListView fx:id="myListView" layoutY="98.0" prefHeight="214.0" prefWidth="600.0" />
       <Button fx:id="buttonConfirm" layoutX="495.0" layoutY="334.0" mnemonicParsing="false" onAction="#pressButton" text="CONFIRM" />
@@ -17,7 +19,15 @@
          </font>
       </Label>
       <Label alignment="CENTER" layoutY="64.0" prefHeight="36.0" prefWidth="600.0" stylesheets="@SelectFilmView.css" text="SELECT YOUR PROJECTION" />
-      <Button fx:id="logoutButton" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#logout" prefHeight="33.0" prefWidth="131.0" />
-      <Label fx:id="userLabel" layoutX="14.0" layoutY="14.0" prefHeight="21.0" prefWidth="236.0" />
+      <ImageView fx:id="userImageView" fitHeight="21.0" fitWidth="46.0" layoutX="14.0" layoutY="25.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../Resources/userImage.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="userLabel" layoutX="1.0" layoutY="4.0" prefHeight="21.0" prefWidth="222.0">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

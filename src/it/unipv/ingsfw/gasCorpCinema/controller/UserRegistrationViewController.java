@@ -113,17 +113,11 @@ public class UserRegistrationViewController {
 				displayError("Tutti i campi sono obbligatori.");
 				return;
 			}
-
-			if (email.length() > 30) {
-				displayError("L'email è troppo lunga. Deve essere al massimo di 30 caratteri.");
+			
+			if(!user.passwordValidate(password)) {
 				return;
 			}
-
-			if (password.length() > 12) {
-				displayError("La password è troppo lunga. Deve essere al massimo di 12 caratteri.");
-				return;
-			}
-
+			
 			// Controllo se l'email esiste già nel database
 			if (user.emailExists(email)) {
 				displayError("Email già esistente. Usa un'altra email.");
