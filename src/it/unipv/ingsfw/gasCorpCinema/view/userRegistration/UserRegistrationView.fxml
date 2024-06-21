@@ -39,38 +39,38 @@
       <Label layoutX="220.0" layoutY="218.0" text="Conferma Password" />
       <ImageView fx:id="userImage" fitHeight="31.0" fitWidth="33.0" layoutX="20.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Resources/userImage.png" />
+            <Image url="@../../../../../../../Resources/userImage.png" />
          </image>
       </ImageView>
       <ImageView fx:id="lockImage" fitHeight="15.0" fitWidth="33.0" layoutX="20.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Resources/lockIconImage.png" />
+            <Image url="@../../../../../../../Resources/lockIconImage.png" />
          </image>
       </ImageView>
       <ImageView fx:id="closeEyeImage1" fitHeight="18.0" fitWidth="24.0" layoutX="554.0" layoutY="184.0" onMouseClicked="#firstCloseEyeClicked" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Resources/closeEyeImage.png" />
+            <Image url="@../../../../../../../Resources/closeEyeImage.png" />
          </image>
       </ImageView>
       <ImageView fx:id="lockImage" fitHeight="15.0" fitWidth="33.0" layoutX="20.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Resources/lockIconImage.png" />
+            <Image url="@../../../../../../../Resources/lockIconImage.png" />
          </image>
       </ImageView>
       <ImageView fx:id="openEyeImage1" fitHeight="18.0" fitWidth="24.0" layoutX="554.0" layoutY="183.0" onMouseClicked="#firstOpenEyeClicked" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Resources/openEyeImage.png" />
+            <Image url="@../../../../../../../Resources/openEyeImage.png" />
          </image>
       </ImageView>
       <TextField fx:id="tfPassword" layoutX="60.0" layoutY="178.0" onKeyReleased="#showPasswordOnAction" prefHeight="31.0" prefWidth="487.0" promptText="Inserisci la tua Password" />
       <ImageView fx:id="openEyeImage2" fitHeight="18.0" fitWidth="24.0" layoutX="554.0" layoutY="255.0" onMouseClicked="#secondOpenEyeClicked" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Resources/openEyeImage.png" />
+            <Image url="@../../../../../../../Resources/openEyeImage.png" />
          </image>
       </ImageView>
       <ImageView fx:id="closeEyeImage2" fitHeight="18.0" fitWidth="18.0" layoutX="554.0" layoutY="256.0" onMouseClicked="#secondCloseEyeClicked" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Resources/closeEyeImage.png" />
+            <Image url="@../../../../../../../Resources/closeEyeImage.png" />
          </image>
       </ImageView>
       <TextField fx:id="tfConfirmPassword" layoutX="60.0" layoutY="249.0" onKeyReleased="#showPasswordOnActionSecond" prefHeight="31.0" prefWidth="487.0" promptText="Conferma Password" />

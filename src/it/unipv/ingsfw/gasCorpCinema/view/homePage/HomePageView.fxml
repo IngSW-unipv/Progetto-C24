@@ -44,7 +44,7 @@
             </Label>
             <ImageView fx:id="imageCinema" fitHeight="420.0" fitWidth="298.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Resources/CinemaFirstPage.png" />
+                  <Image url="@../../../../../../../Resources/CinemaFirstPage.png" />
                </image>
             </ImageView>
          </children>
