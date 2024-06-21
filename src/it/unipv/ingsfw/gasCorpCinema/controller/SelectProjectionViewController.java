@@ -139,7 +139,7 @@ public class SelectProjectionViewController implements Initializable {
 	public int getNumberOfTickets() {
 		return mySpinner.getValue();
 	}
-	//serve per aggiornare il nuemro di posti disponibili per  una data proiezione e per il pagamento 
+	//serve per aggiornare il numero di posti disponibili per  una data proiezione e per il pagamento 
 	
 	public void pressButton() throws Exception {
 		
