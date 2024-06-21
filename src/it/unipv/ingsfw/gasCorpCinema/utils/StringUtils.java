@@ -1,9 +1,5 @@
 package it.unipv.ingsfw.gasCorpCinema.utils;
 
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-
 import javafx.scene.control.TextField;
 
 public class StringUtils {
