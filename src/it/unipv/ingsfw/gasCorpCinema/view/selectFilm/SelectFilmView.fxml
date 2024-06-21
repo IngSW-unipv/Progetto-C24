@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="388.0" prefWidth="601.0" styleClass="root" stylesheets="@SelectFilm.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.SelectFilmViewController">
+<AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="388.0" prefWidth="601.0" styleClass="root" stylesheets="@SelectFilmView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.SelectFilmViewController">
    <children>
       <ListView fx:id="myListView" layoutY="98.0" prefHeight="214.0" prefWidth="600.0" />
       <Button fx:id="buttonConfirm" layoutX="495.0" layoutY="334.0" mnemonicParsing="false" onAction="#pressButton" text="CONFIRM" />
