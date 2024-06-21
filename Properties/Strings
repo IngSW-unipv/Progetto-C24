@@ -8,33 +8,33 @@ USER_REGISTRATION_FXML = ./src/it/unipv/ingsfw/gasCorpCinema/view/userRegistrati
 USER_REGISTRATION_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/userRegistration/UserRegistrationView.css
 
 ADMIN_TITLE = G.A.S. CORP CINEMA - ADMIN
-ADMIN = ./src/it/unipv/ingsfw/gasCorpCinema/view/adminView/AdminView.fxml
-ADMIN_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/adminView/AdminView.css
+ADMIN = ./src/it/unipv/ingsfw/gasCorpCinema/view/admin/AdminView.fxml
+ADMIN_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/admin/AdminView.css
 
 ADD_MOVIE_FXML = ./src/it/unipv/ingsfw/gasCorpCinema/view/addMovie/AddMovieView.fxml
 ADD_MOVIE_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/addMovie/AddMovieView.css
 
-ADD_PROJECTION_FXML = ./src/it/unipv/ingsfw/gasCorpCinema/view/addMovie/AddProjectionView.fxml
-ADD_PROJECTION_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/addMovie/AddProjectionView.css
+ADD_PROJECTION_FXML = ./src/it/unipv/ingsfw/gasCorpCinema/view/addProjection/AddProjectionView.fxml
+ADD_PROJECTION_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/addProjection/AddProjectionView.css
 
-ALL_MOVIES_FXML = ./src/it/unipv/ingsfw/gasCorpCinema/view/addMovie/AllMoviesView.fxml
-ALL_MOVIES_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/addMovie/AllMoviesView.css
+ALL_MOVIES_FXML = ./src/it/unipv/ingsfw/gasCorpCinema/view/allMovies/AllMoviesView.fxml
+ALL_MOVIES_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/allMovies/AllMoviesView.css
 
-ALL_PROJECTIONS_FXML = ./src/it/unipv/ingsfw/gasCorpCinema/view/addMovie/AllProjectionsView.fxml
-ALL_PROJECTIONS_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/addMovie/AllProjectionsView.css
+ALL_PROJECTIONS_FXML = ./src/it/unipv/ingsfw/gasCorpCinema/view/allProjections/AllProjectionsView.fxml
+ALL_PROJECTIONS_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/allProjections/AllProjectionsView.css
 
-REMOVE_MOVIE_FXML = ./src/it/unipv/ingsfw/gasCorpCinema/view/addMovie/RemoveMovieView.fxml
-REMOVE_MOVIE_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/addMovie/RemoveMovieView.css
+REMOVE_MOVIE_FXML = ./src/it/unipv/ingsfw/gasCorpCinema/view/removeMovie/RemoveMovieView.fxml
+REMOVE_MOVIE_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/removeMovie/RemoveMovieView.css
 
-REMOVE_PROJECTION_FXML = ./src/it/unipv/ingsfw/gasCorpCinema/view/addMovie/RemoveProjectionView.fxml
-REMOVE_PROJECTION_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/addMovie/RemoveProjectionView.css
+REMOVE_PROJECTION_FXML = ./src/it/unipv/ingsfw/gasCorpCinema/view/removeProjection/RemoveProjectionView.fxml
+REMOVE_PROJECTION_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/removeProjection/RemoveProjectionView.css
 
 USER_TITLE = G.A.S. CORP CINEMA - USER
-USER = ./src/it/unipv/ingsfw/gasCorpCinema/view/selectFilmView/SelectFilm.fxml
-USER_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/selectFilmView/SelectFilm.css
+USER = ./src/it/unipv/ingsfw/gasCorpCinema/view/selectFilm/SelectFilmView.fxml
+USER_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/selectFilm/SelectFilmView.css
 
-SELECT_PROJECTION_FXML = ./src/it/unipv/ingsfw/gasCorpCinema/view/payment/SelectProjectionView.fxml
-SELECT_PROJECTION_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/payment/SelectProjectionView.css
+SELECT_PROJECTION_FXML = ./src/it/unipv/ingsfw/gasCorpCinema/view/selectProjection/SelectProjectionView.fxml
+SELECT_PROJECTION_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/selectProjection/SelectProjectionView.css
 
 PAYMENT_FXML = ./src/it/unipv/ingsfw/gasCorpCinema/view/payment/PaymentView.fxml
 PAYMENT_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/payment/PaymentView.css

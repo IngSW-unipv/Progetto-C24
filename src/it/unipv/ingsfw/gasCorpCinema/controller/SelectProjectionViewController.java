@@ -1,7 +1,10 @@
 package it.unipv.ingsfw.gasCorpCinema.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 import it.unipv.ingsfw.gasCorpCinema.model.Admin;
@@ -44,7 +47,6 @@ public class SelectProjectionViewController implements Initializable {
 	
 	private double total;
 	private Admin admin = new Admin();
-	private Stage stage;
 	private Movie selectedMovie;
 	private Projection projection;
 	private int numberOfTickets;
@@ -146,7 +148,14 @@ public class SelectProjectionViewController implements Initializable {
 		}else if(mySpinner==null) { 
 			myLabel.setText("YOU MUST SELECT THE NUMBER OF TICKET YOU WANT!");
 		}else {
-			changeScene("../view/paymentView/Payment.fxml");
+			Properties p = new Properties(System.getProperties());
+			p.load(new FileInputStream("Properties/Strings"));
+			
+			String viewPath = p.getProperty("PAYMENT_FXML");
+			File fxmlFile = new File(viewPath);
+			URL fxmlResource = fxmlFile.toURI().toURL();
+			
+			changeScene(fxmlResource);
 			Stage currentStage = (Stage) myButton.getScene().getWindow();
 			currentStage.close();
 		}
@@ -155,17 +164,17 @@ public class SelectProjectionViewController implements Initializable {
 		//altrimenit visutlaizza il messaggio SELECT A FILM, discorso analogo per lo spinner		
 	}
 	
-	public void changeScene(String fxml) throws IOException {
+	public void changeScene(URL fxml) throws IOException {
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-		Parent root = loader.load();
+		FXMLLoader loader = new FXMLLoader(fxml);
+        Parent root = loader.load();
 		
 	    saleProcess.setNumberOfTickets(numberOfTickets);
 	    saleProcess.setTotal(total);
 	    saleProcess.setProjection(projection);
 		
 		Scene scene = new Scene(root);
-		stage = new Stage();
+		Stage stage = new Stage();
 		
 		stage.setScene(scene);
 		stage.show();
@@ -176,7 +185,7 @@ public class SelectProjectionViewController implements Initializable {
 		
 			Stage currentStage = (Stage) backButton.getScene().getWindow();
 			
-			stage = new Stage();
+			Stage stage = new Stage();
 			SelectFilmView s = new SelectFilmView();
 			s.start(stage);	
 			

@@ -1,7 +1,10 @@
 package it.unipv.ingsfw.gasCorpCinema.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import it.unipv.ingsfw.gasCorpCinema.model.Admin;
 import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
@@ -57,7 +60,15 @@ public class SelectFilmViewController implements Initializable {
 	public void pressButton() throws Exception {
 		selectedMovie = myListView.getSelectionModel().getSelectedItem();
 		if(selectedMovie!=null) {
-			changeSceneAdmin("../view/selectProjectionView/SelectProjection.fxml");
+			
+			Properties p = new Properties(System.getProperties());
+			p.load(new FileInputStream("Properties/Strings"));
+			
+			String viewPath = p.getProperty("SELECT_PROJECTION_FXML");
+			File fxmlFile = new File(viewPath);
+			URL fxmlResource = fxmlFile.toURI().toURL();
+			
+			changeScene(fxmlResource);
 		}else {
 			myLabel.setText("SELECT A FILM!");
 		}
@@ -69,12 +80,12 @@ public class SelectFilmViewController implements Initializable {
 		
 	}
 	
-	public void changeSceneAdmin(String fxml) throws IOException {
+	public void changeScene(URL fxml) throws IOException {
 
 		saleProcess.setMovie(selectedMovie);
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-		Parent root = loader.load();
+		FXMLLoader loader = new FXMLLoader(fxml);
+        Parent root = loader.load();
 		
 	    Scene scene = new Scene(root);
 		stage = new Stage();

@@ -1,6 +1,8 @@
 package it.unipv.ingsfw.gasCorpCinema.controller;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.net.URL;
 import java.util.Properties;
 import it.unipv.ingsfw.gasCorpCinema.model.User;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
@@ -29,7 +31,6 @@ public class HomePageViewController {
 	@FXML
 	private Button buttonRegistrati;
 
-	private Stage stage;
 	private User user = new User();
 
 	@FXML
@@ -49,7 +50,10 @@ public class HomePageViewController {
 			String viewPath = p.getProperty(role.toUpperCase());
 
 			if (viewPath != null) {
-				changeScene(viewPath, email);
+				
+				File fxmlFile = new File(viewPath);
+				URL fxmlResource = fxmlFile.toURI().toURL();
+				changeScene(fxmlResource, email);
 			}
 		} else {
 			// Mostra un messaggio di errore se il login fallisce
@@ -62,21 +66,21 @@ public class HomePageViewController {
 	public void registerButtonAction() throws Exception {
 		Stage currentStage = (Stage) buttonRegistrati.getScene().getWindow();
 
-		stage = new Stage();
+		Stage stage = new Stage();
 		UserRegistrationView u = new UserRegistrationView();
 		u.start(stage);	
 
 		currentStage.close();
 	}
 
-	public void changeScene(String fxml,String email) throws Exception {
+	public void changeScene(URL fxml,String email) throws Exception {
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-		Parent pane = loader.load();
-
+		FXMLLoader loader = new FXMLLoader(fxml);
+        Parent root = loader.load();
+        Object controller = loader.getController();
+		
 		try {
 
-			Object controller = loader.getController();
 			((AdminViewController)controller).setAdminEmail(email);
 
 		}catch(ClassCastException e){
@@ -84,13 +88,15 @@ public class HomePageViewController {
 
 		try {
 
-			Object controller = loader.getController();
 			((SelectFilmViewController)controller).setUserEmail(email);
 
 		}catch(ClassCastException e){
 		}
 
-		Stage stage = (Stage) buttonLogin.getScene().getWindow();
-		stage.setScene(new Scene(pane));
+		Scene scene = new Scene(root);
+		Stage stage = new Stage();
+		
+		stage.setScene(scene);
+		stage.show();
 	}
 }
