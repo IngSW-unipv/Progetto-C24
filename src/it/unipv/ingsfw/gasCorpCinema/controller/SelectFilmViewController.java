@@ -20,6 +20,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 
@@ -32,12 +33,12 @@ public class SelectFilmViewController implements Initializable {
 	@FXML
 	private Label myLabel, userLabel;
 	@FXML
-	private Button logoutButton;
+	private ImageView userImageView;
 
+	private String userEmail;
 	private Movie selectedMovie;
 	private Admin admin = new Admin();
 	private Stage stage;
-	private String userEmail;
 	private SaleProcess saleProcess;
 
 
@@ -97,7 +98,7 @@ public class SelectFilmViewController implements Initializable {
 				"Dopo aver fatto il logout verrai riportato alla homepage.");
 
 		if(alert) {
-			Stage currentStage = (Stage) logoutButton.getScene().getWindow();
+			Stage currentStage = (Stage) userImageView.getScene().getWindow();
 
 			stage = new Stage();
 			HomePageView v = new HomePageView();

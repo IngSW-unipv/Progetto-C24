@@ -11,10 +11,7 @@ import it.unipv.ingsfw.gasCorpCinema.model.Admin;
 import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
 import it.unipv.ingsfw.gasCorpCinema.model.projection.Projection;
-import it.unipv.ingsfw.gasCorpCinema.view.homePage.HomePageView;
-import it.unipv.ingsfw.gasCorpCinema.view.payment.PaymentView;
 import it.unipv.ingsfw.gasCorpCinema.view.selectFilm.SelectFilmView;
-import it.unipv.ingsfw.gasCorpCinema.view.selectProjection.SelectProjectionView;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -22,14 +19,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class SelectProjectionViewController implements Initializable {
