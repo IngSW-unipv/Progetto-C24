@@ -30,8 +30,12 @@ public class User {
 	
 	public boolean emailValidate(String email) {
 		
-    	Pattern p = Pattern.compile("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$");
-        Matcher m = p.matcher(email);
+    	Pattern p = 
+    			Pattern.compile("^[\\w!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+       //il regex(o espressione regolare) ammette caratteri alfa numerici e un qualsisi simbolo speciale
+    	//seguito da @ e altri caratteri alfanumerici e il simbolo -, inoltre la regexc deve terminare con 
+    	//un punto seguito da almeno 2 lettere
+    	Matcher m = p.matcher(email);
 
         if (m.matches()) {
             return true;
