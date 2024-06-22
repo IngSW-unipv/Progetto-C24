@@ -76,15 +76,7 @@ public class SelectProjectionViewController implements Initializable {
 		
 	}
 	
-	public void setParameters(Movie selectedMovie) {
-		this.selectedMovie = selectedMovie;
-		
-		if(myListView != null) {
-			myListView.getItems().clear();
-			myListView.getItems().addAll(admin.getprojectionsByMovie(selectedMovie));
-			setListViewListener();
-		}
-	}//con sale process questo non serve
+
 	
 	 private void setListViewListener() {
 	        myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Projection>() {
@@ -93,6 +85,7 @@ public class SelectProjectionViewController implements Initializable {
 	                if (newValue != null) {
 	                    projection = newValue;
 	                    updateSpinnerValueFactory();
+	                    
 	                }
 	            }
 	        });
@@ -105,26 +98,27 @@ public class SelectProjectionViewController implements Initializable {
 	            valueFactory.setValue(1);
 	            mySpinner.setValueFactory(valueFactory);
 	            
-	            numberOfTickets= mySpinner.getValue();
-	            total = numberOfTickets * projection.getPrice();
-	            myLabelTotal.setText(String.valueOf(total));
-	            mySpinner.valueProperty().addListener(new ChangeListener<Integer>(){
-
+	      
+	        }
+	        
+		 mySpinner.valueProperty().addListener(new ChangeListener<Integer>(){
 	    			@Override
 	    			public void changed(ObservableValue<? extends Integer> arg0, Integer arg1, Integer arg2) {
 	    				// TODO Auto-generated method stub
 	    				
-	    				total = mySpinner.getValue() * projection.getPrice();
+	    				numberOfTickets= mySpinner.getValue();
+	    				saleProcess.setNumberOfTickets(numberOfTickets);
+	    				
+	    				
+	    				total=mySpinner.getValue() * projection.getPrice();
+	    				saleProcess.setTotal(total);
+	    				//così il sale process ha i valori aggiornati 
 	    	            myLabelTotal.setText(String.valueOf(total));
-	    			}
-	    		});
-	        }
-	    }
+	    			} 	    	            
+		});       
+	  }
 	 
-	public void setSelectedMovie(Movie movie) {
-        selectedMovie = movie;
-    }
-	//con sale process qeusto non serve
+
 	
 	public Projection getProjection() {
 		return projection;

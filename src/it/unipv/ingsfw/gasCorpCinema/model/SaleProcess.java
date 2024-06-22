@@ -83,6 +83,11 @@ public class SaleProcess {
 		register.saleRegistration(projection, numberOfTickets,total);
 	}
 	
-	
+	public void reset() {
+		instance=null;
+	}
+	//se il cliente entra seleziona film e proieione ma alla fine cambia idea e non paga dobbiamo 
+	//resettare tutti i paramentri a 0 se no il prissimo cliente che si connette si ritrova 
+	//con i dati del precedente
 	
 }

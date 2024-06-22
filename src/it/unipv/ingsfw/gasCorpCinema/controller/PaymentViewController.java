@@ -72,6 +72,7 @@ public class PaymentViewController implements Initializable {
 		myLabel.setText("SUCCESSFUL PAYMENT ✅");
 		Thread.sleep(1500);
 		//premo il bottone e dopo 1.5 sec si visualizza "SUCCESSFUL PAYMENT" e dopo altri 1.5 sec cambia view
+		saleProcess.reset(); //dobbaimo resettare tutti i dati di sale process
 		saleProcess.saleRegistration();
 		//l'ideale sarebbe che il metodo saleRegistration restituisca un booleano a secodna che la registrazione
 		//della vendiota vada a buon fine
