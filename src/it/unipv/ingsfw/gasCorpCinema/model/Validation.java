@@ -1,4 +1,4 @@
-package it.unipv.ingsfw.gasCorpCinema.model.authentication;
+package it.unipv.ingsfw.gasCorpCinema.model;
 
 import java.time.LocalDate;
 import java.util.regex.Matcher;
@@ -7,43 +7,8 @@ import java.util.regex.Pattern;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
-public class AuthenticationSingleton {
+public class Validation {
 
-	private static AuthenticationSingleton instance;	
-	private String email;
-	private String role;
-//	private Authentication() {
-//		register=Register.getInstance();
-//	}
-	
-	private AuthenticationSingleton() {
-		super();
-	}
-	
-	public static AuthenticationSingleton getInstance() {
-		if (instance==null) {
-			instance = new AuthenticationSingleton();
-		}
-		return instance;
-	}
-
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-	
 public boolean emailValidate(String email) {
 		
     	Pattern p = 
@@ -104,5 +69,4 @@ public boolean emailValidate(String email) {
         Matcher matcher = pattern.matcher(input);
         return matcher.matches();
 	}
-	
 }

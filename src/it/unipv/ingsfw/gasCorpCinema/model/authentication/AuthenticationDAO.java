@@ -90,34 +90,4 @@ public class AuthenticationDAO implements IAuthenticationDAO {
 	    }
 	    return role;
 	}
-	
-	public String getRoleByEmail(String email) {
-	    conn = DBConnection.startConnection(conn, schema);
-	    PreparedStatement stmt;
-	    ResultSet rs;
-	    String role = null;
-
-	    try {
-	        // Preparazione della query
-	        String query = "SELECT role FROM authentications WHERE email = ?";
-	        stmt = conn.prepareStatement(query);
-	        
-	        // Impostazione dei parametri
-	        stmt.setString(1, email);
-	        
-	        // Esecuzione della query
-	        rs = stmt.executeQuery();
-	        
-	        // Verifica se c'è una corrispondenza e ottieni il ruolo
-	        if (rs.next()) {
-	            role = rs.getString("role");
-	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    } finally {
-	        // Chiusura della connessione al database indipendentemente dall'esito dell'autenticazione
-	        DBConnection.closeConnection(conn);
-	    }
-	    return role;
-	}
 }

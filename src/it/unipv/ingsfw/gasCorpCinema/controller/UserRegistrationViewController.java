@@ -1,7 +1,7 @@
 package it.unipv.ingsfw.gasCorpCinema.controller;
 
-import it.unipv.ingsfw.gasCorpCinema.model.User;
-import it.unipv.ingsfw.gasCorpCinema.model.authentication.AuthenticationSingleton;
+import it.unipv.ingsfw.gasCorpCinema.model.Validation;
+import it.unipv.ingsfw.gasCorpCinema.model.authentication.Authentication;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.utils.StringUtils;
 import it.unipv.ingsfw.gasCorpCinema.view.homePage.HomePageView;
@@ -34,12 +34,10 @@ public class UserRegistrationViewController {
 
 	private String password, confirmPassword;
 	private Stage stage;
-	private User user = new User();
-	private AuthenticationSingleton authentication;
+	private Authentication authentication;
+	private Validation validation;
 
 	public  void initialize(){
-		
-		authentication=AuthenticationSingleton.getInstance();
 		
 		tfPassword.setVisible(false);
 		openEyeImage1.setVisible(false);
@@ -106,12 +104,12 @@ public class UserRegistrationViewController {
 			String password = pfPassword.getText();
 			String confirmPassword = pfConfirmPassword.getText();
 
-			if (!authentication.emailValidate(email)) {
+			if (!validation.emailValidate(email)) {
 				displayError("Inserisci un email valida.");
 				return;
 			}
 
-			if(!authentication.passwordValidate(password)) {
+			if(!validation.passwordValidate(password)) {
 				return;
 			}
 			
@@ -121,7 +119,7 @@ public class UserRegistrationViewController {
 			}			
 			
 			// Controllo se l'email esiste già nel database
-			if (user.emailExists(email)) {
+			if (authentication.emailExists(email)) {
 				displayError("Email già esistente. Usa un'altra email.");
 				return;
 			}
@@ -132,7 +130,7 @@ public class UserRegistrationViewController {
 				return;
 			}
 
-			if (user.registration(email, password)) {
+			if (authentication.registration(email, password)) {
 				AlertUtils.showAlert(AlertType.CONFIRMATION,"Messaggio di informazione", 
 						"Registrazione avvenuta con successo", 
 						"Clicca il pulsante 'login' qui sotto per poter tornare alla homepage!");

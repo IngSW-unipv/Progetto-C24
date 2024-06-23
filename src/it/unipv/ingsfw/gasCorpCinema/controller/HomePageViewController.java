@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.net.URL;
 import java.util.Properties;
-import it.unipv.ingsfw.gasCorpCinema.model.User;
+
+import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
+import it.unipv.ingsfw.gasCorpCinema.model.authentication.Authentication;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.view.userRegistration.UserRegistrationView;
 import javafx.fxml.FXML;
@@ -31,16 +33,20 @@ public class HomePageViewController {
 	@FXML
 	private Button buttonRegistrati;
 
-	private User user = new User();
+	private Authentication authentication;
+	private SaleProcess saleProcess;
+	
+	
 
 	@FXML
 	public void loginButtonAction() throws Exception {
 
 		String email = tfUsername.getText();
 		String password = fieldPassword.getText();
-		String role = user.login(email, password);
-
+		String role = authentication.login(email, password);
 		
+		saleProcess = SaleProcess.getInstance();
+		saleProcess.setRole(role);
 		
 		Properties p = new Properties(System.getProperties());
 
@@ -55,7 +61,7 @@ public class HomePageViewController {
 				
 				File fxmlFile = new File(viewPath);
 				URL fxmlResource = fxmlFile.toURI().toURL();
-				changeScene(fxmlResource, email);
+				changeScene(fxmlResource);
 				Stage currentStage = (Stage) buttonLogin.getScene().getWindow();
 				currentStage.close();
 			}
@@ -77,13 +83,10 @@ public class HomePageViewController {
 		currentStage.close();
 	}
 
-	public void changeScene(URL fxml,String email) throws Exception {
+	public void changeScene(URL fxml) throws Exception {
 
 		FXMLLoader loader = new FXMLLoader(fxml);
         Parent root = loader.load();
-        Object controller = loader.getController();
-		
-		((IRoleController)controller).setEmail(email);
 
 		Scene scene = new Scene(root);
 		Stage stage = new Stage();

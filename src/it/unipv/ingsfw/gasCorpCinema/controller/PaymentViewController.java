@@ -4,7 +4,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
-import it.unipv.ingsfw.gasCorpCinema.model.authentication.AuthenticationSingleton;
+import it.unipv.ingsfw.gasCorpCinema.model.Validation;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.view.homePage.HomePageView;
 import it.unipv.ingsfw.gasCorpCinema.view.selectProjection.SelectProjectionView;
@@ -15,6 +15,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class PaymentViewController implements Initializable {
@@ -26,17 +27,17 @@ public class PaymentViewController implements Initializable {
 	private TextField labelName, labelSurname, labelNumberOfCC, labelCVV;
 	@FXML
 	private DatePicker myDatePicker;
+	@FXML
+	private ImageView userImageView;
 	
 	private Stage stage;
 	private double total;
 	private SaleProcess saleProcess;
-	
-	private AuthenticationSingleton authentication;
+	private Validation validation;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		saleProcess=SaleProcess.getInstance();
-		authentication=AuthenticationSingleton.getInstance();
 		total=saleProcess.getTotal();
 		myLabelTotal.setText(Double.toString(total)+ " €");
 		
@@ -48,24 +49,24 @@ public class PaymentViewController implements Initializable {
 		String numberOfCC= labelNumberOfCC.getText();
 		String cvv = labelCVV.getText();
 		
-		if(!authentication.nameValidate(name)) { 
+		if(!validation.nameValidate(name)) { 
 			myLabel.setText("INSERT A VALID NAME");
 			return;
 		}
-		if(!authentication.nameValidate(surname)) { 
+		if(!validation.nameValidate(surname)) { 
 			myLabel.setText("INSERT A VALID SURNAME");
 			return;
 		}
-		if(!authentication.cardNumberValidate(numberOfCC)) { 
+		if(!validation.cardNumberValidate(numberOfCC)) { 
 			myLabel.setText("INSERT A VALID CARD");
 			return;
 		}
 		LocalDate expirationDate = myDatePicker.getValue();
-		if(!authentication.dateValidate(expirationDate)) {
+		if(!validation.dateValidate(expirationDate)) {
 			myLabel.setText("INSERT A VALID EXPIRATION DATE");
 			return;
 		}
-		if(!authentication.cvvValidate(cvv)) { 
+		if(!validation.cvvValidate(cvv)) { 
 			myLabel.setText("INSERT A VALID CVV");
 			return;
 		}
@@ -102,8 +103,6 @@ public class PaymentViewController implements Initializable {
 		}
 	}
 	
-	
-	
 	public void backView() throws Exception {		
 		Stage currentStage = (Stage) backButton.getScene().getWindow();
 		stage = new Stage();
@@ -111,4 +110,19 @@ public class PaymentViewController implements Initializable {
 		s.start(stage);	
 		currentStage.close();
 	}	
+	
+	public void logout() throws Exception {
+		boolean alert = AlertUtils.showAlertAndWait(AlertType.CONFIRMATION,"Logout","Stai per effettuare il logout",
+				"Dopo aver fatto il logout verrai riportato alla homepage.");
+
+		if(alert) {
+			Stage currentStage = (Stage) userImageView.getScene().getWindow();
+
+			stage = new Stage();
+			HomePageView v = new HomePageView();
+			v.start(stage);	
+
+			currentStage.close();
+		}
+	}
 }

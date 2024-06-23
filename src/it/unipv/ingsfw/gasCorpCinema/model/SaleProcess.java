@@ -28,9 +28,22 @@ public class SaleProcess {
 	private Projection projection;
 	//questi ultimi 3 arrivano da select projection controller
 	private Register register;
+	private String role;
 	
 	
 	
+	
+	
+	public String getRole() {
+		return role;
+	}
+
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+
 	private SaleProcess() {
 		register=Register.getInstance();
 	}
