@@ -14,23 +14,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class PaymentViewController implements Initializable {
 	@FXML
 	private Button myButton, backButton;
 	@FXML
-	private Label myLabel;
+	private Label myLabel, myLabelTotal;
 	@FXML
-	private Label myLabelTotal;
-	@FXML
-	private Label labelName;
-	@FXML
-	private Label labelSurname;
-	@FXML
-	private Label labelNumberOfCC;
-	@FXML
-	private Label labelCVV;
+	private TextField labelName, labelSurname, labelNumberOfCC, labelCVV;
 	@FXML
 	private DatePicker myDatePicker;
 	
