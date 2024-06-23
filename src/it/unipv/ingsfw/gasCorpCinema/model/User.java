@@ -24,11 +24,16 @@ public class User {
 		return authenticationDAO.login(email, password);
 	}
 	
+	//****************
+	public String getRoleByEmail(String email) {
+		return authenticationDAO.getRoleByEmail(email);
+	}
+	
 	public boolean emailExists(String email) {
 		return authenticationDAO.emailExists(email);
 	}
 	
-	public boolean emailValidate(String email) {
+public boolean emailValidate(String email) {
 		
     	Pattern p = 
     			Pattern.compile("^[\\w!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
@@ -66,4 +71,6 @@ public class User {
 	        return false;
 	    }
 	}
+	
+	
 }
