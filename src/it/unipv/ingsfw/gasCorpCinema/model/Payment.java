@@ -10,7 +10,7 @@ public class Payment {
 	
 	
 	public boolean nameValidate(String input) {
-		String regex = "^[a-zA-Z]{1,20}$";
+		String regex = "^[A-Z][a-zA-Z' -]*$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(input);
         return matcher.matches();

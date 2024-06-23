@@ -1,6 +1,7 @@
 package it.unipv.ingsfw.gasCorpCinema.controller;
 
 import it.unipv.ingsfw.gasCorpCinema.model.User;
+import it.unipv.ingsfw.gasCorpCinema.model.UserValidate;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.utils.StringUtils;
 import it.unipv.ingsfw.gasCorpCinema.view.homePage.HomePageView;
@@ -17,10 +18,7 @@ import javafx.stage.Stage;
 
 public class UserRegistrationViewController {
 	@FXML
-	private Button buttonRegistrati;
-
-	@FXML 
-	private Button buttonLogin;
+	private Button buttonRegistrati, buttonLogin;
 
 	@FXML
 	private ImageView openEyeImage1, openEyeImage2, closeEyeImage1, closeEyeImage2;
@@ -37,6 +35,7 @@ public class UserRegistrationViewController {
 	private String password, confirmPassword;
 	private Stage stage;
 	private User user = new User();
+	private UserValidate userValidate = new UserValidate();
 
 	public  void initialize(){
 		tfPassword.setVisible(false);
@@ -104,19 +103,19 @@ public class UserRegistrationViewController {
 			String password = pfPassword.getText();
 			String confirmPassword = pfConfirmPassword.getText();
 
-			if (!user.emailValidate(email)) {
+			if (!userValidate.emailValidate(email)) {
 				displayError("Inserisci un email valida.");
 				return;
 			}
 
-			if (StringUtils.isFieldEmpty(tfEmail) || StringUtils.isFieldEmpty(pfPassword) || StringUtils.isFieldEmpty(pfConfirmPassword)) {
-				displayError("Tutti i campi sono obbligatori.");
+			if(!userValidate.passwordValidate(password)) {
 				return;
 			}
 			
-			if(!user.passwordValidate(password)) {
+			if (StringUtils.isFieldEmpty(tfEmail) || StringUtils.isFieldEmpty(pfPassword) || StringUtils.isFieldEmpty(pfConfirmPassword)) {
+				displayError("Tutti i campi sono obbligatori.");
 				return;
-			}
+			}			
 			
 			// Controllo se l'email esiste già nel database
 			if (user.emailExists(email)) {

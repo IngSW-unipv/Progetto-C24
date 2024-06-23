@@ -54,6 +54,8 @@ public class HomePageViewController {
 				File fxmlFile = new File(viewPath);
 				URL fxmlResource = fxmlFile.toURI().toURL();
 				changeScene(fxmlResource, email);
+				Stage currentStage = (Stage) buttonLogin.getScene().getWindow();
+				currentStage.close();
 			}
 		} else {
 			// Mostra un messaggio di errore se il login fallisce

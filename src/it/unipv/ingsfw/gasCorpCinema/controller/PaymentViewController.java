@@ -7,6 +7,8 @@ import java.util.ResourceBundle;
 
 import it.unipv.ingsfw.gasCorpCinema.model.Payment;
 import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
+import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
+import it.unipv.ingsfw.gasCorpCinema.view.homePage.HomePageView;
 import it.unipv.ingsfw.gasCorpCinema.view.selectFilm.SelectFilmView;
 import it.unipv.ingsfw.gasCorpCinema.view.selectProjection.SelectProjectionView;
 import javafx.fxml.FXML;
@@ -15,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class PaymentViewController implements Initializable {
@@ -37,6 +40,7 @@ public class PaymentViewController implements Initializable {
 		saleProcess=SaleProcess.getInstance();
 		total=saleProcess.getTotal();
 		myLabelTotal.setText(Double.toString(total)+ " €");
+		payment = new Payment();
 	}
 	
 	public void pressButton() throws Exception {
@@ -44,36 +48,56 @@ public class PaymentViewController implements Initializable {
 		String surname= labelSurname.getText();
 		String numberOfCC= labelNumberOfCC.getText();
 		
-		if(payment.nameValidate(name)) { 
+		if(!payment.nameValidate(name)) { 
 			myLabel.setText("INSERT A VALID NAME");
 			return;
 		}
-		if(payment.nameValidate(surname)) { 
+		if(!payment.nameValidate(surname)) { 
 			myLabel.setText("INSERT A VALID SURNAME");
 			return;
 		}
-		if(payment.cardNumberValidate(numberOfCC)) { 
+		if(!payment.cardNumberValidate(numberOfCC)) { 
 			myLabel.setText("INSERT A VALID CARD");
 			return;
 		}
 		LocalDate expirationDate = myDatePicker.getValue();
-		if(payment.dateValidate(expirationDate)) {
+		if(!payment.dateValidate(expirationDate)) {
 			myLabel.setText("THE CREDIT CARD INSERT IS EXPIRED");
 			return;
 		}
-		Thread.sleep(1500);
-		myLabel.setText("SUCCESSFUL PAYMENT ✅");
-		Thread.sleep(1500);
+		
+//		myLabel.setText("SUCCESSFUL PAYMENT ✅");
+//
+//		System.out.println("prima del thread");
+//		Thread.sleep(4000);
+//		System.out.println("dopo del thread");
+		alertSuccessfullPayment();
 		//premo il bottone e dopo 1.5 sec si visualizza "SUCCESSFUL PAYMENT" e dopo altri 1.5 sec cambia view
 		saleProcess.reset(); //dobbaimo resettare tutti i dati di sale process
 		saleProcess.saleRegistration();
 		//l'ideale sarebbe che il metodo saleRegistration restituisca un booleano a secodna che la registrazione
 		//della vendiota vada a buon fine
-		stage = new Stage();
-		SelectFilmView v = new SelectFilmView();
-		v.start(stage);
-		
+//		stage = new Stage();
+//		SelectFilmView v = new SelectFilmView();
+//		v.start(stage);	
 	}
+	
+	public void alertSuccessfullPayment() throws Exception {
+		boolean alert = AlertUtils.showAlertAndWait(AlertType.CONFIRMATION,"Pagamento effettuato con succcesso","Stai per effettuare il logout",
+				"Dopo aver fatto il logout verrai riportato alla homepage.");
+
+		if(alert) {
+			Stage currentStage = (Stage) myButton.getScene().getWindow();
+
+			stage = new Stage();
+			HomePageView v = new HomePageView();
+			v.start(stage);	
+			
+			currentStage.close();
+		}
+	}
+	
+	
 	
 	public void backView() throws Exception {		
 		Stage currentStage = (Stage) backButton.getScene().getWindow();
