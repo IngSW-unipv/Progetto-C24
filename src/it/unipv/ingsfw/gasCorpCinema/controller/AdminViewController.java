@@ -18,14 +18,13 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 
-public class AdminViewController implements IRoleController {	
+public class AdminViewController {	
 
 	@FXML
 	private Label emailLabel;
 	@FXML
 	private Button myButton;
 
-	private String adminEmail;
 
 	public void logout() throws Exception {
 
@@ -77,11 +76,5 @@ public class AdminViewController implements IRoleController {
 
 		AllProjectionsView view = new AllProjectionsView();
 		StageUtils.addToStageAndStart((Application)view);
-	}
-
-	@Override
-	public void setEmail(String email) {
-		this.adminEmail = email;
-		emailLabel.setText(email);
 	}
 }
