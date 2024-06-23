@@ -2,31 +2,31 @@ package it.unipv.ingsfw.gasCorpCinema.model.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import it.unipv.ingsfw.gasCorpCinema.model.User;
+import it.unipv.ingsfw.gasCorpCinema.model.authentication.AuthenticationSingleton;
 
 public class UserTest {
-	private User user;
+	private AuthenticationSingleton authentication;
 	
 	@BeforeEach
     public void setUp() {
-        user = new User();
+
+        authentication=AuthenticationSingleton.getInstance();
     }
 
     @Test
     public void testValidEmails() {
-        assertTrue(user.emailValidate("email@example.com"));
-        assertTrue(user.emailValidate("firstname.lastname@example.com"));
-        assertTrue(user.emailValidate("12345+@example.com"));
+        assertTrue(authentication.emailValidate("email@example.com"));
+        assertTrue(authentication.emailValidate("firstname.lastname@example.com"));
+        assertTrue(authentication.emailValidate("12345+@example.com"));
     }
     
     @Test
     public void testInvalidEmails() {
-        assertFalse(user.emailValidate("plainaddress")); 
-        assertFalse(user.emailValidate("email@@invalid")); 
-        assertFalse(user.emailValidate(" ")); 
+        assertFalse(authentication.emailValidate("plainaddress")); 
+        assertFalse(authentication.emailValidate("email@@invalid")); 
+        assertFalse(authentication.emailValidate(" ")); 
     
     }
 }

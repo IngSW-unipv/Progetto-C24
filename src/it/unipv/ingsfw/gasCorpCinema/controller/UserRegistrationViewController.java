@@ -1,7 +1,7 @@
 package it.unipv.ingsfw.gasCorpCinema.controller;
 
 import it.unipv.ingsfw.gasCorpCinema.model.User;
-import it.unipv.ingsfw.gasCorpCinema.model.UserValidate;
+import it.unipv.ingsfw.gasCorpCinema.model.authentication.AuthenticationSingleton;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.utils.StringUtils;
 import it.unipv.ingsfw.gasCorpCinema.view.homePage.HomePageView;
@@ -35,9 +35,12 @@ public class UserRegistrationViewController {
 	private String password, confirmPassword;
 	private Stage stage;
 	private User user = new User();
-	private UserValidate userValidate = new UserValidate();
+	private AuthenticationSingleton authentication;
 
 	public  void initialize(){
+		
+		authentication=AuthenticationSingleton.getInstance();
+		
 		tfPassword.setVisible(false);
 		openEyeImage1.setVisible(false);
 
@@ -103,12 +106,12 @@ public class UserRegistrationViewController {
 			String password = pfPassword.getText();
 			String confirmPassword = pfConfirmPassword.getText();
 
-			if (!userValidate.emailValidate(email)) {
+			if (!authentication.emailValidate(email)) {
 				displayError("Inserisci un email valida.");
 				return;
 			}
 
-			if(!userValidate.passwordValidate(password)) {
+			if(!authentication.passwordValidate(password)) {
 				return;
 			}
 			

@@ -1,6 +1,6 @@
 package it.unipv.ingsfw.gasCorpCinema.model;
 
-import it.unipv.ingsfw.gasCorpCinema.model.movie.IMovieDAO;
+
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
 import it.unipv.ingsfw.gasCorpCinema.model.projection.Projection;
 import it.unipv.ingsfw.gasCorpCinema.model.register.Register;
@@ -28,7 +28,7 @@ public class SaleProcess {
 	private Projection projection;
 	//questi ultimi 3 arrivano da select projection controller
 	private Register register;
-	private IMovieDAO movieDAO;
+	
 	
 	
 	private SaleProcess() {
@@ -84,7 +84,13 @@ public class SaleProcess {
 	}
 	
 	public void reset() {
-		instance=null;
+		movie=null;
+		//arriva da select fil projection
+		numberOfTickets=0;
+		total=0;
+		projection=null;
+		//questi ultimi 3 arrivano da select projection controller
+		
 	}
 	//se il cliente entra seleziona film e proieione ma alla fine cambia idea e non paga dobbiamo 
 	//resettare tutti i paramentri a 0 se no il prissimo cliente che si connette si ritrova 

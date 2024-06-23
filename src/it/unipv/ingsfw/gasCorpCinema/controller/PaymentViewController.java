@@ -3,13 +3,10 @@ package it.unipv.ingsfw.gasCorpCinema.controller;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-
-
-import it.unipv.ingsfw.gasCorpCinema.model.Payment;
 import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
+import it.unipv.ingsfw.gasCorpCinema.model.authentication.AuthenticationSingleton;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.view.homePage.HomePageView;
-import it.unipv.ingsfw.gasCorpCinema.view.selectFilm.SelectFilmView;
 import it.unipv.ingsfw.gasCorpCinema.view.selectProjection.SelectProjectionView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -33,36 +30,43 @@ public class PaymentViewController implements Initializable {
 	private Stage stage;
 	private double total;
 	private SaleProcess saleProcess;
-	private Payment payment;
+	
+	private AuthenticationSingleton authentication;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		saleProcess=SaleProcess.getInstance();
+		authentication=AuthenticationSingleton.getInstance();
 		total=saleProcess.getTotal();
 		myLabelTotal.setText(Double.toString(total)+ " €");
-		payment = new Payment();
+		
 	}
 	
 	public void pressButton() throws Exception {
 		String name = labelName.getText();
 		String surname= labelSurname.getText();
 		String numberOfCC= labelNumberOfCC.getText();
+		String cvv = labelCVV.getText();
 		
-		if(!payment.nameValidate(name)) { 
+		if(!authentication.nameValidate(name)) { 
 			myLabel.setText("INSERT A VALID NAME");
 			return;
 		}
-		if(!payment.nameValidate(surname)) { 
+		if(!authentication.nameValidate(surname)) { 
 			myLabel.setText("INSERT A VALID SURNAME");
 			return;
 		}
-		if(!payment.cardNumberValidate(numberOfCC)) { 
+		if(!authentication.cardNumberValidate(numberOfCC)) { 
 			myLabel.setText("INSERT A VALID CARD");
 			return;
 		}
 		LocalDate expirationDate = myDatePicker.getValue();
-		if(!payment.dateValidate(expirationDate)) {
-			myLabel.setText("THE CREDIT CARD INSERT IS EXPIRED");
+		if(!authentication.dateValidate(expirationDate)) {
+			myLabel.setText("INSERT A VALID EXPIRATION DATE");
+			return;
+		}
+		if(!authentication.cvvValidate(cvv)) { 
+			myLabel.setText("INSERT A VALID CVV");
 			return;
 		}
 		
@@ -73,8 +77,9 @@ public class PaymentViewController implements Initializable {
 //		System.out.println("dopo del thread");
 		alertSuccessfullPayment();
 		//premo il bottone e dopo 1.5 sec si visualizza "SUCCESSFUL PAYMENT" e dopo altri 1.5 sec cambia view
-		saleProcess.reset(); //dobbaimo resettare tutti i dati di sale process
 		saleProcess.saleRegistration();
+		saleProcess.reset(); //dobbaimo resettare tutti i dati di sale process
+		System.out.println(saleProcess.getNumberOfTickets());
 		//l'ideale sarebbe che il metodo saleRegistration restituisca un booleano a secodna che la registrazione
 		//della vendiota vada a buon fine
 //		stage = new Stage();

@@ -40,10 +40,12 @@ public class HomePageViewController {
 		String password = fieldPassword.getText();
 		String role = user.login(email, password);
 
+		
+		
 		Properties p = new Properties(System.getProperties());
 
 		p.load(new FileInputStream("Properties/Strings"));
-
+		
 		if (role != null) {
 
 			// Ottieni il percorso della vista associata al ruolo
