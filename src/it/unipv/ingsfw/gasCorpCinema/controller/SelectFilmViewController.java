@@ -24,18 +24,16 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 
-public class SelectFilmViewController implements Initializable,IRoleController {
+public class SelectFilmViewController implements Initializable {
 
 	@FXML
 	private ListView<Movie> myListView;
 	@FXML
 	private Button buttonConfirm;
 	@FXML
-	private Label myLabel, userLabel;
+	private Label myLabel;
 	@FXML
 	private ImageView userImageView;
-
-	private String userEmail;
 	private Movie selectedMovie;
 	private Admin admin = new Admin();
 	private Stage stage;
@@ -46,7 +44,7 @@ public class SelectFilmViewController implements Initializable,IRoleController {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		saleProcess=SaleProcess.getInstance();
 		myListView.getItems().addAll(admin.getAllMovies());
-
+		
 		if (myListView.getItems().isEmpty()) {
 			myLabel.setText("Nessun film disponibile");
 		}
@@ -64,7 +62,7 @@ public class SelectFilmViewController implements Initializable,IRoleController {
 			File fxmlFile = new File(viewPath);
 			URL fxmlResource = fxmlFile.toURI().toURL();
 			
-			changeScene(fxmlResource, this.userEmail);
+			changeScene(fxmlResource);
 		}else {
 			myLabel.setText("SELECT A FILM!");
 		}
@@ -76,20 +74,12 @@ public class SelectFilmViewController implements Initializable,IRoleController {
 
 	}
 
-	public void changeScene(URL fxml, String email) throws IOException {
+	public void changeScene(URL fxml) throws IOException {
 
 		saleProcess.setMovie(selectedMovie);
 
 		FXMLLoader loader = new FXMLLoader(fxml);
-		Parent root = loader.load();
-		Object controller = loader.getController();
-
-		try {
-
-			((SelectProjectionViewController)controller).setUserEmail(email);
-
-		}catch(ClassCastException e){
-		}
+		Parent root = loader.load();	
 
 		Scene scene = new Scene(root);
 		stage = new Stage();
@@ -111,12 +101,8 @@ public class SelectFilmViewController implements Initializable,IRoleController {
 			currentStage.close();
 		}
 	}
-
-	@Override
-	public void setEmail(String email) {
-		this.userEmail = email;
-		userLabel.setText(email);
-	}
+	
+	
 }
 
 

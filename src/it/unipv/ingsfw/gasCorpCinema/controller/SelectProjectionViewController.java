@@ -3,15 +3,18 @@ package it.unipv.ingsfw.gasCorpCinema.controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URL;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
 import it.unipv.ingsfw.gasCorpCinema.model.Admin;
 import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
-import it.unipv.ingsfw.gasCorpCinema.model.User;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
 import it.unipv.ingsfw.gasCorpCinema.model.projection.Projection;
+import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
+import it.unipv.ingsfw.gasCorpCinema.view.homePage.HomePageView;
 import it.unipv.ingsfw.gasCorpCinema.view.selectFilm.SelectFilmView;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -25,6 +28,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class SelectProjectionViewController implements Initializable {
@@ -34,25 +39,26 @@ public class SelectProjectionViewController implements Initializable {
 	@FXML
 	private Button myButton, backButton;
 	@FXML
-	Label myLabelTotal;
+	private Label myLabel, myLabelTotal;
 	@FXML
 	private Spinner<Integer> mySpinner;
 	@FXML
-	private Label myLabel;
+	private ImageView userImageView;
 	
 	private double total;
 	private Admin admin = new Admin();
-	private User user = new User();
 	private Movie selectedMovie;
 	private Projection projection;
 	private int numberOfTickets;
+	private Stage stage;
 	private SaleProcess saleProcess;
-	private String userEmail;
+
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		saleProcess=SaleProcess.getInstance();
+		
 		selectedMovie=saleProcess.getMovie();
 		if(selectedMovie != null) {
 			myListView.getItems().addAll(admin.getprojectionsByMovie(selectedMovie));
@@ -111,12 +117,16 @@ public class SelectProjectionViewController implements Initializable {
 	    				
 	    				numberOfTickets= mySpinner.getValue();
 	    				saleProcess.setNumberOfTickets(numberOfTickets);
-	    				
-	    				
-	    				total=mySpinner.getValue() * projection.getPrice();
+
+
+
+	    				total= projection.getPrice() * mySpinner.getValue();
+	    				BigDecimal total1= new BigDecimal(total);
+	    				BigDecimal newTotal = total1.setScale(2, RoundingMode.HALF_DOWN);
+	    				//l'uso del big decimal si rende necessario perche il prodotto tra doube genera un output errato (del tipo 14.0000001)
 	    				saleProcess.setTotal(total);
 	    				//così il sale process ha i valori aggiornati 
-	    	            myLabelTotal.setText(String.valueOf(total));
+	    	            myLabelTotal.setText(String.valueOf(newTotal));
 	    			} 	    	            
 		});       
 	  }
@@ -131,47 +141,45 @@ public class SelectProjectionViewController implements Initializable {
 	}
 	//serve per aggiornare il numero di posti disponibili per  una data proiezione e per il pagamento 
 	
-	public void setUserEmail(String email) {
-		this.userEmail = email;
-	}
-	
 	public void pressButton() throws Exception {
 		
-		String role = user.getRoleByEmail(this.userEmail);
+		//String email = authentication.getEmail();
+		String role = saleProcess.getRole();
 		
+				
 		if(projection==null) { 
 			myLabel.setText("YOU MUST SELECT A PROJECTION!");
 		}else if(mySpinner==null) { 
 			myLabel.setText("YOU MUST SELECT THE NUMBER OF TICKET YOU WANT!");
 		}else {
-//			Properties p = new Properties(System.getProperties());
-//
-//			p.load(new FileInputStream("Properties/Strings"));
-//
-//			if (role != null) {
-//
-//				// Ottieni il percorso della vista associata al ruolo
-//				String viewPath = p.getProperty(role.toLowerCase());
-//
-//				if (viewPath != null) {
-//					
-//					File fxmlFile = new File(viewPath);
-//					URL fxmlResource = fxmlFile.toURI().toURL();
-//					changeScene(fxmlResource);
-//				}
-//			}
-//		}
 			Properties p = new Properties(System.getProperties());
+
 			p.load(new FileInputStream("Properties/Strings"));
-			
-			String viewPath = p.getProperty("PAYMENT_FXML");
-			File fxmlFile = new File(viewPath);
-			URL fxmlResource = fxmlFile.toURI().toURL();
-			
-			changeScene(fxmlResource);
-			Stage currentStage = (Stage) myButton.getScene().getWindow();
-			currentStage.close();
+			if (role != null) {
+				// Ottieni il percorso della vista associata al ruolo
+				String viewPath = p.getProperty(role.toLowerCase());
+
+				if (viewPath != null) {
+					
+					File fxmlFile = new File(viewPath);
+					URL fxmlResource = fxmlFile.toURI().toURL();
+					changeScene(fxmlResource);
+					Stage currentStage = (Stage) myButton.getScene().getWindow();
+					currentStage.close();
+				}
+			}
 		}
+//			Properties p = new Properties(System.getProperties());
+//			p.load(new FileInputStream("Properties/Strings"));
+//			
+//			String viewPath = p.getProperty("PAYMENT_FXML");
+//			File fxmlFile = new File(viewPath);
+//			URL fxmlResource = fxmlFile.toURI().toURL();
+//			
+//			changeScene(fxmlResource);
+//			Stage currentStage = (Stage) myButton.getScene().getWindow();
+//			currentStage.close();
+//		}
 		
 		//alla pressione del bottone se è stato selezionato un film cambia la vista per scegliere la proiezione
 		//altrimenit visutlaizza il messaggio SELECT A FILM, discorso analogo per lo spinner		
@@ -202,6 +210,21 @@ public class SelectProjectionViewController implements Initializable {
 			s.start(stage);	
 			
 			currentStage.close();
+	}
+	
+	public void logout() throws Exception {
+		boolean alert = AlertUtils.showAlertAndWait(AlertType.CONFIRMATION,"Logout","Stai per effettuare il logout",
+				"Dopo aver fatto il logout verrai riportato alla homepage.");
+
+		if(alert) {
+			Stage currentStage = (Stage) userImageView.getScene().getWindow();
+
+			stage = new Stage();
+			HomePageView v = new HomePageView();
+			v.start(stage);	
+
+			currentStage.close();
+		}
 	}
 		
 }

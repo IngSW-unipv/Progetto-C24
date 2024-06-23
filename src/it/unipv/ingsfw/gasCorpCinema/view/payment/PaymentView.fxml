@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.PaymentViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.PaymentViewController">
    <children>
       <Label alignment="CENTER" layoutY="6.0" prefHeight="64.0" prefWidth="600.0" text="GAS Corp. CINEMA">
          <font>
@@ -39,5 +42,13 @@
          </font>
       </Label>
       <Button fx:id="backButton" layoutX="479.0" layoutY="344.0" mnemonicParsing="false" onAction="#backView" text="BACK" />
+      <ImageView fx:id="userImageView" fitHeight="31.0" fitWidth="51.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../Resources/userImage.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
    </children>
 </AnchorPane>
