@@ -58,6 +58,7 @@ public class SelectFilmViewController implements Initializable {
 	}
 
 	public void pressButton() throws Exception {
+				
 		selectedMovie = myListView.getSelectionModel().getSelectedItem();
 		if(selectedMovie!=null) {
 
@@ -67,8 +68,8 @@ public class SelectFilmViewController implements Initializable {
 			String viewPath = p.getProperty("SELECT_PROJECTION_FXML");
 			File fxmlFile = new File(viewPath);
 			URL fxmlResource = fxmlFile.toURI().toURL();
-
-			changeScene(fxmlResource);
+			
+			changeScene(fxmlResource, this.userEmail);
 		}else {
 			myLabel.setText("SELECT A FILM!");
 		}
@@ -80,12 +81,20 @@ public class SelectFilmViewController implements Initializable {
 
 	}
 
-	public void changeScene(URL fxml) throws IOException {
+	public void changeScene(URL fxml, String email) throws IOException {
 
 		saleProcess.setMovie(selectedMovie);
 
 		FXMLLoader loader = new FXMLLoader(fxml);
 		Parent root = loader.load();
+		Object controller = loader.getController();
+
+		try {
+
+			((SelectProjectionViewController)controller).setUserEmail(email);
+
+		}catch(ClassCastException e){
+		}
 
 		Scene scene = new Scene(root);
 		stage = new Stage();

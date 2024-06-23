@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 
 import it.unipv.ingsfw.gasCorpCinema.model.Admin;
 import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
+import it.unipv.ingsfw.gasCorpCinema.model.User;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
 import it.unipv.ingsfw.gasCorpCinema.model.projection.Projection;
 import it.unipv.ingsfw.gasCorpCinema.view.selectFilm.SelectFilmView;
@@ -41,10 +42,12 @@ public class SelectProjectionViewController implements Initializable {
 	
 	private double total;
 	private Admin admin = new Admin();
+	private User user = new User();
 	private Movie selectedMovie;
 	private Projection projection;
 	private int numberOfTickets;
 	private SaleProcess saleProcess;
+	private String userEmail;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -118,7 +121,6 @@ public class SelectProjectionViewController implements Initializable {
 		});       
 	  }
 	 
-
 	
 	public Projection getProjection() {
 		return projection;
@@ -129,13 +131,36 @@ public class SelectProjectionViewController implements Initializable {
 	}
 	//serve per aggiornare il numero di posti disponibili per  una data proiezione e per il pagamento 
 	
+	public void setUserEmail(String email) {
+		this.userEmail = email;
+	}
+	
 	public void pressButton() throws Exception {
+		
+		String role = user.getRoleByEmail(this.userEmail);
 		
 		if(projection==null) { 
 			myLabel.setText("YOU MUST SELECT A PROJECTION!");
 		}else if(mySpinner==null) { 
 			myLabel.setText("YOU MUST SELECT THE NUMBER OF TICKET YOU WANT!");
 		}else {
+//			Properties p = new Properties(System.getProperties());
+//
+//			p.load(new FileInputStream("Properties/Strings"));
+//
+//			if (role != null) {
+//
+//				// Ottieni il percorso della vista associata al ruolo
+//				String viewPath = p.getProperty(role.toLowerCase());
+//
+//				if (viewPath != null) {
+//					
+//					File fxmlFile = new File(viewPath);
+//					URL fxmlResource = fxmlFile.toURI().toURL();
+//					changeScene(fxmlResource);
+//				}
+//			}
+//		}
 			Properties p = new Properties(System.getProperties());
 			p.load(new FileInputStream("Properties/Strings"));
 			
@@ -166,9 +191,8 @@ public class SelectProjectionViewController implements Initializable {
 		
 		stage.setScene(scene);
 		stage.show();
-		
-
 	}
+	
 	public void backView() throws Exception {
 		
 			Stage currentStage = (Stage) backButton.getScene().getWindow();
