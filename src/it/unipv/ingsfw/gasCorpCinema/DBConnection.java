@@ -58,9 +58,8 @@ public class DBConnection {
 			dbURL=String.format(dbURL,schema); 
 			System.out.println(dbURL);
 			Class.forName(dbDriver);
-			
-			// Apertura connessione
 			conn = DriverManager.getConnection(dbURL,username,password);
+			// Apertura connessione
 		}catch (Exception e) {
 			e.printStackTrace();
 			return null;
