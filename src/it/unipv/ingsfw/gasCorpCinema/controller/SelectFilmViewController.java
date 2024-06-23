@@ -24,7 +24,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 
-public class SelectFilmViewController implements Initializable {
+public class SelectFilmViewController implements Initializable,IRoleController {
 
 	@FXML
 	private ListView<Movie> myListView;
@@ -50,11 +50,6 @@ public class SelectFilmViewController implements Initializable {
 		if (myListView.getItems().isEmpty()) {
 			myLabel.setText("Nessun film disponibile");
 		}
-	}
-
-	public void setUserEmail(String email) {
-		this.userEmail = email;
-		userLabel.setText(email);
 	}
 
 	public void pressButton() throws Exception {
@@ -115,6 +110,12 @@ public class SelectFilmViewController implements Initializable {
 
 			currentStage.close();
 		}
+	}
+
+	@Override
+	public void setEmail(String email) {
+		this.userEmail = email;
+		userLabel.setText(email);
 	}
 }
 

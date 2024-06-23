@@ -81,19 +81,7 @@ public class HomePageViewController {
         Parent root = loader.load();
         Object controller = loader.getController();
 		
-		try {
-
-			((AdminViewController)controller).setAdminEmail(email);
-
-		}catch(ClassCastException e){
-		}
-
-		try {
-
-			((SelectFilmViewController)controller).setUserEmail(email);
-
-		}catch(ClassCastException e){
-		}
+		((IRoleController)controller).setEmail(email);
 
 		Scene scene = new Scene(root);
 		Stage stage = new Stage();
