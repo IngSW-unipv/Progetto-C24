@@ -4,13 +4,15 @@ import java.sql.Time;
 
 public class Movie {
 	
+	private int idMovie;
 	private String title;
 	private String genre;
 	private Time duration;
 	private int year;
 	private String rating;
 	
-	public Movie(String title,String genre,Time duration,int year,String rating) {
+	public Movie(int idMovie, String title,String genre,Time duration,int year,String rating) {
+		this.idMovie = idMovie;
 		this.title = title;
 		this.genre = genre;
 		this.duration = duration;
@@ -42,6 +44,10 @@ public class Movie {
 	public String toString() {
 		// TODO Auto-generated method stub
 		return "TITOLO: " + title + " | " + "GENERE: " + genre + " | " + "DURATA: " + duration + " | " + "ANNO USCITA: " + year + " | " + " RATING: " + rating;
+	}
+
+	public int getIdMovie() {
+		return idMovie;
 	}
 	
 	

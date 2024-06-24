@@ -20,7 +20,6 @@ public class CinemaHall {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return "ID Hall:" + idHall + "|" + "Capacity:" + capacity;
 	}
 	

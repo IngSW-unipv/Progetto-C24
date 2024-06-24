@@ -1,5 +1,6 @@
 package it.unipv.ingsfw.gasCorpCinema.model.register;
 
+import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
 import it.unipv.ingsfw.gasCorpCinema.model.projection.Projection;
 
 public class Register {
@@ -16,8 +17,8 @@ public class Register {
 		return instance;
 	}
 	
-	public void saleRegistration(Projection projection, int numberOfTickets, double total) {
-		registerDAO.saleRegistration(projection, numberOfTickets, total);
+	public void saleRegistration(Projection projection, Movie movie, int numberOfTickets, double total) {
+		registerDAO.saleRegistration(projection, movie, numberOfTickets, total);
 	} 
 	
 }

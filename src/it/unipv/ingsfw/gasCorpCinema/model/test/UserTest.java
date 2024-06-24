@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import it.unipv.ingsfw.gasCorpCinema.model.role.User;
 import it.unipv.ingsfw.gasCorpCinema.model.Validation;
 
 public class UserTest {

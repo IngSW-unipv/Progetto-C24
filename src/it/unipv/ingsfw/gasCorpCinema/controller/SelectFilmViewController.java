@@ -6,9 +6,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Properties;
 import java.util.ResourceBundle;
-import it.unipv.ingsfw.gasCorpCinema.model.Admin;
+
 import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
+import it.unipv.ingsfw.gasCorpCinema.model.movie.IMovieDAO;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
+import it.unipv.ingsfw.gasCorpCinema.model.movie.MovieDAO;
+import it.unipv.ingsfw.gasCorpCinema.model.role.Admin;
+import it.unipv.ingsfw.gasCorpCinema.model.role.RoleType;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.view.homePage.HomePageView;
 import javafx.fxml.FXML;
@@ -35,16 +39,16 @@ public class SelectFilmViewController implements Initializable {
 	@FXML
 	private ImageView userImageView;
 	private Movie selectedMovie;
-	private Admin admin = new Admin();
 	private Stage stage;
 	private SaleProcess saleProcess;
 
-
+	private IMovieDAO movieDAO = new MovieDAO();
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		saleProcess=SaleProcess.getInstance();
-		myListView.getItems().addAll(admin.getAllMovies());
-		
+		myListView.getItems().addAll(movieDAO.getAllMovies());
+
 		if (myListView.getItems().isEmpty()) {
 			myLabel.setText("Nessun film disponibile");
 		}

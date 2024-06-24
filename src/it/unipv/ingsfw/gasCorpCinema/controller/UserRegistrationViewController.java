@@ -2,6 +2,8 @@ package it.unipv.ingsfw.gasCorpCinema.controller;
 
 import it.unipv.ingsfw.gasCorpCinema.model.Validation;
 import it.unipv.ingsfw.gasCorpCinema.model.authentication.Authentication;
+import it.unipv.ingsfw.gasCorpCinema.model.role.User;
+import it.unipv.ingsfw.gasCorpCinema.model.role.UserValidate;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.utils.StringUtils;
 import it.unipv.ingsfw.gasCorpCinema.view.homePage.HomePageView;
@@ -50,23 +52,19 @@ public class UserRegistrationViewController {
 	}
 
 	public void hidePasswordOnAction(KeyEvent keyEvent) {
-		password=pfPassword.getText();
-		tfPassword.setText(password);
+		tfPassword.setText(pfPassword.getText());
 	}
 
 	public void hidePasswordOnActionSecond(KeyEvent keyEvent) {   
-		confirmPassword=pfConfirmPassword.getText();
-		tfConfirmPassword.setText(confirmPassword);
+		tfConfirmPassword.setText(pfConfirmPassword.getText());
 	}
 
 	public void showPasswordOnAction(KeyEvent keyEvent) {
-		password=tfPassword.getText();
-		pfPassword.setText(password);
+		pfPassword.setText(tfPassword.getText());
 	}
 
 	public void showPasswordOnActionSecond(KeyEvent keyEvent) {  
-		confirmPassword=tfConfirmPassword.getText();
-		pfConfirmPassword.setText(confirmPassword);
+		pfConfirmPassword.setText(tfConfirmPassword.getText());
 	}
 
 	public void firstOpenEyeClicked(MouseEvent mouseEvent) {
@@ -151,9 +149,8 @@ public class UserRegistrationViewController {
 	public void loginButtonAction() throws Exception {  
 		Stage currentStage = (Stage) buttonLogin.getScene().getWindow();
 
-		stage = new Stage();
 		HomePageView f = new HomePageView();
-		f.start(stage);	
+		f.start(new Stage());	
 
 		currentStage.close();
 	}

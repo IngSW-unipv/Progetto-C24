@@ -93,7 +93,7 @@ public class SaleProcess {
 
 
 	public void saleRegistration() {
-		register.saleRegistration(projection, numberOfTickets,total);
+		register.saleRegistration(projection, movie, numberOfTickets,total);
 	}
 	
 	public void reset() {
