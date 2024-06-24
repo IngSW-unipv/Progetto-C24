@@ -2,8 +2,6 @@ package it.unipv.ingsfw.gasCorpCinema.controller;
 
 import it.unipv.ingsfw.gasCorpCinema.model.Validation;
 import it.unipv.ingsfw.gasCorpCinema.model.authentication.Authentication;
-import it.unipv.ingsfw.gasCorpCinema.model.role.User;
-import it.unipv.ingsfw.gasCorpCinema.model.role.UserValidate;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.utils.StringUtils;
 import it.unipv.ingsfw.gasCorpCinema.view.homePage.HomePageView;

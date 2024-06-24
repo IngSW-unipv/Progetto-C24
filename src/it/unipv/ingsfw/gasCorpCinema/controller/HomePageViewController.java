@@ -4,9 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.net.URL;
 import java.util.Properties;
-import it.unipv.ingsfw.gasCorpCinema.model.role.User;
 import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
-import it.unipv.ingsfw.gasCorpCinema.model.User;
 import it.unipv.ingsfw.gasCorpCinema.model.authentication.Authentication;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.view.userRegistration.UserRegistrationView;
@@ -90,7 +88,7 @@ public class HomePageViewController {
 		Scene scene = new Scene(root);
 		Stage stage = new Stage();
 		
-		stage.setUserData(controller.getRoleType());
+//		stage.setUserData(controller.getRoleType());
 		
 		stage.setScene(scene);
 		stage.show();
