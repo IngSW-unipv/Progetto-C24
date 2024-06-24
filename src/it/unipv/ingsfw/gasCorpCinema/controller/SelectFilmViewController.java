@@ -6,13 +6,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Properties;
 import java.util.ResourceBundle;
-
+import it.unipv.ingsfw.gasCorpCinema.model.PersistenceFacade;
 import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
-import it.unipv.ingsfw.gasCorpCinema.model.movie.IMovieDAO;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
-import it.unipv.ingsfw.gasCorpCinema.model.movie.MovieDAO;
-import it.unipv.ingsfw.gasCorpCinema.model.role.Admin;
-import it.unipv.ingsfw.gasCorpCinema.model.role.RoleType;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.view.homePage.HomePageView;
 import javafx.fxml.FXML;
@@ -26,7 +22,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-
 
 public class SelectFilmViewController implements Initializable {
 
@@ -42,12 +37,12 @@ public class SelectFilmViewController implements Initializable {
 	private Stage stage;
 	private SaleProcess saleProcess;
 
-	private IMovieDAO movieDAO = new MovieDAO();
+	private PersistenceFacade persistence = PersistenceFacade.getInstance(); 
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		saleProcess=SaleProcess.getInstance();
-		myListView.getItems().addAll(movieDAO.getAllMovies());
+		myListView.getItems().addAll(persistence.getAllMovies());
 
 		if (myListView.getItems().isEmpty()) {
 			myLabel.setText("Nessun film disponibile");
@@ -105,11 +100,4 @@ public class SelectFilmViewController implements Initializable {
 			currentStage.close();
 		}
 	}
-	
-	
 }
-
-
-
-
-

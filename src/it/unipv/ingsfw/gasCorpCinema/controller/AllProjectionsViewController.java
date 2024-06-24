@@ -2,19 +2,11 @@ package it.unipv.ingsfw.gasCorpCinema.controller;
 
 import java.net.URL;
 import java.sql.Date;
-import java.util.List;
 import java.util.ResourceBundle;
-
+import it.unipv.ingsfw.gasCorpCinema.model.PersistenceFacade;
 import it.unipv.ingsfw.gasCorpCinema.model.cinemaHall.CinemaHall;
-import it.unipv.ingsfw.gasCorpCinema.model.cinemaHall.CinemaHallDAO;
-import it.unipv.ingsfw.gasCorpCinema.model.cinemaHall.ICinemaHallDAO;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
-import it.unipv.ingsfw.gasCorpCinema.model.movie.MovieDAO;
-import it.unipv.ingsfw.gasCorpCinema.model.movie.IMovieDAO;
 import it.unipv.ingsfw.gasCorpCinema.model.projection.Projection;
-import it.unipv.ingsfw.gasCorpCinema.model.projection.ProjectionDAO;
-import it.unipv.ingsfw.gasCorpCinema.model.projection.IProjectionDAO;
-import it.unipv.ingsfw.gasCorpCinema.model.role.Admin;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -35,22 +27,20 @@ public class AllProjectionsViewController implements Initializable {
 	@FXML
 	private Label myLabel;
 	
-	private IMovieDAO movieDAO = new MovieDAO();
-	private IProjectionDAO projectionDAO = new ProjectionDAO();
-	private ICinemaHallDAO cinemaHallDAO = new CinemaHallDAO();
+	private PersistenceFacade persistence = PersistenceFacade.getInstance(); 
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
-		myListView.getItems().addAll(projectionDAO.getAllProjections());
+		myListView.getItems().addAll(persistence.getAllProjections());
 		
 		if (myListView.getItems().isEmpty()) {
             myLabel.setText("Nessuna proiezione disponibile");
 		}
 		
-		myChoiceBoxHall.getItems().addAll(cinemaHallDAO.getAllHalls());
-		myChoiceBoxMovie.getItems().addAll(movieDAO.getAllMovies());
-		myChoiceBoxDate.getItems().addAll(projectionDAO.getAllDatesWithAProjection());
+		myChoiceBoxHall.getItems().addAll(persistence.getAllHalls());
+		myChoiceBoxMovie.getItems().addAll(persistence.getAllMovies());
+		myChoiceBoxDate.getItems().addAll(persistence.getAllDatesWithAProjection());
 		
 		myChoiceBoxHall.setOnAction(this::getIdHall);	
 		myChoiceBoxMovie.setOnAction(this::getMovie);	
@@ -63,7 +53,7 @@ public class AllProjectionsViewController implements Initializable {
 //		myListView.getItems().addAll(admin.getprojectionsByHall(myChoiceBoxHall.getValue().getIdHall()));
 		if (myChoiceBoxHall.getValue() != null) {
             myListView.getItems().clear();
-            myListView.getItems().addAll(projectionDAO.getAllProjectionsByHall(myChoiceBoxHall.getValue().getIdHall()));
+            myListView.getItems().addAll(persistence.getAllProjectionsByHall(myChoiceBoxHall.getValue().getIdHall()));
             if (myChoiceBoxMovie.getValue() != null) {
                 myChoiceBoxMovie.setValue(null);
             } else if (myChoiceBoxDate.getValue() != null) {
@@ -77,7 +67,7 @@ public class AllProjectionsViewController implements Initializable {
 //		myListView.getItems().addAll(admin.getprojectionsByMovie(myChoiceBoxMovie.getValue().getTitle()));
 		if (myChoiceBoxMovie.getValue() != null) {
             myListView.getItems().clear();
-            myListView.getItems().addAll(projectionDAO.getAllProjectionsByMovie(myChoiceBoxMovie.getValue().getIdMovie()));
+            myListView.getItems().addAll(persistence.getAllProjectionsByMovie(myChoiceBoxMovie.getValue().getIdMovie()));
             if (myChoiceBoxHall.getValue() != null) {
                 myChoiceBoxHall.setValue(null);
             } else if (myChoiceBoxDate.getValue() != null) {
@@ -91,7 +81,7 @@ public class AllProjectionsViewController implements Initializable {
 //		myListView.getItems().addAll(admin.getprojectionsByDate(myChoiceBoxDate.getValue()));
 		if (myChoiceBoxDate.getValue() != null) {
             myListView.getItems().clear();
-            myListView.getItems().addAll(projectionDAO.getAllProjectionsByDate(myChoiceBoxDate.getValue()));
+            myListView.getItems().addAll(persistence.getAllProjectionsByDate(myChoiceBoxDate.getValue()));
             if (myChoiceBoxHall.getValue() != null) {
                 myChoiceBoxHall.setValue(null);
             } else if (myChoiceBoxMovie.getValue() != null) {

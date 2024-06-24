@@ -2,14 +2,16 @@ package it.unipv.ingsfw.gasCorpCinema.model.food;
 
 import java.util.List;
 
+import it.unipv.ingsfw.gasCorpCinema.model.PersistenceFacade;
+
 public class Food {
 	
 	private String description;
 	private int quantity;
 	private double price;
 	
-	private IFoodDAO foodDAO;
-	
+	private PersistenceFacade persistence = PersistenceFacade.getInstance(); 
+
 	public Food(String description, int quantity, double price) {
 		this.description=description;
 		this.quantity=quantity;
@@ -41,15 +43,15 @@ public class Food {
 	}
 	
 	public List<String> getAllDescriptions() {
-		return foodDAO.getAllDescriptions();
+		return persistence.getAllDescriptions();
 	}
 	
 	public Food getFoodByDescription(String description) {
-		return foodDAO.getFoodByDescription(description);
+		return persistence.getFoodByDescription(description);
 	}
 	
 	public double getPriceOfFood(String description) {
-		return foodDAO.getPriceOfFood(description);
+		return persistence.getPriceOfFood(description);
 	}
 	
 

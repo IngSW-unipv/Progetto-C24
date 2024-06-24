@@ -3,10 +3,9 @@ package it.unipv.ingsfw.gasCorpCinema.controller;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import it.unipv.ingsfw.gasCorpCinema.model.PersistenceFacade;
 import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
 import it.unipv.ingsfw.gasCorpCinema.model.Validation;
-import it.unipv.ingsfw.gasCorpCinema.model.projection.IProjectionDAO;
-import it.unipv.ingsfw.gasCorpCinema.model.projection.ProjectionDAO;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.view.homePage.HomePageView;
 import it.unipv.ingsfw.gasCorpCinema.view.selectProjection.SelectProjectionView;
@@ -37,16 +36,14 @@ public class PaymentViewController implements Initializable {
 	private SaleProcess saleProcess;
 	private Validation validation;
 	
-	private IProjectionDAO projectionDAO;
+	private PersistenceFacade persistence = PersistenceFacade.getInstance(); 
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		saleProcess=SaleProcess.getInstance();
 		total=saleProcess.getTotalTicket();
 		myLabelTotal.setText(Double.toString(total)+ " €");
-		validation = new Validation();
-		projectionDAO = new ProjectionDAO();
-		
+		validation = new Validation();		
 	}
 	
 	public void pressButton() throws Exception {
@@ -85,7 +82,7 @@ public class PaymentViewController implements Initializable {
 		alertSuccessfullPayment();
 		//premo il bottone e dopo 1.5 sec si visualizza "SUCCESSFUL PAYMENT" e dopo altri 1.5 sec cambia view
 		saleProcess.saleRegistration();
-		projectionDAO.decreaseNumberOfAvailableSeats(saleProcess.getProjection(),saleProcess.getNumberOfTickets());
+		persistence.decreaseNumberOfAvailableSeats(saleProcess.getProjection(),saleProcess.getNumberOfTickets());
 		saleProcess.reset(); //dobbaimo resettare tutti i dati di sale process
 		System.out.println(saleProcess.getNumberOfTickets());
 		//l'ideale sarebbe che il metodo saleRegistration restituisca un booleano a secodna che la registrazione

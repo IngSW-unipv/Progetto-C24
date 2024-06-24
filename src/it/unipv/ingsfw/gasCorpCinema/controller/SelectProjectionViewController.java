@@ -8,14 +8,10 @@ import java.math.RoundingMode;
 import java.net.URL;
 import java.util.Properties;
 import java.util.ResourceBundle;
-
+import it.unipv.ingsfw.gasCorpCinema.model.PersistenceFacade;
 import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
-import it.unipv.ingsfw.gasCorpCinema.model.projection.IProjectionDAO;
 import it.unipv.ingsfw.gasCorpCinema.model.projection.Projection;
-import it.unipv.ingsfw.gasCorpCinema.model.projection.ProjectionDAO;
-import it.unipv.ingsfw.gasCorpCinema.model.role.Admin;
-import it.unipv.ingsfw.gasCorpCinema.model.role.User;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.view.homePage.HomePageView;
 import it.unipv.ingsfw.gasCorpCinema.view.selectFilm.SelectFilmView;
@@ -49,21 +45,21 @@ public class SelectProjectionViewController implements Initializable {
 	private ImageView userImageView;
 
 	private double total;
-	private Admin admin = new Admin();
 	private Movie selectedMovie;
 	private Projection projection;
 	private int numberOfTickets;
 	private Stage stage;
 	private SaleProcess saleProcess;
-	private IProjectionDAO projectionDAO = new ProjectionDAO();
-
+	
+	private PersistenceFacade persistence = PersistenceFacade.getInstance(); 
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		saleProcess=SaleProcess.getInstance();
 		selectedMovie=saleProcess.getMovie();
 		if(selectedMovie != null) {
-			myListView.getItems().addAll(projectionDAO.getAllProjectionsByMovie(selectedMovie.getIdMovie()));
+			myListView.getItems().addAll(persistence.getAllProjectionsByMovie(selectedMovie.getIdMovie()));
 			setListViewListener();
 		}
 	}
@@ -86,8 +82,8 @@ public class SelectProjectionViewController implements Initializable {
 	private void updateSpinnerValueFactory() {
 		if (projection != null) {
 			SpinnerValueFactory<Integer> valueFactory = 
-					new SpinnerValueFactory.IntegerSpinnerValueFactory(0,projectionDAO.getNumberOfAvailableSeats(projection));
-			valueFactory.setValue(0);
+					new SpinnerValueFactory.IntegerSpinnerValueFactory(1,persistence.getNumberOfAvailableSeats(projection));
+			valueFactory.setValue(1);
 			mySpinner.setValueFactory(valueFactory);
 
 

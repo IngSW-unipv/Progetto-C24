@@ -1,11 +1,8 @@
 package it.unipv.ingsfw.gasCorpCinema.controller;
 
 import java.sql.Time;
-
-import it.unipv.ingsfw.gasCorpCinema.model.movie.IMovieDAO;
+import it.unipv.ingsfw.gasCorpCinema.model.PersistenceFacade;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
-import it.unipv.ingsfw.gasCorpCinema.model.movie.MovieDAO;
-import it.unipv.ingsfw.gasCorpCinema.model.role.Admin;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.utils.StringUtils;
 import it.unipv.ingsfw.gasCorpCinema.utils.TimeUtils;
@@ -24,7 +21,7 @@ public class AddMovieViewController {
 	@FXML
 	private CheckBox myCheckBox;
 
-	private IMovieDAO movieDAO = new MovieDAO();
+	private PersistenceFacade persistence = PersistenceFacade.getInstance(); 
 
 	public void insertMovie() {
 		try {
@@ -38,7 +35,7 @@ public class AddMovieViewController {
 				);
 
 				if (!isDuplicatedMovie(movie)) {
-					movieDAO.insertMovie(movie);
+					persistence.insertMovie(movie);
 					AlertUtils.showAlert(AlertType.INFORMATION,"Successo", "Film Inserito", movie.toString());
 				}else {
 					AlertUtils.showAlert(AlertType.ERROR,"Errore di Inserimento", "Il film " + movie.getTitle() + " Esiste già", "Prova ad inserire un altro film");
@@ -89,7 +86,7 @@ public class AddMovieViewController {
 
 
 	public boolean isDuplicatedMovie(Movie movie) {
-		if (movieDAO.getMovieByTitle(movie.getTitle()) != null) {
+		if (persistence.getMovieByTitle(movie.getTitle()) != null) {
 			return true;
 		} else {
 			return false;

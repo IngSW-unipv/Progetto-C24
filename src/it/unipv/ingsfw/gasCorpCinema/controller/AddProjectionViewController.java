@@ -5,19 +5,11 @@ import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 import java.util.ResourceBundle;
-
+import it.unipv.ingsfw.gasCorpCinema.model.PersistenceFacade;
 import it.unipv.ingsfw.gasCorpCinema.model.cinemaHall.CinemaHall;
-import it.unipv.ingsfw.gasCorpCinema.model.cinemaHall.CinemaHallDAO;
-import it.unipv.ingsfw.gasCorpCinema.model.cinemaHall.ICinemaHallDAO;
-import it.unipv.ingsfw.gasCorpCinema.model.movie.IMovieDAO;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
-import it.unipv.ingsfw.gasCorpCinema.model.movie.MovieDAO;
-import it.unipv.ingsfw.gasCorpCinema.model.projection.IProjectionDAO;
 import it.unipv.ingsfw.gasCorpCinema.model.projection.Projection;
-import it.unipv.ingsfw.gasCorpCinema.model.projection.ProjectionDAO;
-import it.unipv.ingsfw.gasCorpCinema.model.role.Admin;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.utils.CinemaHallUtils;
 import it.unipv.ingsfw.gasCorpCinema.utils.ProjectionUtils;
@@ -48,16 +40,14 @@ public class AddProjectionViewController implements Initializable {
 	@FXML
 	private Button myButton;
 
-	private ICinemaHallDAO cinemaHallDAO = new CinemaHallDAO();
-	private IMovieDAO movieDAO = new MovieDAO();
-	private IProjectionDAO projectionDAO = new ProjectionDAO();
+	private PersistenceFacade persistence = PersistenceFacade.getInstance(); 
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		myChoiceBox1.getItems().addAll(cinemaHallDAO.getAllHalls());
+		myChoiceBox1.getItems().addAll(persistence.getAllHalls());
 		myChoiceBox1.setOnAction(this::getIdHall);
 
-		myChoiceBox2.getItems().addAll(movieDAO.getAllMovies());
+		myChoiceBox2.getItems().addAll(persistence.getAllMovies());
 		myChoiceBox2.setOnAction(this::getTitle);
 	}
 
@@ -85,10 +75,10 @@ public class AddProjectionViewController implements Initializable {
 						Double.parseDouble(myTextField2.getText()),
 						myChoiceBox1.getValue().getCapacity());
 
-				if (ProjectionUtils.canAddProjection(myProjection, projectionDAO.getProjectionsByHallAndDate(myChoiceBox1.getValue().getIdHall(),myProjection.getDate()), myChoiceBox2.getValue())) {					
+				if (ProjectionUtils.canAddProjection(myProjection, persistence.getProjectionsByHallAndDate(myChoiceBox1.getValue().getIdHall(),myProjection.getDate()), myChoiceBox2.getValue())) {					
 					if(ProjectionUtils.priceIsAdeguate(myProjection, myChoiceBox2.getValue())) {
 						if (CinemaHallUtils.cinemaHallIsAdeguate(myChoiceBox1.getValue(), myChoiceBox2.getValue())) {
-							projectionDAO.createProjection(myProjection, myChoiceBox1.getValue());
+							persistence.createProjection(myProjection, myChoiceBox1.getValue());
 							
 							AlertUtils.showAlert(AlertType.INFORMATION, "Successo","Proiezione aggiunta",myProjection.toString());
 						
