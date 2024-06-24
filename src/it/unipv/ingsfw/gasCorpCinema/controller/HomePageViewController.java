@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.Properties;
 
 import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
+import it.unipv.ingsfw.gasCorpCinema.model.User;
 import it.unipv.ingsfw.gasCorpCinema.model.authentication.Authentication;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.view.userRegistration.UserRegistrationView;
@@ -33,18 +34,16 @@ public class HomePageViewController {
 	@FXML
 	private Button buttonRegistrati;
 
-	private Authentication authentication;
+	private Authentication authentication = new Authentication();
 	private SaleProcess saleProcess;
-	
 	
 
 	@FXML
 	public void loginButtonAction() throws Exception {
-
+		
 		String email = tfUsername.getText();
 		String password = fieldPassword.getText();
 		String role = authentication.login(email, password);
-		
 		saleProcess = SaleProcess.getInstance();
 		saleProcess.setRole(role);
 		

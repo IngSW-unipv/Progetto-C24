@@ -44,6 +44,9 @@ public class UserRegistrationViewController {
 
 		tfConfirmPassword.setVisible(false);
 		openEyeImage2.setVisible(false);
+		
+		authentication = new Authentication();
+		validation = new Validation();
 	}
 
 	public void hidePasswordOnAction(KeyEvent keyEvent) {

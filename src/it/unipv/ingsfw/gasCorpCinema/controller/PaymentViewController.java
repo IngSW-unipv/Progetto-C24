@@ -40,6 +40,7 @@ public class PaymentViewController implements Initializable {
 		saleProcess=SaleProcess.getInstance();
 		total=saleProcess.getTotal();
 		myLabelTotal.setText(Double.toString(total)+ " €");
+		validation = new Validation();
 		
 	}
 	

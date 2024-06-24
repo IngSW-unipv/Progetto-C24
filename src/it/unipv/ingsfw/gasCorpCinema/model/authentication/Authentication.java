@@ -4,6 +4,10 @@ public class Authentication {
 
 	private IAuthenticationDAO authenticationDAO;
 	
+	public Authentication() {
+		authenticationDAO = new AuthenticationDAO();
+	}
+	
 	public boolean registration(String email, String password) {
 		return authenticationDAO.registration(email, password);
 	}
@@ -15,6 +19,4 @@ public class Authentication {
 	public boolean emailExists(String email) {
 		return authenticationDAO.emailExists(email);
 	}
-
-	
 }
