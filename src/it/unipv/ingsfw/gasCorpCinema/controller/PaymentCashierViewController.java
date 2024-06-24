@@ -107,9 +107,24 @@ public class PaymentCashierViewController implements Initializable {
 		}catch (NumberFormatException exception) {
 			labelResto.setText("Inserire un valore valido");
 		}
-		
-		
-		
 	}
 	
+	public void possButtonAction() {
+		
+		boolean alert = AlertUtils.showAlertAndWait(AlertType.CONFIRMATION,"Messaggio di informazione", 
+				"Pagamento avvenuto con successo", 
+				"Verrai riportato alla pagina di selezione dei film.");
+
+		if(alert) {
+			saleProcess.saleRegistration();
+			saleProcess.reset();
+			Stage currentStage = (Stage) posButton.getScene().getWindow();
+
+			stage = new Stage();
+			SelectFilmView s = new SelectFilmView();
+			s.start(stage);	
+
+			currentStage.close();
+		}
+	}
 }

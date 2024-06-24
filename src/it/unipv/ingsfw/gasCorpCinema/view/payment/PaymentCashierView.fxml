@@ -29,7 +29,7 @@
          </font>
       </Label>
       <Label layoutX="24.0" layoutY="231.0" text="Resto:" />
-      <TextField fx:id="importoTextField" layoutX="78.0" layoutY="185.0" onAction="#calcoloResto" prefHeight="21.0" prefWidth="99.0" />
+      <TextField fx:id="importoTextField" layoutX="99.0" layoutY="185.0" onAction="#calcoloResto" prefHeight="21.0" prefWidth="99.0" />
       <Label layoutX="12.0" layoutY="190.0" text="Importo:" />
       <Label layoutX="12.0" layoutY="60.0" text="L'importo totale è:" underline="true">
          <font>
@@ -44,7 +44,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Button fx:id="posButton" layoutX="328.0" layoutY="185.0" mnemonicParsing="false" text="Attiva POS" />
+      <Button fx:id="posButton" layoutX="328.0" layoutY="185.0" mnemonicParsing="false" onAction="#possButtonAction" text="Attiva POS" />
       <Label fx:id="paymentLabel" layoutX="328.0" layoutY="252.0" prefHeight="34.0" prefWidth="261.0" />
       <Button fx:id="backButton" layoutX="331.0" layoutY="319.0" mnemonicParsing="false" onAction="#backView" prefHeight="31.0" prefWidth="182.0" text="Annulla operazione" />
       <Label fx:id="errorLabel" layoutX="108.0" layoutY="269.0" prefHeight="34.0" prefWidth="404.0" textFill="RED" underline="true">
