@@ -8,6 +8,9 @@ import java.util.ResourceBundle;
 import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
 import it.unipv.ingsfw.gasCorpCinema.model.food.Food;
 import it.unipv.ingsfw.gasCorpCinema.model.food.FoodDAO;
+import it.unipv.ingsfw.gasCorpCinema.model.food.IFoodDAO;
+import it.unipv.ingsfw.gasCorpCinema.view.payment.PaymentCashierView;
+import it.unipv.ingsfw.gasCorpCinema.view.selectProjection.SelectProjectionView;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -19,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.stage.Stage;
 
 
 
@@ -29,9 +33,9 @@ public class FoodChoiceController implements Initializable {
 	@FXML
 	private Spinner<Integer> quantitySpinner;
 	@FXML
-	private Button addButton, receiptButton, payButton;
+	private Button addButton, backButton, payButton;
 	@FXML
-	private Label totalLabel;
+	private Label totalLabel, labelError;
 	@FXML
 	private ListView <String> foodListView;
 	private String selectedFoodDescription;
@@ -39,9 +43,10 @@ public class FoodChoiceController implements Initializable {
 
 	//private SpinnerValueFactory<Integer> spinner;
 	private Food selectedFood;
-	private FoodDAO foodDAO;
+	private IFoodDAO foodDAO;
 	private double totalFood;
 	private SaleProcess saleProcess;
+	private Stage stage;
 	
 	
 	
@@ -52,10 +57,9 @@ public class FoodChoiceController implements Initializable {
 		saleProcess=SaleProcess.getInstance();
 		foodDAO = new FoodDAO();
 		foodChoiceBox.getItems().addAll(foodDAO.getAllDescriptions());
-		setListenerView();
 		totalFood=0;
 		totalLabel.setText(String.valueOf(totalFood));
-		
+		setListenerView();
 	}
 	
 	
@@ -66,7 +70,13 @@ public class FoodChoiceController implements Initializable {
 			public void changed(ObservableValue<? extends String> arg0, String oldValue, String newValue) {
 				if (newValue != null) {
                     selectedFoodDescription = newValue;
-                    updateSpinnerValueFactory();   
+                    selectedFood=foodDAO.getFoodByDescription(selectedFoodDescription);
+                    if(selectedFood.getQuantity()<1) {
+        				labelError.setText("il prodotto selezionato è terminato");
+                    }else {
+                    	labelError.setText("");
+                    	updateSpinnerValueFactory();
+                    }
                 }	
 			}
 		 });   
@@ -75,28 +85,46 @@ public class FoodChoiceController implements Initializable {
 	private void updateSpinnerValueFactory() {
 		if (selectedFoodDescription != null) {
 			selectedFood = foodDAO.getFoodByDescription(selectedFoodDescription);
-            SpinnerValueFactory<Integer> valueFactory = 
-            new SpinnerValueFactory.IntegerSpinnerValueFactory(1,selectedFood.getQuantity() );
-            valueFactory.setValue(1);
-            quantitySpinner.setValueFactory(valueFactory);
+			
+			
+				 SpinnerValueFactory<Integer> valueFactory = 
+				            new SpinnerValueFactory.IntegerSpinnerValueFactory(1,selectedFood.getQuantity() );
+				 valueFactory.setValue(1);
+				 quantitySpinner.setValueFactory(valueFactory);
+			
+           
 		}
 	}
 	
 	public void addButtonOnAction () {
-
+		if(selectedFood.getQuantity()<1) {
+			return;
+		}
 		food = foodDAO.getFoodByDescription(selectedFoodDescription);
 		foodListView.getItems().add(food.getDescription() + "  " + Double.toString(food.getPrice()) + "   "+ Integer.toString(quantitySpinner.getValue()));
 		totalFood += quantitySpinner.getValue()* selectedFood.getPrice();
 		totalLabel.setText(String.valueOf(totalFood));
+		foodDAO.decreaseQuantityOfFood(quantitySpinner.getValue(), foodChoiceBox.getSelectionModel().getSelectedItem());
 		
-	
 	
 	
 	}
 	
 	public void payButtonOnAction() {
 		saleProcess.setTotalFood(totalFood);
-		System.out.println(saleProcess.getTotalFood());
+		Stage currentStage = (Stage) payButton.getScene().getWindow();
+		stage = new Stage();
+		PaymentCashierView p = new PaymentCashierView();
+		p.start(stage);
+		currentStage.close();
+		
+	}
+	public void backView() throws Exception {		
+		Stage currentStage = (Stage) backButton.getScene().getWindow();
+		stage = new Stage();
+		SelectProjectionView s = new SelectProjectionView();
+		s.start(stage);	
+		currentStage.close();
 	}
 	
 

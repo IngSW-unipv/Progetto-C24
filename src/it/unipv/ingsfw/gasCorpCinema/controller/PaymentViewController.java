@@ -37,7 +37,7 @@ public class PaymentViewController implements Initializable {
 	private SaleProcess saleProcess;
 	private Validation validation;
 	
-	private IProjectionDAO projectionDAO = new ProjectionDAO();
+	private IProjectionDAO projectionDAO;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -45,6 +45,7 @@ public class PaymentViewController implements Initializable {
 		total=saleProcess.getTotalTicket();
 		myLabelTotal.setText(Double.toString(total)+ " €");
 		validation = new Validation();
+		projectionDAO = new ProjectionDAO();
 		
 	}
 	

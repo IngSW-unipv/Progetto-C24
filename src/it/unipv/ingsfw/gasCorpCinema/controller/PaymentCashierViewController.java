@@ -1,15 +1,22 @@
 package it.unipv.ingsfw.gasCorpCinema.controller;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
 import it.unipv.ingsfw.gasCorpCinema.model.Validation;
+import it.unipv.ingsfw.gasCorpCinema.model.food.FoodDAO;
+import it.unipv.ingsfw.gasCorpCinema.model.food.IFoodDAO;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.view.food.FoodChoiceView;
 import it.unipv.ingsfw.gasCorpCinema.view.homePage.HomePageView;
+import it.unipv.ingsfw.gasCorpCinema.view.selectFilm.SelectFilmView;
 import it.unipv.ingsfw.gasCorpCinema.view.selectProjection.SelectProjectionView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,100 +34,82 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class PaymentCashierViewController implements Initializable {
+
 	@FXML
-	private Button myButton, backButton, foodButton;
+	private Button posButton, endPaymentButton, backButton;
 	@FXML
-	private Label myLabel, myLabelTotal, labelFood;
+	private TextField importoTextField;
 	@FXML
-	private TextField labelName, labelSurname, labelNumberOfCC, labelCVV;
-	@FXML
-	private ChoiceBox<String> foodChoice, drinkChoice;
-	@FXML
-    private Spinner<Integer> foodSpinner, drinkSpinner;
-	@FXML
-	private DatePicker myDatePicker;
-	
-	private Stage stage;
-	private double total;
+	private Label labelResto, paymentLabel, totalLabel, errorLabel;
+	private double totalSale;
 	private SaleProcess saleProcess;
+	private Stage stage;
+	private IFoodDAO foodDAO;
 	private Validation validation;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
-		saleProcess = SaleProcess.getInstance();
-        total = saleProcess.getTotalTicket();
-        myLabelTotal.setText(Double.toString(total) + " €");
-    }
+		saleProcess=SaleProcess.getInstance();
+		totalSale=saleProcess.getTotalSale();
+		foodDAO = new FoodDAO();
+		BigDecimal total1= new BigDecimal(totalSale);
+		BigDecimal newTotal = total1.setScale(2, RoundingMode.HALF_DOWN);
+		totalLabel.setText(String.valueOf(newTotal) + " €");
+		validation = new Validation();
+	}
 	
-	public void foodChoiceButton() {
-		Stage currentStage = (Stage) foodButton.getScene().getWindow();
-        stage = new Stage();
-        FoodChoiceView s = new FoodChoiceView();
-        s.start(stage);
-        currentStage.close();
+	public void backView() throws Exception {		
+		Stage currentStage = (Stage) backButton.getScene().getWindow();
+		stage = new Stage();
+		SelectFilmView s = new SelectFilmView();
+		s.start(stage);	
+		currentStage.close();
 	}
-
-    public void pressButton() throws Exception {
-		String name = labelName.getText();
-		String surname= labelSurname.getText();
-		String numberOfCC= labelNumberOfCC.getText();
+	
 		
-		if(!validation.nameValidate(name)) { 
-			myLabel.setText("INSERT A VALID NAME");
-			return;
-		}
-		if(!validation.nameValidate(surname)) { 
-			myLabel.setText("INSERT A VALID SURNAME");
-			return;
-		}
-		if(!validation.cardNumberValidate(numberOfCC)) { 
-			myLabel.setText("INSERT A VALID CARD");
-			return;
-		}
-		LocalDate expirationDate = myDatePicker.getValue();
-		if(!validation.dateValidate(expirationDate)) {
-			myLabel.setText("THE CREDIT CARD INSERT IS EXPIRED");
+//        Pattern pattern = Pattern.compile(regex);
+//        Matcher matcher = pattern.matcher(input);
+//        return matcher.matches();
+//	
+//	
+	
+	
+	public void endPayment() {
+		if(!validation.cvvValidate(importoTextField.getText())) {
+			errorLabel.setText("Importo errato");
 			return;
 		}
 		
-//		myLabel.setText("SUCCESSFUL PAYMENT ✅");
-//
-//		System.out.println("prima del thread");
-//		Thread.sleep(4000);
-//		System.out.println("dopo del thread");
-		alertSuccessfullPayment();
-		//premo il bottone e dopo 1.5 sec si visualizza "SUCCESSFUL PAYMENT" e dopo altri 1.5 sec cambia view
+		
 		saleProcess.saleRegistration();
-		saleProcess.reset(); //dobbaimo resettare tutti i dati di sale process
-		System.out.println(saleProcess.getNumberOfTickets());
-		//l'ideale sarebbe che il metodo saleRegistration restituisca un booleano a secodna che la registrazione
-		//della vendiota vada a buon fine
-//		stage = new Stage();
-//		SelectFilmView v = new SelectFilmView();
-//		v.start(stage);	
+		saleProcess.reset();
+		
+		Stage currentStage = (Stage) backButton.getScene().getWindow();
+		stage = new Stage();
+		SelectFilmView s = new SelectFilmView();
+		s.start(stage);	
+		currentStage.close();
+		
 	}
-    
-    public void alertSuccessfullPayment() throws Exception {
-		boolean alert = AlertUtils.showAlertAndWait(AlertType.CONFIRMATION,"Pagamento effettuato con succcesso","Stai per effettuare il logout",
-				"Dopo aver fatto il logout verrai riportato alla homepage.");
-
-		if(alert) {
-			Stage currentStage = (Stage) myButton.getScene().getWindow();
-
-			stage = new Stage();
-			HomePageView v = new HomePageView();
-			v.start(stage);	
-			
-			currentStage.close();
+	
+	public void calcoloResto() {
+		errorLabel.setText("");
+		try {
+			double resto = Double.parseDouble(importoTextField.getText()) - totalSale;
+			BigDecimal total1= new BigDecimal(resto);
+			BigDecimal totalArrounded = total1.setScale(2, RoundingMode.HALF_DOWN);
+			BigDecimal newTotal = total1.setScale(2, RoundingMode.HALF_DOWN);
+			if(resto<0) {
+				labelResto.setText("All'importo mancano " +  totalArrounded + " euro");
+				return;
+			}
+			labelResto.setText(String.valueOf(newTotal) + " €");
+		}catch (NumberFormatException exception) {
+			labelResto.setText("Inserire un valore valido");
 		}
+		
+		
+		
 	}
-
-    public void backView() throws Exception {
-        Stage currentStage = (Stage) backButton.getScene().getWindow();
-        stage = new Stage();
-        SelectProjectionView s = new SelectProjectionView();
-        s.start(stage);
-        currentStage.close();
-    }
+	
 }

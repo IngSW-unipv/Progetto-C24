@@ -46,3 +46,6 @@ cashier = ./src/it/unipv/ingsfw/gasCorpCinema/view/food/FoodChoiceView.fxml
 
 FOOD_CHOICE_FXML = ./src/it/unipv/ingsfw/gasCorpCinema/view/food/FoodChoiceView.fxml
 FOOD_CHOICE_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/food/FoodChoiceView.css
+
+PAYMENT_CASHIER_FXML = ./src/it/unipv/ingsfw/gasCorpCinema/view/payment/PaymentCashierView.fxml
+PAYMENT_CASHIER_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/payment/PaymentCashier.css

@@ -61,7 +61,6 @@ public class SelectProjectionViewController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		saleProcess=SaleProcess.getInstance();
-
 		selectedMovie=saleProcess.getMovie();
 		if(selectedMovie != null) {
 			myListView.getItems().addAll(projectionDAO.getAllProjectionsByMovie(selectedMovie.getIdMovie()));
@@ -87,8 +86,8 @@ public class SelectProjectionViewController implements Initializable {
 	private void updateSpinnerValueFactory() {
 		if (projection != null) {
 			SpinnerValueFactory<Integer> valueFactory = 
-					new SpinnerValueFactory.IntegerSpinnerValueFactory(1,projectionDAO.getNumberOfAvailableSeats(projection));
-			valueFactory.setValue(1);
+					new SpinnerValueFactory.IntegerSpinnerValueFactory(0,projectionDAO.getNumberOfAvailableSeats(projection));
+			valueFactory.setValue(0);
 			mySpinner.setValueFactory(valueFactory);
 
 
@@ -105,11 +104,11 @@ public class SelectProjectionViewController implements Initializable {
 
 
 				total= projection.getPrice() * mySpinner.getValue();
+				saleProcess.setTotalTicket(total);
 				BigDecimal total1= new BigDecimal(total);
 				BigDecimal newTotal = total1.setScale(2, RoundingMode.HALF_DOWN);
 				//l'uso del big decimal si rende necessario perche il prodotto tra doube genera un output errato (del tipo 14.0000001)
-				saleProcess.setTotalTicket(total);
-				//così il sale process ha i valori aggiornati 
+				
 				myLabelTotal.setText(String.valueOf(newTotal));
 			} 	    	            
 		}); 
@@ -134,9 +133,9 @@ public class SelectProjectionViewController implements Initializable {
 
 		if(projection==null) { 
 			myLabel.setText("YOU MUST SELECT A PROJECTION!");
-		}else if(mySpinner==null) { 
+		}else if(mySpinner==null || mySpinner.getValue()==0 ) { 
 			myLabel.setText("YOU MUST SELECT THE NUMBER OF TICKET YOU WANT!");
-		}else {
+		}else{
 			Properties p = new Properties(System.getProperties());
 
 			p.load(new FileInputStream("Properties/Strings"));

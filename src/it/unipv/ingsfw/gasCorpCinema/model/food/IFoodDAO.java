@@ -7,4 +7,5 @@ public interface IFoodDAO {
 	public Food getFoodByDescription(String description);
 	public List<String> getAllDescriptions();
 	public double getPriceOfFood(String description);
+	public void decreaseQuantityOfFood(int quantity, String description);
 }

@@ -30,11 +30,17 @@ public class SaleProcess {
 	private Register register;
 	private String role;
 	private double totalFood;
+	private double totalSale;
 	
 	
 	
 	
-	
+	public double getTotalSale() {
+		totalSale= totalTicket + totalFood;
+		return totalSale;
+	}
+
+
 	public double getTotalFood() {
 		return totalFood;
 	}

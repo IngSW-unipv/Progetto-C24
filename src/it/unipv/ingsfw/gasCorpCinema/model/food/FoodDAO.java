@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import it.unipv.ingsfw.gasCorpCinema.DBConnection;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
+import it.unipv.ingsfw.gasCorpCinema.model.projection.Projection;
 
 public class FoodDAO implements IFoodDAO{
 	private String schema;
@@ -105,6 +106,26 @@ public class FoodDAO implements IFoodDAO{
 	    
 	    DBConnection.closeConnection(conn);
 	    return price;
+	}
+	
+	public void decreaseQuantityOfFood(int quantity, String description) {
+		conn=DBConnection.startConnection(conn,schema);
+		PreparedStatement st1;
+		
+		try {
+			
+			String query = "UPDATE food SET food.quantity=food.quantity -?  WHERE food.description=?";
+			st1 = conn.prepareStatement(query);
+			st1.setInt(1, quantity);
+			st1.setString(2, description);
+			st1.executeUpdate();
+							
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DBConnection.closeConnection(conn);
+		
+
 	}
 
 }
