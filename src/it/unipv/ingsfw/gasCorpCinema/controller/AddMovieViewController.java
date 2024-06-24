@@ -1,8 +1,11 @@
 package it.unipv.ingsfw.gasCorpCinema.controller;
 
 import java.sql.Time;
-import it.unipv.ingsfw.gasCorpCinema.model.Admin;
+
+import it.unipv.ingsfw.gasCorpCinema.model.movie.IMovieDAO;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
+import it.unipv.ingsfw.gasCorpCinema.model.movie.MovieDAO;
+import it.unipv.ingsfw.gasCorpCinema.model.role.Admin;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.utils.StringUtils;
 import it.unipv.ingsfw.gasCorpCinema.utils.TimeUtils;
@@ -21,21 +24,23 @@ public class AddMovieViewController {
 	@FXML
 	private CheckBox myCheckBox;
 
-	private Admin admin = new Admin();
-	private Movie movie;
+	private IMovieDAO movieDAO = new MovieDAO();
 
 	public void insertMovie() {
 		try {
 			if (validateFields()) {
-				movie = new Movie(myTextField1.getText(),myTextField2.getText(),
-						Time.valueOf(myTextField3.getText() + ":00"),
-						Integer.parseInt(myTextField4.getText()),
-						isTop());
-				boolean result = admin.insertMovie(movie);
+				Movie movie = new Movie(0,
+					myTextField1.getText(),
+					myTextField2.getText(),
+					Time.valueOf(myTextField3.getText() + ":00"),
+					Integer.parseInt(myTextField4.getText()),
+					isTop()
+				);
 
-				if (result) {
+				if (!isDuplicatedMovie(movie)) {
+					movieDAO.insertMovie(movie);
 					AlertUtils.showAlert(AlertType.INFORMATION,"Successo", "Film Inserito", movie.toString());
-				} else {
+				}else {
 					AlertUtils.showAlert(AlertType.ERROR,"Errore di Inserimento", "Il film " + movie.getTitle() + " Esiste già", "Prova ad inserire un altro film");
 				}
 			}
@@ -80,5 +85,14 @@ public class AddMovieViewController {
 			return false;
 		}
 		return true;
+	}
+
+
+	public boolean isDuplicatedMovie(Movie movie) {
+		if (movieDAO.getMovieByTitle(movie.getTitle()) != null) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

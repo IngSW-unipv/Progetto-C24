@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import it.unipv.ingsfw.gasCorpCinema.DBConnection;
+import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
 import it.unipv.ingsfw.gasCorpCinema.model.projection.Projection;
 
 public class RegisterDAO implements IRegisterDAO{
@@ -19,7 +20,7 @@ public class RegisterDAO implements IRegisterDAO{
 	}
 
 	@Override
-	public void saleRegistration(Projection projection, int numberOfTickets, double total) {
+	public void saleRegistration(Projection projection, Movie movie, int numberOfTickets, double total) {
 		
 		conn=DBConnection.startConnection(conn,schema);
 		PreparedStatement st1;
@@ -41,7 +42,7 @@ public class RegisterDAO implements IRegisterDAO{
 	    	
 	    	//da controllare formati date e time
 	    	st1.setString(1, dateTimeString );	
-	    	st1.setString(2, projection.getMovieTitle());
+	    	st1.setString(2, movie.getTitle());
 	    	st1.setString(3, String.valueOf(projection.getDate()));
 	    	st1.setString(4, String.valueOf(projection.getTime()));
 	    	st1.setInt(5, numberOfTickets);

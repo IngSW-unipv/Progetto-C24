@@ -9,10 +9,13 @@ import java.net.URL;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
-import it.unipv.ingsfw.gasCorpCinema.model.Admin;
 import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
+import it.unipv.ingsfw.gasCorpCinema.model.projection.IProjectionDAO;
 import it.unipv.ingsfw.gasCorpCinema.model.projection.Projection;
+import it.unipv.ingsfw.gasCorpCinema.model.projection.ProjectionDAO;
+import it.unipv.ingsfw.gasCorpCinema.model.role.Admin;
+import it.unipv.ingsfw.gasCorpCinema.model.role.User;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.view.homePage.HomePageView;
 import it.unipv.ingsfw.gasCorpCinema.view.selectFilm.SelectFilmView;
@@ -52,7 +55,7 @@ public class SelectProjectionViewController implements Initializable {
 	private int numberOfTickets;
 	private Stage stage;
 	private SaleProcess saleProcess;
-
+	private IProjectionDAO projectionDAO = new ProjectionDAO();
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -61,7 +64,7 @@ public class SelectProjectionViewController implements Initializable {
 		
 		selectedMovie=saleProcess.getMovie();
 		if(selectedMovie != null) {
-			myListView.getItems().addAll(admin.getprojectionsByMovie(selectedMovie));
+			myListView.getItems().addAll(projectionDAO.getAllProjectionsByMovie(selectedMovie.getIdMovie()));
 			setListViewListener();
 		}
 		
@@ -103,7 +106,7 @@ public class SelectProjectionViewController implements Initializable {
 	 private void updateSpinnerValueFactory() {
 	        if (projection != null) {
 	            SpinnerValueFactory<Integer> valueFactory = 
-	            new SpinnerValueFactory.IntegerSpinnerValueFactory(1, admin.getNumberOfAvailableSeats(projection));
+	            new SpinnerValueFactory.IntegerSpinnerValueFactory(1, projectionDAO.getNumberOfAvailableSeats(projection));
 	            valueFactory.setValue(1);
 	            mySpinner.setValueFactory(valueFactory);
 	            

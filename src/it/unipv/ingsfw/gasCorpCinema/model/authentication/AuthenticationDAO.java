@@ -22,15 +22,19 @@ public class AuthenticationDAO implements IAuthenticationDAO {
 	        conn = DBConnection.startConnection(conn, schema);
 	        PreparedStatement stmt;
 	        ResultSet rs;
-
+	        
 	        try {
 	            String query = "SELECT 1 FROM authentications WHERE email = ?";
+	            if(conn != null) {
 	            stmt = conn.prepareStatement(query);
 	            stmt.setString(1, email);
 
 	            rs = stmt.executeQuery();
 
 	            return rs.next();
+	            }else {
+	            	return false;
+	            }
 	        } catch (SQLException e) {
 	            e.printStackTrace();
 	            return false;

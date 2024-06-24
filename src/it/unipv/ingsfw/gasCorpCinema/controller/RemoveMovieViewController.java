@@ -2,8 +2,11 @@ package it.unipv.ingsfw.gasCorpCinema.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import it.unipv.ingsfw.gasCorpCinema.model.Admin;
+
+import it.unipv.ingsfw.gasCorpCinema.model.movie.IMovieDAO;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
+import it.unipv.ingsfw.gasCorpCinema.model.movie.MovieDAO;
+import it.unipv.ingsfw.gasCorpCinema.model.role.Admin;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -25,12 +28,13 @@ public class RemoveMovieViewController implements Initializable {
 	private Button myButton;
 
 	Movie selectedMovie;
-	Admin admin = new Admin();
-
+	
+	private IMovieDAO movieDAO = new MovieDAO();
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		myListView.getItems().addAll(admin.getAllMovies());
+		myListView.getItems().addAll(movieDAO.getAllMovies());
 
 		if (myListView.getItems().isEmpty()) {
 			myLabel.setText("Nessun film disponibile");
@@ -55,7 +59,7 @@ public class RemoveMovieViewController implements Initializable {
 	public void removeMovie() {
 
 		if(selectedMovie != null) {
-			admin.deleteMovie(selectedMovie);
+			movieDAO.deleteMovie(selectedMovie);
 			myListView.getItems().remove(selectedMovie);
 		}else {
 			AlertUtils.showAlert(AlertType.ERROR,"Errore","C'è stato un errore durante la rimozione del film",

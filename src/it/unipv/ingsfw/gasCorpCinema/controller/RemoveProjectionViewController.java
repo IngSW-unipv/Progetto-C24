@@ -2,8 +2,11 @@ package it.unipv.ingsfw.gasCorpCinema.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import it.unipv.ingsfw.gasCorpCinema.model.Admin;
+
+import it.unipv.ingsfw.gasCorpCinema.model.projection.IProjectionDAO;
 import it.unipv.ingsfw.gasCorpCinema.model.projection.Projection;
+import it.unipv.ingsfw.gasCorpCinema.model.projection.ProjectionDAO;
+import it.unipv.ingsfw.gasCorpCinema.model.role.Admin;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -24,12 +27,13 @@ public class RemoveProjectionViewController implements Initializable {
 	private Button myButton;
 
 	Projection selectedProjection;
-	Admin admin = new Admin();
+	
+	private IProjectionDAO projectionDAO = new ProjectionDAO();
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		myListView.getItems().addAll(admin.getAllProjections());
+		myListView.getItems().addAll(projectionDAO.getAllProjections());
 
 		if (myListView.getItems().isEmpty()) {
 			myLabel.setText("Nessuna proiezione disponibile");
@@ -52,9 +56,8 @@ public class RemoveProjectionViewController implements Initializable {
 	}
 
 	public void removeProjection() {
-
 		if(selectedProjection != null) {
-			admin.deleteProjection(selectedProjection);
+			projectionDAO.deleteProjection(selectedProjection);
 			myListView.getItems().remove(selectedProjection);
 		}else {
 			AlertUtils.showAlert(AlertType.ERROR, "Errore", "C'è stato un errore durante la rimozione della proiezione", 

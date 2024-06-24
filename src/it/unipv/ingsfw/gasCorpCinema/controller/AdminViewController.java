@@ -1,5 +1,6 @@
 package it.unipv.ingsfw.gasCorpCinema.controller;
 
+import it.unipv.ingsfw.gasCorpCinema.model.role.RoleType;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.utils.StageUtils;
 import it.unipv.ingsfw.gasCorpCinema.view.addMovie.AddMovieView;
@@ -24,7 +25,6 @@ public class AdminViewController {
 	private Label emailLabel;
 	@FXML
 	private Button myButton;
-
 
 	public void logout() throws Exception {
 
