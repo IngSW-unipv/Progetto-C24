@@ -32,9 +32,12 @@ public class HomePageViewController {
 	@FXML
 	private Button buttonRegistrati;
 
-	private Authentication authentication = new Authentication();
+	private Authentication authentication;
 	private SaleProcess saleProcess;
 	
+	public HomePageViewController() {
+		authentication = new Authentication();
+	}
 
 	@FXML
 	public void loginButtonAction() throws Exception {

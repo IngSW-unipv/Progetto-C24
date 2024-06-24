@@ -19,16 +19,32 @@ public class SaleProcess {
 	//NB è un sin gleton poiche vogliamo che select projection cotnroller e payment facciano
 	//riferiemtno allo stesso sale process senza che questi 2 si passino l'istanza (riducendo l'accoppiamento)
 	
+	
 	private static SaleProcess instance;
 	private Movie movie;
 	//arriva da select fil projection
 	private int numberOfTickets;
-	private double total;
+	private double totalTicket;
 	private Projection projection;
 	//questi ultimi 3 arrivano da select projection controller
 	private Register register;
 	private String role;
+	private double totalFood;
 	
+	
+	
+	
+	
+	public double getTotalFood() {
+		return totalFood;
+	}
+
+
+	public void setTotalFood(double totalFood) {
+		this.totalFood = totalFood;
+	}
+
+
 	public String getRole() {
 		return role;
 	}
@@ -67,12 +83,12 @@ public class SaleProcess {
 		return projection;
 	}
 
-	public double getTotal() {
-		return total;
+	public double getTotalTicket() {
+		return totalTicket;
 	}
 
-	public void setTotal(double total) {
-		this.total = total;
+	public void setTotalTicket(double total) {
+		this.totalTicket = total;
 	}
 	
 	
@@ -88,14 +104,14 @@ public class SaleProcess {
 
 
 	public void saleRegistration() {
-		register.saleRegistration(projection, movie, numberOfTickets,total);
+		register.saleRegistration(projection, movie, numberOfTickets,totalTicket);
 	}
 	
 	public void reset() {
 		movie=null;
 		//arriva da select fil projection
 		numberOfTickets=0;
-		total=0;
+		totalTicket=0;
 		projection=null;
 		//questi ultimi 3 arrivano da select projection controller
 		
@@ -103,4 +119,5 @@ public class SaleProcess {
 	//se il cliente entra seleziona film e proieione ma alla fine cambia idea e non paga dobbiamo 
 	//resettare tutti i paramentri a 0 se no il prissimo cliente che si connette si ritrova 
 	//con i dati del precedente
+	
 }

@@ -42,7 +42,7 @@ PAYMENT_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/payment/PaymentView.css
 
 CASHIER_TITLE = G.A.S. CORP CINEMA - CASHIER
 CASHIER = ./src/it/unipv/ingsfw/gasCorpCinema/view/selectFilm/SelectFilmView.fxml
-cashier = ./src/it/unipv/ingsfw/gasCorpCinema/view/payment/PaymentCashierView.fxml
+cashier = ./src/it/unipv/ingsfw/gasCorpCinema/view/food/FoodChoiceView.fxml
 
 FOOD_CHOICE_FXML = ./src/it/unipv/ingsfw/gasCorpCinema/view/food/FoodChoiceView.fxml
 FOOD_CHOICE_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/food/FoodChoiceView.css

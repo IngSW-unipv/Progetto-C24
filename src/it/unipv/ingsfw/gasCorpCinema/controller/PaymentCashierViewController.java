@@ -1,58 +1,70 @@
 package it.unipv.ingsfw.gasCorpCinema.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+
 import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
 import it.unipv.ingsfw.gasCorpCinema.model.Validation;
-import it.unipv.ingsfw.gasCorpCinema.model.projection.IProjectionDAO;
-import it.unipv.ingsfw.gasCorpCinema.model.projection.ProjectionDAO;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
+import it.unipv.ingsfw.gasCorpCinema.view.food.FoodChoiceView;
 import it.unipv.ingsfw.gasCorpCinema.view.homePage.HomePageView;
 import it.unipv.ingsfw.gasCorpCinema.view.selectProjection.SelectProjectionView;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-public class PaymentViewController implements Initializable {
+public class PaymentCashierViewController implements Initializable {
 	@FXML
-	private Button myButton, backButton;
+	private Button myButton, backButton, foodButton;
 	@FXML
-	private Label myLabel, myLabelTotal;
+	private Label myLabel, myLabelTotal, labelFood;
 	@FXML
 	private TextField labelName, labelSurname, labelNumberOfCC, labelCVV;
 	@FXML
-	private DatePicker myDatePicker;
+	private ChoiceBox<String> foodChoice, drinkChoice;
 	@FXML
-	private ImageView userImageView;
+    private Spinner<Integer> foodSpinner, drinkSpinner;
+	@FXML
+	private DatePicker myDatePicker;
 	
 	private Stage stage;
 	private double total;
 	private SaleProcess saleProcess;
 	private Validation validation;
 	
-	private IProjectionDAO projectionDAO = new ProjectionDAO();
-	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		saleProcess=SaleProcess.getInstance();
-		total=saleProcess.getTotalTicket();
-		myLabelTotal.setText(Double.toString(total)+ " €");
-		validation = new Validation();
 		
-	}
+		saleProcess = SaleProcess.getInstance();
+        total = saleProcess.getTotalTicket();
+        myLabelTotal.setText(Double.toString(total) + " €");
+    }
 	
-	public void pressButton() throws Exception {
+	public void foodChoiceButton() {
+		Stage currentStage = (Stage) foodButton.getScene().getWindow();
+        stage = new Stage();
+        FoodChoiceView s = new FoodChoiceView();
+        s.start(stage);
+        currentStage.close();
+	}
+
+    public void pressButton() throws Exception {
 		String name = labelName.getText();
-		String surname = labelSurname.getText().replaceAll("\\s+", "");
-		String numberOfCC = labelNumberOfCC.getText().trim().replaceAll("\\s+", "");
-		String cvv = labelCVV.getText().trim();
+		String surname= labelSurname.getText();
+		String numberOfCC= labelNumberOfCC.getText();
 		
 		if(!validation.nameValidate(name)) { 
 			myLabel.setText("INSERT A VALID NAME");
@@ -68,11 +80,7 @@ public class PaymentViewController implements Initializable {
 		}
 		LocalDate expirationDate = myDatePicker.getValue();
 		if(!validation.dateValidate(expirationDate)) {
-			myLabel.setText("INSERT A VALID EXPIRATION DATE");
-			return;
-		}
-		if(!validation.cvvValidate(cvv)) { 
-			myLabel.setText("INSERT A VALID CVV");
+			myLabel.setText("THE CREDIT CARD INSERT IS EXPIRED");
 			return;
 		}
 		
@@ -84,7 +92,6 @@ public class PaymentViewController implements Initializable {
 		alertSuccessfullPayment();
 		//premo il bottone e dopo 1.5 sec si visualizza "SUCCESSFUL PAYMENT" e dopo altri 1.5 sec cambia view
 		saleProcess.saleRegistration();
-		projectionDAO.decreaseNumberOfAvailableSeats(saleProcess.getProjection(),saleProcess.getNumberOfTickets());
 		saleProcess.reset(); //dobbaimo resettare tutti i dati di sale process
 		System.out.println(saleProcess.getNumberOfTickets());
 		//l'ideale sarebbe che il metodo saleRegistration restituisca un booleano a secodna che la registrazione
@@ -93,8 +100,8 @@ public class PaymentViewController implements Initializable {
 //		SelectFilmView v = new SelectFilmView();
 //		v.start(stage);	
 	}
-	
-	public void alertSuccessfullPayment() throws Exception {
+    
+    public void alertSuccessfullPayment() throws Exception {
 		boolean alert = AlertUtils.showAlertAndWait(AlertType.CONFIRMATION,"Pagamento effettuato con succcesso","Stai per effettuare il logout",
 				"Dopo aver fatto il logout verrai riportato alla homepage.");
 
@@ -108,27 +115,12 @@ public class PaymentViewController implements Initializable {
 			currentStage.close();
 		}
 	}
-	
-	public void backView() throws Exception {		
-		Stage currentStage = (Stage) backButton.getScene().getWindow();
-		stage = new Stage();
-		SelectProjectionView s = new SelectProjectionView();
-		s.start(stage);	
-		currentStage.close();
-	}	
-	
-	public void logout() throws Exception {
-		boolean alert = AlertUtils.showAlertAndWait(AlertType.CONFIRMATION,"Logout","Stai per effettuare il logout",
-				"Dopo aver fatto il logout verrai riportato alla homepage.");
 
-		if(alert) {
-			Stage currentStage = (Stage) userImageView.getScene().getWindow();
-
-			stage = new Stage();
-			HomePageView v = new HomePageView();
-			v.start(stage);	
-
-			currentStage.close();
-		}
-	}
+    public void backView() throws Exception {
+        Stage currentStage = (Stage) backButton.getScene().getWindow();
+        stage = new Stage();
+        SelectProjectionView s = new SelectProjectionView();
+        s.start(stage);
+        currentStage.close();
+    }
 }

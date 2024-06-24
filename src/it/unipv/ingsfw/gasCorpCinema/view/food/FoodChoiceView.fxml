@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.FoodChoiceController">
+   <children>
+      <ChoiceBox fx:id="foodChoiceBox" layoutX="24.0" layoutY="38.0" prefWidth="150.0" />
+      <Spinner fx:id="quantitySpinner" layoutX="197.0" layoutY="38.0" prefHeight="31.0" prefWidth="85.0" />
+      <Label layoutX="24.0" layoutY="4.0" prefHeight="31.0" prefWidth="552.0" text="Scegli il cibo da aggiungere con le relative quantità" />
+      <Button fx:id="addButton" layoutX="300.0" layoutY="38.0" mnemonicParsing="false" onAction="#addButtonOnAction" text="Aggiungi" />
+      <Button fx:id="receiptButton" layoutX="492.0" layoutY="314.0" mnemonicParsing="false" text="Ricevuta" />
+      <Label layoutX="391.0" layoutY="190.0" text="Totale:" />
+      <Label fx:id="totalLabel" layoutX="438.0" layoutY="190.0" prefHeight="21.0" prefWidth="95.0" />
+      <Button fx:id="payButton" layoutX="381.0" layoutY="254.0" mnemonicParsing="false" onAction="#payButtonOnAction" prefHeight="31.0" prefWidth="186.0" text="Pagamento" />
+      <ListView fx:id="foodListView" layoutX="35.0" layoutY="134.0" prefHeight="241.0" prefWidth="324.0" />
+      <Label layoutX="35.0" layoutY="113.0" text="Descrizione" />
+      <Label layoutX="139.0" layoutY="113.0" text="Quantità" />
+      <Label layoutX="229.0" layoutY="113.0" text="Prezzo" />
+   </children>
+</AnchorPane>

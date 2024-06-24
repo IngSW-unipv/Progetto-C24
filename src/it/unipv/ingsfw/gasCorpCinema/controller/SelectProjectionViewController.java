@@ -108,11 +108,12 @@ public class SelectProjectionViewController implements Initializable {
 				BigDecimal total1= new BigDecimal(total);
 				BigDecimal newTotal = total1.setScale(2, RoundingMode.HALF_DOWN);
 				//l'uso del big decimal si rende necessario perche il prodotto tra doube genera un output errato (del tipo 14.0000001)
-				saleProcess.setTotal(total);
+				saleProcess.setTotalTicket(total);
 				//così il sale process ha i valori aggiornati 
 				myLabelTotal.setText(String.valueOf(newTotal));
 			} 	    	            
-		});       
+		}); 
+		
 	}
 
 
@@ -163,7 +164,7 @@ public class SelectProjectionViewController implements Initializable {
 		Parent root = loader.load();
 
 		saleProcess.setNumberOfTickets(numberOfTickets);
-		saleProcess.setTotal(total);
+		saleProcess.setTotalTicket(total);
 		saleProcess.setProjection(projection);
 
 		Scene scene = new Scene(root);
