@@ -36,7 +36,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class SelectProjectionViewController implements Initializable {
-	
+
 	@FXML
 	ListView<Projection> myListView;
 	@FXML
@@ -47,7 +47,7 @@ public class SelectProjectionViewController implements Initializable {
 	private Spinner<Integer> mySpinner;
 	@FXML
 	private ImageView userImageView;
-	
+
 	private double total;
 	private Admin admin = new Admin();
 	private Movie selectedMovie;
@@ -56,85 +56,66 @@ public class SelectProjectionViewController implements Initializable {
 	private Stage stage;
 	private SaleProcess saleProcess;
 	private IProjectionDAO projectionDAO = new ProjectionDAO();
-	
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+
 		saleProcess=SaleProcess.getInstance();
-		
+
 		selectedMovie=saleProcess.getMovie();
 		if(selectedMovie != null) {
 			myListView.getItems().addAll(projectionDAO.getAllProjectionsByMovie(selectedMovie.getIdMovie()));
 			setListViewListener();
 		}
-		
-		
-//		myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Projection>() {
-//            @Override
-//            public void changed(ObservableValue<? extends Projection> observable, Projection oldValue, Projection newValue) {
-//                if (newValue != null) {
-//                    
-//                	projection = myListView.getSelectionModel().getSelectedItem();;
-//                    // Qui puoi aggiornare lo SpinnerValueFactory se necessario
-//                }
-//            }
-//        });
-			
-//		SpinnerValueFactory <Integer> valueFactory = 
-//				new SpinnerValueFactory.IntegerSpinnerValueFactory(1,admin.getNumberOfAvailableSeats(projection));
-//		//così facendo lo spinner fa scelgiere solo il nuemro corretto di posti 
-//		valueFactory.setValue(1);
-//		mySpinner.setValueFactory(valueFactory);
-		
 	}
-	
-
-	
-	 private void setListViewListener() {
-	        myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Projection>() {
-	            @Override
-	            public void changed(ObservableValue<? extends Projection> observable, Projection oldValue, Projection newValue) {
-	                if (newValue != null) {
-	                    projection = newValue;
-	                    updateSpinnerValueFactory();
-	                    
-	                }
-	            }
-	        });
-	    }
-	 
-	 private void updateSpinnerValueFactory() {
-	        if (projection != null) {
-	            SpinnerValueFactory<Integer> valueFactory = 
-	            new SpinnerValueFactory.IntegerSpinnerValueFactory(1, projectionDAO.getNumberOfAvailableSeats(projection));
-	            valueFactory.setValue(1);
-	            mySpinner.setValueFactory(valueFactory);
-	            
-	      
-	        }
-	        
-		 mySpinner.valueProperty().addListener(new ChangeListener<Integer>(){
-	    			@Override
-	    			public void changed(ObservableValue<? extends Integer> arg0, Integer arg1, Integer arg2) {
-	    				// TODO Auto-generated method stub
-	    				
-	    				numberOfTickets= mySpinner.getValue();
-	    				saleProcess.setNumberOfTickets(numberOfTickets);
 
 
 
-	    				total= projection.getPrice() * mySpinner.getValue();
-	    				BigDecimal total1= new BigDecimal(total);
-	    				BigDecimal newTotal = total1.setScale(2, RoundingMode.HALF_DOWN);
-	    				//l'uso del big decimal si rende necessario perche il prodotto tra doube genera un output errato (del tipo 14.0000001)
-	    				saleProcess.setTotal(total);
-	    				//così il sale process ha i valori aggiornati 
-	    	            myLabelTotal.setText(String.valueOf(newTotal));
-	    			} 	    	            
+	private void setListViewListener() {
+		myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Projection>() {
+			@Override
+			public void changed(ObservableValue<? extends Projection> observable, Projection oldValue, Projection newValue) {
+				if (newValue != null) {
+					projection = newValue;
+					updateSpinnerValueFactory();
+
+				}
+			}
+		});
+	}
+
+	private void updateSpinnerValueFactory() {
+		if (projection != null) {
+			SpinnerValueFactory<Integer> valueFactory = 
+					new SpinnerValueFactory.IntegerSpinnerValueFactory(1,projectionDAO.getNumberOfAvailableSeats(projection));
+			valueFactory.setValue(1);
+			mySpinner.setValueFactory(valueFactory);
+
+
+		}
+
+		mySpinner.valueProperty().addListener(new ChangeListener<Integer>(){
+			@Override
+			public void changed(ObservableValue<? extends Integer> arg0, Integer arg1, Integer arg2) {
+				// TODO Auto-generated method stub
+
+				numberOfTickets= mySpinner.getValue();
+				saleProcess.setNumberOfTickets(numberOfTickets);
+
+
+
+				total= projection.getPrice() * mySpinner.getValue();
+				BigDecimal total1= new BigDecimal(total);
+				BigDecimal newTotal = total1.setScale(2, RoundingMode.HALF_DOWN);
+				//l'uso del big decimal si rende necessario perche il prodotto tra doube genera un output errato (del tipo 14.0000001)
+				saleProcess.setTotal(total);
+				//così il sale process ha i valori aggiornati 
+				myLabelTotal.setText(String.valueOf(newTotal));
+			} 	    	            
 		});       
-	  }
-	 
-	
+	}
+
+
 	public Projection getProjection() {
 		return projection;
 	}
@@ -143,13 +124,13 @@ public class SelectProjectionViewController implements Initializable {
 		return mySpinner.getValue();
 	}
 	//serve per aggiornare il numero di posti disponibili per  una data proiezione e per il pagamento 
-	
+
 	public void pressButton() throws Exception {
-		
+
 		//String email = authentication.getEmail();
 		String role = saleProcess.getRole();
-		
-				
+
+
 		if(projection==null) { 
 			myLabel.setText("YOU MUST SELECT A PROJECTION!");
 		}else if(mySpinner==null) { 
@@ -163,7 +144,7 @@ public class SelectProjectionViewController implements Initializable {
 				String viewPath = p.getProperty(role.toLowerCase());
 
 				if (viewPath != null) {
-					
+
 					File fxmlFile = new File(viewPath);
 					URL fxmlResource = fxmlFile.toURI().toURL();
 					changeScene(fxmlResource);
@@ -175,34 +156,34 @@ public class SelectProjectionViewController implements Initializable {
 		//alla pressione del bottone se è stato selezionato un film cambia la vista per scegliere la proiezione
 		//altrimenit visutlaizza il messaggio SELECT A FILM, discorso analogo per lo spinner		
 	}
-	
+
 	public void changeScene(URL fxml) throws IOException {
-		
+
 		FXMLLoader loader = new FXMLLoader(fxml);
-        Parent root = loader.load();
-		
-	    saleProcess.setNumberOfTickets(numberOfTickets);
-	    saleProcess.setTotal(total);
-	    saleProcess.setProjection(projection);
-		
+		Parent root = loader.load();
+
+		saleProcess.setNumberOfTickets(numberOfTickets);
+		saleProcess.setTotal(total);
+		saleProcess.setProjection(projection);
+
 		Scene scene = new Scene(root);
 		Stage stage = new Stage();
-		
+
 		stage.setScene(scene);
 		stage.show();
 	}
-	
+
 	public void backView() throws Exception {
-		
-			Stage currentStage = (Stage) backButton.getScene().getWindow();
-			
-			Stage stage = new Stage();
-			SelectFilmView s = new SelectFilmView();
-			s.start(stage);	
-			
-			currentStage.close();
+
+		Stage currentStage = (Stage) backButton.getScene().getWindow();
+
+		Stage stage = new Stage();
+		SelectFilmView s = new SelectFilmView();
+		s.start(stage);	
+
+		currentStage.close();
 	}
-	
+
 	public void logout() throws Exception {
 		boolean alert = AlertUtils.showAlertAndWait(AlertType.CONFIRMATION,"Logout","Stai per effettuare il logout",
 				"Dopo aver fatto il logout verrai riportato alla homepage.");

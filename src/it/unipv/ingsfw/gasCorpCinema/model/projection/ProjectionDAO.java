@@ -179,7 +179,7 @@ public class ProjectionDAO implements IProjectionDAO {
 		ResultSet rs1;
 
 		try {
-			String query = "select projections.seats from hall_projection JOIN projections ON hall_projection.idProjection = projections.idProjection WHERE hall_projection.idProjection = ?";
+			String query = "select cinemahalls.capacity from hall_projection JOIN cinemahalls ON hall_projection.idHall = cinemahalls.idHall WHERE hall_projection.idHall = ?";
 			st1 = conn.prepareStatement(query);
 			st1.setInt(1, projection.getIdProjection());
 
@@ -187,7 +187,7 @@ public class ProjectionDAO implements IProjectionDAO {
 
 			while(rs1.next()) {
 
-				availableSeats = rs1.getInt("seats");
+				availableSeats = rs1.getInt("capacity");
 			}
 
 		} catch (SQLException e) {
