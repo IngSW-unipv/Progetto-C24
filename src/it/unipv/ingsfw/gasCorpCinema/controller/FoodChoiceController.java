@@ -80,14 +80,15 @@ public class FoodChoiceController implements Initializable {
 	}
 
 	public void addButtonOnAction () {
-		if(selectedFood.getQuantity()<1) {
-			return;
+		if (selectedFood != null) {
+			if(selectedFood.getQuantity() >= 1) {
+				food = persistence.getFoodByDescription(selectedFoodDescription);
+				foodListView.getItems().add(food.getDescription() + "  " + Double.toString(food.getPrice()) + "   "+ Integer.toString(quantitySpinner.getValue()));
+				totalFood += quantitySpinner.getValue()* selectedFood.getPrice();
+				totalLabel.setText(String.valueOf(totalFood));
+				persistence.decreaseQuantityOfFood(quantitySpinner.getValue(), foodChoiceBox.getSelectionModel().getSelectedItem());
+			}
 		}
-		food = persistence.getFoodByDescription(selectedFoodDescription);
-		foodListView.getItems().add(food.getDescription() + "  " + Double.toString(food.getPrice()) + "   "+ Integer.toString(quantitySpinner.getValue()));
-		totalFood += quantitySpinner.getValue()* selectedFood.getPrice();
-		totalLabel.setText(String.valueOf(totalFood));
-		persistence.decreaseQuantityOfFood(quantitySpinner.getValue(), foodChoiceBox.getSelectionModel().getSelectedItem());
 	}
 
 	public void payButtonOnAction() {
