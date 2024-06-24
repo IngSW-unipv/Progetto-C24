@@ -189,7 +189,7 @@ public class ProjectionDAO implements IProjectionDAO {
 		ResultSet rs1;
 
 		try {
-			String query = "select cinemahalls.capacity from hall_projection JOIN cinemahalls ON hall_projection.idHall = cinemahalls.idHall WHERE hall_projection.idHall = ?";
+			String query = "select projections.availableSeats from projections where projections.idProjection = ?";
 			st1 = conn.prepareStatement(query);
 			st1.setInt(1, projection.getIdProjection());
 
@@ -197,7 +197,7 @@ public class ProjectionDAO implements IProjectionDAO {
 
 			while(rs1.next()) {
 
-				availableSeats = rs1.getInt("capacity");
+				availableSeats = rs1.getInt("availableSeats");
 			}
 
 		} catch (SQLException e) {
@@ -326,5 +326,27 @@ public class ProjectionDAO implements IProjectionDAO {
 			e.printStackTrace();
 		}
 		return projections;
+	}
+
+	@Override
+	public void decreaseNumberOfAvailableSeats(Projection projection, int numberOfTickets) {
+		conn=DBConnection.startConnection(conn,schema);
+		PreparedStatement st1;
+
+		try {
+
+			String query = "UPDATE projections SET projections.availableSeats = projections.availableSeats - ? WHERE projections.idProjection = ?";
+			st1 = conn.prepareStatement(query);
+
+			st1.setInt(1, numberOfTickets);
+			st1.setInt(2, projection.getIdProjection());
+
+			st1.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		DBConnection.closeConnection(conn);
 	}
 }

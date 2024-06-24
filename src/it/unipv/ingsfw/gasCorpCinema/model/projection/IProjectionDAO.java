@@ -19,4 +19,5 @@ public interface IProjectionDAO {
 	public void createProjection(Projection projection, CinemaHall cinemaHall);
 	public void deleteProjection(Projection projection);
 	public int getNumberOfAvailableSeats(Projection projection);
+	public void decreaseNumberOfAvailableSeats(Projection projection,int numberOfTickets);
 }

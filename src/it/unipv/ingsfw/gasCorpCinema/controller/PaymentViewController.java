@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
 import it.unipv.ingsfw.gasCorpCinema.model.Validation;
+import it.unipv.ingsfw.gasCorpCinema.model.projection.IProjectionDAO;
+import it.unipv.ingsfw.gasCorpCinema.model.projection.ProjectionDAO;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.view.homePage.HomePageView;
 import it.unipv.ingsfw.gasCorpCinema.view.selectProjection.SelectProjectionView;
@@ -35,6 +37,8 @@ public class PaymentViewController implements Initializable {
 	private SaleProcess saleProcess;
 	private Validation validation;
 	
+	private IProjectionDAO projectionDAO = new ProjectionDAO();
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		saleProcess=SaleProcess.getInstance();
@@ -46,9 +50,9 @@ public class PaymentViewController implements Initializable {
 	
 	public void pressButton() throws Exception {
 		String name = labelName.getText();
-		String surname= labelSurname.getText();
-		String numberOfCC= labelNumberOfCC.getText();
-		String cvv = labelCVV.getText();
+		String surname = labelSurname.getText().replaceAll("\\s+", "");
+		String numberOfCC = labelNumberOfCC.getText().trim().replaceAll("\\s+", "");
+		String cvv = labelCVV.getText().trim();
 		
 		if(!validation.nameValidate(name)) { 
 			myLabel.setText("INSERT A VALID NAME");
@@ -80,6 +84,7 @@ public class PaymentViewController implements Initializable {
 		alertSuccessfullPayment();
 		//premo il bottone e dopo 1.5 sec si visualizza "SUCCESSFUL PAYMENT" e dopo altri 1.5 sec cambia view
 		saleProcess.saleRegistration();
+		projectionDAO.decreaseNumberOfAvailableSeats(saleProcess.getProjection(),saleProcess.getNumberOfTickets());
 		saleProcess.reset(); //dobbaimo resettare tutti i dati di sale process
 		System.out.println(saleProcess.getNumberOfTickets());
 		//l'ideale sarebbe che il metodo saleRegistration restituisca un booleano a secodna che la registrazione
