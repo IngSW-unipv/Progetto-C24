@@ -23,13 +23,12 @@ public class RemoveProjectionViewController implements Initializable {
 	@FXML
 	private Button myButton;
 
-	Projection selectedProjection;
+	Projection selectedItem;
 	
 	private PersistenceFacade persistence = PersistenceFacade.getInstance(); 
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
 		myListView.getItems().addAll(persistence.getAllProjections());
 
 		if (myListView.getItems().isEmpty()) {
@@ -45,17 +44,17 @@ public class RemoveProjectionViewController implements Initializable {
 				if (myListView.getItems().isEmpty()) {
 					myLabel.setText("Nessuna proiezione disponibile");
 				} else {
-					selectedProjection = myListView.getSelectionModel().getSelectedItem();
-					myLabel.setText(String.valueOf(selectedProjection));
+					selectedItem = myListView.getSelectionModel().getSelectedItem();
+					myLabel.setText(String.valueOf(selectedItem));
 				}
 			}
 		});
 	}
 
 	public void removeProjection() {
-		if(selectedProjection != null) {
-			persistence.deleteProjection(selectedProjection);
-			myListView.getItems().remove(selectedProjection);
+		if(selectedItem != null) {
+			persistence.deleteProjection(selectedItem);
+			myListView.getItems().remove(selectedItem);
 		}else {
 			AlertUtils.showAlert(AlertType.ERROR, "Errore", "C'è stato un errore durante la rimozione della proiezione", 
 					"Seleziona una proiezione da eliminare prima di confermare!");
