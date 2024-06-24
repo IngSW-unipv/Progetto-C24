@@ -172,18 +172,6 @@ public class SelectProjectionViewController implements Initializable {
 				}
 			}
 		}
-//			Properties p = new Properties(System.getProperties());
-//			p.load(new FileInputStream("Properties/Strings"));
-//			
-//			String viewPath = p.getProperty("PAYMENT_FXML");
-//			File fxmlFile = new File(viewPath);
-//			URL fxmlResource = fxmlFile.toURI().toURL();
-//			
-//			changeScene(fxmlResource);
-//			Stage currentStage = (Stage) myButton.getScene().getWindow();
-//			currentStage.close();
-//		}
-		
 		//alla pressione del bottone se è stato selezionato un film cambia la vista per scegliere la proiezione
 		//altrimenit visutlaizza il messaggio SELECT A FILM, discorso analogo per lo spinner		
 	}
