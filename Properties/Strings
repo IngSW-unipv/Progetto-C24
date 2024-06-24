@@ -32,9 +32,17 @@ REMOVE_PROJECTION_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/removeProjectio
 USER_TITLE = G.A.S. CORP CINEMA - USER
 USER = ./src/it/unipv/ingsfw/gasCorpCinema/view/selectFilm/SelectFilmView.fxml
 USER_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/selectFilm/SelectFilmView.css
+user = ./src/it/unipv/ingsfw/gasCorpCinema/view/payment/PaymentView.fxml
 
 SELECT_PROJECTION_FXML = ./src/it/unipv/ingsfw/gasCorpCinema/view/selectProjection/SelectProjectionView.fxml
 SELECT_PROJECTION_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/selectProjection/SelectProjectionView.css
 
 PAYMENT_FXML = ./src/it/unipv/ingsfw/gasCorpCinema/view/payment/PaymentView.fxml
 PAYMENT_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/payment/PaymentView.css
+
+CASHIER_TITLE = G.A.S. CORP CINEMA - CASHIER
+CASHIER = ./src/it/unipv/ingsfw/gasCorpCinema/view/selectFilm/SelectFilmView.fxml
+cashier = ./src/it/unipv/ingsfw/gasCorpCinema/view/payment/PaymentCashierView.fxml
+
+FOOD_CHOICE_FXML = ./src/it/unipv/ingsfw/gasCorpCinema/view/food/FoodChoiceView.fxml
+FOOD_CHOICE_CSS = ./src/it/unipv/ingsfw/gasCorpCinema/view/food/FoodChoiceView.css
