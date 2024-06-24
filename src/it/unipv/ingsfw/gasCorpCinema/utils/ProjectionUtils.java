@@ -11,19 +11,17 @@ public class ProjectionUtils {
 	public static boolean canAddProjection(Projection projectionToAdd, List<Projection> allProjections, Movie movie) {
 		for (Projection existingProjection : allProjections) {
 			if (isOverlapping(existingProjection, projectionToAdd, movie)) {
-				return true;
+				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 	
-	private static boolean isOverlapping(Projection p1, Projection p2, Movie movie) {
-        Time start1 = p1.getStartTime();
-        Time end1 = p1.getEndTime(movie);
-        Time start2 = p2.getStartTime();
-        Time end2 = p2.getEndTime(movie);
-
-        return (start1.before(end2) && start2.before(end1));
+	private static boolean isOverlapping(Projection existingProjection, Projection projectionToAdd, Movie movie) {
+        Time existingProjectionEndTime = existingProjection.getEndTime(movie);
+        Time toAddProjectionStartTime = projectionToAdd.getTime();
+        
+        return (toAddProjectionStartTime.before(existingProjectionEndTime));
     }
 	
 	public static boolean priceIsAdeguate(Projection projection, Movie movie) {

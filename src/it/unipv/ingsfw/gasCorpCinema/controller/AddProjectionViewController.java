@@ -79,34 +79,32 @@ public class AddProjectionViewController implements Initializable {
 		if (validateFields()) {
 			try {
 				Projection myProjection = new Projection(
-						myChoiceBox1.getValue().getIdHall(),
 						myChoiceBox2.getValue().getIdMovie(),
 						Date.valueOf(myDatePicker.getValue()),
 						Time.valueOf(myTextField1.getText() + ":00"),
-						Double.parseDouble(myTextField2.getText()));
+						Double.parseDouble(myTextField2.getText()),
+						myChoiceBox1.getValue().getCapacity());
 
-				if (!ProjectionUtils.canAddProjection(myProjection, projectionDAO.getProjectionsByHallAndDate(myChoiceBox1.getValue().getIdHall(),myProjection.getDate()), myChoiceBox2.getValue())) {
-					projectionDAO.createProjection(myProjection, myChoiceBox1.getValue().getIdHall(), myChoiceBox2.getValue().getIdMovie());
-
-					AlertUtils.showAlert(AlertType.ERROR, "Non è possibile aggiungere questa proiezione" , 
-							"Conflitto con proiezione già presente in quella fascia oraria", null);
-
-					if(!ProjectionUtils.priceIsAdeguate(myProjection, myChoiceBox2.getValue())) {
-
-						AlertUtils.showAlert(AlertType.ERROR, "Non è possibile aggiungere questa proiezione" , 
-								"Il rating del film non è compatibile con il prezzo inserito",
-								"Film Top -> Prezzo > 4.90 | Film Nor -> Prezzo <= 4.90" + "\n" + "Rating film selezionato: " + myChoiceBox2.getValue().getRating() + "\n" + "Prezzo proiezione: " + myProjection.getPrice());
+				if (ProjectionUtils.canAddProjection(myProjection, projectionDAO.getProjectionsByHallAndDate(myChoiceBox1.getValue().getIdHall(),myProjection.getDate()), myChoiceBox2.getValue())) {					
+					if(ProjectionUtils.priceIsAdeguate(myProjection, myChoiceBox2.getValue())) {
+						if (CinemaHallUtils.cinemaHallIsAdeguate(myChoiceBox1.getValue(), myChoiceBox2.getValue())) {
+							projectionDAO.createProjection(myProjection, myChoiceBox1.getValue());
+							
+							AlertUtils.showAlert(AlertType.INFORMATION, "Successo","Proiezione aggiunta",myProjection.toString());
 						
-						if (!CinemaHallUtils.cinemaHallIsAdeguate(myChoiceBox1.getValue(), myChoiceBox2.getValue())) {
-
+						} else {
 							AlertUtils.showAlert(AlertType.ERROR, "Non è possibile aggiungere questa proiezione" , 
 									"Il rating del film non è compatibile con la sala selezionata",
 									"Film Top -> Capacità >= 300 | Film Nor -> capacità < 300" + "\n" + "Rating film selezionato: " + myChoiceBox2.getValue().getRating() + "\n" + "Capacità sala selezionata: " + myChoiceBox1.getValue().getCapacity());
-
 						}
-
-					} 
-
+					} else {
+						AlertUtils.showAlert(AlertType.ERROR, "Non è possibile aggiungere questa proiezione" , 
+								"Il rating del film non è compatibile con il prezzo inserito",
+								"Film Top -> Prezzo > 4.90 | Film Nor -> Prezzo <= 4.90" + "\n" + "Rating film selezionato: " + myChoiceBox2.getValue().getRating() + "\n" + "Prezzo proiezione: " + myProjection.getPrice());
+					}
+				} else {
+					AlertUtils.showAlert(AlertType.ERROR, "Non è possibile aggiungere questa proiezione" , 
+							"Conflitto con proiezione già presente in quella fascia oraria", null);
 				}
 
 			} catch (NumberFormatException e) {

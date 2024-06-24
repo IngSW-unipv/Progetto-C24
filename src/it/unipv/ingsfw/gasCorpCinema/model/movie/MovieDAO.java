@@ -111,10 +111,10 @@ public class MovieDAO implements IMovieDAO{
 
 		try {
 
-			String query = "DELETE FROM movies WHERE title = ?";
+			String query = "DELETE FROM movies WHERE idMovie = ?";
 			st1 = conn.prepareStatement(query);
 
-			st1.setString(1, movie.getTitle());
+			st1.setInt(1, movie.getIdMovie());
 			st1.executeUpdate();
 
 		} catch (SQLException e) {

@@ -8,8 +8,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
+
 import it.unipv.ingsfw.gasCorpCinema.DBConnection;
+import it.unipv.ingsfw.gasCorpCinema.model.cinemaHall.CinemaHall;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
 
 public class ProjectionDAO implements IProjectionDAO {
@@ -37,7 +41,7 @@ public class ProjectionDAO implements IProjectionDAO {
 
 			while (rs1.next()) {
 
-				Projection projection = new Projection(rs1.getInt(1),rs1.getInt(2),rs1.getDate(3),rs1.getTime(4),rs1.getDouble(5));
+				Projection projection = new Projection(rs1.getInt(1),rs1.getInt(2),rs1.getDate(3),rs1.getTime(4),rs1.getDouble(5),rs1.getInt(6));
 				projections.add(projection);
 			}
 
@@ -50,7 +54,7 @@ public class ProjectionDAO implements IProjectionDAO {
 	}
 
 	@Override
-	public void createProjection(Projection projection, int hallId, int movieId) {
+	public void createProjection(Projection projection, CinemaHall cinemaHall) {
 
 		conn=DBConnection.startConnection(conn,schema);
 		PreparedStatement st1;
@@ -59,21 +63,27 @@ public class ProjectionDAO implements IProjectionDAO {
 
 		try {
 
-			String query = "INSERT INTO projections (idProjection, movieId, date, time, price) VALUES (?, ?, ?, ?, ?)";
-			st1 = conn.prepareStatement(query);
+			String query = "INSERT INTO projections (movieId, date, time, price, availableSeats) VALUES (?, ?, ?, ?, ?)";
+			st1 = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
-			st1.setInt(1, projection.getIdProjection());
-			st1.setInt(2, movieId);
-			st1.setDate(3, projection.getDate());
-			st1.setTime(4, projection.getTime());
-			st1.setDouble(5, projection.getPrice());
+			st1.setInt(1, projection.getMovieId());
+			st1.setDate(2, projection.getDate());
+			st1.setTime(3, projection.getTime());
+			st1.setDouble(4, projection.getPrice());
+			st1.setInt(5, cinemaHall.getCapacity());
 
 			st1.executeUpdate();
+			
+			try (ResultSet generatedKeys = st1.getGeneratedKeys()){
+				if (generatedKeys.next()) {
+					projection.setIdProjection(generatedKeys.getInt(1));
+				}
+			}
 			
 			String query2 = "INSERT INTO hall_projection(idHall,idProjection) VALUES (?, ?)";
 			st2 = conn.prepareStatement(query2);
 			
-			st2.setInt(1, hallId);
+			st2.setInt(1, cinemaHall.getIdHall());
 			st2.setInt(2, projection.getIdProjection());
 			st2.executeUpdate();
 		} catch (SQLException e) {
@@ -130,7 +140,7 @@ public class ProjectionDAO implements IProjectionDAO {
 			rs1=st1.executeQuery();
 
 			while(rs1.next()) {
-				new Projection(rs1.getInt(1),rs1.getInt(2),rs1.getDate(3),rs1.getTime(4),rs1.getDouble(5));
+				new Projection(rs1.getInt(1),rs1.getInt(2),rs1.getDate(3),rs1.getTime(4),rs1.getDouble(5),rs1.getInt(6));
 			}
 
 		} catch (SQLException e) {
@@ -157,7 +167,7 @@ public class ProjectionDAO implements IProjectionDAO {
 			rs1=st1.executeQuery();
 
 			while (rs1.next()) {
-				Projection projection = new Projection(rs1.getInt(1),rs1.getInt(2),rs1.getDate(3),rs1.getTime(4),rs1.getDouble(5));
+				Projection projection = new Projection(rs1.getInt(1),rs1.getInt(2),rs1.getDate(3),rs1.getTime(4),rs1.getDouble(5),rs1.getInt(6));
 				projections.add(projection);
 			}
 
@@ -206,7 +216,7 @@ public class ProjectionDAO implements IProjectionDAO {
 		ResultSet rs1;
 
 		try {
-			String query = "select hall_projection.idProjection, projections.movieId, projections.date, projections.time, projections.price from hall_projection JOIN projections ON hall_projection.idProjection = projections.idProjection where hall_projection.idHall = ?";
+			String query = "select hall_projection.idProjection, projections.movieId, projections.date, projections.time, projections.price, projections.availableSeats from hall_projection JOIN projections ON hall_projection.idProjection = projections.idProjection where hall_projection.idHall = ?";
 
 			st1 = conn.prepareStatement(query);
 			st1.setInt(1, idHall);
@@ -215,7 +225,7 @@ public class ProjectionDAO implements IProjectionDAO {
 
 			while (rs1.next()) {
 
-				Projection projection = new Projection(rs1.getInt(1),rs1.getInt(2),rs1.getDate(3),rs1.getTime(4),rs1.getDouble(5));
+				Projection projection = new Projection(rs1.getInt(1),rs1.getInt(2),rs1.getDate(3),rs1.getTime(4),rs1.getDouble(5),rs1.getInt(6));
 				projections.add(projection);
 			}
 
@@ -237,7 +247,7 @@ public class ProjectionDAO implements IProjectionDAO {
 		ResultSet rs1;
 
 		try {
-			String query = "select hall_projection.idProjection, projections.movieId, projections.date, projections.time, projections.price from hall_projection JOIN projections on hall_projection.idProjection = projections.idProjection where projections.date = ?";
+			String query = "select hall_projection.idProjection, projections.movieId, projections.date, projections.time, projections.price, projections.availableSeats from hall_projection JOIN projections on hall_projection.idProjection = projections.idProjection where projections.date = ?";
 
 			st1 = conn.prepareStatement(query);
 			st1.setDate(1, date);
@@ -246,7 +256,7 @@ public class ProjectionDAO implements IProjectionDAO {
 
 			while (rs1.next()) {
 
-				Projection projection = new Projection(rs1.getInt(1),rs1.getInt(2),rs1.getDate(3),rs1.getTime(4),rs1.getDouble(5));
+				Projection projection = new Projection(rs1.getInt(1),rs1.getInt(2),rs1.getDate(3),rs1.getTime(4),rs1.getDouble(5),rs1.getInt(6));
 				projections.add(projection);
 			}
 
@@ -259,7 +269,7 @@ public class ProjectionDAO implements IProjectionDAO {
 	}
 
 	@Override
-	public List<Date> getAllDatesWithAProjection() {
+	public Set<Date> getAllDatesWithAProjection() {
 
 		List<Date> dates = new ArrayList<>();
 
@@ -283,7 +293,11 @@ public class ProjectionDAO implements IProjectionDAO {
 		}
 
 		DBConnection.closeConnection(conn);
-		return dates;
+		
+		
+		Set<Date> datesWithoutDuplicates = new LinkedHashSet<Date>(dates);
+		
+		return datesWithoutDuplicates;
 	}
 
 	@Override
@@ -296,7 +310,7 @@ public class ProjectionDAO implements IProjectionDAO {
 		ResultSet rs1;
 
 		try {
-			String query = "select hall_projection.idProjection, projections.movieId, projections.date, projections.time, projections.price from hall_projection JOIN projections on hall_projection.idProjection = projections.idProjection where hall_projection.idHall = ? AND projections.date = ?";
+			String query = "select hall_projection.idProjection, projections.movieId, projections.date, projections.time, projections.price, projections.availableSeats from hall_projection JOIN projections on hall_projection.idProjection = projections.idProjection where hall_projection.idHall = ? AND projections.date = ?";
 
 			st1 = conn.prepareStatement(query);
 			st1.setInt(1, idHall);
@@ -305,7 +319,7 @@ public class ProjectionDAO implements IProjectionDAO {
 			rs1=st1.executeQuery();
 
 			while(rs1.next()) {
-				projections.add(new Projection(rs1.getInt(1),rs1.getInt(2),rs1.getDate(3),rs1.getTime(4),rs1.getDouble(5)));
+				projections.add(new Projection(rs1.getInt(1),rs1.getInt(2),rs1.getDate(3),rs1.getTime(4),rs1.getDouble(5),rs1.getInt(6)));
 			}
 
 		} catch (SQLException e) {
@@ -313,17 +327,4 @@ public class ProjectionDAO implements IProjectionDAO {
 		}
 		return projections;
 	}
-
-
-	/* public List<Date> getAllDatesWithAProjection(){
-		List<Date> dates = projectionDAO.getAllDatesWithAProjection();
-		for(int i=0;i<dates.size();i++) {
-			for(int j=i+1;j<dates.size();j++){
-				if(dates.get(i).equals(dates.get(j))){
-					dates.remove(j);
-				}
-			}
-		}
-		return dates;
-	} */
 }

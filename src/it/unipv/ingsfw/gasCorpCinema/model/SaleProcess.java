@@ -19,7 +19,6 @@ public class SaleProcess {
 	//NB è un sin gleton poiche vogliamo che select projection cotnroller e payment facciano
 	//riferiemtno allo stesso sale process senza che questi 2 si passino l'istanza (riducendo l'accoppiamento)
 	
-	
 	private static SaleProcess instance;
 	private Movie movie;
 	//arriva da select fil projection
@@ -29,10 +28,6 @@ public class SaleProcess {
 	//questi ultimi 3 arrivano da select projection controller
 	private Register register;
 	private String role;
-	
-	
-	
-	
 	
 	public String getRole() {
 		return role;
@@ -108,5 +103,4 @@ public class SaleProcess {
 	//se il cliente entra seleziona film e proieione ma alla fine cambia idea e non paga dobbiamo 
 	//resettare tutti i paramentri a 0 se no il prissimo cliente che si connette si ritrova 
 	//con i dati del precedente
-	
 }

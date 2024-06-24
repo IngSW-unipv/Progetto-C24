@@ -13,13 +13,23 @@ public class Projection {
 	private Date date;
 	private Time time;
 	private double price;
+	private int availableSeats;
 
-	public Projection(int idProjection, int movieId, Date date, Time time, double price) {
+	public Projection(int idProjection, int movieId, Date date, Time time, double price,int availableSeats) {
 		this.idProjection = idProjection;
 		this.movieId = movieId;
 		this.date = date;
 		this.time = time;
 		this.price = price;
+		this.availableSeats = availableSeats;
+	}
+	
+	public Projection(int movieId, Date date, Time time, double price,int availableSeats) {
+		this.movieId = movieId;
+		this.date = date;
+		this.time = time;
+		this.price = price;
+		this.availableSeats = availableSeats;
 	}
 
 	public Date getDate() {
@@ -38,22 +48,13 @@ public class Projection {
 		return idProjection;
 	}
 
-	public void setIdProjection(int idProjection) {
-		this.idProjection = idProjection;
-	}
-
-	public Time getStartTime() {
-		LocalTime localTime1 = time.toLocalTime();
-
-		LocalTime addAdsTime = localTime1.plusMinutes(25);
-		Time startTime = Time.valueOf(addAdsTime);
-
-		return startTime;
+	public int getAvailableSeats() {
+		return availableSeats;
 	}
 
 	public Time getEndTime(Movie movie){
 		Time duration = movie.getDuration();
-		Time time = getStartTime();
+		Time time = getTime();
 
 		// Converti java.sql.Time in java.time.LocalTime
 		LocalTime localTime1 = time.toLocalTime();
@@ -81,6 +82,10 @@ public class Projection {
 
 	public void setMovieId(int movieId) {
 		this.movieId = movieId;
+	}
+	
+	public void setIdProjection(int idProjection) {
+		this.idProjection = idProjection;
 	}
 
 }
