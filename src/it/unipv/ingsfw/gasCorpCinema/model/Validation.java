@@ -9,7 +9,7 @@ import javafx.scene.control.Alert.AlertType;
 
 public class Validation {
 
-public boolean emailValidate(String email) {
+	public static boolean emailValidate(String email) {
 		
     	Pattern p = 
     			Pattern.compile("^[\\w!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
@@ -20,7 +20,7 @@ public boolean emailValidate(String email) {
     	return m.matches();
 	}
 	
-	public boolean passwordValidate(String password) {
+	public static boolean passwordValidate(String password) {
 	    Pattern p = Pattern.compile("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,18}$");
 	    Matcher m = p.matcher(password);
 	    
@@ -38,21 +38,21 @@ public boolean emailValidate(String email) {
 	    }
 	}
 	
-	public boolean nameValidate(String input) {
+	public static boolean nameValidate(String input) {
 		String regex = "^[A-Z][a-zA-Z' -]*$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(input);
         return matcher.matches();
 	}
 	
-	public boolean cardNumberValidate(String input) {
+	public static boolean cardNumberValidate(String input) {
 		String regex = "^\\d{16}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(input);
         return matcher.matches();
 	}
 	
-	public boolean dateValidate(LocalDate expirationDate) {
+	public static boolean dateValidate(LocalDate expirationDate) {
 		
 		if(expirationDate==null) {
 			return false;
@@ -63,7 +63,7 @@ public boolean emailValidate(String email) {
 		}
 	}
 	
-	public boolean cvvValidate(String input) {
+	public static boolean cvvValidate(String input) {
 		String regex = "^\\d{3}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(input);

@@ -32,7 +32,7 @@ public class PersistenceFacade {
 	private static PersistenceFacade instance;
 
 
-	public PersistenceFacade() {
+	private PersistenceFacade() {
 		this.cinemaHallDAO = new CinemaHallDAO();
 		this.movieDAO = new MovieDAO();
 		this.projectionDAO = new ProjectionDAO();

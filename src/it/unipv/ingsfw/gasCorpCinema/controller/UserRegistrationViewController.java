@@ -35,7 +35,6 @@ public class UserRegistrationViewController {
 	private String password, confirmPassword;
 	private Stage stage;
 	private Authentication authentication;
-	private Validation validation;
 
 	public  void initialize(){
 		
@@ -46,7 +45,6 @@ public class UserRegistrationViewController {
 		openEyeImage2.setVisible(false);
 		
 		authentication = new Authentication();
-		validation = new Validation();
 	}
 
 	public void hidePasswordOnAction(KeyEvent keyEvent) {
@@ -103,12 +101,12 @@ public class UserRegistrationViewController {
 			String password = pfPassword.getText();
 			String confirmPassword = pfConfirmPassword.getText();
 
-			if (!validation.emailValidate(email)) {
+			if (!Validation.emailValidate(email)) {
 				displayError("Inserisci un email valida.");
 				return;
 			}
 
-			if(!validation.passwordValidate(password)) {
+			if(!Validation.passwordValidate(password)) {
 				return;
 			}
 			

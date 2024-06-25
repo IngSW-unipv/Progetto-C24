@@ -34,7 +34,6 @@ public class PaymentViewController implements Initializable {
 	private Stage stage;
 	private double total;
 	private SaleProcess saleProcess;
-	private Validation validation;
 	
 	private PersistenceFacade persistence = PersistenceFacade.getInstance(); 
 	
@@ -42,8 +41,7 @@ public class PaymentViewController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		saleProcess=SaleProcess.getInstance();
 		total=saleProcess.getTotalTicket();
-		myLabelTotal.setText(Double.toString(total)+ " €");
-		validation = new Validation();		
+		myLabelTotal.setText(Double.toString(total)+ " €");		
 	}
 	
 	public void pressButton() throws Exception {
@@ -52,24 +50,24 @@ public class PaymentViewController implements Initializable {
 		String numberOfCC = labelNumberOfCC.getText().trim().replaceAll("\\s+", "");
 		String cvv = labelCVV.getText().trim();
 		
-		if(!validation.nameValidate(name)) { 
+		if(!Validation.nameValidate(name)) { 
 			myLabel.setText("INSERT A VALID NAME");
 			return;
 		}
-		if(!validation.nameValidate(surname)) { 
+		if(!Validation.nameValidate(surname)) { 
 			myLabel.setText("INSERT A VALID SURNAME");
 			return;
 		}
-		if(!validation.cardNumberValidate(numberOfCC)) { 
+		if(!Validation.cardNumberValidate(numberOfCC)) { 
 			myLabel.setText("INSERT A VALID CARD");
 			return;
 		}
 		LocalDate expirationDate = myDatePicker.getValue();
-		if(!validation.dateValidate(expirationDate)) {
+		if(!Validation.dateValidate(expirationDate)) {
 			myLabel.setText("INSERT A VALID EXPIRATION DATE");
 			return;
 		}
-		if(!validation.cvvValidate(cvv)) { 
+		if(!Validation.cvvValidate(cvv)) { 
 			myLabel.setText("INSERT A VALID CVV");
 			return;
 		}

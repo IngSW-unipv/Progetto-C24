@@ -53,7 +53,6 @@ public class HomePageViewController {
 		p.load(new FileInputStream("Properties/Strings"));
 		
 		if (role != null) {
-
 			// Ottieni il percorso della vista associata al ruolo
 			String viewPath = p.getProperty(role.toUpperCase());
 

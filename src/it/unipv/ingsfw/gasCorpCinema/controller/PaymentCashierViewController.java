@@ -45,7 +45,6 @@ public class PaymentCashierViewController implements Initializable {
 	private SaleProcess saleProcess;
 	private Stage stage;
 	private IFoodDAO foodDAO;
-	private Validation validation;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -55,7 +54,6 @@ public class PaymentCashierViewController implements Initializable {
 		BigDecimal total1= new BigDecimal(totalSale);
 		BigDecimal newTotal = total1.setScale(2, RoundingMode.HALF_DOWN);
 		totalLabel.setText(String.valueOf(newTotal) + " €");
-		validation = new Validation();
 	}
 	
 	public void backView() throws Exception {		
@@ -66,16 +64,8 @@ public class PaymentCashierViewController implements Initializable {
 		currentStage.close();
 	}
 	
-		
-//        Pattern pattern = Pattern.compile(regex);
-//        Matcher matcher = pattern.matcher(input);
-//        return matcher.matches();
-//	
-//	
-	
-	
 	public void endPayment() {
-		if(!validation.cvvValidate(importoTextField.getText())) {
+		if(!Validation.cvvValidate(importoTextField.getText())) {
 			errorLabel.setText("Importo errato");
 			return;
 		}
