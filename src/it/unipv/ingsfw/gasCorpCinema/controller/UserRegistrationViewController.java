@@ -31,9 +31,7 @@ public class UserRegistrationViewController {
 
 	@FXML
 	private Label errorLabel;
-
-	private String password, confirmPassword;
-	private Stage stage;
+	
 	private Authentication authentication;
 
 	public  void initialize(){

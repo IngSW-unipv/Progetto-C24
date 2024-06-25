@@ -1,34 +1,20 @@
 package it.unipv.ingsfw.gasCorpCinema.controller;
 
-import java.io.IOException;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
 import it.unipv.ingsfw.gasCorpCinema.model.Validation;
 import it.unipv.ingsfw.gasCorpCinema.model.food.FoodDAO;
 import it.unipv.ingsfw.gasCorpCinema.model.food.IFoodDAO;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
-import it.unipv.ingsfw.gasCorpCinema.view.food.FoodChoiceView;
-import it.unipv.ingsfw.gasCorpCinema.view.homePage.HomePageView;
 import it.unipv.ingsfw.gasCorpCinema.view.selectFilm.SelectFilmView;
-import it.unipv.ingsfw.gasCorpCinema.view.selectProjection.SelectProjectionView;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
@@ -41,6 +27,7 @@ public class PaymentCashierViewController implements Initializable {
 	private TextField importoTextField;
 	@FXML
 	private Label labelResto, paymentLabel, totalLabel, errorLabel;
+	
 	private double totalSale;
 	private SaleProcess saleProcess;
 	private Stage stage;

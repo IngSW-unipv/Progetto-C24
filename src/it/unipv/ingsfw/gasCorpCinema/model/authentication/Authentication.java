@@ -13,7 +13,6 @@ public class Authentication {
 	public String login(String email, String password) {
 		return persistence.login(email, password);
 	}
-	//restituisce il ruolo
 	
 	public boolean emailExists(String email) {
 		return persistence.emailExists(email);

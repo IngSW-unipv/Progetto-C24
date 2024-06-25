@@ -8,8 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import it.unipv.ingsfw.gasCorpCinema.DBConnection;
-import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
-import it.unipv.ingsfw.gasCorpCinema.model.projection.Projection;
 
 public class FoodDAO implements IFoodDAO{
 	private String schema;
@@ -68,10 +66,6 @@ public class FoodDAO implements IFoodDAO{
 	      	while (rs1.next()) {
 	      		
 	      		 foodDescription.add(rs1.getString("description"));
-	      		
-	      		//Food food = new Food(rs1.getString(1),rs1.getInt(2),rs1.getDouble(3));
-		        //description.add(food.getDescription());
-	        
 	      	}
 	      	
 	    } catch (SQLException e) {
@@ -124,8 +118,5 @@ public class FoodDAO implements IFoodDAO{
 				e.printStackTrace();
 			}
 			DBConnection.closeConnection(conn);
-		
-
 	}
-
 }

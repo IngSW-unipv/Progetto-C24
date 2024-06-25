@@ -89,9 +89,7 @@ public class HomePageViewController {
 
 		Scene scene = new Scene(root);
 		Stage stage = new Stage();
-		
-//		stage.setUserData(controller.getRoleType());
-		
+
 		stage.setScene(scene);
 		stage.show();
 	}
