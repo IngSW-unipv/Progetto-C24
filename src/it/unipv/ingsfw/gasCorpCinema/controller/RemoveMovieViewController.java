@@ -36,7 +36,6 @@ public class RemoveMovieViewController implements Initializable {
 		if (myListView.getItems().isEmpty()) {
 			myLabel.setText("Nessun film disponibile");
 		}
-
 		myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Movie>(){
 
 			@Override

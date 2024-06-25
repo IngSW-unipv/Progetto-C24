@@ -3,7 +3,7 @@ package it.unipv.ingsfw.gasCorpCinema.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 import it.unipv.ingsfw.gasCorpCinema.model.PersistenceFacade;
-import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
+import it.unipv.ingsfw.gasCorpCinema.model.SaleProcessSingleton;
 import it.unipv.ingsfw.gasCorpCinema.model.food.Food;
 import it.unipv.ingsfw.gasCorpCinema.view.payment.PaymentCashierView;
 import it.unipv.ingsfw.gasCorpCinema.view.selectProjection.SelectProjectionView;
@@ -36,11 +36,11 @@ public class FoodChoiceController implements Initializable {
 
 	private Food selectedFood;
 	private double totalFood;
-	private SaleProcess saleProcess;
+	private SaleProcessSingleton saleProcess;
 	private PersistenceFacade persistence = PersistenceFacade.getInstance(); 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		saleProcess=SaleProcess.getInstance();
+		saleProcess=SaleProcessSingleton.getInstance();
 		foodChoiceBox.getItems().addAll(persistence.getAllDescriptions());
 		totalFood=0;
 		totalLabel.setText(String.valueOf(totalFood));

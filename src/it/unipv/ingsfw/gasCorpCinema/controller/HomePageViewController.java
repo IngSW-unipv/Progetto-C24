@@ -5,7 +5,7 @@ import java.io.FileInputStream;
 import java.net.URL;
 import java.util.Properties;
 import it.unipv.ingsfw.gasCorpCinema.model.PersistenceFacade;
-import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
+import it.unipv.ingsfw.gasCorpCinema.model.SaleProcessSingleton;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.view.userRegistration.UserRegistrationView;
 import javafx.fxml.FXML;
@@ -32,7 +32,7 @@ public class HomePageViewController {
 	@FXML
 	private Button buttonRegistrati;
 
-	private SaleProcess saleProcess;
+	private SaleProcessSingleton saleProcess;
 	private PersistenceFacade persistence = PersistenceFacade.getInstance();
 
 	@FXML
@@ -41,7 +41,7 @@ public class HomePageViewController {
 		String email = tfUsername.getText();
 		String password = fieldPassword.getText();
 		String role = persistence.login(email, password);
-		saleProcess = SaleProcess.getInstance();
+		saleProcess = SaleProcessSingleton.getInstance();
 		saleProcess.setRole(role);
 		
 		Properties p = new Properties(System.getProperties());

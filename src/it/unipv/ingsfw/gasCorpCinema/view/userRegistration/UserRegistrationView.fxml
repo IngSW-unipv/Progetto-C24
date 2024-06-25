@@ -12,11 +12,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@UserRegistrationView.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.UserRegistrationViewController">
    <children>
-      <Button fx:id="buttonRegistrati" layoutX="464.0" layoutY="286.0" mnemonicParsing="false" onAction="#registerButtonAction" style="-fx-background-radius: 30;" text="Registrati">
+      <Button fx:id="buttonRegistrati" layoutX="464.0" layoutY="286.0" mnemonicParsing="false" onAction="#registration" style="-fx-background-radius: 30;" text="Registrati">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="buttonLogin" layoutX="187.0" layoutY="323.0" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="31.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="login" textFill="#2619b9" underline="true">
+      <Button fx:id="buttonLogin" layoutX="187.0" layoutY="323.0" mnemonicParsing="false" onAction="#login" prefHeight="31.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="login" textFill="#2619b9" underline="true">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
