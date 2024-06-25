@@ -10,28 +10,28 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@PaymentView.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.PaymentViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@PaymentView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.PaymentViewController">
    <children>
       <Label alignment="CENTER" layoutY="6.0" prefHeight="64.0" prefWidth="600.0" text="GAS Corp. CINEMA">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutY="70.0" prefHeight="36.0" prefWidth="600.0" text="INSERT YOUR CARD DATA" />
-      <TextField fx:id="labelName" layoutX="14.0" layoutY="132.0" prefHeight="26.0" prefWidth="103.0" promptText="NAME" />
-      <Label layoutX="17.0" layoutY="106.0" prefHeight="26.0" prefWidth="224.0" text="INSERT HERE YOUR PERSONAL DATA:" />
-      <TextField fx:id="labelSurname" layoutX="129.0" layoutY="132.0" prefHeight="26.0" prefWidth="103.0" promptText="SURNAME" />
-      <Label layoutX="16.0" layoutY="174.0" prefHeight="26.0" prefWidth="202.0" text="INSERT HERE YOUR CREDIT CARD:" />
-      <TextField fx:id="labelNumberOfCC" layoutX="14.0" layoutY="200.0" prefHeight="26.0" prefWidth="179.0" promptText="NUMER" />
+      <Label alignment="CENTER" layoutY="70.0" prefHeight="36.0" prefWidth="600.0" text="INSERIRE I DATI DELLA CARTA" />
+      <TextField fx:id="labelName" layoutX="14.0" layoutY="132.0" prefHeight="26.0" prefWidth="103.0" promptText="NOME" />
+      <Label layoutX="17.0" layoutY="106.0" prefHeight="26.0" prefWidth="255.0" text="INSERIRE I DATI DEL'INTESTATARIO" />
+      <TextField fx:id="labelSurname" layoutX="129.0" layoutY="132.0" prefHeight="26.0" prefWidth="103.0" promptText="COGNOME" />
+      <Label layoutX="16.0" layoutY="174.0" prefHeight="26.0" prefWidth="226.0" text="INSERIRE I DATI DELLA CARTA" />
+      <TextField fx:id="labelNumberOfCC" layoutX="14.0" layoutY="200.0" prefHeight="26.0" prefWidth="179.0" promptText="NUMERO" />
       <TextField fx:id="labelCVV" layoutX="375.0" layoutY="200.0" prefHeight="26.0" prefWidth="44.0" promptText="CVV" />
-      <Button fx:id="myButton" layoutX="482.0" layoutY="306.0" mnemonicParsing="false" onAction="#pressButton" text="PAY " />
-      <DatePicker fx:id="myDatePicker" layoutX="211.0" layoutY="200.0" prefHeight="26.0" prefWidth="149.0" promptText="EXPIRATION DATE" />
+      <Button fx:id="myButton" layoutX="476.0" layoutY="308.0" mnemonicParsing="false" onAction="#pressButton" text="PAGA ORA" />
+      <DatePicker fx:id="myDatePicker" layoutX="211.0" layoutY="200.0" prefHeight="26.0" prefWidth="149.0" promptText="DATA DI SCADENZA" />
       <Label fx:id="myLabel" layoutX="28.0" layoutY="308.0" prefHeight="27.0" prefWidth="434.0" textFill="#ff0900">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="19.0" layoutY="274.0" prefHeight="18.0" prefWidth="109.0" text="TOTAL AMOUNT:">
+      <Label layoutX="19.0" layoutY="274.0" prefHeight="18.0" prefWidth="149.0" text="IMPORRTO TOTALE:">
          <font>
             <Font size="14.0" />
          </font>
@@ -41,7 +41,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="backButton" layoutX="479.0" layoutY="344.0" mnemonicParsing="false" onAction="#backView" text="BACK" />
+      <Button fx:id="backButton" layoutX="479.0" layoutY="344.0" mnemonicParsing="false" onAction="#backView" text="INDIETRO" />
       <ImageView fx:id="userImageView" fitHeight="31.0" fitWidth="51.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../Resources/userImage.png" />
