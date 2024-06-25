@@ -26,22 +26,6 @@ public class Projection {
 		this.availableSeats = availableSeats;
 	}
 	
-	public Projection(int movieId, Date date, Time time, double price,int availableSeats) {
-		this.movieId = movieId;
-		this.date = date;
-		this.time = time;
-		this.price = price;
-		this.availableSeats = availableSeats;
-	}
-	
-	public Projection(Date date, Time time, double price,int availableSeats, String movieTitle) {
-		this.date = date;
-		this.time = time;
-		this.price = price;
-		this.availableSeats = availableSeats;
-		this.movieTitle = movieTitle;
-	}
-	
 	public Projection(int idProjection, int movieId, Date date, Time time, double price,int availableSeats, String movieTitle, int idHall) {
 		this.idProjection = idProjection;
 		this.movieId = movieId;

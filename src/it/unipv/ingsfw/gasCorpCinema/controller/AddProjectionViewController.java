@@ -69,11 +69,14 @@ public class AddProjectionViewController implements Initializable {
 		if (validateFields()) {
 			try {
 				Projection myProjection = new Projection(
+						0,
 						myChoiceBox2.getValue().getIdMovie(),
 						Date.valueOf(myDatePicker.getValue()),
 						Time.valueOf(myTextField1.getText() + ":00"),
 						Double.parseDouble(myTextField2.getText()),
-						myChoiceBox1.getValue().getCapacity());
+						myChoiceBox1.getValue().getCapacity(),
+						myChoiceBox2.getValue().getTitle(),
+						myChoiceBox1.getValue().getIdHall());
 
 				if (ProjectionUtils.canAddProjection(myProjection, persistence.getProjectionsByHallAndDate(myChoiceBox1.getValue().getIdHall(),myProjection.getDate()), myChoiceBox2.getValue())) {					
 					if(ProjectionUtils.priceIsAdeguate(myProjection, myChoiceBox2.getValue())) {

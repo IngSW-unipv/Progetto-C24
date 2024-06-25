@@ -31,7 +31,7 @@ public class AddMovieViewController {
 					myTextField2.getText(),
 					Time.valueOf(myTextField3.getText() + ":00"),
 					Integer.parseInt(myTextField4.getText()),
-					isTop()
+					isTop(myCheckBox.isSelected())
 				);
 
 				if (!isDuplicatedMovie(movie)) {
@@ -48,8 +48,8 @@ public class AddMovieViewController {
 		}
 	}
 
-	public String isTop() {
-		if(myCheckBox.isSelected()) {
+	public String isTop(boolean isSelected) {
+		if(isSelected) {
 			return "Top";
 		}else {
 			return "Nor";

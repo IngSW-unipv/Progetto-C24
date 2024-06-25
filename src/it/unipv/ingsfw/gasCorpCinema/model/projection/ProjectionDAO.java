@@ -116,20 +116,14 @@ public class ProjectionDAO implements IProjectionDAO {
 
 		conn=DBConnection.startConnection(conn,schema);
 		PreparedStatement st1;
-		PreparedStatement st2;
 
 		try {
-			String query1 = "DELETE FROM hall_projection WHERE idProjection = ?";
-			st1 = conn.prepareStatement(query1);
+
+			String query = "DELETE FROM projections WHERE idProjection = ?";
+			st1 = conn.prepareStatement(query);
 
 			st1.setInt(1, projection.getIdProjection());
 			st1.executeUpdate();
-
-			String query2 = "DELETE FROM projections WHERE idProjection = ?";
-			st2 = conn.prepareStatement(query2);
-
-			st2.setInt(1, projection.getIdProjection());
-			st2.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -148,7 +142,14 @@ public class ProjectionDAO implements IProjectionDAO {
 		ResultSet rs1;
 
 		try {
-			String query = "SELECT hall_projection.idProjection, projections.movieId, projections.date, projections.time, projections.price FROM hall_projection JOIN projections ON hall_projection.idProjection = projections.idProjection WHERE hall_projection.idHall = ? AND projections.date = ? AND projections.time = ? LIMIT 1";
+			String query = "SELECT * "
+					+ "FROM hall_projection "
+					+ "JOIN projections "
+					+ "ON hall_projection.idProjection = projections.idProjection "
+					+ "WHERE hall_projection.idHall = ? "
+					+ "AND projections.date = ? "
+					+ "AND projections.time = ? "
+					+ "LIMIT 1";
 
 			st1 = conn.prepareStatement(query);
 			st1.setInt(1, idHall);
@@ -158,7 +159,13 @@ public class ProjectionDAO implements IProjectionDAO {
 			rs1=st1.executeQuery();
 
 			while(rs1.next()) {
-				new Projection(rs1.getInt(1),rs1.getInt(2),rs1.getDate(3),rs1.getTime(4),rs1.getDouble(5),rs1.getInt(6));
+				new Projection(
+						rs1.getInt("idProjection"),
+						rs1.getInt("movieId"),
+						rs1.getDate("date"),
+						rs1.getTime("time"),
+						rs1.getDouble("price"),
+						rs1.getInt("availableSeats"));
 			}
 
 		} catch (SQLException e) {
