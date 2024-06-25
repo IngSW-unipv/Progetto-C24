@@ -21,3 +21,9 @@ introdotte le seguenti funzionalità:
 - Acquisto sul posto dei biglietti e/o del cibo
 - Gestione delle proiezioni dei film nelle 6 sale presenti nel cinema
 - Gestione del catalogo dei film presenti al cinema
+
+## Dipendenze 
+Il software per funzionare necessita l'installazione delle seguenti librerie:
+- [JavaFX 21](https://gluonhq.com/products/javafx/)
+- [JUnit 4](https://github.com/junit-team/junit4/releases/tag/r4.13.2)
+- [MySQL java connector](https://github.com/mysql/mysql-connector-j)
