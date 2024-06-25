@@ -1,7 +1,7 @@
 package it.unipv.ingsfw.gasCorpCinema.controller;
 
+import it.unipv.ingsfw.gasCorpCinema.model.PersistenceFacade;
 import it.unipv.ingsfw.gasCorpCinema.model.Validation;
-import it.unipv.ingsfw.gasCorpCinema.model.authentication.Authentication;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.utils.StringUtils;
 import it.unipv.ingsfw.gasCorpCinema.view.homePage.HomePageView;
@@ -32,7 +32,7 @@ public class UserRegistrationViewController {
 	@FXML
 	private Label errorLabel;
 	
-	private Authentication authentication;
+	private PersistenceFacade persistence = PersistenceFacade.getInstance();
 
 	public  void initialize(){
 		
@@ -41,8 +41,6 @@ public class UserRegistrationViewController {
 
 		tfConfirmPassword.setVisible(false);
 		openEyeImage2.setVisible(false);
-		
-		authentication = new Authentication();
 	}
 
 	public void hidePasswordOnAction(KeyEvent keyEvent) {
@@ -114,7 +112,7 @@ public class UserRegistrationViewController {
 			}			
 			
 			// Controllo se l'email esiste già nel database
-			if (authentication.emailExists(email)) {
+			if (persistence.emailExists(email)) {
 				displayError("Email già esistente. Usa un'altra email.");
 				return;
 			}
@@ -125,7 +123,7 @@ public class UserRegistrationViewController {
 				return;
 			}
 
-			if (authentication.registration(email, password)) {
+			if (persistence.registration(email, password)) {
 				AlertUtils.showAlert(AlertType.CONFIRMATION,"Messaggio di informazione", 
 						"Registrazione avvenuta con successo", 
 						"Clicca il pulsante 'login' qui sotto per poter tornare alla homepage!");

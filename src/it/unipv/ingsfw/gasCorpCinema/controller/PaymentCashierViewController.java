@@ -7,8 +7,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
 import it.unipv.ingsfw.gasCorpCinema.model.Validation;
-import it.unipv.ingsfw.gasCorpCinema.model.food.FoodDAO;
-import it.unipv.ingsfw.gasCorpCinema.model.food.IFoodDAO;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.view.selectFilm.SelectFilmView;
 import javafx.fxml.FXML;
@@ -31,13 +29,11 @@ public class PaymentCashierViewController implements Initializable {
 	private double totalSale;
 	private SaleProcess saleProcess;
 	private Stage stage;
-	private IFoodDAO foodDAO;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		saleProcess=SaleProcess.getInstance();
 		totalSale=saleProcess.getTotalSale();
-		foodDAO = new FoodDAO();
 		BigDecimal total1= new BigDecimal(totalSale);
 		BigDecimal newTotal = total1.setScale(2, RoundingMode.HALF_DOWN);
 		totalLabel.setText(String.valueOf(newTotal) + " €");

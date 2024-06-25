@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@UserRegistrationView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.UserRegistrationViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@UserRegistrationView.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.UserRegistrationViewController">
    <children>
       <Button fx:id="buttonRegistrati" layoutX="464.0" layoutY="286.0" mnemonicParsing="false" onAction="#registerButtonAction" style="-fx-background-radius: 30;" text="Registrati">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="buttonLogin" layoutX="208.0" layoutY="310.0" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="61.0" prefWidth="98.0" style="-fx-background-color: transparent;" text="login" textFill="#2619b9" underline="true">
+      <Button fx:id="buttonLogin" layoutX="187.0" layoutY="323.0" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="31.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="login" textFill="#2619b9" underline="true">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
@@ -30,7 +30,7 @@
             <Font name="Bodoni MT Italic" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="286.0" layoutY="331.0" text="e corri a visualizzare il nostro catalogo" />
+      <Label layoutX="244.0" layoutY="333.0" text="e corri a visualizzare il nostro catalogo" />
       <Label fx:id="errorLabel" layoutX="3.0" layoutY="286.0" prefHeight="31.0" prefWidth="462.0" textFill="#eb0505">
          <font>
             <Font name="Arial Black" size="14.0" />

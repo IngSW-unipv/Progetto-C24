@@ -10,12 +10,11 @@ import javafx.scene.control.Alert.AlertType;
 public class Validation {
 
 	public static boolean emailValidate(String email) {
-		
-    	Pattern p = 
-    			Pattern.compile("^[\\w!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
-       //il regex(o espressione regolare) ammette caratteri alfa numerici e un qualsisi simbolo speciale
+		//il regex(o espressione regolare) ammette caratteri alfa numerici e un qualsisi simbolo speciale
     	//seguito da @ e altri caratteri alfanumerici e il simbolo -, inoltre la regexc deve terminare con 
     	//un punto seguito da almeno 2 lettere
+    	Pattern p = 
+    			Pattern.compile("^[\\w!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
     	Matcher m = p.matcher(email);
     	return m.matches();
 	}
