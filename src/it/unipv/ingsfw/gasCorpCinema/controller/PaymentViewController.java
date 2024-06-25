@@ -4,7 +4,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import it.unipv.ingsfw.gasCorpCinema.model.PersistenceFacade;
-import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
+import it.unipv.ingsfw.gasCorpCinema.model.SaleProcessSingleton;
 import it.unipv.ingsfw.gasCorpCinema.model.Validation;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.view.homePage.HomePageView;
@@ -33,13 +33,13 @@ public class PaymentViewController implements Initializable {
 	
 	private Stage stage;
 	private double total;
-	private SaleProcess saleProcess;
+	private SaleProcessSingleton saleProcess;
 	
 	private PersistenceFacade persistence = PersistenceFacade.getInstance(); 
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		saleProcess=SaleProcess.getInstance();
+		saleProcess=SaleProcessSingleton.getInstance();
 		total=saleProcess.getTotalTicket();
 		myLabelTotal.setText(Double.toString(total)+ " €");		
 	}

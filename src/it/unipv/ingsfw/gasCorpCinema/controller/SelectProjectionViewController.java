@@ -9,7 +9,7 @@ import java.net.URL;
 import java.util.Properties;
 import java.util.ResourceBundle;
 import it.unipv.ingsfw.gasCorpCinema.model.PersistenceFacade;
-import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
+import it.unipv.ingsfw.gasCorpCinema.model.SaleProcessSingleton;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
 import it.unipv.ingsfw.gasCorpCinema.model.projection.Projection;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
@@ -49,14 +49,14 @@ public class SelectProjectionViewController implements Initializable {
 	private Projection projection;
 	private int numberOfTickets;
 	private Stage stage;
-	private SaleProcess saleProcess;
+	private SaleProcessSingleton saleProcess;
 	
 	private PersistenceFacade persistence = PersistenceFacade.getInstance(); 
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
-		saleProcess=SaleProcess.getInstance();
+		saleProcess=SaleProcessSingleton.getInstance();
 		selectedMovie=saleProcess.getMovie();
 		if(selectedMovie != null) {
 			myListView.getItems().addAll(persistence.getAllProjectionsByMovie(selectedMovie.getIdMovie()));

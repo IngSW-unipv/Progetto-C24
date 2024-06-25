@@ -7,7 +7,7 @@ import java.net.URL;
 import java.util.Properties;
 import java.util.ResourceBundle;
 import it.unipv.ingsfw.gasCorpCinema.model.PersistenceFacade;
-import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
+import it.unipv.ingsfw.gasCorpCinema.model.SaleProcessSingleton;
 import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
 import it.unipv.ingsfw.gasCorpCinema.utils.AlertUtils;
 import it.unipv.ingsfw.gasCorpCinema.view.homePage.HomePageView;
@@ -35,13 +35,13 @@ public class SelectFilmViewController implements Initializable {
 	private ImageView userImageView;
 	private Movie selectedMovie;
 	private Stage stage;
-	private SaleProcess saleProcess;
+	private SaleProcessSingleton saleProcess;
 
 	private PersistenceFacade persistence = PersistenceFacade.getInstance(); 
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		saleProcess=SaleProcess.getInstance();
+		saleProcess=SaleProcessSingleton.getInstance();
 		myListView.getItems().addAll(persistence.getAllMovies());
 
 		if (myListView.getItems().isEmpty()) {

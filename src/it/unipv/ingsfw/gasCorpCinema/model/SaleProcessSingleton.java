@@ -5,7 +5,7 @@ import it.unipv.ingsfw.gasCorpCinema.model.movie.Movie;
 import it.unipv.ingsfw.gasCorpCinema.model.projection.Projection;
 import it.unipv.ingsfw.gasCorpCinema.model.register.Register;
 
-public class SaleProcess {
+public class SaleProcessSingleton {
 	//la funzione di questa classe è quella di salvare tutte le info necessarie man mano 
 	//che il cliente le sceglie, quando effettivmaente il cliente paga allora il sale process 
 	//passa al register le info necessarie. 
@@ -20,7 +20,7 @@ public class SaleProcess {
 	//riferiemtno allo stesso sale process senza che questi 2 si passino l'istanza (riducendo l'accoppiamento)
 	
 	
-	private static SaleProcess instance;
+	private static SaleProcessSingleton instance;
 	private Movie movie;
 	//arriva da select fil projection
 	private int numberOfTickets;
@@ -58,14 +58,14 @@ public class SaleProcess {
 	}
 
 
-	private SaleProcess() {
+	private SaleProcessSingleton() {
 		register=Register.getInstance();
 	}
 	
 	
-	public static SaleProcess getInstance() {
+	public static SaleProcessSingleton getInstance() {
 		if (instance==null) {
-			instance = new SaleProcess();
+			instance = new SaleProcessSingleton();
 		}
 		return instance;
 	}
