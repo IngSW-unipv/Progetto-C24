@@ -1,4 +1,4 @@
-package it.unipv.ingsfw.gasCorpCinema.model.test;
+package it.unipv.ingsfw.gasCorpCinema.test;
 
 import static org.junit.Assert.*;
 import org.junit.Test;

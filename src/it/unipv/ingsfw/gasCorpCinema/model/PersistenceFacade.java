@@ -21,6 +21,11 @@ import it.unipv.ingsfw.gasCorpCinema.model.projection.ProjectionDAO;
 import it.unipv.ingsfw.gasCorpCinema.model.register.IRegisterDAO;
 import it.unipv.ingsfw.gasCorpCinema.model.register.RegisterDAO;
 
+/**
+ * La classe PersistanceFacade definisce un oggetto Facade Singleton con lo 
+ * strato di Persistenza. Questa classe contiene tutti metodi necessari per
+ * accedere, modificare o estrarre informazioni dal database.
+ */
 public class PersistenceFacade {
 
 	private ICinemaHallDAO cinemaHallDAO;
