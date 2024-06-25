@@ -32,9 +32,6 @@ public class SaleProcess {
 	private double totalFood;
 	private double totalSale;
 	
-	
-	
-	
 	public double getTotalSale() {
 		totalSale= totalTicket + totalFood;
 		return totalSale;

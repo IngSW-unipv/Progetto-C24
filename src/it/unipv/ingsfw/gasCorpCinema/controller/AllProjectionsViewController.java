@@ -27,7 +27,7 @@ public class AllProjectionsViewController implements Initializable {
 	@FXML
 	private Label myLabel;
 	
-	private PersistenceFacade persistence = PersistenceFacade.getInstance(); 
+	private PersistenceFacade persistence = PersistenceFacade.getInstance();
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -50,7 +50,7 @@ public class AllProjectionsViewController implements Initializable {
 	
 	public void getIdHall(ActionEvent event) {
 //		myListView.getItems().clear();
-//		myListView.getItems().addAll(admin.getprojectionsByHall(myChoiceBoxHall.getValue().getIdHall()));
+//		myListView.getItems().addAll(persistence.getprojectionsByHall(myChoiceBoxHall.getValue().getIdHall()));
 		if (myChoiceBoxHall.getValue() != null) {
             myListView.getItems().clear();
             myListView.getItems().addAll(persistence.getAllProjectionsByHall(myChoiceBoxHall.getValue().getIdHall()));
@@ -64,7 +64,7 @@ public class AllProjectionsViewController implements Initializable {
 
 	private void getMovie(ActionEvent actionevent1) {
 //		myListView.getItems().clear();
-//		myListView.getItems().addAll(admin.getprojectionsByMovie(myChoiceBoxMovie.getValue().getTitle()));
+//		myListView.getItems().addAll(persistence.getprojectionsByMovie(myChoiceBoxMovie.getValue().getTitle()));
 		if (myChoiceBoxMovie.getValue() != null) {
             myListView.getItems().clear();
             myListView.getItems().addAll(persistence.getAllProjectionsByMovie(myChoiceBoxMovie.getValue().getIdMovie()));
@@ -78,7 +78,7 @@ public class AllProjectionsViewController implements Initializable {
 	
 	private void getDate(ActionEvent actionevent1) {
 //		myListView.getItems().clear();
-//		myListView.getItems().addAll(admin.getprojectionsByDate(myChoiceBoxDate.getValue()));
+//		myListView.getItems().addAll(persistence.getprojectionsByDate(myChoiceBoxDate.getValue()));
 		if (myChoiceBoxDate.getValue() != null) {
             myListView.getItems().clear();
             myListView.getItems().addAll(persistence.getAllProjectionsByDate(myChoiceBoxDate.getValue()));

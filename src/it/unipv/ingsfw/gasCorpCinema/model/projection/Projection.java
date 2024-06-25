@@ -14,6 +14,8 @@ public class Projection {
 	private Time time;
 	private double price;
 	private int availableSeats;
+	private String movieTitle;
+	private int idHall;
 
 	public Projection(int idProjection, int movieId, Date date, Time time, double price,int availableSeats) {
 		this.idProjection = idProjection;
@@ -30,6 +32,25 @@ public class Projection {
 		this.time = time;
 		this.price = price;
 		this.availableSeats = availableSeats;
+	}
+	
+	public Projection(Date date, Time time, double price,int availableSeats, String movieTitle) {
+		this.date = date;
+		this.time = time;
+		this.price = price;
+		this.availableSeats = availableSeats;
+		this.movieTitle = movieTitle;
+	}
+	
+	public Projection(int idProjection, int movieId, Date date, Time time, double price,int availableSeats, String movieTitle, int idHall) {
+		this.idProjection = idProjection;
+		this.movieId = movieId;
+		this.date = date;
+		this.time = time;
+		this.price = price;
+		this.availableSeats = availableSeats;
+		this.movieTitle = movieTitle;
+		this.idHall = idHall;
 	}
 
 	public Date getDate() {
@@ -73,7 +94,7 @@ public class Projection {
 
 	@Override
 	public String toString() {
-		return "FILM: " + "titolo" + " | " + "DATA: " + date + " | " + "ORARIO: " + time + " | " + "PREZZO: " + price;
+		return "FILM: " + movieTitle + " | " + "SALA: " + idHall + " | " + "DATA: " + date + " | " + "ORARIO: " + time + " | " + "PREZZO: " + price + " | " + "POSTI: " + availableSeats;
 	}
 	
 	public int getMovieId() {
@@ -86,6 +107,18 @@ public class Projection {
 	
 	public void setIdProjection(int idProjection) {
 		this.idProjection = idProjection;
+	}
+	
+	public void setMovieTitle(String movieTitle) {
+		this.movieTitle = movieTitle;
+	}
+	
+	public void setIdHall(int idHall) {
+		this.idHall = idHall;
+	}
+	
+	public int getIdHall() {
+		return idHall;
 	}
 
 }
