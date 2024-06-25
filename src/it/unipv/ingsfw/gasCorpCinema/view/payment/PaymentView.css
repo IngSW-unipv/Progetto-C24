@@ -15,5 +15,5 @@
 }
 
 .button:hover{
-	-fx-background-color: rgba(255, 255, 255, 0.4); /* Bianco con un'opacità del 50% */
+	-fx-background-color: rgba(255, 255, 255, 0.4); /* Bianco con un' opacità del 50% */
 }
