@@ -10,43 +10,43 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.HomePageViewController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.HomePageViewController">
    <children>
-      <AnchorPane prefHeight="756.0" prefWidth="812.0" stylesheets="@HomePageView.css">
+      <AnchorPane prefHeight="400.0" prefWidth="581.0" stylesheets="@HomePageView.css">
          <children>
-            <Label layoutX="529.0" layoutY="205.0" text="Email">
+            <Label layoutX="336.0" layoutY="146.0" text="Email">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="513.0" layoutY="256.0" text="Password">
+            <Label layoutX="319.0" layoutY="192.0" text="Password">
                <font>
                   <Font name="Arial" size="17.0" />
                </font>
             </Label>
-            <TextField fx:id="tfUsername" layoutX="597.0" layoutY="201.0" promptText="Email" />
-            <Button fx:id="buttonLogin" layoutX="644.0" layoutY="444.0" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="17.0" prefWidth="89.0" style="-fx-background-radius: 30; -fx-background-color: #FFFFFF; -fx-cursor: hand; -fx-border-color: #000000;" text="Login">
+            <TextField fx:id="tfUsername" layoutX="401.0" layoutY="139.0" promptText="Email" />
+            <Button fx:id="buttonLogin" layoutX="495.0" layoutY="227.0" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="17.0" prefWidth="89.0" style="-fx-background-radius: 30; -fx-background-color: #FFFFFF; -fx-cursor: hand; -fx-border-color: #000000;" text="Login">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
             </Button>
-            <Label layoutX="551.0" layoutY="503.0" prefHeight="35.0" prefWidth="219.0" text="Non sei ancora registrato?">
+            <Label layoutX="335.0" layoutY="294.0" prefHeight="35.0" prefWidth="219.0" text="Non sei ancora registrato?">
                <font>
                   <Font name="Arial" size="15.0" />
                </font>
             </Label>
-            <Button fx:id="buttonRegistrati" layoutX="584.0" layoutY="538.0" mnemonicParsing="false" onAction="#registerButtonAction" prefHeight="43.0" prefWidth="119.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Registrati ora!" textFill="#2108fc" underline="true" />
-            <PasswordField fx:id="fieldPassword" layoutX="597.0" layoutY="252.0" promptText="Password" />
-            <ImageView fx:id="imageCinema" fitHeight="497.0" fitWidth="537.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+            <Button fx:id="buttonRegistrati" layoutX="385.0" layoutY="312.0" mnemonicParsing="false" onAction="#registerButtonAction" prefHeight="43.0" prefWidth="119.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Registrati ora!" textFill="#2108fc" underline="true" />
+            <PasswordField fx:id="fieldPassword" layoutX="401.0" layoutY="185.0" promptText="Password" />
+            <Label layoutX="18.0" layoutY="14.0" prefHeight="75.0" prefWidth="579.0" text="          Benvenuti nel cuore del divertimento cinematografico: &#10;                           Gas Corp Cinema vi dà il benvenuto!&#10;">
+               <font>
+                  <Font name="Verdana" size="15.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imageCinema" fitHeight="420.0" fitWidth="298.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../../../Resources/CinemaFirstPage.png" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-1.0" prefHeight="104.0" prefWidth="807.0" text="GAS Corp. CINEMA">
-               <font>
-                  <Font name="Apple Braille" size="36.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
    </children>
