@@ -1,7 +1,0 @@
-DBDRIVER = com.mysql.cj.jdbc.Driver
-DBURL = jdbc:mysql://127.0.0.1:3306/%s
-db_usn= root
-db_psw= ziocane54321.
-
-admin = ../view/AdminView.fxml
-user = ../view/SelectFilm.fxml

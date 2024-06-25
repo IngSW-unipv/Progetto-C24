@@ -26,9 +26,7 @@ public class DBConnection {
 	private static DBConnection conn;
 	
 	private static void init() {
-		Properties p = new Properties(System.getProperties());
-//		Properties p1 = new Properties(System.getProperties());
-		
+		Properties p = new Properties(System.getProperties());		
 		try {
 			p.load(new FileInputStream("Properties/Properties"));
 			username=p.getProperty(PROPERTYNAME);
@@ -39,16 +37,6 @@ public class DBConnection {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-//		try {
-//			p1.load(new FileInputStream("Properties/Properties1"));
-//			username=p1.getProperty(PROPERTYNAME);
-//			password=p1.getProperty(PROPERTYPSW);
-//			dbDriver =p1.getProperty(PROPERTYDBDRIVER);
-//			dbURL =p1.getProperty(PROPERTYDBURL);
-//			
-//		}catch(Exception e) {
-//			e.printStackTrace();
-//		}
 	}
 
 	public static Connection startConnection(Connection conn, String schema)
