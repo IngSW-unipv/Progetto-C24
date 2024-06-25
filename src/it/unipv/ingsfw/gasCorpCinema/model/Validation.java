@@ -68,4 +68,11 @@ public class Validation {
         Matcher matcher = pattern.matcher(input);
         return matcher.matches();
 	}
+	
+	public static boolean importValidate(String input) {
+		String regex = "^\\d{1,5}(\\.\\d{1,2})?$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+        return matcher.matches();
+	}
 }

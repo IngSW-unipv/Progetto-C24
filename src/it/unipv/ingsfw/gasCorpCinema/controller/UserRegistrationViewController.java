@@ -89,7 +89,7 @@ public class UserRegistrationViewController {
 	}
 
 	@FXML
-	public void registerButtonAction() {
+	public void registration() {
 
 		try {
 
@@ -138,7 +138,7 @@ public class UserRegistrationViewController {
 	}
 
 	@FXML
-	public void loginButtonAction() throws Exception {  
+	public void login() throws Exception {  
 		Stage currentStage = (Stage) buttonLogin.getScene().getWindow();
 
 		HomePageView f = new HomePageView();
