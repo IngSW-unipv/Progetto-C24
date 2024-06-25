@@ -34,7 +34,6 @@ public class FoodChoiceController implements Initializable {
 	private String selectedFoodDescription;
 	private Food food;
 
-	//private SpinnerValueFactory<Integer> spinner;
 	private Food selectedFood;
 	private double totalFood;
 	private SaleProcess saleProcess;
