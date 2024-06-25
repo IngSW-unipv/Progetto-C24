@@ -82,8 +82,8 @@ public class SelectProjectionViewController implements Initializable {
 	private void updateSpinnerValueFactory() {
 		if (projection != null) {
 			SpinnerValueFactory<Integer> valueFactory = 
-					new SpinnerValueFactory.IntegerSpinnerValueFactory(1,persistence.getNumberOfAvailableSeats(projection));
-			valueFactory.setValue(1);
+					new SpinnerValueFactory.IntegerSpinnerValueFactory(0,persistence.getNumberOfAvailableSeats(projection));
+			valueFactory.setValue(0);
 			mySpinner.setValueFactory(valueFactory);
 
 

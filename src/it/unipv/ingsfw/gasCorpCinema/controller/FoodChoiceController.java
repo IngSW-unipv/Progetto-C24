@@ -5,8 +5,6 @@ import java.util.ResourceBundle;
 import it.unipv.ingsfw.gasCorpCinema.model.PersistenceFacade;
 import it.unipv.ingsfw.gasCorpCinema.model.SaleProcess;
 import it.unipv.ingsfw.gasCorpCinema.model.food.Food;
-import it.unipv.ingsfw.gasCorpCinema.model.food.FoodDAO;
-import it.unipv.ingsfw.gasCorpCinema.model.food.IFoodDAO;
 import it.unipv.ingsfw.gasCorpCinema.view.payment.PaymentCashierView;
 import it.unipv.ingsfw.gasCorpCinema.view.selectProjection.SelectProjectionView;
 import javafx.beans.value.ChangeListener;
@@ -83,7 +81,7 @@ public class FoodChoiceController implements Initializable {
 		if (selectedFood != null) {
 			if(selectedFood.getQuantity() >= 1) {
 				food = persistence.getFoodByDescription(selectedFoodDescription);
-				foodListView.getItems().add(food.getDescription() + "  " + Double.toString(food.getPrice()) + "   "+ Integer.toString(quantitySpinner.getValue()));
+				foodListView.getItems().add("Descrizione -> "+food.getDescription() + " || Prezzo -> " + Double.toString(food.getPrice()) + " || Quantità -> "+ Integer.toString(quantitySpinner.getValue()));
 				totalFood += quantitySpinner.getValue()* selectedFood.getPrice();
 				totalLabel.setText(String.valueOf(totalFood));
 				persistence.decreaseQuantityOfFood(quantitySpinner.getValue(), foodChoiceBox.getSelectionModel().getSelectedItem());

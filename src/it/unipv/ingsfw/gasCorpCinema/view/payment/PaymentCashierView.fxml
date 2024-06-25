@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.PaymentCashierViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@PaymentCashier.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipv.ingsfw.gasCorpCinema.controller.PaymentCashierViewController">
    <children>
       <Label alignment="CENTER" layoutY="6.0" prefHeight="64.0" prefWidth="600.0" text="GAS Corp. CINEMA">
          <font>
@@ -38,7 +38,7 @@
       </Label>
       <Label fx:id="totalLabel" layoutX="226.0" layoutY="67.0" prefHeight="21.0" prefWidth="57.0" />
       <Label fx:id="labelResto" layoutX="78.0" layoutY="231.0" prefHeight="21.0" prefWidth="248.0" />
-      <Button fx:id="endPaymentButton" layoutX="107.0" layoutY="319.0" mnemonicParsing="false" onAction="#endPayment" prefHeight="31.0" prefWidth="182.0" text="Termina operazione" />
+      <Button fx:id="endPaymentButton" layoutX="85.0" layoutY="319.0" mnemonicParsing="false" onAction="#endPayment" prefHeight="31.0" prefWidth="182.0" text="Termina operazione" />
       <Label layoutX="331.0" layoutY="125.0" prefHeight="48.0" prefWidth="182.0" text="Pagamento con carta:">
          <font>
             <Font size="17.0" />
@@ -46,7 +46,7 @@
       </Label>
       <Button fx:id="posButton" layoutX="328.0" layoutY="185.0" mnemonicParsing="false" onAction="#possButtonAction" text="Attiva POS" />
       <Label fx:id="paymentLabel" layoutX="328.0" layoutY="252.0" prefHeight="34.0" prefWidth="261.0" />
-      <Button fx:id="backButton" layoutX="331.0" layoutY="319.0" mnemonicParsing="false" onAction="#backView" prefHeight="31.0" prefWidth="182.0" text="Annulla operazione" />
+      <Button fx:id="backButton" layoutX="326.0" layoutY="319.0" mnemonicParsing="false" onAction="#backView" prefHeight="31.0" prefWidth="182.0" text="Annulla operazione" />
       <Label fx:id="errorLabel" layoutX="108.0" layoutY="269.0" prefHeight="34.0" prefWidth="404.0" textFill="RED" underline="true">
          <font>
             <Font size="19.0" />

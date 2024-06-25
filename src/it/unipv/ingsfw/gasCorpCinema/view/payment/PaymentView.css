@@ -1,0 +1,9 @@
+.root {
+	-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #95ecb0, #f3f98a);
+}
+
+.label {
+    -fx-font-family: "Verdana";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold; /* Rende il testo in grassetto */
+}
