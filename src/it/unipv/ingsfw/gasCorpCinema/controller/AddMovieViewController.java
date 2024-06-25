@@ -84,7 +84,6 @@ public class AddMovieViewController {
 		return true;
 	}
 
-
 	public boolean isDuplicatedMovie(Movie movie) {
 		if (persistence.getMovieByTitle(movie.getTitle()) != null) {
 			return true;
@@ -92,5 +91,4 @@ public class AddMovieViewController {
 			return false;
 		}
 	}
-	
 }

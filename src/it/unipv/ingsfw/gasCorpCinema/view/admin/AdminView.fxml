@@ -28,6 +28,6 @@
         </menus>
       </MenuBar>
       <Label fx:id="emailLabel" alignment="CENTER" layoutX="388.0" layoutY="6.0" prefHeight="18.0" prefWidth="202.0" />
-      <Button fx:id="myButton" layoutX="388.0" layoutY="2.0" mnemonicParsing="false" onAction="#logout" prefHeight="26.0" prefWidth="202.0" />
+      <Button fx:id="myButton" layoutX="388.0" layoutY="9.0" mnemonicParsing="false" onAction="#logout" prefHeight="26.0" prefWidth="202.0" styleClass="label" text="Logout" />
    </children>
 </AnchorPane>

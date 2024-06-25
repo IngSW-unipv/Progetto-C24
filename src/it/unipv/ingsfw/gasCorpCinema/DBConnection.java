@@ -6,6 +6,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+/**
+ * La classe DBConnection è una classe di utilità che gestisce le connessioni al database.
+ * 
+ * @author Giovicampa
+ * @version 1.0
+ */
 
 public class DBConnection {
 	

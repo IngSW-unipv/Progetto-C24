@@ -1,15 +1,17 @@
-package it.unipv.ingsfw.gasCorpCinema.model.test;
+package it.unipv.ingsfw.gasCorpCinema.test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+
 import it.unipv.ingsfw.gasCorpCinema.model.Validation;
 
-public class ValidateTest {
+public class ValidationTest {
 
 
-	@BeforeEach
+	@Before
     public void setUp() {
     }
 
