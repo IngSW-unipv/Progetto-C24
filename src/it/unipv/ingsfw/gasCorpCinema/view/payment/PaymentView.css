@@ -4,6 +4,16 @@
 
 .label {
     -fx-font-family: "Verdana";
-    -fx-font-size: 14px;
+    -fx-font-size: 12px;
     -fx-font-weight: bold; /* Rende il testo in grassetto */
+}
+
+.button{
+	-fx-background-color: transparent; /* Colore di sfondo bianco */
+    -fx-border-color: white; /* Colore del bordo nero */
+    -fx-border-width: 0.5px; /* Spessore del bordo */
+}
+
+.button:hover{
+	-fx-background-color: rgba(255, 255, 255, 0.4); /* Bianco con un'opacità del 50% */
 }
