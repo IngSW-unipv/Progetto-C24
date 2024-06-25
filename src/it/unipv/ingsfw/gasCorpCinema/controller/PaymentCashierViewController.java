@@ -48,7 +48,7 @@ public class PaymentCashierViewController implements Initializable {
 	}
 	
 	public void endPayment() {
-		if(!Validation.cvvValidate(importoTextField.getText())) {
+		if(!Validation.importValidate(importoTextField.getText())) {
 			errorLabel.setText("Importo errato");
 			return;
 		}
