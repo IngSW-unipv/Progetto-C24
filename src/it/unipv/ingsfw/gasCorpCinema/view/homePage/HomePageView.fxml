@@ -25,7 +25,7 @@
                </font>
             </Label>
             <TextField fx:id="tfUsername" layoutX="401.0" layoutY="139.0" promptText="Email" />
-            <Button fx:id="buttonLogin" layoutX="495.0" layoutY="227.0" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="17.0" prefWidth="89.0" style="-fx-background-radius: 30; -fx-background-color: #FFFFFF; -fx-cursor: hand; -fx-border-color: #000000;" text="Login">
+            <Button fx:id="buttonLogin" layoutX="400.0" layoutY="234.0" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="17.0" prefWidth="89.0" style="-fx-background-radius: 30; -fx-background-color: #FFFFFF; -fx-cursor: hand; -fx-border-color: #000000;" text="Login">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
